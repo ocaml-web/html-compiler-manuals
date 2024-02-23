@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["4.14", "5.0", "5.1"]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,21 +29,41 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout 5.3
         uses: actions/checkout@v4
         with:
-          path: '4.14'
-          ref: '4.14'
-      - name: Checkout
+          path: '5.3'
+          ref: '5.3'
+      - name: Checkout 5.2
         uses: actions/checkout@v4
         with:
-          path: '5.0'
-          ref: '5.0'
-      - name: Checkout
+          path: '5.2'
+          ref: '5.2'
+      - name: Checkout 5.1
         uses: actions/checkout@v4
         with:
           path: '5.1'
           ref: '5.1'
+      - name: Checkout 5.0
+        uses: actions/checkout@v4
+        with:
+          path: '5.0'
+          ref: '5.0'
+      - name: Checkout 4.14
+        uses: actions/checkout@v4
+        with:
+          path: '4.14'
+          ref: '4.14'
+      - name: Checkout 4.13
+        uses: actions/checkout@v4
+        with:
+          path: '4.13'
+          ref: '4.13'
+      - name: Checkout 4.12
+        uses: actions/checkout@v4
+        with:
+          path: '4.12'
+          ref: '4.12'
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
