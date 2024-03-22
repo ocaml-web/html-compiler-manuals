@@ -48,5 +48,4 @@ git checkout -b $OCAML_VERSION
 
 # Copy webman manuals
 echo "Copying webman manuals to html-compiler-manuals ..."
-cp -r $DIR/ocaml/manual/src/webman/api .
-cp -r $DIR/ocaml/manual/src/webman/manual .
+cp -r $DIR/ocaml/manual/src/webman/$OCAML_VERSION .
