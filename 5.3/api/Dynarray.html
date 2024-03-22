@@ -1,0 +1,811 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Domain.html">
+<link rel="next" href="Dynlink.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
+<link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
+<link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
+<link title="Arg" rel="Chapter" href="Arg.html">
+<link title="Array" rel="Chapter" href="Array.html">
+<link title="ArrayLabels" rel="Chapter" href="ArrayLabels.html">
+<link title="Atomic" rel="Chapter" href="Atomic.html">
+<link title="Bigarray" rel="Chapter" href="Bigarray.html">
+<link title="Bool" rel="Chapter" href="Bool.html">
+<link title="Buffer" rel="Chapter" href="Buffer.html">
+<link title="Bytes" rel="Chapter" href="Bytes.html">
+<link title="BytesLabels" rel="Chapter" href="BytesLabels.html">
+<link title="Callback" rel="Chapter" href="Callback.html">
+<link title="Char" rel="Chapter" href="Char.html">
+<link title="Complex" rel="Chapter" href="Complex.html">
+<link title="Condition" rel="Chapter" href="Condition.html">
+<link title="Digest" rel="Chapter" href="Digest.html">
+<link title="Domain" rel="Chapter" href="Domain.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Dynlink" rel="Chapter" href="Dynlink.html">
+<link title="Effect" rel="Chapter" href="Effect.html">
+<link title="Either" rel="Chapter" href="Either.html">
+<link title="Ephemeron" rel="Chapter" href="Ephemeron.html">
+<link title="Event" rel="Chapter" href="Event.html">
+<link title="Filename" rel="Chapter" href="Filename.html">
+<link title="Float" rel="Chapter" href="Float.html">
+<link title="Format" rel="Chapter" href="Format.html">
+<link title="Fun" rel="Chapter" href="Fun.html">
+<link title="Gc" rel="Chapter" href="Gc.html">
+<link title="Hashtbl" rel="Chapter" href="Hashtbl.html">
+<link title="In_channel" rel="Chapter" href="In_channel.html">
+<link title="Int" rel="Chapter" href="Int.html">
+<link title="Int32" rel="Chapter" href="Int32.html">
+<link title="Int64" rel="Chapter" href="Int64.html">
+<link title="Lazy" rel="Chapter" href="Lazy.html">
+<link title="Lexing" rel="Chapter" href="Lexing.html">
+<link title="List" rel="Chapter" href="List.html">
+<link title="ListLabels" rel="Chapter" href="ListLabels.html">
+<link title="Map" rel="Chapter" href="Map.html">
+<link title="Marshal" rel="Chapter" href="Marshal.html">
+<link title="MoreLabels" rel="Chapter" href="MoreLabels.html">
+<link title="Mutex" rel="Chapter" href="Mutex.html">
+<link title="Nativeint" rel="Chapter" href="Nativeint.html">
+<link title="Obj" rel="Chapter" href="Obj.html">
+<link title="Oo" rel="Chapter" href="Oo.html">
+<link title="Option" rel="Chapter" href="Option.html">
+<link title="Out_channel" rel="Chapter" href="Out_channel.html">
+<link title="Parsing" rel="Chapter" href="Parsing.html">
+<link title="Printexc" rel="Chapter" href="Printexc.html">
+<link title="Printf" rel="Chapter" href="Printf.html">
+<link title="Queue" rel="Chapter" href="Queue.html">
+<link title="Random" rel="Chapter" href="Random.html">
+<link title="Result" rel="Chapter" href="Result.html">
+<link title="Runtime_events" rel="Chapter" href="Runtime_events.html">
+<link title="Scanf" rel="Chapter" href="Scanf.html">
+<link title="Semaphore" rel="Chapter" href="Semaphore.html">
+<link title="Seq" rel="Chapter" href="Seq.html">
+<link title="Set" rel="Chapter" href="Set.html">
+<link title="Stack" rel="Chapter" href="Stack.html">
+<link title="StdLabels" rel="Chapter" href="StdLabels.html">
+<link title="Stdlib" rel="Chapter" href="Stdlib.html">
+<link title="Str" rel="Chapter" href="Str.html">
+<link title="String" rel="Chapter" href="String.html">
+<link title="StringLabels" rel="Chapter" href="StringLabels.html">
+<link title="Sys" rel="Chapter" href="Sys.html">
+<link title="Thread" rel="Chapter" href="Thread.html">
+<link title="Type" rel="Chapter" href="Type.html">
+<link title="Uchar" rel="Chapter" href="Uchar.html">
+<link title="Unit" rel="Chapter" href="Unit.html">
+<link title="Unix" rel="Chapter" href="Unix.html">
+<link title="UnixLabels" rel="Chapter" href="UnixLabels.html">
+<link title="Weak" rel="Chapter" href="Weak.html">
+<link title="CamlinternalFormat" rel="Chapter" href="CamlinternalFormat.html">
+<link title="CamlinternalFormatBasics" rel="Chapter" href="CamlinternalFormatBasics.html">
+<link title="CamlinternalLazy" rel="Chapter" href="CamlinternalLazy.html">
+<link title="CamlinternalMod" rel="Chapter" href="CamlinternalMod.html">
+<link title="CamlinternalOO" rel="Chapter" href="CamlinternalOO.html"><link title="Dynamic arrays" rel="Section" href="#dynarrays">
+<link title="Adding elements" rel="Section" href="#adding">
+<link title="Removing elements" rel="Section" href="#removing">
+<link title="Iteration" rel="Section" href="#iteration">
+<link title="Conversions to other data structures" rel="Section" href="#conversions">
+<link title="Advanced topics for performance" rel="Section" href="#advanced">
+<link title="Code examples" rel="Section" href="#examples">
+<link title="Backing array, capacity" rel="Subsection" href="#capacity">
+<link title="No leaks: preservation of memory liveness" rel="Subsection" href="#noleaks">
+<link title="Memory layout of dynarrays" rel="Subsection" href="#memory_layout">
+<link title="Min-heaps for mutable priority queues" rel="Subsection" href="#example_min_heap">
+<title>OCaml library : Dynarray</title>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : Dynarray</a></div><ul><li><a href="#dynarrays">Dynamic arrays</a></li><li><a href="#adding">Adding elements</a></li><li><a href="#removing">Removing elements</a></li><li><a href="#iteration">Iteration</a></li><li><a href="#conversions">Conversions to other data structures</a></li><li><a href="#advanced">Advanced topics for performance</a><ul><li><a href="#capacity">Backing array, capacity</a></li><li><a href="#noleaks">No leaks: preservation of memory liveness</a></li><li><a href="#memory_layout">Memory layout of dynarrays</a></li></ul></li><li><a href="#examples">Code examples</a><ul><li><a href="#example_min_heap">Min-heaps for mutable priority queues</a></li></ul></li></ul></nav></header>
+<h1>Module <a href="type_Dynarray.html">Dynarray</a></h1>
+
+<pre><span id="MODULEDynarray"><span class="keyword">module</span> Dynarray</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Dynarray.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Dynamic arrays.</p>
+
+<p>The <a href="Array.html"><code class="code"><span class="constructor">Array</span></code></a> module provide arrays of fixed length. <a href="Dynarray.html"><code class="code"><span class="constructor">Dynarray</span></code></a>
+    provides arrays whose length can change over time, by adding or
+    removing elements at the end of the array.</p>
+
+<p>This is typically used to accumulate elements whose number is not
+    known in advance or changes during computation, while also
+    providing fast access to elements at arbitrary positions.</p>
+
+<pre class="codepre"><code class="code">    <span class="keyword">let</span> dynarray_of_list li =
+      <span class="keyword">let</span> arr = <span class="constructor">Dynarray</span>.create () <span class="keyword">in</span>
+      <span class="constructor">List</span>.iter (<span class="keyword">fun</span> v <span class="keywordsign">-&gt;</span> <span class="constructor">Dynarray</span>.add_last arr v) li;
+      arr
+</code></pre>
+<p>The <a href="Buffer.html"><code class="code"><span class="constructor">Buffer</span></code></a> module provides similar features, but it is
+    specialized for accumulating characters into a dynamically-resized
+    string.</p>
+
+<p>The <a href="Stack.html"><code class="code"><span class="constructor">Stack</span></code></a> module provides a last-in first-out data structure
+    that can be easily implemented on top of dynamic arrays.</p>
+
+<p><b>Warning.</b> In their current implementation, the memory layout
+    of dynamic arrays differs from the one of <a href="Array.html"><code class="code"><span class="constructor">Array</span></code></a>s. See the
+    <a href="Dynarray.html#memory_layout"> Memory Layout</a> section for more information.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Since</b> 5.2</li>
+<li><b>Alert unsynchronized_access.</b> Unsynchronized accesses to dynamic arrays are a programming error.</li>
+</ul>
+</div>
+<hr width="100%">
+<p><b>Unsynchronized accesses</b></p>
+<p>Concurrent accesses to dynamic arrays must be synchronized
+   (for instance with a <a href="Mutex.html#TYPEt"><code class="code"><span class="constructor">Mutex</span>.t</code></a>). Unsynchronized accesses to
+   a dynamic array are a programming error that may lead to an invalid
+   dynamic array state, on which some operations would fail with an
+   <code class="code"><span class="constructor">Invalid_argument</span></code> exception.</p>
+<h2 id="dynarrays">Dynamic arrays</h2>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">!'a</code> t</span> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>A dynamic array containing values of type <code class="code"><span class="keywordsign">'</span>a</code>.</p>
+
+<p>A dynamic array <code class="code">a</code> provides constant-time <code class="code">get</code> and <code class="code">set</code>
+    operations on indices between <code class="code">0</code> and <code class="code"><span class="constructor">Dynarray</span>.length&nbsp;a&nbsp;-&nbsp;1</code>
+    included. Its <a href="Dynarray.html#VALlength"><code class="code"><span class="constructor">Dynarray</span>.length</code></a> may change over time by adding or removing
+    elements to the end of the array.</p>
+
+<p>We say that an index into a dynarray <code class="code">a</code> is valid if it is in
+    <code class="code">0&nbsp;..&nbsp;length&nbsp;a&nbsp;-&nbsp;1</code> and invalid otherwise.</p>
+</div>
+</div>
+
+
+<pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">create&nbsp;()</code> is a new, empty array.</p>
+</div>
+</div>
+
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">int -&gt; 'a -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make&nbsp;n&nbsp;x</code> is a new array of length <code class="code">n</code>, filled with <code class="code">x</code>.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if <code class="code">n&nbsp;&lt;&nbsp;0</code> or <code class="code">n&nbsp;&gt;&nbsp;<span class="constructor">Sys</span>.max_array_length</code>.</li>
+</ul>
+</div>
+
+<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">int -&gt; (int -&gt; 'a) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">init&nbsp;n&nbsp;f</code> is a new array <code class="code">a</code> of length <code class="code">n</code>,
+    such that <code class="code">get&nbsp;a&nbsp;i</code> is <code class="code">f&nbsp;i</code>. In other words,
+    the elements of <code class="code">a</code> are <code class="code">f&nbsp;0</code>, then <code class="code">f&nbsp;1</code>,
+    then <code class="code">f&nbsp;2</code>... and <code class="code">f&nbsp;(n&nbsp;-&nbsp;1)</code> last, evaluated
+    in that order.</p>
+
+<p>This is similar to <a href="Array.html#VALinit"><code class="code"><span class="constructor">Array</span>.init</code></a>.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if <code class="code">n&nbsp;&lt;&nbsp;0</code> or <code class="code">n&nbsp;&gt;&nbsp;<span class="constructor">Sys</span>.max_array_length</code>.</li>
+</ul>
+</div>
+
+<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">get&nbsp;a&nbsp;i</code> is the <code class="code">i</code>-th element of <code class="code">a</code>, starting with index <code class="code">0</code>.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if the index is invalid</li>
+</ul>
+</div>
+
+<pre><span id="VALset"><span class="keyword">val</span> set</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int -&gt; 'a -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">set&nbsp;a&nbsp;i&nbsp;x</code> sets the <code class="code">i</code>-th element of <code class="code">a</code> to be <code class="code">x</code>.</p>
+
+<p><code class="code">i</code> must be a valid index. <code class="code">set</code> does not add new elements to the
+    array -- see <a href="Dynarray.html#VALadd_last"><code class="code"><span class="constructor">Dynarray</span>.add_last</code></a> to add an element.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if the index is invalid.</li>
+</ul>
+</div>
+
+<pre><span id="VALlength"><span class="keyword">val</span> length</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">length&nbsp;a</code> is the number of elements in the array.</p>
+</div>
+</div>
+
+<pre><span id="VALis_empty"><span class="keyword">val</span> is_empty</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">is_empty&nbsp;a</code> is <code class="code"><span class="keyword">true</span></code> if <code class="code">a</code> is empty, that is, if <code class="code">length&nbsp;a&nbsp;=&nbsp;0</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALget_last"><span class="keyword">val</span> get_last</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">get_last&nbsp;a</code> is the element of <code class="code">a</code> at index <code class="code">length&nbsp;a&nbsp;-&nbsp;1</code>.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if <code class="code">a</code> is empty.</li>
+</ul>
+</div>
+
+<pre><span id="VALfind_last"><span class="keyword">val</span> find_last</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a option</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">find_last&nbsp;a</code> is <code class="code"><span class="constructor">None</span></code> if <code class="code">a</code> is empty
+    and <code class="code"><span class="constructor">Some</span>&nbsp;(get_last&nbsp;a)</code> otherwise.</p>
+</div>
+</div>
+
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">copy&nbsp;a</code> is a shallow copy of <code class="code">a</code>, a new array
+    containing the same elements as <code class="code">a</code>.</p>
+</div>
+</div>
+<h2 id="adding">Adding elements</h2>
+<p>Note: all operations adding elements raise <code class="code"><span class="constructor">Invalid_argument</span></code> if the
+    length needs to grow beyond <a href="Sys.html#VALmax_array_length"><code class="code"><span class="constructor">Sys</span>.max_array_length</code></a>.</p>
+
+<pre><span id="VALadd_last"><span class="keyword">val</span> add_last</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">add_last&nbsp;a&nbsp;x</code> adds the element <code class="code">x</code> at the end of the array <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALappend_array"><span class="keyword">val</span> append_array</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a array -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">append_array&nbsp;a&nbsp;b</code> adds all elements of <code class="code">b</code> at the end of <code class="code">a</code>,
+    in the order they appear in <code class="code">b</code>.</p>
+
+<p>For example:</p>
+<pre class="codepre"><code class="code">      <span class="keyword">let</span> a = <span class="constructor">Dynarray</span>.of_list [1;2] <span class="keyword">in</span>
+      <span class="constructor">Dynarray</span>.append_array a [|3; 4|];
+      <span class="keyword">assert</span> (<span class="constructor">Dynarray</span>.to_list a = [1; 2; 3; 4])
+    </code></pre></div>
+</div>
+
+<pre><span id="VALappend_list"><span class="keyword">val</span> append_list</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a list -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Like <a href="Dynarray.html#VALappend_array"><code class="code"><span class="constructor">Dynarray</span>.append_array</code></a> but with a list.</p>
+</div>
+</div>
+
+<pre><span id="VALappend"><span class="keyword">val</span> append</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">append&nbsp;a&nbsp;b</code> is like <code class="code">append_array&nbsp;a&nbsp;b</code>,
+    but <code class="code">b</code> is itself a dynamic array instead of a fixed-size array.</p>
+
+<p>Warning: <code class="code">append&nbsp;a&nbsp;a</code> is a programming error because it iterates
+    on <code class="code">a</code> and adds elements to it at the same time -- see the
+    <a href="Dynarray.html#iteration"> Iteration</a> section below. It fails with
+    <code class="code"><span class="constructor">Invalid_argument</span></code>.
+    If you really want to append a copy of <code class="code">a</code> to itself, you can use
+    <code class="code"><span class="constructor">Dynarray</span>.append_array&nbsp;a&nbsp;(<span class="constructor">Dynarray</span>.to_array&nbsp;a)</code> which copies <code class="code">a</code>
+    into a temporary array.</p>
+</div>
+</div>
+
+<pre><span id="VALappend_seq"><span class="keyword">val</span> append_seq</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Seq.html#TYPEt">Seq.t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Like <a href="Dynarray.html#VALappend_array"><code class="code"><span class="constructor">Dynarray</span>.append_array</code></a> but with a sequence.</p>
+
+<p>Warning: <code class="code">append_seq&nbsp;a&nbsp;(to_seq_reentrant&nbsp;a)</code> simultaneously
+    traverses <code class="code">a</code> and adds element to it; the ordering of those
+    operations is unspecified, and may result in an infinite loop --
+    the new elements may in turn be produced by <code class="code">to_seq_reentrant&nbsp;a</code>
+    and get added again and again.</p>
+</div>
+</div>
+
+<pre><span id="VALappend_iter"><span class="keyword">val</span> append_iter</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; (('a -&gt; unit) -&gt; 'x -&gt; unit) -&gt; 'x -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">append_iter&nbsp;a&nbsp;iter&nbsp;x</code> adds each element of <code class="code">x</code> to the end of <code class="code">a</code>.
+    This is <code class="code">iter&nbsp;(add_last&nbsp;a)&nbsp;x</code>.</p>
+
+<p>For example, <code class="code">append_iter&nbsp;a&nbsp;<span class="constructor">List</span>.iter&nbsp;[1;2;3]</code> would add elements
+    <code class="code">1</code>, <code class="code">2</code>, and then <code class="code">3</code> at the end of <code class="code">a</code>.
+    <code class="code">append_iter&nbsp;a&nbsp;<span class="constructor">Queue</span>.iter&nbsp;q</code> adds elements from the queue <code class="code">q</code>.</p>
+</div>
+</div>
+<h2 id="removing">Removing elements</h2>
+<pre><span id="VALpop_last_opt"><span class="keyword">val</span> pop_last_opt</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a option</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">pop_last_opt&nbsp;a</code> removes and returns the last element of <code class="code">a</code>,
+    or <code class="code"><span class="constructor">None</span></code> if the array is empty.</p>
+</div>
+</div>
+
+<pre><span id="VALpop_last"><span class="keyword">val</span> pop_last</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">pop_last&nbsp;a</code> removes and returns the last element of <code class="code">a</code>.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Not_found</code> on an empty array.</li>
+</ul>
+</div>
+
+<pre><span id="VALremove_last"><span class="keyword">val</span> remove_last</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">remove_last&nbsp;a</code> removes the last element of <code class="code">a</code>, if any.
+    It does nothing if <code class="code">a</code> is empty.</p>
+</div>
+</div>
+
+<pre><span id="VALtruncate"><span class="keyword">val</span> truncate</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">truncate&nbsp;a&nbsp;n</code> truncates <code class="code">a</code> to have at most <code class="code">n</code> elements.</p>
+
+<p>It removes elements whose index is greater or equal to <code class="code">n</code>.
+    It does nothing if <code class="code">n&nbsp;&gt;=&nbsp;length&nbsp;a</code>.</p>
+
+<p><code class="code">truncate&nbsp;a&nbsp;n</code> is equivalent to:</p>
+<pre class="codepre"><code class="code">      <span class="keyword">if</span> n &lt; 0 <span class="keyword">then</span> invalid_argument <span class="string">"..."</span>;
+      <span class="keyword">while</span> length a &gt; n <span class="keyword">do</span>
+        remove_last a
+      <span class="keyword">done</span>
+    </code></pre></div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if <code class="code">n&nbsp;&lt;&nbsp;0</code>.</li>
+</ul>
+</div>
+
+<pre><span id="VALclear"><span class="keyword">val</span> clear</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">clear&nbsp;a</code> is <code class="code">truncate&nbsp;a&nbsp;0</code>, it removes all the elements of <code class="code">a</code>.</p>
+</div>
+</div>
+<h2 id="iteration">Iteration</h2>
+<p>The iteration functions traverse the elements of a dynamic array.
+    Traversals of <code class="code">a</code> are computed in increasing index order: from
+    the element of index <code class="code">0</code> to the element of index <code class="code">length&nbsp;a&nbsp;-&nbsp;1</code>.</p>
+
+<p>It is a programming error to change the length of an array
+    (by adding or removing elements) during an iteration on the
+    array. Any iteration function will fail with <code class="code"><span class="constructor">Invalid_argument</span></code>
+    if it detects such a length change.</p>
+
+<pre><span id="VALiter"><span class="keyword">val</span> iter</span> : <code class="type">('a -&gt; unit) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">iter&nbsp;f&nbsp;a</code> calls <code class="code">f</code> on each element of <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALiteri"><span class="keyword">val</span> iteri</span> : <code class="type">(int -&gt; 'a -&gt; unit) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">iteri&nbsp;f&nbsp;a</code> calls <code class="code">f&nbsp;i&nbsp;x</code> for each <code class="code">x</code> at index <code class="code">i</code> in <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALmap"><span class="keyword">val</span> map</span> : <code class="type">('a -&gt; 'b) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'b <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">map&nbsp;f&nbsp;a</code> is a new array of elements of the form <code class="code">f&nbsp;x</code>
+    for each element <code class="code">x</code> of <code class="code">a</code>.</p>
+
+<p>For example, if the elements of <code class="code">a</code> are <code class="code">x0</code>, <code class="code">x1</code>, <code class="code">x2</code>,
+    then the elements of <code class="code">b</code> are <code class="code">f&nbsp;x0</code>, <code class="code">f&nbsp;x1</code>, <code class="code">f&nbsp;x2</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALmapi"><span class="keyword">val</span> mapi</span> : <code class="type">(int -&gt; 'a -&gt; 'b) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'b <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">mapi&nbsp;f&nbsp;a</code> is a new array of elements of the form <code class="code">f&nbsp;i&nbsp;x</code>
+    for each element <code class="code">x</code> of <code class="code">a</code> at index <code class="code">i</code>.</p>
+
+<p>For example, if the elements of <code class="code">a</code> are <code class="code">x0</code>, <code class="code">x1</code>, <code class="code">x2</code>,
+    then the elements of <code class="code">b</code> are <code class="code">f&nbsp;0&nbsp;x0</code>, <code class="code">f&nbsp;1&nbsp;x1</code>, <code class="code">f&nbsp;2&nbsp;x2</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALfold_left"><span class="keyword">val</span> fold_left</span> : <code class="type">('acc -&gt; 'a -&gt; 'acc) -&gt; 'acc -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'acc</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">fold_left&nbsp;f&nbsp;acc&nbsp;a</code> folds <code class="code">f</code> over <code class="code">a</code> in order,
+    starting with accumulator <code class="code">acc</code>.</p>
+
+<p>For example, if the elements of <code class="code">a</code> are <code class="code">x0</code>, <code class="code">x1</code>,
+    then <code class="code">fold&nbsp;f&nbsp;acc&nbsp;a</code> is</p>
+<pre class="codepre"><code class="code">      <span class="keyword">let</span> acc = f acc x0 <span class="keyword">in</span>
+      <span class="keyword">let</span> acc = f acc x1 <span class="keyword">in</span>
+      acc
+    </code></pre></div>
+</div>
+
+<pre><span id="VALfold_right"><span class="keyword">val</span> fold_right</span> : <code class="type">('a -&gt; 'acc -&gt; 'acc) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'acc -&gt; 'acc</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">fold_right&nbsp;f&nbsp;a&nbsp;acc</code> computes
+    <code class="code">f&nbsp;x0&nbsp;(f&nbsp;x1&nbsp;(...&nbsp;(f&nbsp;xn&nbsp;acc)&nbsp;...))</code>
+    where <code class="code">x0</code>, <code class="code">x1</code>, ..., <code class="code">xn</code> are the elements of <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALexists"><span class="keyword">val</span> exists</span> : <code class="type">('a -&gt; bool) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">exists&nbsp;f&nbsp;a</code> is <code class="code"><span class="keyword">true</span></code> if some element of <code class="code">a</code> satisfies <code class="code">f</code>.</p>
+
+<p>For example, if the elements of <code class="code">a</code> are <code class="code">x0</code>, <code class="code">x1</code>, <code class="code">x2</code>, then
+    <code class="code">exists&nbsp;f&nbsp;a</code> is <code class="code">f&nbsp;x0&nbsp;<span class="keywordsign">||</span>&nbsp;f&nbsp;x1&nbsp;<span class="keywordsign">||</span>&nbsp;f&nbsp;x2</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALfor_all"><span class="keyword">val</span> for_all</span> : <code class="type">('a -&gt; bool) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">for_all&nbsp;f&nbsp;a</code> is <code class="code"><span class="keyword">true</span></code> if all elements of <code class="code">a</code> satisfy <code class="code">f</code>.
+    This includes the case where <code class="code">a</code> is empty.</p>
+
+<p>For example, if the elements of <code class="code">a</code> are <code class="code">x0</code>, <code class="code">x1</code>, then
+    <code class="code">exists&nbsp;f&nbsp;a</code> is <code class="code">f&nbsp;x0&nbsp;<span class="keywordsign">&amp;&amp;</span>&nbsp;f&nbsp;x1&nbsp;<span class="keywordsign">&amp;&amp;</span>&nbsp;f&nbsp;x2</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALfilter"><span class="keyword">val</span> filter</span> : <code class="type">('a -&gt; bool) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">filter&nbsp;f&nbsp;a</code> is a new array of all the elements of <code class="code">a</code> that satisfy <code class="code">f</code>.
+    In other words, it is an array <code class="code">b</code> such that, for each element <code class="code">x</code>
+    in <code class="code">a</code> in order, <code class="code">x</code> is added to <code class="code">b</code> if <code class="code">f&nbsp;x</code> is <code class="code"><span class="keyword">true</span></code>.</p>
+
+<p>For example, <code class="code">filter&nbsp;(<span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;x&nbsp;&gt;=&nbsp;0)&nbsp;a</code> is a new array
+    of all non-negative elements of <code class="code">a</code>, in order.</p>
+</div>
+</div>
+
+<pre><span id="VALfilter_map"><span class="keyword">val</span> filter_map</span> : <code class="type">('a -&gt; 'b option) -&gt; 'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'b <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">filter_map&nbsp;f&nbsp;a</code> is a new array of elements <code class="code">y</code>
+    such that <code class="code">f&nbsp;x</code> is <code class="code"><span class="constructor">Some</span>&nbsp;y</code> for an element <code class="code">x</code> of <code class="code">a</code>.
+    In others words, it is an array <code class="code">b</code> such that, for each element
+    <code class="code">x</code> of <code class="code">a</code> in order:</p>
+<ul>
+<li>if <code class="code">f&nbsp;x&nbsp;=&nbsp;<span class="constructor">Some</span>&nbsp;y</code>, then <code class="code">y</code> is added to <code class="code">b</code>,</li>
+<li>if <code class="code">f&nbsp;x&nbsp;=&nbsp;<span class="constructor">None</span></code>, then no element is added to <code class="code">b</code>.</li>
+</ul>
+
+<p>For example, <code class="code">filter_map&nbsp;int_of_string_opt&nbsp;inputs</code> returns
+    a new array of integers read from the strings in <code class="code">inputs</code>,
+    ignoring strings that cannot be converted to integers.</p>
+</div>
+</div>
+<h2 id="conversions">Conversions to other data structures</h2>
+<p>Note: the <code class="code">of_*</code> functions raise <code class="code"><span class="constructor">Invalid_argument</span></code> if the
+    length needs to grow beyond <a href="Sys.html#VALmax_array_length"><code class="code"><span class="constructor">Sys</span>.max_array_length</code></a>.</p>
+
+<p>The <code class="code">to_*</code> functions, except those specifically marked
+    "reentrant", iterate on their dynarray argument. In particular it
+    is a programming error if the length of the dynarray changes
+    during their execution, and the conversion functions raise
+    <code class="code"><span class="constructor">Invalid_argument</span></code> if they observe such a change.</p>
+
+<pre><span id="VALof_array"><span class="keyword">val</span> of_array</span> : <code class="type">'a array -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">of_array&nbsp;arr</code> returns a dynamic array corresponding to the
+    fixed-sized array <code class="code">a</code>. Operates in <code class="code"><span class="constructor">O</span>(n)</code> time by making a copy.</p>
+</div>
+</div>
+
+<pre><span id="VALto_array"><span class="keyword">val</span> to_array</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a array</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">to_array&nbsp;a</code> returns a fixed-sized array corresponding to the
+    dynamic array <code class="code">a</code>. This always allocate a new array and copies
+    elements into it.</p>
+</div>
+</div>
+
+<pre><span id="VALof_list"><span class="keyword">val</span> of_list</span> : <code class="type">'a list -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">of_list&nbsp;l</code> is the array containing the elements of <code class="code">l</code> in
+    the same order.</p>
+</div>
+</div>
+
+<pre><span id="VALto_list"><span class="keyword">val</span> to_list</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a list</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">to_list&nbsp;a</code> is a list with the elements contained in the array <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALof_seq"><span class="keyword">val</span> of_seq</span> : <code class="type">'a <a href="Seq.html#TYPEt">Seq.t</a> -&gt; 'a <a href="Dynarray.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">of_seq&nbsp;seq</code> is an array containing the same elements as <code class="code">seq</code>.</p>
+
+<p>It traverses <code class="code">seq</code> once and will terminate only if <code class="code">seq</code> is finite.</p>
+</div>
+</div>
+
+<pre><span id="VALto_seq"><span class="keyword">val</span> to_seq</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Seq.html#TYPEt">Seq.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">to_seq&nbsp;a</code> is the sequence of elements
+    <code class="code">get&nbsp;a&nbsp;0</code>, <code class="code">get&nbsp;a&nbsp;1</code>... <code class="code">get&nbsp;a&nbsp;(length&nbsp;a&nbsp;-&nbsp;1)</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALto_seq_reentrant"><span class="keyword">val</span> to_seq_reentrant</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Seq.html#TYPEt">Seq.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">to_seq_reentrant&nbsp;a</code> is a reentrant variant of <a href="Dynarray.html#VALto_seq"><code class="code"><span class="constructor">Dynarray</span>.to_seq</code></a>, in the
+    sense that one may still access its elements after the length of
+    <code class="code">a</code> has changed.</p>
+
+<p>Demanding the <code class="code">i</code>-th element of the resulting sequence (which can
+    happen zero, one or several times) will access the <code class="code">i</code>-th element
+    of <code class="code">a</code> at the time of the demand. The sequence stops if <code class="code">a</code> has
+    less than <code class="code">i</code> elements at this point.</p>
+</div>
+</div>
+
+<pre><span id="VALto_seq_rev"><span class="keyword">val</span> to_seq_rev</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Seq.html#TYPEt">Seq.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">to_seq_rev&nbsp;a</code> is the sequence of elements
+    <code class="code">get&nbsp;a&nbsp;(l&nbsp;-&nbsp;1)</code>, <code class="code">get&nbsp;a&nbsp;(l&nbsp;-&nbsp;2)</code>... <code class="code">get&nbsp;a&nbsp;0</code>,
+    where <code class="code">l</code> is <code class="code">length&nbsp;a</code> at the time <code class="code">to_seq_rev</code> is invoked.</p>
+</div>
+</div>
+
+<pre><span id="VALto_seq_rev_reentrant"><span class="keyword">val</span> to_seq_rev_reentrant</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; 'a <a href="Seq.html#TYPEt">Seq.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">to_seq_rev_reentrant&nbsp;a</code> is a reentrant variant of <a href="Dynarray.html#VALto_seq_rev"><code class="code"><span class="constructor">Dynarray</span>.to_seq_rev</code></a>,
+    in the sense that one may still access its elements after the
+    length of <code class="code">a</code> has changed.</p>
+
+<p>Elements that have been removed from the array by the time they
+    are demanded in the sequence are skipped.</p>
+</div>
+</div>
+<h2 id="advanced">Advanced topics for performance</h2><h3 id="capacity">Backing array, capacity</h3>
+<p>Internally, a dynamic array uses a <b>backing array</b> (a fixed-size
+    array as provided by the <a href="Array.html"><code class="code"><span class="constructor">Array</span></code></a> module) whose length is greater
+    or equal to the length of the dynamic array. We define the <b>    capacity</b> of a dynamic array as the length of its backing array.</p>
+
+<p>The capacity of a dynamic array is relevant in advanced scenarios,
+    when reasoning about the performance of dynamic array programs:</p>
+<ul>
+<li>The memory usage of a dynamic array is proportional to its capacity,
+       rather than its length.</li>
+<li>When there is no empty space left at the end of the backing array,
+       adding elements requires allocating a new, larger backing array.</li>
+</ul>
+
+<p>The implementation uses a standard exponential reallocation
+    strategy which guarantees amortized constant-time operation; in
+    particular, the total capacity of all backing arrays allocated
+    over the lifetime of a dynamic array is at worst proportional to
+    the total number of elements added.</p>
+
+<p>In other words, users need not care about capacity and reallocations,
+    and they will get reasonable behavior by default. However, in some
+    performance-sensitive scenarios the functions below can help control
+    memory usage or guarantee an optimal number of reallocations.</p>
+
+<pre><span id="VALcapacity"><span class="keyword">val</span> capacity</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">capacity&nbsp;a</code> is the length of <code class="code">a</code>'s backing array.</p>
+</div>
+</div>
+
+<pre><span id="VALensure_capacity"><span class="keyword">val</span> ensure_capacity</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">ensure_capacity&nbsp;a&nbsp;n</code> makes sure that the capacity of <code class="code">a</code>
+    is at least <code class="code">n</code>.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if the requested capacity is
+      outside the range <code class="code">0&nbsp;..&nbsp;<span class="constructor">Sys</span>.max_array_length</code>.
+
+    An example would be to reimplement <a href="Dynarray.html#VALof_array"><code class="code"><span class="constructor">Dynarray</span>.of_array</code></a> without using <a href="Dynarray.html#VALinit"><code class="code"><span class="constructor">Dynarray</span>.init</code></a>:
+    <pre class="codepre"><code class="code">    <span class="keyword">let</span> of_array arr =
+      <span class="keyword">let</span> a = <span class="constructor">Dynarray</span>.create () <span class="keyword">in</span>
+      <span class="constructor">Dynarray</span>.ensure_capacity a (<span class="constructor">Array</span>.length arr);
+      <span class="constructor">Array</span>.iter (<span class="keyword">fun</span> v <span class="keywordsign">-&gt;</span> add_last a v) arr
+    </code></pre>
+
+    Using <code class="code">ensure_capacity</code> guarantees that at most one reallocation
+    will take place, instead of possibly several.
+
+    Without this <code class="code">ensure_capacity</code> hint, the number of resizes would
+    be logarithmic in the length of <code class="code">arr</code>, creating a constant-factor
+    slowdown noticeable when <code class="code">arr</code> is large.</li>
+</ul>
+</div>
+
+<pre><span id="VALensure_extra_capacity"><span class="keyword">val</span> ensure_extra_capacity</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">ensure_extra_capacity&nbsp;a&nbsp;n</code> is <code class="code">ensure_capacity&nbsp;a&nbsp;(length&nbsp;a&nbsp;+&nbsp;n)</code>,
+    it makes sure that <code class="code">a</code> has room for <code class="code">n</code> extra items.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if the total requested capacity is
+      outside the range <code class="code">0&nbsp;..&nbsp;<span class="constructor">Sys</span>.max_array_length</code>.
+
+    A use case would be to implement <a href="Dynarray.html#VALappend_array"><code class="code"><span class="constructor">Dynarray</span>.append_array</code></a>:
+    <pre class="codepre"><code class="code">    <span class="keyword">let</span> append_array a arr =
+      ensure_extra_capacity a (<span class="constructor">Array</span>.length arr);
+      <span class="constructor">Array</span>.iter (<span class="keyword">fun</span> v <span class="keywordsign">-&gt;</span> add_last a v) arr
+    </code></pre></li>
+</ul>
+</div>
+
+<pre><span id="VALfit_capacity"><span class="keyword">val</span> fit_capacity</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">fit_capacity&nbsp;a</code> reallocates a backing array if necessary, so that
+    the resulting capacity is exactly <code class="code">length&nbsp;a</code>, with no additional
+    empty space at the end. This can be useful to make sure there is
+    no memory wasted on a long-lived array.</p>
+
+<p>Note that calling <code class="code">fit_capacity</code> breaks the amortized complexity
+    guarantees provided by the default reallocation strategy. Calling
+    it repeatedly on an array may have quadratic complexity, both in
+    time and in total number of words allocated.</p>
+
+<p>If you know that a dynamic array has reached its final length,
+    which will remain fixed in the future, it is sufficient to call
+    <code class="code">to_array</code> and only keep the resulting fixed-size
+    array. <code class="code">fit_capacity</code> is useful when you need to keep a dynamic
+    array for eventual future resizes.</p>
+</div>
+</div>
+
+<pre><span id="VALset_capacity"><span class="keyword">val</span> set_capacity</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">set_capacity&nbsp;a&nbsp;n</code> reallocates a backing array if necessary,
+    so that the resulting capacity is exactly <code class="code">n</code>. In particular,
+    all elements of index <code class="code">n</code> or greater are removed.</p>
+
+<p>Like <a href="Dynarray.html#VALfit_capacity"><code class="code"><span class="constructor">Dynarray</span>.fit_capacity</code></a>, this function breaks the amortized
+    complexity guarantees provided by the reallocation
+    strategy. Calling it repeatedly on an array may have quadratic
+    complexity, both in time and in total number of words allocated.</p>
+
+<p>This is an advanced function; in particular, <a href="Dynarray.html#VALensure_capacity"><code class="code"><span class="constructor">Dynarray</span>.ensure_capacity</code></a>
+    should be preferred to increase the capacity, as it preserves
+    those amortized guarantees.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Raises</b> <code>Invalid_argument</code> if <code class="code">n&nbsp;&lt;&nbsp;0</code>.</li>
+</ul>
+</div>
+
+<pre><span id="VALreset"><span class="keyword">val</span> reset</span> : <code class="type">'a <a href="Dynarray.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">reset&nbsp;a</code> clears <code class="code">a</code> and replaces its backing array by an empty array.</p>
+
+<p>It is equivalent to <code class="code">set_capacity&nbsp;a&nbsp;0</code> or <code class="code">clear&nbsp;a;&nbsp;fit_capacity&nbsp;a</code>.</p>
+</div>
+</div>
+<h3 id="noleaks">No leaks: preservation of memory liveness</h3>
+<p>The user-provided values reachable from a dynamic array <code class="code">a</code> are
+    exactly the elements in the positions <code class="code">0</code> to <code class="code">length&nbsp;a&nbsp;-&nbsp;1</code>. In
+    particular, no user-provided values are "leaked" by being present
+    in the backing array in position <code class="code">length&nbsp;a</code> or later.</p>
+<h3 id="memory_layout">Memory layout of dynarrays</h3>
+<p>In the current implementation, the backing array of an
+    <code class="code"><span class="keywordsign">'</span>a&nbsp;<span class="constructor">Dynarray</span>.t</code> is not an <code class="code"><span class="keywordsign">'</span>a&nbsp;array</code>, but something with the same
+    representation as an <code class="code"><span class="keywordsign">'</span>a&nbsp;option&nbsp;array</code> or <code class="code"><span class="keywordsign">'</span>a&nbsp;ref&nbsp;array</code>.
+    Each element is in a "box", allocated when the element is first
+    added to the array -- see the implementation for more details.</p>
+
+<p>Using an <code class="code"><span class="keywordsign">'</span>a&nbsp;array</code> would be delicate, as there is no obvious
+    type-correct way to represent the empty space at the end of the
+    backing array -- using user-provided values would either
+    complicate the API or violate the <a href="Dynarray.html#noleaks">no leaks</a>
+    guarantee. The constraint of remaining memory-safe under
+    unsynchronized concurrent usage makes it even more
+    difficult. Various unsafe ways to do this have been discussed,
+    with no consensus on a standard implementation so far.</p>
+
+<p>On a realistic automated-theorem-proving program that relies
+    heavily on dynamic arrays, we measured the overhead of this extra
+    "boxing" as at most 25%. We believe that the overhead for most
+    uses of dynarray is much smaller, negligible in many cases, but
+    you may still prefer to use your own specialized implementation
+    for performance. (If you know that you do not need the
+    <a href="noleaks">no leaks</a> guarantee, you can also speed up deleting
+    elements.)</p>
+<h2 id="examples">Code examples</h2>
+<h3 id="example_min_heap">Min-heaps for mutable priority queues</h3>
+<p>We can use dynamic arrays to implement a mutable priority
+queue. A priority queue provides a function to add elements, and
+a function to extract the minimum element -- according to some
+comparison function.</p>
+
+<pre class="codepre"><code class="code"><span class="comment">(* We present our priority queues as a functor
+   parametrized on the comparison function. *)</span>
+<span class="keyword">module</span> <span class="constructor">Heap</span> (<span class="constructor">Elem</span> : <span class="constructor">Map</span>.<span class="constructor">OrderedType</span>) : <span class="keyword">sig</span>
+  <span class="keyword">type</span> t
+  <span class="keyword">val</span> create : unit <span class="keywordsign">-&gt;</span> t
+  <span class="keyword">val</span> add : t <span class="keywordsign">-&gt;</span> <span class="constructor">Elem</span>.t <span class="keywordsign">-&gt;</span> unit
+  <span class="keyword">val</span> pop_min : t <span class="keywordsign">-&gt;</span> <span class="constructor">Elem</span>.t option
+<span class="keyword">end</span> = <span class="keyword">struct</span>
+
+  <span class="comment">(* Our priority queues are implemented using the standard "min heap"
+     data structure, a dynamic array representing a binary tree. *)</span>
+  <span class="keyword">type</span> t = <span class="constructor">Elem</span>.t <span class="constructor">Dynarray</span>.t
+  <span class="keyword">let</span> create = <span class="constructor">Dynarray</span>.create
+
+ <span class="comment">(* The node of index [i] has as children the nodes of index [2 * i + 1]
+    and [2 * i + 2] -- if they are valid indices in the dynarray. *)</span>
+  <span class="keyword">let</span> left_child i = 2 * i + 1
+  <span class="keyword">let</span> right_child i = 2 * i + 2
+  <span class="keyword">let</span> parent_node i = (i - 1) / 2
+
+  <span class="comment">(* We use indexing operators for convenient notations. *)</span>
+  <span class="keyword">let</span> ( .!() ) = <span class="constructor">Dynarray</span>.get
+  <span class="keyword">let</span> ( .!()&lt;- ) = <span class="constructor">Dynarray</span>.set
+
+  <span class="comment">(* Auxiliary functions to compare and swap two elements
+     in the dynamic array. *)</span>
+  <span class="keyword">let</span> order h i j =
+    <span class="constructor">Elem</span>.compare h.!(i) h.!(j)
+
+  <span class="keyword">let</span> swap h i j =
+    <span class="keyword">let</span> v = h.!(i) <span class="keyword">in</span>
+    h.!(i) &lt;- h.!(j);
+    h.!(j) &lt;- v
+
+  <span class="comment">(* We say that a heap respects the "heap ordering" if the value of
+     each node is smaller than the value of its children. The
+     algorithm manipulates arrays that respect the heap algorithm,
+     except for one node whose value may be too small or too large.
+
+     The auxiliary functions [heap_up] and [heap_down] take
+     such a misplaced value, and move it "up" (respectively: "down")
+     the tree by permuting it with its parent value (respectively:
+     a child value) until the heap ordering is restored. *)</span>
+
+  <span class="keyword">let</span> <span class="keyword">rec</span> heap_up h i =
+    <span class="keyword">if</span> i = 0 <span class="keyword">then</span> () <span class="keyword">else</span>
+    <span class="keyword">let</span> parent = parent_node i <span class="keyword">in</span>
+    <span class="keyword">if</span> order h i parent &lt; 0 <span class="keyword">then</span>
+      (swap h i parent; heap_up h parent)
+
+  <span class="keyword">and</span> heap_down h ~len i =
+    <span class="keyword">let</span> left, right = left_child i, right_child i <span class="keyword">in</span>
+    <span class="keyword">if</span> left &gt;= len <span class="keyword">then</span> () <span class="comment">(* no child, stop *)</span> <span class="keyword">else</span>
+    <span class="keyword">let</span> smallest =
+      <span class="keyword">if</span> right &gt;= len <span class="keyword">then</span> left <span class="comment">(* no right child *)</span> <span class="keyword">else</span>
+      <span class="keyword">if</span> order h left right &lt; 0 <span class="keyword">then</span> left <span class="keyword">else</span> right
+    <span class="keyword">in</span>
+    <span class="keyword">if</span> order h i smallest &gt; 0 <span class="keyword">then</span>
+      (swap h i smallest; heap_down h ~len smallest)
+
+  <span class="keyword">let</span> add h s =
+    <span class="keyword">let</span> i = <span class="constructor">Dynarray</span>.length h <span class="keyword">in</span>
+    <span class="constructor">Dynarray</span>.add_last h s;
+    heap_up h i
+
+  <span class="keyword">let</span> pop_min h =
+    <span class="keyword">if</span> <span class="constructor">Dynarray</span>.is_empty h <span class="keyword">then</span> <span class="constructor">None</span>
+    <span class="keyword">else</span> <span class="keyword">begin</span>
+      <span class="comment">(* Standard trick: swap the 'best' value at index 0
+         with the last value of the array. *)</span>
+      <span class="keyword">let</span> last = <span class="constructor">Dynarray</span>.length h - 1 <span class="keyword">in</span>
+      swap h 0 last;
+      <span class="comment">(* At this point [pop_last] returns the 'best' value,
+         and leaves a heap with one misplaced element at position 0. *)</span>
+      <span class="keyword">let</span> best = <span class="constructor">Dynarray</span>.pop_last h <span class="keyword">in</span>
+      <span class="comment">(* Restore the heap ordering -- does nothing if the heap is empty. *)</span>
+      heap_down h ~len:last 0;
+      <span class="constructor">Some</span> best
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</code></pre>
+<p>The production code from which this example was inspired includes
+logic to free the backing array when the heap becomes empty, only in
+the case where the capacity is above a certain threshold. This can be
+done by calling the following function from <code class="code">pop</code>:</p>
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> shrink h =
+  <span class="keyword">if</span> <span class="constructor">Dynarray</span>.length h = 0 <span class="keywordsign">&amp;&amp;</span> <span class="constructor">Dynarray</span>.capacity h &gt; 1 <span class="keyword">lsl</span> 18 <span class="keyword">then</span>
+    <span class="constructor">Dynarray</span>.reset h
+</code></pre>
+<p>The <code class="code"><span class="constructor">Heap</span></code> functor can be used to implement a sorting function, by
+adding all elements into a priority queue and then extracting them in
+order.</p>
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> heap_sort (<span class="keyword">type</span> a) cmp li =
+  <span class="keyword">let</span> <span class="keyword">module</span> <span class="constructor">Heap</span> = <span class="constructor">Heap</span>(<span class="keyword">struct</span> <span class="keyword">type</span> t = a <span class="keyword">let</span> compare = cmp <span class="keyword">end</span>) <span class="keyword">in</span>
+  <span class="keyword">let</span> heap = <span class="constructor">Heap</span>.create () <span class="keyword">in</span>
+  <span class="constructor">List</span>.iter (<span class="constructor">Heap</span>.add heap) li;
+  <span class="constructor">List</span>.map (<span class="keyword">fun</span> _ <span class="keywordsign">-&gt;</span> <span class="constructor">Heap</span>.pop_min heap |&gt; <span class="constructor">Option</span>.get) li
+</code></pre>
+</div></body></html>
