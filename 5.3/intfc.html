@@ -1576,7 +1576,7 @@ argument, and a positive integer if the first argument compares
 greater than the second argument.<p>The <span class="machine"><span class="font-tt">compare_ext</span></span> field can be set to <span class="machine"><span class="font-tt">custom_compare_ext_default</span></span>; this
 default comparison function simply raises <span class="machine"><span class="font-tt">Failure</span></span>.</p></li><li class="li-itemize"><span class="machine"><span class="font-tt">intnat (*hash)(value v)</span></span> <br>
 The <span class="machine"><span class="font-tt">hash</span></span> field contains a pointer to a C function that is called
-whenever OCaml’s generic hash operator (see module <a href="../5.3/api/Hashtbl.html"><span class="font-tt">Hashtbl</span></a>) is
+whenever OCaml’s generic hash operator (see module <a href="api/Hashtbl.html"><span class="font-tt">Hashtbl</span></a>) is
 applied to a custom block. The C function can return an arbitrary
 integer representing the hash value of the data contained in the
 given custom block. The hash value must be compatible with the

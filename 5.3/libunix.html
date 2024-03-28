@@ -19,8 +19,8 @@ system calls and system-related library functions available to
 OCaml programs. This chapter describes briefly the functions
 provided. Refer to sections 2 ‍and ‍3 of the Unix manual for more
 details on the behavior of these functions.</p><ul class="ftoc2"><li class="li-links">
-<a href="../5.3/api/Unix.html">Module <span class="font-tt">Unix</span></a>: Unix system calls
-</li><li class="li-links"><a href="../5.3/api/UnixLabels.html">Module <span class="font-tt">UnixLabels</span></a>: Labeled Unix system calls
+<a href="api/Unix.html">Module <span class="font-tt">Unix</span></a>: Unix system calls
+</li><li class="li-links"><a href="api/UnixLabels.html">Module <span class="font-tt">UnixLabels</span></a>: Labeled Unix system calls
 </li></ul><p>Not all functions are provided by all Unix variants. If some functions
 are not available, they will raise <span class="machine"><span class="font-tt">Invalid_arg</span></span> when called.</p><p>Programs that use the <span class="machine"><span class="font-tt">unix</span></span> library must be linked as follows:
 </p><pre>        ocamlc <span class="font-it">other options</span> -I +unix unix.cma <span class="font-it">other files</span>

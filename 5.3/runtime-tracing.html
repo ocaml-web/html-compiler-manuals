@@ -71,7 +71,7 @@ in the instrumented runtime. Event sources in the instrumented runtime are
 primarily of interest to developers of the OCaml runtime and garbage collector
 and, at present, only consist of major heap allocation size counter events.</p><p>The full set of events emitted by event sources and their documentation can be
 found in
-<a href="../5.3/api/Runtime_events.html">Module <span class="font-tt">Runtime_events</span></a>.
+<a href="api/Runtime_events.html">Module <span class="font-tt">Runtime_events</span></a>.
 </p>
 <h3 class="subsection" id="s:runtime-tracing-ingestion"><a class="section-anchor" href="#s:runtime-tracing-ingestion" aria-hidden="true">﻿</a><span class="number">2.2</span> Events transport</h3>
 <p>The events transport part of the system ingests events emitted by the event
@@ -90,7 +90,7 @@ spawned domains. Ring buffers are only allocated (including for the main
 domain) when runtime events are enabled. The ring buffers themselves are stored
 in a memory-mapped file with the processes identifier as the name and the
 extension <span class="machine"><span class="font-tt">.events</span></span>, this enables them to be read from outside the main OCaml
-process. See <a href="../5.3/api/Runtime_events.html"><span class="font-tt">Runtime_events</span></a> for
+process. See <a href="api/Runtime_events.html"><span class="font-tt">Runtime_events</span></a> for
 more information.</p>
 <h4 class="subsubsection" id="s:runtime-tracing-apis"><a class="section-anchor" href="#s:runtime-tracing-apis" aria-hidden="true">﻿</a>Consumption APIs</h4>
 <p>The runtime event tracing system provides both OCaml and C APIs which are

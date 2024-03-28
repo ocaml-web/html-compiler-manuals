@@ -200,7 +200,7 @@ number of definitions.</p>
 locations. Reference cells, array fields and mutable record fields are
 non-atomic memory locations. Immutable objects are non-atomic locations with an
 initialising write but no further updates. Atomic memory locations are those
-that are created using the <a href="../5.3/api/Atomic.html"><span class="font-tt">Atomic</span></a> module.</p>
+that are created using the <a href="api/Atomic.html"><span class="font-tt">Atomic</span></a> module.</p>
 <h3 class="subsection" id="s:happens_before"><a class="section-anchor" href="#s:happens_before" aria-hidden="true">﻿</a><span class="number">2.2</span> Happens-before relation</h3>
 <p>Let us imagine that the OCaml programs are executed by an abstract machine that
 executes one action at a time, arbitrarily picking one of the available domains
@@ -638,7 +638,7 @@ either of the writes.
 </li><li class="li-itemize">With flat-float arrays or records with only float fields on 32-bit
 architectures, getting or setting a field involves two separate memory
 accesses. In the presence of data races, the user may observe tearing.
-</li><li class="li-itemize">The <span class="machine"><span class="font-tt">Bytes</span></span> module ‍<a href="../5.3/api/Bytes.html"><span class="font-tt">Bytes</span></a> permits mixed-mode accesses
+</li><li class="li-itemize">The <span class="machine"><span class="font-tt">Bytes</span></span> module ‍<a href="api/Bytes.html"><span class="font-tt">Bytes</span></a> permits mixed-mode accesses
 where reads and writes may be of different sizes. Unsynchronized mixed-mode
 accesses lead to tearing.
 </li></ul>

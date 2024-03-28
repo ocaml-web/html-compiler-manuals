@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
 <title>OCaml - Runtime detection of data races with ThreadSanitizer</title>
-<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<script src="scroll.js"></script><script src="navigation.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
 <body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="profil.html">Profiling (ocamlprof)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li class="active"><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
 
 
@@ -38,11 +38,11 @@ can also install an <span class="font-tt">opam</span> switch with the TSan featu
 follows:</p><pre>opam switch create &lt;YOUR-SWITCH-NAME-HERE&gt; ocaml-option-tsan
 </pre><p>
 TSan support for OCaml is currently available for the x86_64 architecture, on
-FreeBSD, Linux and macOS, for the arm64 architecture on Linux and macOS, and
-for the POWER, riscv and s390x architectures on Linux.</p><p>Building OCaml with TSan support requires GCC or Clang. Minimal supported
-versions are GCC 11 and Clang 14. Note that TSan data race reports with GCC 11
-are known to result in poor stack trace reporting (no line numbers), which is
-fixed in GCC 12.</p><p>A TSan-enabled compiler differs from a regular compiler in the following way:
+FreeBSD, Linux and macOS, and for the arm64 architecture on Linux and macOS.
+Building OCaml with TSan support requires GCC or
+Clang. Minimal supported versions are GCC 11 and Clang 14. Note that TSan data
+race reports with GCC 11 are known to result in poor stack trace reporting (no
+line numbers), which is fixed in GCC 12.</p><p>A TSan-enabled compiler differs from a regular compiler in the following way:
 all programs compiled by <span class="font-tt">ocamlopt</span> are instrumented with calls to the
 TSan runtime, and TSan will detect data races encountered during execution.</p><p>For instance, consider the following program:</p><div class="caml-example verbatim">
 
