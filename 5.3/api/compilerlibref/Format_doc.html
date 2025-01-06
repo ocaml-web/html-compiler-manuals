@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Domainstate.html">
+<link rel="next" href="Identifiable.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of extensions" rel=Appendix href="index_extensions.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Compiler_libs" rel="Chapter" href="Compiler_libs.html">
+<link title="Ast_helper" rel="Chapter" href="Ast_helper.html">
+<link title="Ast_invariants" rel="Chapter" href="Ast_invariants.html">
+<link title="Ast_iterator" rel="Chapter" href="Ast_iterator.html">
+<link title="Ast_mapper" rel="Chapter" href="Ast_mapper.html">
+<link title="Asttypes" rel="Chapter" href="Asttypes.html">
+<link title="Attr_helper" rel="Chapter" href="Attr_helper.html">
+<link title="Builtin_attributes" rel="Chapter" href="Builtin_attributes.html">
+<link title="CamlinternalMenhirLib" rel="Chapter" href="CamlinternalMenhirLib.html">
+<link title="Depend" rel="Chapter" href="Depend.html">
+<link title="Docstrings" rel="Chapter" href="Docstrings.html">
+<link title="Lexer" rel="Chapter" href="Lexer.html">
+<link title="Location" rel="Chapter" href="Location.html">
+<link title="Longident" rel="Chapter" href="Longident.html">
+<link title="Parse" rel="Chapter" href="Parse.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Parsetree" rel="Chapter" href="Parsetree.html">
+<link title="Pprintast" rel="Chapter" href="Pprintast.html">
+<link title="Printast" rel="Chapter" href="Printast.html">
+<link title="Syntaxerr" rel="Chapter" href="Syntaxerr.html">
+<link title="Unit_info" rel="Chapter" href="Unit_info.html">
+<link title="Arg_helper" rel="Chapter" href="Arg_helper.html">
+<link title="Binutils" rel="Chapter" href="Binutils.html">
+<link title="Build_path_prefix_map" rel="Chapter" href="Build_path_prefix_map.html">
+<link title="Ccomp" rel="Chapter" href="Ccomp.html">
+<link title="Clflags" rel="Chapter" href="Clflags.html">
+<link title="Compression" rel="Chapter" href="Compression.html">
+<link title="Config_boot" rel="Chapter" href="Config_boot.html">
+<link title="Config_main" rel="Chapter" href="Config_main.html">
+<link title="Config" rel="Chapter" href="Config.html">
+<link title="Consistbl" rel="Chapter" href="Consistbl.html">
+<link title="Diffing" rel="Chapter" href="Diffing.html">
+<link title="Diffing_with_keys" rel="Chapter" href="Diffing_with_keys.html">
+<link title="Domainstate" rel="Chapter" href="Domainstate.html">
+<link title="Format_doc" rel="Chapter" href="Format_doc.html">
+<link title="Identifiable" rel="Chapter" href="Identifiable.html">
+<link title="Int_replace_polymorphic_compare" rel="Chapter" href="Int_replace_polymorphic_compare.html">
+<link title="Lazy_backtrack" rel="Chapter" href="Lazy_backtrack.html">
+<link title="Linkdeps" rel="Chapter" href="Linkdeps.html">
+<link title="Load_path" rel="Chapter" href="Load_path.html">
+<link title="Local_store" rel="Chapter" href="Local_store.html">
+<link title="Misc" rel="Chapter" href="Misc.html">
+<link title="Numbers" rel="Chapter" href="Numbers.html">
+<link title="Profile" rel="Chapter" href="Profile.html">
+<link title="Strongly_connected_components" rel="Chapter" href="Strongly_connected_components.html">
+<link title="Targetint" rel="Chapter" href="Targetint.html">
+<link title="Terminfo" rel="Chapter" href="Terminfo.html">
+<link title="Warnings" rel="Chapter" href="Warnings.html">
+<link title="Pparse" rel="Chapter" href="Pparse.html"><link title="Compatibility API" rel="Section" href="#1_CompatibilityAPI">
+<link title="Compiler specific functions " rel="Section" href="#1_Compilerspecificfunctions">
+<link title="Format string interpreters " rel="Subsection" href="#2_Formatstringinterpreters">
+<link title="Compatibility with Format_doc.Doc " rel="Subsection" href="#2_CompatibilitywithFormatdocDoc">
+<link title="Source compatibility with Format" rel="Subsection" href="#2_SourcecompatibilitywithFormat">
+<link title="Separators " rel="Subsection" href="#2_Separators">
+<link title="Compiler output" rel="Subsection" href="#2_Compileroutput">
+<title>OCaml compiler library : Format_doc</title>
+</head>
+<body>
+<h1>Module <a href="type_Format_doc.html">Format_doc</a></h1>
+
+<pre><span id="MODULEFormat_doc"><span class="keyword">module</span> Format_doc</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Format_doc.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Composable document for the <code class="code"><span class="constructor">Format</span></code> formatting engine.</p>
+</div>
+</div>
+<hr width="100%">
+<p>This module introduces a pure and immutable document type which represents a
+    sequence of formatting instructions to be printed by a formatting engine at
+    later point. At the same time, it also provides format string interpreter
+    which produces this document type from format string and their associated
+    printers.</p>
+
+<p>The module is designed to be source compatible with code defining format
+    printers: replacing `Format` by `Format_doc` in your code will convert
+    `Format` printers to `Format_doc` printers.</p>
+
+<pre><span id="MODULEDoc"><span class="keyword">module</span> <a href="Format_doc.Doc.html">Doc</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Format_doc.Doc.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info">
+<p>Definitions and immutable API for composing documents</p>
+
+</div>
+<h2 id="1_CompatibilityAPI">Compatibility API</h2><p>The functions and types below provides source compatibility with format
+printers and conversion function from <a href="Format_doc.html"><code class="code"><span class="constructor">Format_doc</span></code></a> printers to <code class="code"><span class="constructor">Format</span></code>
+printers. The reverse direction is implemented using an escape hatch in the
+formatting instruction and should only be used to preserve backward
+compatibility.</p>
+
+<pre><span id="TYPEdoc"><span class="keyword">type</span> <code class="type"></code>doc</span> = <code class="type"><a href="Format_doc.Doc.html#TYPEt">Doc.t</a></code> </pre>
+
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="Format_doc.html#TYPEdoc">doc</a></code> </pre>
+
+
+<pre><span id="TYPEformatter"><span class="keyword">type</span> <code class="type"></code>formatter</span> </pre>
+
+
+<pre><span id="TYPEprinter"><span class="keyword">type</span> <code class="type">'a</code> printer</span> = <code class="type"><a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; 'a -&gt; unit</code> </pre>
+
+
+<pre><span id="VALformatter"><span class="keyword">val</span> formatter</span> : <code class="type"><a href="Format_doc.html#TYPEdoc">doc</a> ref -&gt; <a href="Format_doc.html#TYPEformatter">formatter</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">formatter&nbsp;rdoc</code> creates a <a href="Format_doc.html#VALformatter"><code class="code"><span class="constructor">Format_doc</span>.formatter</code></a> that updates the <code class="code">rdoc</code> reference</p>
+</div>
+</div>
+
+<pre><span id="TYPEformat_printer"><span class="keyword">type</span> <code class="type">'a</code> format_printer</span> = <code class="type">Format.formatter -&gt; 'a -&gt; unit</code> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>Translate a <a href="Format_doc.html"><code class="code"><span class="constructor">Format_doc</span></code></a> printer to a <code class="code"><span class="constructor">Format</span></code> one.</p>
+</div>
+</div>
+
+
+<pre><span id="VALcompat"><span class="keyword">val</span> compat</span> : <code class="type">'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; 'a <a href="Format_doc.html#TYPEformat_printer">format_printer</a></code></pre>
+<pre><span id="VALcompat1"><span class="keyword">val</span> compat1</span> : <code class="type">('p1 -&gt; 'a <a href="Format_doc.html#TYPEprinter">printer</a>) -&gt; 'p1 -&gt; 'a <a href="Format_doc.html#TYPEformat_printer">format_printer</a></code></pre>
+<pre><span id="VALcompat2"><span class="keyword">val</span> compat2</span> : <code class="type">('p1 -&gt; 'p2 -&gt; 'a <a href="Format_doc.html#TYPEprinter">printer</a>) -&gt;<br>       'p1 -&gt; 'p2 -&gt; 'a <a href="Format_doc.html#TYPEformat_printer">format_printer</a></code></pre>
+<pre><span id="VALdeprecated_printer"><span class="keyword">val</span> deprecated_printer</span> : <code class="type">(Format.formatter -&gt; unit) -&gt; <a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>If necessary, embbed a <code class="code"><span class="constructor">Format</span></code> printer inside a formatting instruction
+    stream. This breaks every guarantees provided by <a href="Format_doc.html"><code class="code"><span class="constructor">Format_doc</span></code></a>.</p>
+</div>
+</div>
+
+<pre><span id="VALdeprecated"><span class="keyword">val</span> deprecated</span> : <code class="type">'a <a href="Format_doc.html#TYPEformat_printer">format_printer</a> -&gt; 'a <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALdeprecated1"><span class="keyword">val</span> deprecated1</span> : <code class="type">('p1 -&gt; 'a <a href="Format_doc.html#TYPEformat_printer">format_printer</a>) -&gt; 'p1 -&gt; 'a <a href="Format_doc.html#TYPEprinter">printer</a></code></pre><h3 id="2_Formatstringinterpreters">Format string interpreters </h3>
+<pre><span id="VALfprintf"><span class="keyword">val</span> fprintf</span> : <code class="type"><a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; ('a, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit) format -&gt; 'a</code></pre>
+<pre><span id="VALkfprintf"><span class="keyword">val</span> kfprintf</span> : <code class="type">(<a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; 'a) -&gt;<br>       <a href="Format_doc.html#TYPEformatter">formatter</a> -&gt;<br>       ('b, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit, 'a) format4 -&gt; 'b</code></pre>
+<pre><span id="VALasprintf"><span class="keyword">val</span> asprintf</span> : <code class="type">('a, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit, string) format4 -&gt; 'a</code></pre>
+<pre><span id="VALkasprintf"><span class="keyword">val</span> kasprintf</span> : <code class="type">(string -&gt; 'a) -&gt; ('b, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit, 'a) format4 -&gt; 'b</code></pre>
+<pre><span id="VALdprintf"><span class="keyword">val</span> dprintf</span> : <code class="type">('a, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit, <a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; unit) format4 -&gt;<br>       'a</code></pre>
+<pre><span id="VALkdprintf"><span class="keyword">val</span> kdprintf</span> : <code class="type">((<a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; unit) -&gt; 'a) -&gt;<br>       ('b, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit, 'a) format4 -&gt; 'b</code></pre>
+<pre><span id="VALdoc_printf"><span class="keyword">val</span> doc_printf</span> : <code class="type">('a, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit, <a href="Format_doc.html#TYPEdoc">doc</a>) format4 -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><a href="Format_doc.html#VALdoc_printf"><code class="code"><span class="constructor">Format_doc</span>.doc_printf</code></a> and <a href="Format_doc.html#VALkdoc_printf"><code class="code"><span class="constructor">Format_doc</span>.kdoc_printf</code></a> creates a document directly</p>
+</div>
+</div>
+
+<pre><span id="VALkdoc_printf"><span class="keyword">val</span> kdoc_printf</span> : <code class="type">(<a href="Format_doc.html#TYPEdoc">doc</a> -&gt; 'r) -&gt;<br>       ('a, <a href="Format_doc.html#TYPEformatter">formatter</a>, unit, 'r) format4 -&gt; 'a</code></pre><h3 id="2_CompatibilitywithFormatdocDoc">Compatibility with <a href="Format_doc.Doc.html"><code class="code"><span class="constructor">Format_doc</span>.<span class="constructor">Doc</span></code></a> </h3>
+<pre><span id="VALdoc_printer"><span class="keyword">val</span> doc_printer</span> : <code class="type">'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; 'a <a href="Format_doc.Doc.html#TYPEprinter">Doc.printer</a></code></pre>
+<pre><span id="VALpp_doc"><span class="keyword">val</span> pp_doc</span> : <code class="type"><a href="Format_doc.html#TYPEdoc">doc</a> <a href="Format_doc.html#TYPEprinter">printer</a></code></pre><h3 id="2_SourcecompatibilitywithFormat">Source compatibility with Format</h3><h4 id="3_Stringprinters">String printers </h4>
+<pre><span id="VALpp_print_string"><span class="keyword">val</span> pp_print_string</span> : <code class="type">string <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_substring"><span class="keyword">val</span> pp_print_substring</span> : <code class="type">pos:int -&gt; len:int -&gt; string <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_text"><span class="keyword">val</span> pp_print_text</span> : <code class="type">string <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_bytes"><span class="keyword">val</span> pp_print_bytes</span> : <code class="type">bytes <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_as"><span class="keyword">val</span> pp_print_as</span> : <code class="type"><a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; int -&gt; string -&gt; unit</code></pre>
+<pre><span id="VALpp_print_substring_as"><span class="keyword">val</span> pp_print_substring_as</span> : <code class="type">pos:int -&gt; len:int -&gt; <a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; int -&gt; string -&gt; unit</code></pre><h4 id="3_Primitivetypeprinters">Primitive type printers </h4>
+<pre><span id="VALpp_print_char"><span class="keyword">val</span> pp_print_char</span> : <code class="type">char <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_int"><span class="keyword">val</span> pp_print_int</span> : <code class="type">int <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_float"><span class="keyword">val</span> pp_print_float</span> : <code class="type">float <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_bool"><span class="keyword">val</span> pp_print_bool</span> : <code class="type">bool <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_nothing"><span class="keyword">val</span> pp_print_nothing</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre><h4 id="3_Printercombinators">Printer combinators </h4>
+<pre><span id="VALpp_print_iter"><span class="keyword">val</span> pp_print_iter</span> : <code class="type">?pp_sep:unit <a href="Format_doc.html#TYPEprinter">printer</a> -&gt;<br>       (('a -&gt; unit) -&gt; 'b -&gt; unit) -&gt;<br>       'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; 'b <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_list"><span class="keyword">val</span> pp_print_list</span> : <code class="type">?pp_sep:unit <a href="Format_doc.html#TYPEprinter">printer</a> -&gt;<br>       'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; 'a list <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_array"><span class="keyword">val</span> pp_print_array</span> : <code class="type">?pp_sep:unit <a href="Format_doc.html#TYPEprinter">printer</a> -&gt;<br>       'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; 'a array <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_seq"><span class="keyword">val</span> pp_print_seq</span> : <code class="type">?pp_sep:unit <a href="Format_doc.html#TYPEprinter">printer</a> -&gt;<br>       'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; 'a Seq.t <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_option"><span class="keyword">val</span> pp_print_option</span> : <code class="type">?none:unit <a href="Format_doc.html#TYPEprinter">printer</a> -&gt;<br>       'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; 'a option <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_result"><span class="keyword">val</span> pp_print_result</span> : <code class="type">ok:'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt;<br>       error:'e <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; ('a, 'e) result <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_either"><span class="keyword">val</span> pp_print_either</span> : <code class="type">left:'a <a href="Format_doc.html#TYPEprinter">printer</a> -&gt;<br>       right:'b <a href="Format_doc.html#TYPEprinter">printer</a> -&gt; ('a, 'b) Either.t <a href="Format_doc.html#TYPEprinter">printer</a></code></pre><h4 id="3_Boxesandtags">Boxes and tags </h4>
+<pre><span id="VALpp_open_stag"><span class="keyword">val</span> pp_open_stag</span> : <code class="type">Format.stag <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_close_stag"><span class="keyword">val</span> pp_close_stag</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_open_box"><span class="keyword">val</span> pp_open_box</span> : <code class="type">int <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_close_box"><span class="keyword">val</span> pp_close_box</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre><h4 id="3_Breakhints">Break hints</h4>
+<pre><span id="VALpp_print_space"><span class="keyword">val</span> pp_print_space</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_cut"><span class="keyword">val</span> pp_print_cut</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_break"><span class="keyword">val</span> pp_print_break</span> : <code class="type"><a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; int -&gt; int -&gt; unit</code></pre>
+<pre><span id="VALpp_print_custom_break"><span class="keyword">val</span> pp_print_custom_break</span> : <code class="type"><a href="Format_doc.html#TYPEformatter">formatter</a> -&gt;<br>       fits:string * int * string -&gt; breaks:string * int * string -&gt; unit</code></pre><h4 id="3_Tabulations">Tabulations </h4>
+<pre><span id="VALpp_open_tbox"><span class="keyword">val</span> pp_open_tbox</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_close_tbox"><span class="keyword">val</span> pp_close_tbox</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_set_tab"><span class="keyword">val</span> pp_set_tab</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_tab"><span class="keyword">val</span> pp_print_tab</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_tbreak"><span class="keyword">val</span> pp_print_tbreak</span> : <code class="type"><a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; int -&gt; int -&gt; unit</code></pre><h4 id="3_Newlinesandflushing">Newlines and flushing </h4>
+<pre><span id="VALpp_print_if_newline"><span class="keyword">val</span> pp_print_if_newline</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_force_newline"><span class="keyword">val</span> pp_force_newline</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_flush"><span class="keyword">val</span> pp_print_flush</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre>
+<pre><span id="VALpp_print_newline"><span class="keyword">val</span> pp_print_newline</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre><h2 id="1_Compilerspecificfunctions">Compiler specific functions </h2><h3 id="2_Separators">Separators </h3>
+<pre><span id="VALcomma"><span class="keyword">val</span> comma</span> : <code class="type">unit <a href="Format_doc.html#TYPEprinter">printer</a></code></pre><h3 id="2_Compileroutput">Compiler output</h3>
+<pre><span id="VALpp_two_columns"><span class="keyword">val</span> pp_two_columns</span> : <code class="type">?sep:string -&gt;<br>       ?max_lines:int -&gt; <a href="Format_doc.html#TYPEformatter">formatter</a> -&gt; (string * string) list -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">pp_two_columns&nbsp;?sep&nbsp;?max_lines&nbsp;ppf&nbsp;l</code> prints the lines in <code class="code">l</code> as two
+   columns separated by <code class="code">sep</code> ("|" by default). <code class="code">max_lines</code> can be used to
+   indicate a maximum number of lines to print -- an ellipsis gets inserted at
+   the middle if the input has too many lines.</p>
+
+<p>Example:</p>
+
+<pre class="verbatim">pp_two_columns ~max_lines:3 Format.std_formatter [
+      "abc", "hello";
+      "def", "zzz";
+      "a"  , "bllbl";
+      "bb" , "dddddd";
+    ]</pre>
+<p>prints</p>
+
+<pre class="verbatim">    abc | hello
+    ...
+    bb  | dddddd
+   </pre></div>
+</div>
+</body></html>

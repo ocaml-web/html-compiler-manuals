@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.36">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>Chapter 33 The runtime_events library</title>
+</head>
+<body>
+<a href="libstr.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="libthreads.html"><img src="next_motif.svg" alt="Next"></a>
+<hr>
+<h1 class="chapter" id="sec656">Chapter 33 The runtime_events library</h1>
+<p>
+<a id="c:runtime_events"></a></p><p>The <span class="machine"><span class="font-tt">runtime_events</span></span> library provides an API for consuming runtime tracing and
+metrics information from the runtime. See chapter <a href="runtime-tracing.html#c%3Aruntime-tracing">25</a> for
+more information.</p><p>Programs that use runtime_events must be linked as follows:
+</p><pre>
+        ocamlc -I +runtime_events <span class="font-it">other options</span> unix.cma runtime_events.cma <span class="font-it">other files</span>
+        ocamlopt -I +runtime_events <span class="font-it">other options</span> unix.cmxa runtime_events.cmxa <span class="font-it">other files</span>
+</pre><p>
+Compilation units that use the runtime_events library must also be compiled with
+the <span class="machine"><span class="font-tt">-I +runtime_events</span></span> option (see chapter <a href="comp.html#c%3Acamlc">13</a>).</p><ul class="ftoc2"><li class="li-links"><a href="libref/Runtime_events.html">Module <span class="font-tt">Runtime_events</span></a>: tracing system
+</li></ul>
+<hr>
+<a href="libstr.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="libthreads.html"><img src="next_motif.svg" alt="Next"></a>
+</body>
+</html>

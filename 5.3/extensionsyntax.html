@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.36">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>12.16 Extension-only syntax</title>
+</head>
+<body>
+<a href="generativefunctors.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="inlinerecords.html"><img src="next_motif.svg" alt="Next"></a>
+<hr>
+<h2 class="section" id="s:extension-syntax"><a class="section-anchor" href="#s:extension-syntax" aria-hidden="true">﻿</a>12.16 Extension-only syntax</h2>
+<ul>
+<li><a href="extensionsyntax.html#ss%3Aextension-operators">12.16.1 Extension operators</a>
+</li><li><a href="extensionsyntax.html#ss%3Aextension-literals">12.16.2 Extension literals</a>
+</li></ul>
+<p>(Introduced in OCaml 4.02.2, extended in 4.03)</p><p>Some syntactic constructions are accepted during parsing and rejected
+during type checking. These syntactic constructions can therefore not
+be used directly in vanilla OCaml. However, <span class="machine"><span class="font-tt">-ppx</span></span> rewriters and other
+external tools can exploit this parser leniency to extend the language
+with these new syntactic constructions by rewriting them to
+vanilla constructions.
+</p>
+<h3 class="subsection" id="ss:extension-operators"><a class="section-anchor" href="#ss:extension-operators" aria-hidden="true">﻿</a>12.16.1 Extension operators</h3>
+<p> <a id="s:ext-ops"></a>
+(Introduced in OCaml 4.02.2, extended to unary operators in OCaml 4.12.0)
+</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><span class="nonterminal">infix-symbol</span></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">#</span> { <a class="syntax" href="lex.html#operator-char"><span class="nonterminal">operator-char</span></a> } <span class="syntax-token">#</span> { <a class="syntax" href="lex.html#operator-char"><span class="nonterminal">operator-char</span></a> ∣ <span class="syntax-token">#</span> }
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<span class="nonterminal">prefix-symbol</span></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> (<span class="syntax-token">?</span> ∣ <span class="syntax-token">~</span> ∣ <span class="syntax-token">!</span>) { <a class="syntax" href="lex.html#operator-char"><span class="nonterminal">operator-char</span></a> } <span class="syntax-token">#</span> { <a class="syntax" href="lex.html#operator-char"><span class="nonterminal">operator-char</span></a> ∣ <span class="syntax-token">#</span> }
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+</table></td></tr>
+</table></div><p>There are two classes of operators available for extensions:
+infix operators with a name starting with a <span class="machine"><span class="font-tt">#</span></span> character and containing more
+than one <span class="machine"><span class="font-tt">#</span></span> character, and unary operators with a name (starting with a <span class="machine"><span class="font-tt">?</span></span>,
+<span class="machine"><span class="font-tt">~</span></span>, or <span class="machine"><span class="font-tt">!</span></span> character) containing at least one <span class="machine"><span class="font-tt">#</span></span> character.</p><p>For instance:
+
+</p><div class="caml-example toplevel">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlprompt">#</span> <span class="ocamlkeyword">let</span> infix x y = x<span class="ocamlhighlight">##</span>y;;</div>
+
+
+
+<div class="pre caml-output error"><span class="ocamlerror">Error</span>: ## is not a valid value identifier.</div></div>
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlprompt">#</span> <span class="ocamlkeyword">let</span> prefix x = <span class="ocamlhighlight">!#</span>x;;</div>
+
+
+
+<div class="pre caml-output error"><span class="ocamlerror">Error</span>: !# is not a valid value identifier.</div></div>
+
+</div><p>
+
+Note that both <span class="machine"><span class="font-tt">##</span></span> and <span class="machine"><span class="font-tt">!#</span></span> must be eliminated by a ppx rewriter to make
+this example valid.</p>
+<h3 class="subsection" id="ss:extension-literals"><a class="section-anchor" href="#ss:extension-literals" aria-hidden="true">﻿</a>12.16.2 Extension literals</h3>
+<p>
+(Introduced in OCaml 4.03)
+</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><span class="nonterminal">float-literal</span></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> [<span class="syntax-token">-</span>] (<span class="syntax-token">0</span>…<span class="syntax-token">9</span>) { <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">_</span> } [<span class="syntax-token">.</span> { <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">_</span> }]
+[(<span class="syntax-token">e</span> ∣ <span class="syntax-token">E</span>) [<span class="syntax-token">+</span> ∣ <span class="syntax-token">-</span>] (<span class="syntax-token">0</span>…<span class="syntax-token">9</span>) { <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">_</span> }]
+[<span class="syntax-token">g</span>…<span class="syntax-token">z</span> ∣ <span class="syntax-token">G</span>…<span class="syntax-token">Z</span>]
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> [<span class="syntax-token">-</span>] (<span class="syntax-token">0x</span> ∣ <span class="syntax-token">0X</span>)
+(<span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">A</span>…<span class="syntax-token">F</span> ∣ <span class="syntax-token">a</span>…<span class="syntax-token">f</span>)
+{ <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">A</span>…<span class="syntax-token">F</span> ∣ <span class="syntax-token">a</span>…<span class="syntax-token">f</span> ∣ <span class="syntax-token">_</span> }
+[<span class="syntax-token">.</span> { <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">A</span>…<span class="syntax-token">F</span> ∣ <span class="syntax-token">a</span>…<span class="syntax-token">f</span> ∣ <span class="syntax-token">_</span> }]
+[(<span class="syntax-token">p</span> ∣ <span class="syntax-token">P</span>) [<span class="syntax-token">+</span> ∣ <span class="syntax-token">-</span>] (<span class="syntax-token">0</span>…<span class="syntax-token">9</span>) { <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">_</span> }]
+[<span class="syntax-token">g</span>…<span class="syntax-token">z</span> ∣ <span class="syntax-token">G</span>…<span class="syntax-token">Z</span>]
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<a class="syntax" id="int-literal"><span class="nonterminal">int-literal</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> [<span class="syntax-token">-</span>] (<span class="syntax-token">0</span>…<span class="syntax-token">9</span>) { <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">_</span> }[<span class="syntax-token">g</span>…<span class="syntax-token">z</span> ∣ <span class="syntax-token">G</span>…<span class="syntax-token">Z</span>]
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> [<span class="syntax-token">-</span>] (<span class="syntax-token">0x</span> ∣ <span class="syntax-token">0X</span>) (<span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">A</span>…<span class="syntax-token">F</span> ∣ <span class="syntax-token">a</span>…<span class="syntax-token">f</span>)
+{ <span class="syntax-token">0</span>…<span class="syntax-token">9</span> ∣ <span class="syntax-token">A</span>…<span class="syntax-token">F</span> ∣ <span class="syntax-token">a</span>…<span class="syntax-token">f</span> ∣ <span class="syntax-token">_</span> }
+[<span class="syntax-token">g</span>…<span class="syntax-token">z</span> ∣ <span class="syntax-token">G</span>…<span class="syntax-token">Z</span>]
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> [<span class="syntax-token">-</span>] (<span class="syntax-token">0o</span> ∣ <span class="syntax-token">0O</span>) (<span class="syntax-token">0</span>…<span class="syntax-token">7</span>) { <span class="syntax-token">0</span>…<span class="syntax-token">7</span> ∣ <span class="syntax-token">_</span> }
+[<span class="syntax-token">g</span>…<span class="syntax-token">z</span> ∣ <span class="syntax-token">G</span>…<span class="syntax-token">Z</span>]
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> [<span class="syntax-token">-</span>] (<span class="syntax-token">0b</span> ∣ <span class="syntax-token">0B</span>) (<span class="syntax-token">0</span>…<span class="syntax-token">1</span>) { <span class="syntax-token">0</span>…<span class="syntax-token">1</span> ∣ <span class="syntax-token">_</span> }
+[<span class="syntax-token">g</span>…<span class="syntax-token">z</span> ∣ <span class="syntax-token">G</span>…<span class="syntax-token">Z</span>]
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+</table></td></tr>
+</table></div><p>
+Int and float literals followed by an one-letter identifier in the
+range [<span class="syntax-token">g</span>..<span class="syntax-token">z</span>∣<span class="syntax-token">G</span>..<span class="syntax-token">Z</span>] are extension-only literals.
+</p>
+<hr>
+<a href="generativefunctors.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="inlinerecords.html"><img src="next_motif.svg" alt="Next"></a>
+</body>
+</html>

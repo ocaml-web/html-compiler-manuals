@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.36">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>Chapter 36 Recently removed or moved libraries (Graphics, Bigarray, Num, LablTk)</title>
+</head>
+<body>
+<a href="libdynlink.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="manual075.html"><img src="next_motif.svg" alt="Next"></a>
+<hr>
+<h1 class="chapter" id="sec659">Chapter 36 Recently removed or moved libraries (Graphics, Bigarray, Num, LablTk)</h1>
+<ul>
+<li><a href="old.html#s%3Agraphics-removed">36.1 The Graphics Library</a>
+</li><li><a href="old.html#s%3Abigarray-moved">36.2 The Bigarray Library</a>
+</li><li><a href="old.html#sec662">36.3 The Num Library</a>
+</li><li><a href="old.html#s%3Alabltk-removed">36.4 The Labltk Library and OCamlBrowser</a>
+</li></ul>
+<p>This chapter describes three libraries which were formerly part of the OCaml
+distribution (Graphics, Num, and LablTk), and a library which has now become
+part of OCaml’s standard library, and is documented there (Bigarray).</p>
+<h2 class="section" id="s:graphics-removed"><a class="section-anchor" href="#s:graphics-removed" aria-hidden="true">﻿</a>36.1 The Graphics Library</h2>
+<p>Since OCaml 4.09, the <span class="machine"><span class="font-tt">graphics</span></span> library is distributed as an external
+package. Its new home is:</p><p><a href="https://github.com/ocaml/graphics"><span class="font-tt">https://github.com/ocaml/graphics</span></a></p><p>If you are using the opam package manager, you should install the
+corresponding <span class="machine"><span class="font-tt">graphics</span></span> package:</p><pre>
+        opam install graphics
+</pre><p>Before OCaml 4.09, this package simply ensures that the <span class="machine"><span class="font-tt">graphics</span></span>
+library was installed by the compiler, and starting from OCaml 4.09
+this package effectively provides the <span class="machine"><span class="font-tt">graphics</span></span> library.</p>
+<h2 class="section" id="s:bigarray-moved"><a class="section-anchor" href="#s:bigarray-moved" aria-hidden="true">﻿</a>36.2 The Bigarray Library</h2>
+<p>As of OCaml 4.07, the <span class="machine"><span class="font-tt">bigarray</span></span> library has been integrated into OCaml’s
+standard library.</p><p>The <span class="machine"><span class="font-tt">bigarray</span></span> functionality may now be found in the standard library
+<a href="libref/Bigarray.html"><span class="font-tt">Bigarray</span> module</a>,
+except for the <span class="machine"><span class="font-tt">map_file</span></span> function which is now
+part of the <a href="libunix.html#c%3Aunix">Unix library</a>. The documentation has
+been integrated into the documentation for the standard library.</p><p>The legacy <span class="machine"><span class="font-tt">bigarray</span></span> library bundled with the compiler is a
+compatibility library with exactly the same interface as before,
+i.e. with <span class="machine"><span class="font-tt">map_file</span></span> included.</p><p>We strongly recommend that you port your code to use the standard
+library version instead, as the changes required are minimal.</p><p>If you choose to use the compatibility library, you must link your
+programs as follows:
+</p><pre>
+        ocamlc <span class="font-it">other options</span> bigarray.cma <span class="font-it">other files</span>
+        ocamlopt <span class="font-it">other options</span> bigarray.cmxa <span class="font-it">other files</span>
+</pre><p>
+For interactive use of the <span class="machine"><span class="font-tt">bigarray</span></span> compatibility library, do:
+</p><pre>
+        ocamlmktop -o mytop bigarray.cma
+        ./mytop
+</pre><p>
+or (if dynamic linking of C libraries is supported on your platform),
+start <span class="machine"><span class="font-tt">ocaml</span></span> and type <span class="machine"><span class="font-tt">#load "bigarray.cma";;</span></span>.</p>
+<h2 class="section" id="sec662"><a class="section-anchor" href="#sec662" aria-hidden="true">﻿</a>36.3 The Num Library</h2>
+<p>The <span class="machine"><span class="font-tt">num</span></span> library implements integer arithmetic and rational
+arithmetic in arbitrary precision. It was split off the core
+OCaml distribution starting with the 4.06.0 release, and can now be found
+at <a href="https://github.com/ocaml/num"><span class="font-tt">https://github.com/ocaml/num</span></a>.</p><p>New applications that need arbitrary-precision arithmetic should use the
+<span class="machine"><span class="font-tt">Zarith</span></span> library (<a href="https://github.com/ocaml/Zarith"><span class="font-tt">https://github.com/ocaml/Zarith</span></a>) instead of the <span class="machine"><span class="font-tt">Num</span></span>
+library, and older applications that already use <span class="machine"><span class="font-tt">Num</span></span> are encouraged to
+switch to <span class="machine"><span class="font-tt">Zarith</span></span>. <span class="machine"><span class="font-tt">Zarith</span></span> delivers much better performance than <span class="machine"><span class="font-tt">Num</span></span>
+and has a nicer API.</p>
+<h2 class="section" id="s:labltk-removed"><a class="section-anchor" href="#s:labltk-removed" aria-hidden="true">﻿</a>36.4 The Labltk Library and OCamlBrowser</h2>
+<p>Since OCaml version 4.02, the OCamlBrowser tool and the Labltk library
+are distributed separately from the OCaml compiler. The project is now
+hosted at <a href="https://github.com/garrigue/labltk"><span class="font-tt">https://github.com/garrigue/labltk</span></a>.
+</p>
+<hr>
+<a href="libdynlink.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="manual075.html"><img src="next_motif.svg" alt="Next"></a>
+</body>
+</html>
