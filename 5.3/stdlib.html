@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.36">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>Chapter 29 The standard library</title>
+</head>
+<body>
+<a href="core.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="parsing.html"><img src="next_motif.svg" alt="Next"></a>
+<hr>
+<h1 class="chapter" id="sec652">Chapter 29 The standard library</h1>
+<p> <a id="c:stdlib"></a></p><p>This chapter describes the functions provided by the OCaml
+standard library. The modules from the standard library are
+automatically linked with the user’s object code files by the <span class="machine"><span class="font-tt">ocamlc</span></span>
+command. Hence, these modules can be used in standalone programs without
+having to add any <span class="machine"><span class="font-tt">.cmo</span></span> file on the command line for the linking
+phase. Similarly, in interactive use, these globals can be used in
+toplevel phrases without having to load any <span class="machine"><span class="font-tt">.cmo</span></span> file in memory.</p><p>Unlike the core <span class="machine"><span class="font-tt">Stdlib</span></span> module, submodules are not automatically
+“opened” when compilation starts, or when the toplevel system is launched.
+Hence it is necessary to use qualified identifiers to refer to the functions
+provided by these modules, or to add <span class="machine"><span class="font-tt">open</span></span> directives.</p><p><a id="stdlib:top"></a></p><ul class="ftoc2"><li class="li-links"><a href="libref/Arg.html">Module <span class="font-tt">Arg</span></a>: parsing of command line arguments
+</li><li class="li-links"><a href="libref/Array.html">Module <span class="font-tt">Array</span></a>: array operations
+</li><li class="li-links"><a href="libref/ArrayLabels.html">Module <span class="font-tt">ArrayLabels</span></a>: array operations (with labels)
+</li><li class="li-links"><a href="libref/Atomic.html">Module <span class="font-tt">Atomic</span></a>: atomic references
+</li><li class="li-links"><a href="libref/Bigarray.html">Module <span class="font-tt">Bigarray</span></a>: large, multi-dimensional, numerical arrays
+</li><li class="li-links"><a href="libref/Bool.html">Module <span class="font-tt">Bool</span></a>: boolean values
+</li><li class="li-links"><a href="libref/Buffer.html">Module <span class="font-tt">Buffer</span></a>: extensible buffers
+</li><li class="li-links"><a href="libref/Bytes.html">Module <span class="font-tt">Bytes</span></a>: byte sequences
+</li><li class="li-links"><a href="libref/BytesLabels.html">Module <span class="font-tt">BytesLabels</span></a>: byte sequences (with labels)
+</li><li class="li-links"><a href="libref/Callback.html">Module <span class="font-tt">Callback</span></a>: registering OCaml values with the C runtime
+</li><li class="li-links"><a href="libref/Char.html">Module <span class="font-tt">Char</span></a>: character operations
+</li><li class="li-links"><a href="libref/Complex.html">Module <span class="font-tt">Complex</span></a>: complex numbers
+</li><li class="li-links"><a href="libref/Condition.html">Module <span class="font-tt">Condition</span></a>: condition variables to synchronize between threads
+</li><li class="li-links"><a href="libref/Domain.html">Module <span class="font-tt">Domain</span></a>: Domain spawn/join and domain local variables
+</li><li class="li-links"><a href="libref/Digest.html">Module <span class="font-tt">Digest</span></a>: MD5 message digest
+</li><li class="li-links"><a href="libref/Dynarray.html">Module <span class="font-tt">Dynarray</span></a>: Dynamic arrays
+</li><li class="li-links"><a href="libref/Effect.html">Module <span class="font-tt">Effect</span></a>: deep and shallow effect handlers
+</li><li class="li-links"><a href="libref/Either.html">Module <span class="font-tt">Either</span></a>: either values
+</li><li class="li-links"><a href="libref/Ephemeron.html">Module <span class="font-tt">Ephemeron</span></a>: Ephemerons and weak hash table
+</li><li class="li-links"><a href="libref/Filename.html">Module <span class="font-tt">Filename</span></a>: operations on file names
+</li><li class="li-links"><a href="libref/Float.html">Module <span class="font-tt">Float</span></a>: floating-point numbers
+</li><li class="li-links"><a href="libref/Format.html">Module <span class="font-tt">Format</span></a>: pretty printing
+</li><li class="li-links"><a href="libref/Fun.html">Module <span class="font-tt">Fun</span></a>: function values
+</li><li class="li-links"><a href="libref/Gc.html">Module <span class="font-tt">Gc</span></a>: memory management control and statistics; finalized values
+</li><li class="li-links"><a href="libref/Hashtbl.html">Module <span class="font-tt">Hashtbl</span></a>: hash tables and hash functions
+</li><li class="li-links"><a href="libref/In_channel.html">Module <span class="font-tt">In_channel</span></a>: input channels
+</li><li class="li-links"><a href="libref/Int.html">Module <span class="font-tt">Int</span></a>: integers
+</li><li class="li-links"><a href="libref/Int32.html">Module <span class="font-tt">Int32</span></a>: 32-bit integers
+</li><li class="li-links"><a href="libref/Int64.html">Module <span class="font-tt">Int64</span></a>: 64-bit integers
+</li><li class="li-links"><a href="libref/Lazy.html">Module <span class="font-tt">Lazy</span></a>: deferred computations
+</li><li class="li-links"><a href="libref/Lexing.html">Module <span class="font-tt">Lexing</span></a>: the run-time library for lexers generated by <span class="font-tt">ocamllex</span>
+</li><li class="li-links"><a href="libref/List.html">Module <span class="font-tt">List</span></a>: list operations
+</li><li class="li-links"><a href="libref/ListLabels.html">Module <span class="font-tt">ListLabels</span></a>: list operations (with labels)
+</li><li class="li-links"><a href="libref/Map.html">Module <span class="font-tt">Map</span></a>: association tables over ordered types
+</li><li class="li-links"><a href="libref/Marshal.html">Module <span class="font-tt">Marshal</span></a>: marshaling of data structures
+</li><li class="li-links"><a href="libref/MoreLabels.html">Module <span class="font-tt">MoreLabels</span></a>: include modules <span class="font-tt">Hashtbl</span>, <span class="font-tt">Map</span> and <span class="font-tt">Set</span> with labels
+</li><li class="li-links"><a href="libref/Mutex.html">Module <span class="font-tt">Mutex</span></a>: locks for mutual exclusion
+</li><li class="li-links"><a href="libref/Nativeint.html">Module <span class="font-tt">Nativeint</span></a>: processor-native integers
+</li><li class="li-links"><a href="libref/Oo.html">Module <span class="font-tt">Oo</span></a>: object-oriented extension
+</li><li class="li-links"><a href="libref/Option.html">Module <span class="font-tt">Option</span></a>: option values
+</li><li class="li-links"><a href="libref/Out_channel.html">Module <span class="font-tt">Out_channel</span></a>: output channels
+</li><li class="li-links"><a href="libref/Parsing.html">Module <span class="font-tt">Parsing</span></a>: the run-time library for parsers generated by <span class="font-tt">ocamlyacc</span>
+</li><li class="li-links"><a href="libref/Printexc.html">Module <span class="font-tt">Printexc</span></a>: facilities for printing exceptions
+</li><li class="li-links"><a href="libref/Printf.html">Module <span class="font-tt">Printf</span></a>: formatting printing functions
+</li><li class="li-links"><a href="libref/Queue.html">Module <span class="font-tt">Queue</span></a>: first-in first-out queues
+</li><li class="li-links"><a href="libref/Random.html">Module <span class="font-tt">Random</span></a>: pseudo-random number generator (PRNG)
+</li><li class="li-links"><a href="libref/Result.html">Module <span class="font-tt">Result</span></a>: result values
+</li><li class="li-links"><a href="libref/Scanf.html">Module <span class="font-tt">Scanf</span></a>: formatted input functions
+</li><li class="li-links"><a href="libref/Seq.html">Module <span class="font-tt">Seq</span></a>: functional iterators
+</li><li class="li-links"><a href="libref/Set.html">Module <span class="font-tt">Set</span></a>: sets over ordered types
+</li><li class="li-links"><a href="libref/Semaphore.html">Module <span class="font-tt">Semaphore</span></a>: semaphores, another thread synchronization mechanism
+</li><li class="li-links"><a href="libref/Stack.html">Module <span class="font-tt">Stack</span></a>: last-in first-out stacks
+</li><li class="li-links"><a href="libref/StdLabels.html">Module <span class="font-tt">StdLabels</span></a>: include modules <span class="font-tt">Array</span>, <span class="font-tt">List</span> and <span class="font-tt">String</span> with labels
+</li><li class="li-links"><a href="libref/String.html">Module <span class="font-tt">String</span></a>: string operations
+</li><li class="li-links"><a href="libref/StringLabels.html">Module <span class="font-tt">StringLabels</span></a>: string operations (with labels)
+</li><li class="li-links"><a href="libref/Sys.html">Module <span class="font-tt">Sys</span></a>: system interface
+</li><li class="li-links"><a href="libref/Type.html">Module <span class="font-tt">Type</span></a>: type introspection
+</li><li class="li-links"><a href="libref/Uchar.html">Module <span class="font-tt">Uchar</span></a>: Unicode characters
+</li><li class="li-links"><a href="libref/Unit.html">Module <span class="font-tt">Unit</span></a>: unit values
+</li><li class="li-links"><a href="libref/Weak.html">Module <span class="font-tt">Weak</span></a>: arrays of weak pointers
+</li></ul>
+<hr>
+<a href="core.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="parsing.html"><img src="next_motif.svg" alt="Next"></a>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.36">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>12.10 Generalized algebraic datatypes</title>
+</head>
+<body>
+<a href="overridingopen.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="bigarray.html"><img src="next_motif.svg" alt="Next"></a>
+<hr>
+<h2 class="section" id="s:gadts"><a class="section-anchor" href="#s:gadts" aria-hidden="true">﻿</a>12.10 Generalized algebraic datatypes</h2>
+<p> <a id="hevea_manual.kwd225"></a>
+<a id="hevea_manual.kwd226"></a>
+</p><p>Generalized algebraic datatypes, or GADTs, extend usual sum types in
+two ways: constraints on type parameters may change depending on the
+value constructor, and some type variables may be existentially
+quantified. They are described in chapter <a href="gadts-tutorial.html#c%3Agadts-tutorial">7</a>.</p><p>(Introduced in OCaml 4.00)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="typedecl.html#constr-decl"><span class="nonterminal">constr-decl</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="names.html#constr-name"><span class="nonterminal">constr-name</span></a> <span class="syntax-token">:</span> [ <a class="syntax" href="typedecl.html#constr-args"><span class="nonterminal">constr-args</span></a> <span class="syntax-token">-&gt;</span> ] <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<a class="syntax" href="typedecl.html#type-param"><span class="nonterminal">type-param</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> [<a class="syntax" href="typedecl.html#variance"><span class="nonterminal">variance</span></a>] <span class="syntax-token">_</span>
+</td></tr>
+</table></td></tr>
+</table></div><p>Refutation cases. (Introduced in OCaml 4.03)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="matching-case"><span class="nonterminal">matching-case</span></a></td><td class="c005">::=</td><td class="c007">
+<a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a> [<span class="syntax-token">when</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a>] <span class="syntax-token">-&gt;</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a> <span class="syntax-token">-&gt;</span> <span class="syntax-token">.</span>
+</td></tr>
+</table></td></tr>
+</table></div><p>Explicit naming of existentials. (Introduced in OCaml 4.13.0)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="names.html#constr"><span class="nonterminal">constr</span></a> <span class="syntax-token">(</span> <span class="syntax-token">type</span> { <a class="syntax" href="names.html#typeconstr-name"><span class="nonterminal">typeconstr-name</span></a> }<sup>+</sup> <span class="syntax-token">)</span> <span class="syntax-token">(</span> <a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a> <span class="syntax-token">)</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+</table></td></tr>
+</table></div>
+<hr>
+<a href="overridingopen.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="bigarray.html"><img src="next_motif.svg" alt="Next"></a>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.36">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>11.5 Constants</title>
+</head>
+<body>
+<a href="types.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="patterns.html"><img src="next_motif.svg" alt="Next"></a>
+<hr>
+<h2 class="section" id="s:const"><a class="section-anchor" href="#s:const" aria-hidden="true">﻿</a>11.5 Constants</h2>
+<p><a id="hevea_manual.kwd11"></a>
+<a id="hevea_manual.kwd12"></a>
+<a id="hevea_manual.kwd13"></a>
+<a id="hevea_manual.kwd14"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="constant"><span class="nonterminal">constant</span></a></td><td class="c005">::=</td><td class="c007">
+<a class="syntax" href="lex.html#integer-literal"><span class="nonterminal">integer-literal</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="lex.html#int32-literal"><span class="nonterminal">int32-literal</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="lex.html#int64-literal"><span class="nonterminal">int64-literal</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="lex.html#nativeint-literal"><span class="nonterminal">nativeint-literal</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="lex.html#float-literal"><span class="nonterminal">float-literal</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="lex.html#char-literal"><span class="nonterminal">char-literal</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="lex.html#string-literal"><span class="nonterminal">string-literal</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="names.html#constr"><span class="nonterminal">constr</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">false</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">true</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">()</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">begin</span> <span class="syntax-token">end</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">[]</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">[||]</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">`</span><a class="syntax" href="names.html#tag-name"><span class="nonterminal">tag-name</span></a>
+</td></tr>
+</table></td></tr>
+</table></div><p>
+See also the following language extension:
+<a href="extensionsyntax.html#ss%3Aextension-literals">extension literals</a>.</p><p>The syntactic class of constants comprises literals from the four
+base types (integers, floating-point numbers, characters, character
+strings), the integer variants, and constant constructors
+from both normal and polymorphic variants, as well as the special
+constants <span class="syntax-token">false</span>, <span class="syntax-token">true</span>, <span class="syntax-token">()</span>,
+<span class="syntax-token">[]</span>, and <span class="syntax-token">[||]</span>, which behave like constant constructors, and
+<span class="syntax-token">begin</span> <span class="syntax-token">end</span>, which is equivalent to <span class="syntax-token">()</span>.
+
+</p>
+<hr>
+<a href="types.html"><img src="previous_motif.svg" alt="Previous"></a>
+<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
+<a href="patterns.html"><img src="next_motif.svg" alt="Next"></a>
+</body>
+</html>
