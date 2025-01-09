@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="Stdlib.Fun.html">
 <link rel="next" href="Stdlib.Hashtbl.html">
 <link rel="Up" href="Stdlib.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -90,110 +88,112 @@
 <link title="CamlinternalLazy" rel="Chapter" href="CamlinternalLazy.html">
 <link title="CamlinternalMod" rel="Chapter" href="CamlinternalMod.html">
 <link title="CamlinternalOO" rel="Chapter" href="CamlinternalOO.html"><title>OCaml library : Stdlib.Gc</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : Stdlib.Gc</a></div><ul></ul></nav></header>
 <h1>Module <a href="type_Stdlib.Gc.html">Stdlib.Gc</a></h1>
 
 <pre><span id="MODULEGc"><span class="keyword">module</span> Gc</span>: <code class="type"><a href="Gc.html">Gc</a></code></pre><hr width="100%">
 
 <pre><code><span id="TYPEstat"><span class="keyword">type</span> <code class="type"></code>stat</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.minor_words">minor_words</span>&nbsp;: <code class="type">float</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of words allocated in the minor heap since
        the program was started.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.promoted_words">promoted_words</span>&nbsp;: <code class="type">float</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of words allocated in the minor heap that
        survived a minor collection and were moved to the major heap
        since the program was started.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.major_words">major_words</span>&nbsp;: <code class="type">float</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of words allocated in the major heap, including
        the promoted words, since the program was started.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.minor_collections">minor_collections</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of minor collections since the program was started.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.major_collections">major_collections</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of major collection cycles completed since the program
         was started.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.heap_words">heap_words</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Total size of the major heap, in words.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.heap_chunks">heap_chunks</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of contiguous pieces of memory that make up the major heap.
         This metric is currently not available in OCaml 5: the field value is
         always <code class="code">0</code>.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.live_words">live_words</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of words of live data in the major heap, including the header
        words.</p>
@@ -210,106 +210,106 @@
        <a href="Gc.html#VALfull_major"><code class="code"><span class="constructor">Gc</span>.full_major</code></a> twice instead of once.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.live_blocks">live_blocks</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of live blocks in the major heap.</p>
 
 <p>See <code class="code">live_words</code> for a caveat about what "live" means.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.free_words">free_words</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of words in the free list.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.free_blocks">free_blocks</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of blocks in the free list.
         This metric is currently not available in OCaml 5: the field value is
         always <code class="code">0</code>.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.largest_free">largest_free</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Size (in words) of the largest block in the free list.
         This metric is currently not available in OCaml 5: the field value
         is always <code class="code">0</code>.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.fragments">fragments</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of wasted words due to fragmentation.  These are
        1-words free blocks placed between two live blocks.  They
        are not available for allocation.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.compactions">compactions</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of heap compactions since the program was started.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.top_heap_words">top_heap_words</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Maximum size reached by the major heap, in words.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.stack_size">stack_size</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Current size of the stack, in words.
         This metric is currently not available in OCaml 5: the field value is
@@ -319,14 +319,14 @@
 <li><b>Since</b> 3.12</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTstat.forced_major_collections">forced_major_collections</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Number of forced full major collections completed since the program
         was started.</p>
@@ -335,8 +335,8 @@
 <li><b>Since</b> 4.12</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 <code>}</code>
 
 <div class="info ">
@@ -353,12 +353,12 @@
 
 
 <pre><code><span id="TYPEcontrol"><span class="keyword">type</span> <code class="type"></code>control</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.minor_heap_size">minor_heap_size</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The size (in words) of the minor heap.  Changing
        this parameter will trigger a minor collection. The total size of the
@@ -366,14 +366,14 @@
        active domains. Default: 256k.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.major_heap_increment">major_heap_increment</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>How much to add to the major heap when increasing it. If this
         number is less than or equal to 1000, it is a percentage of
@@ -385,14 +385,14 @@
         always <code class="code">0</code>.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.space_overhead">space_overhead</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The major GC speed is computed from this parameter.
        This is the memory that will be "wasted" because the GC does not
@@ -403,14 +403,14 @@
        Default: 120.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.verbose">verbose</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>This value controls the GC messages on standard error output.
        It is a sum of some of the following flags, to print messages
@@ -431,14 +431,14 @@
 </ul>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.max_overhead">max_overhead</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Heap compaction is triggered when the estimated amount
        of "wasted" memory is more than <code class="code">max_overhead</code> percent of the
@@ -451,27 +451,27 @@
        always <code class="code">0</code>.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.stack_limit">stack_limit</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The maximum size of the fiber stacks (in words).
        Default: 128M.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.allocation_policy">allocation_policy</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The policy used for allocating in the major heap.</p>
 
@@ -494,14 +494,14 @@
 <li><b>Since</b> 3.11</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.window_size">window_size</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The size of the window used by the major GC for smoothing
         out variations in its workload. This is an integer between
@@ -514,14 +514,14 @@
         always [0].</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.custom_major_ratio">custom_major_ratio</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Target ratio of floating garbage to major heap size for
         out-of-heap memory held by custom values located in the major
@@ -538,14 +538,14 @@
 <li><b>Since</b> 4.08</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.custom_minor_ratio">custom_minor_ratio</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Bound on floating garbage for out-of-heap memory held by
         custom values in the minor heap. A minor GC is triggered when
@@ -559,14 +559,14 @@
 <li><b>Since</b> 4.08</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTcontrol.custom_minor_max_size">custom_minor_max_size</span>&nbsp;: <code class="type">int</code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Maximum amount of out-of-heap memory for each custom value
         allocated in the minor heap. Custom values that hold more
@@ -579,8 +579,8 @@
 <li><b>Since</b> 4.08</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 <code>}</code>
 
 <div class="info ">
@@ -878,4 +878,5 @@
    memory words.</p>
 
 </div>
-</body></html>
+
+</div></body></html>

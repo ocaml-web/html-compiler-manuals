@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 10 Memory model: The hard bits</title>
-</head>
-<body>
-<a href="parallelism.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="language.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec92">Chapter 10 Memory model: The hard bits</h1>
-<ul>
-<li><a href="memorymodel.html#s%3Awhy_relaxed_memory">10.1 Why weakly consistent memory?</a>
-</li><li><a href="memorymodel.html#s%3Adrf_sc">10.2 Data race freedom implies sequential consistency</a>
-</li><li><a href="memorymodel.html#s%3Adrf_reasoning">10.3 Reasoning with DRF-SC</a>
-</li><li><a href="memorymodel.html#s%3Alocal_drf">10.4 Local data race freedom</a>
-</li><li><a href="memorymodel.html#s%3Amm_semantics">10.5 An operational view of the memory model</a>
-</li><li><a href="memorymodel.html#s%3Amm_tearing">10.6 Non-compliant operations</a>
-</li></ul>
+<title>OCaml - Memory model: The hard bits</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>An introduction to OCaml</nav><ul id="part-menu"><li><a href="coreexamples.html">The core language</a></li><li><a href="moduleexamples.html">The module system</a></li><li><a href="objectexamples.html">Objects in OCaml</a></li><li><a href="lablexamples.html">Labeled arguments</a></li><li><a href="polyvariant.html">Polymorphic variants</a></li><li><a href="polymorphism.html">Polymorphism and its limitations</a></li><li><a href="gadts-tutorial.html">Generalized algebraic datatypes</a></li><li><a href="advexamples.html">Advanced examples with classes and modules</a></li><li><a href="parallelism.html">Parallel programming</a></li><li class="active"><a href="memorymodel.html">Memory model: The hard bits</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec92"><span class="chapter-number">Chapter 10</span> Memory model: The hard bits</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Memory model: The hard bits</a></li>
+<li><a href="memorymodel.html#s%3Awhy_relaxed_memory"><span class="number">1</span> Why weakly consistent memory?</a>
+</li><li><a href="memorymodel.html#s%3Adrf_sc"><span class="number">2</span> Data race freedom implies sequential consistency</a>
+</li><li><a href="memorymodel.html#s%3Adrf_reasoning"><span class="number">3</span> Reasoning with DRF-SC</a>
+</li><li><a href="memorymodel.html#s%3Alocal_drf"><span class="number">4</span> Local data race freedom</a>
+</li><li><a href="memorymodel.html#s%3Amm_semantics"><span class="number">5</span> An operational view of the memory model</a>
+</li><li><a href="memorymodel.html#s%3Amm_tearing"><span class="number">6</span> Non-compliant operations</a>
+</li></ul></nav></header>
 <p>
 <a id="c:memorymodel"></a></p><p>This chapter describes the details of OCaml relaxed memory model. The relaxed
 memory model describes what values an OCaml program is allowed to witness when
@@ -36,7 +34,7 @@ hardware memory models, please have a look at the PLDI 2018 paper on
 Time</a>. The memory model presented in this chapter is an extension of the one
 presented in the PLDI 2018 paper. This chapter also covers some pragmatic
 aspects of the memory model that are not covered in the paper.</p>
-<h2 class="section" id="s:why_relaxed_memory"><a class="section-anchor" href="#s:why_relaxed_memory" aria-hidden="true">﻿</a>10.1 Why weakly consistent memory?</h2>
+<h2 class="section" id="s:why_relaxed_memory"><a class="section-anchor" href="#s:why_relaxed_memory" aria-hidden="true"></a><span class="number">1</span> Why weakly consistent memory?</h2>
 <p>The simplest memory model that we could give to our programs is sequential
 consistency. Under sequential consistency, the values observed by the program
 can be explained through some interleaving of the operations from different
@@ -95,7 +93,7 @@ reference cell. One would expect that the assertion in the main function will
 never fail. The reasoning is that if <span class="machine"><span class="font-tt">r2</span></span> is <span class="machine"><span class="font-tt">0</span></span>, then the write in <span class="machine"><span class="font-tt">d2</span></span>
 occurred before the read of <span class="machine"><span class="font-tt">b</span></span> in <span class="machine"><span class="font-tt">d1</span></span>. Given that <span class="machine"><span class="font-tt">a</span></span> and <span class="machine"><span class="font-tt">b</span></span> are aliases,
 the second read of <span class="machine"><span class="font-tt">a</span></span> in <span class="machine"><span class="font-tt">d1</span></span> should also return <span class="machine"><span class="font-tt">0</span></span>.</p>
-<h3 class="subsection" id="ss:mm_comp_opt"><a class="section-anchor" href="#ss:mm_comp_opt" aria-hidden="true">﻿</a>10.1.1 Compiler optimisations</h3>
+<h3 class="subsection" id="ss:mm_comp_opt"><a class="section-anchor" href="#ss:mm_comp_opt" aria-hidden="true">﻿</a><span class="number">1.1</span> Compiler optimisations</h3>
 <p>Surprisingly, this assertion may fail in OCaml due to compiler optimisations.
 The OCaml compiler observes the common sub-expression <span class="machine"><span class="font-tt">!a * 2</span></span> in <span class="machine"><span class="font-tt">d1</span></span> and
 optimises the program to:</p><div class="caml-example verbatim">
@@ -145,7 +143,7 @@ a domain were reordered. For example, if the second and the third reads from
 
 </div><p>then we can explain the observed behaviour <span class="machine"><span class="font-tt">(2,0,2)</span></span> returned by
 <span class="machine"><span class="font-tt">d1</span></span>.</p>
-<h3 class="subsection" id="ss:mm_hw_opt"><a class="section-anchor" href="#ss:mm_hw_opt" aria-hidden="true">﻿</a>10.1.2 Hardware optimisations</h3>
+<h3 class="subsection" id="ss:mm_hw_opt"><a class="section-anchor" href="#ss:mm_hw_opt" aria-hidden="true">﻿</a><span class="number">1.2</span> Hardware optimisations</h3>
 <p>The other source of reordering is by the hardware. Modern hardware
 architectures have complex cache hierarchies with multiple levels of cache.
 While cache coherence ensures that reads and writes to a single memory
@@ -187,7 +185,7 @@ of cores <span class="machine"><span class="font-tt">c1</span></span> and <span 
 reads of <span class="machine"><span class="font-tt">b</span></span> and <span class="machine"><span class="font-tt">a</span></span> running on the cores <span class="machine"><span class="font-tt">c1</span></span> and <span class="machine"><span class="font-tt">c2</span></span>, respectively, will not
 see the writes if the writes have not propagated from the buffers to the main
 memory.</p>
-<h2 class="section" id="s:drf_sc"><a class="section-anchor" href="#s:drf_sc" aria-hidden="true">﻿</a>10.2 Data race freedom implies sequential consistency</h2>
+<h2 class="section" id="s:drf_sc"><a class="section-anchor" href="#s:drf_sc" aria-hidden="true">﻿</a><span class="number">2</span> Data race freedom implies sequential consistency</h2>
 <p>The aim of the OCaml relaxed memory model is to precisely describe which orders
 are preserved by the OCaml program. The compiler and the hardware are free to
 optimize the program as long as they respect the ordering guarantees of the
@@ -197,13 +195,13 @@ will only exhibit sequentially consistent behaviours. This guarantee is known
 as <em>data race freedom implies sequential consistency</em> (DRF-SC). In this
 section, we shall describe this guarantee. In order to do this, we first need a
 number of definitions.</p>
-<h3 class="subsection" id="s:atomics"><a class="section-anchor" href="#s:atomics" aria-hidden="true">﻿</a>10.2.1 Memory locations</h3>
+<h3 class="subsection" id="s:atomics"><a class="section-anchor" href="#s:atomics" aria-hidden="true">﻿</a><span class="number">2.1</span> Memory locations</h3>
 <p>OCaml classifies memory locations into <em>atomic</em> and <em>non-atomic</em>
 locations. Reference cells, array fields and mutable record fields are
 non-atomic memory locations. Immutable objects are non-atomic locations with an
 initialising write but no further updates. Atomic memory locations are those
-that are created using the <a href="libref/Atomic.html"><span class="font-tt">Atomic</span></a> module.</p>
-<h3 class="subsection" id="s:happens_before"><a class="section-anchor" href="#s:happens_before" aria-hidden="true">﻿</a>10.2.2 Happens-before relation</h3>
+that are created using the <a href="api/Atomic.html"><span class="font-tt">Atomic</span></a> module.</p>
+<h3 class="subsection" id="s:happens_before"><a class="section-anchor" href="#s:happens_before" aria-hidden="true">﻿</a><span class="number">2.2</span> Happens-before relation</h3>
 <p>Let us imagine that the OCaml programs are executed by an abstract machine that
 executes one action at a time, arbitrarily picking one of the available domains
 at each step. We classify actions into two: <em>inter-domain</em> and
@@ -236,23 +234,23 @@ order.
 operation on the mutex in the execution trace, then <span class="machine"><span class="font-tt">x</span></span> precedes <span class="machine"><span class="font-tt">y</span></span> in
 happens-before order.
 </li></ul>
-<h3 class="subsection" id="s:datarace"><a class="section-anchor" href="#s:datarace" aria-hidden="true">﻿</a>10.2.3 Data race</h3>
+<h3 class="subsection" id="s:datarace"><a class="section-anchor" href="#s:datarace" aria-hidden="true">﻿</a><span class="number">2.3</span> Data race</h3>
 <p>In a given trace, two actions are said to be <em>conflicting</em> if they access
 the same non-atomic location, at least one is a write and neither is an
 initialising write to that location.</p><p>We say that a program has a <em>data race</em> if there exists some execution
 trace of the program with two conflicting actions and there does not exist a
 happens-before relationship between the conflicting accesses. A program without
 data races is said to be <em>correctly synchronised</em>.</p>
-<h3 class="subsection" id="ss:drf_sc"><a class="section-anchor" href="#ss:drf_sc" aria-hidden="true">﻿</a>10.2.4 DRF-SC</h3>
+<h3 class="subsection" id="ss:drf_sc"><a class="section-anchor" href="#ss:drf_sc" aria-hidden="true">﻿</a><span class="number">2.4</span> DRF-SC</h3>
 <p><span class="font-bold">DRF-SC guarantee:</span> A program without data races will only exhibit
 sequentially consistent behaviours.</p><p>DRF-SC is a strong guarantee for the programmers. Programmers can use
 <em>sequential reasoning</em> i.e., reasoning by executing one inter-domain
 action after the other, to identify whether their program has a data race. In
 particular, they do not need to reason about reorderings described in
-section <a href="#s%3Awhy_relaxed_memory">10.1</a> in order to determine whether their program
+section&nbsp;<a href="#s%3Awhy_relaxed_memory">10.1</a> in order to determine whether their program
 has a data race. Once the determination that a particular program is data race
 free is made, they do not need to worry about reorderings in their code.</p>
-<h2 class="section" id="s:drf_reasoning"><a class="section-anchor" href="#s:drf_reasoning" aria-hidden="true">﻿</a>10.3 Reasoning with DRF-SC</h2>
+<h2 class="section" id="s:drf_reasoning"><a class="section-anchor" href="#s:drf_reasoning" aria-hidden="true">﻿</a><span class="number">3</span> Reasoning with DRF-SC</h2>
 <p>In this section, we will look at examples of using DRF-SC for program
 reasoning. In this section, we will use the functions with names <span class="machine"><span class="font-tt">dN</span></span> to
 represent domains executing in parallel with other domains. That is, we assume
@@ -277,7 +275,7 @@ Here is a simple example with a data race:</p><div class="caml-example verbatim"
 
 </div><p><span class="machine"><span class="font-tt">r</span></span> is a non-atomic reference. The two domains race to access the reference,
 and <span class="machine"><span class="font-tt">d1</span></span> is a write. Since there is no happens-before relationship between the
-conflicting accesses, there is a data race.</p><p>Both of the programs that we had seen in the section <a href="#s%3Awhy_relaxed_memory">10.1</a>
+conflicting accesses, there is a data race.</p><p>Both of the programs that we had seen in the section&nbsp;<a href="#s%3Awhy_relaxed_memory">10.1</a>
 have data races. It is no surprise that they exhibit non sequentially
 consistent behaviours.</p><p>Accessing disjoint array indices and fields of a record in parallel is not a
 data race. For example,</p><div class="caml-example verbatim">
@@ -371,7 +369,7 @@ Atomic.set flag true (* b *)
 </pre><p>
 In this trace, <span class="machine"><span class="font-tt">d</span></span> and <span class="machine"><span class="font-tt">a</span></span> are conflicting operations. But there is no
 happens-before relationship between them. Hence, this program has a data race.</p>
-<h2 class="section" id="s:local_drf"><a class="section-anchor" href="#s:local_drf" aria-hidden="true">﻿</a>10.4 Local data race freedom</h2>
+<h2 class="section" id="s:local_drf"><a class="section-anchor" href="#s:local_drf" aria-hidden="true">﻿</a><span class="number">4</span> Local data race freedom</h2>
 <p>The OCaml memory model offers strong guarantees even for programs with data
 races. It offers what is known as <em>local data race freedom sequential
 consistency (LDRF-SC)</em> guarantee. A formal definition of this property is beyond
@@ -451,7 +449,7 @@ Hence, the snippet will have sequentially consistent behaviour, and the value
 returned by <span class="machine"><span class="font-tt">!c</span></span> will be <span class="machine"><span class="font-tt">42</span></span>.</p><p>The OCaml memory model guarantees that even for programs with data races,
 memory safety is preserved. While programs with data races may observe
 non-sequentially consistent behaviours, they will not crash.</p>
-<h2 class="section" id="s:mm_semantics"><a class="section-anchor" href="#s:mm_semantics" aria-hidden="true">﻿</a>10.5 An operational view of the memory model</h2>
+<h2 class="section" id="s:mm_semantics"><a class="section-anchor" href="#s:mm_semantics" aria-hidden="true">﻿</a><span class="number">5</span> An operational view of the memory model</h2>
 <p>In this section, we describe the semantics of the OCaml memory model. A formal
 definition of the operational view of the memory model is presented in section
 3 of the PLDI 2018 paper on
@@ -466,8 +464,8 @@ small-step operational manner. That is, the semantics is described by an
 abstract machine that executes one action at a time, arbitrarily picking one of
 the available domains at each step. This is similar to the abstract machine
 that we had used to describe the happens-before relationship in
-section <a href="#s%3Ahappens_before">10.2.2</a>.</p>
-<h3 class="subsection" id="ss:mm_non_atomic"><a class="section-anchor" href="#ss:mm_non_atomic" aria-hidden="true">﻿</a>10.5.1 Non-atomic locations</h3>
+section&nbsp;<a href="#s%3Ahappens_before">10.2.2</a>.</p>
+<h3 class="subsection" id="ss:mm_non_atomic"><a class="section-anchor" href="#ss:mm_non_atomic" aria-hidden="true">﻿</a><span class="number">5.1</span> Non-atomic locations</h3>
 <p>In the semantics, we model non-atomic locations as finite maps from timestamps
 <span class="machine"><span class="font-tt">t</span></span> to values <span class="machine"><span class="font-tt">v</span></span>. We take timestamps to be rational numbers. The timestamps
 are totally ordered but dense; there is a timestamp between any two others.</p><p>For example,</p><pre>a: [t1 -&gt; 1; t2 -&gt; 2]
@@ -479,7 +477,7 @@ histories. The location <span class="machine"><span class="font-tt">a</span></sp
 values <span class="machine"><span class="font-tt">1</span></span> and <span class="machine"><span class="font-tt">2</span></span>, respectively. When we write <span class="machine"><span class="font-tt">a: [t1 -&gt; 1; t2 -&gt; 2]</span></span>, we
 assume that <span class="machine"><span class="font-tt">t1 &lt; t2</span></span>. We assume that the locations are initialised with a
 history that has a single entry at timestamp 0 that maps to the initial value.</p>
-<h3 class="subsection" id="ss:mm_domains"><a class="section-anchor" href="#ss:mm_domains" aria-hidden="true">﻿</a>10.5.2 Domains</h3>
+<h3 class="subsection" id="ss:mm_domains"><a class="section-anchor" href="#ss:mm_domains" aria-hidden="true">﻿</a><span class="number">5.2</span> Domains</h3>
 <p>Each domain is equipped with a <em>frontier</em>, which is a map from non-atomic
 locations to timestamps. Intuitively, each domain’s frontier records, for each
 non-atomic location, the latest write known to the thread. More recent writes
@@ -487,7 +485,7 @@ may have occurred, but are not guaranteed to be visible.</p><p>For example,</p><
 d2: [a -&gt; t1; b -&gt; t4; c -&gt; t7]
 </pre><p>
 represents two domains <span class="machine"><span class="font-tt">d1</span></span> and <span class="machine"><span class="font-tt">d2</span></span> and their frontiers.</p>
-<h3 class="subsection" id="ss:mm_na_access"><a class="section-anchor" href="#ss:mm_na_access" aria-hidden="true">﻿</a>10.5.3 Non-atomic accesses</h3>
+<h3 class="subsection" id="ss:mm_na_access"><a class="section-anchor" href="#ss:mm_na_access" aria-hidden="true">﻿</a><span class="number">5.3</span> Non-atomic accesses</h3>
 <p>Let us now define the semantics of non-atomic reads and writes. Suppose domain
 <span class="machine"><span class="font-tt">d1</span></span> performs the read of <span class="machine"><span class="font-tt">b</span></span>. For non-atomic reads, the domains may read an
 arbitrary element of the history for that location, as long as it is not older
@@ -510,7 +508,7 @@ c: [t6 -&gt; 5; t7 -&gt; 6; t9 -&gt; 10; t8 -&gt; 7] (* new write at t9 *)
 d1: [a -&gt; t1; b -&gt; t3; c -&gt; t7]
 d2: [a -&gt; t1; b -&gt; t4; c -&gt; t9] (* frontier updated at c *)
 </pre>
-<h3 class="subsection" id="ss:mm_at_access"><a class="section-anchor" href="#ss:mm_at_access" aria-hidden="true">﻿</a>10.5.4 Atomic accesses</h3>
+<h3 class="subsection" id="ss:mm_at_access"><a class="section-anchor" href="#ss:mm_at_access" aria-hidden="true">﻿</a><span class="number">5.4</span> Atomic accesses</h3>
 <p>Atomic locations carry not only values but also synchronization information. We
 model atomic locations as a pair of the value held by that location and a
 frontier. The frontier models the synchronization information, which is merged
@@ -568,7 +566,7 @@ d2: [a -&gt; t1; b -&gt; t5; c -&gt; t9] (* frontier updated at b *)
 A: 20, [a -&gt; t1; b -&gt; t5; c -&gt; t9] (* value updated. frontier updated at c. *)
 B: 5,  [a -&gt; t2; b -&gt; t4; c -&gt; t6]
 </pre>
-<h3 class="subsection" id="s:mm_semantics_reasoning"><a class="section-anchor" href="#s:mm_semantics_reasoning" aria-hidden="true">﻿</a>10.5.5 Reasoning with the semantics</h3>
+<h3 class="subsection" id="s:mm_semantics_reasoning"><a class="section-anchor" href="#s:mm_semantics_reasoning" aria-hidden="true">﻿</a><span class="number">5.5</span> Reasoning with the semantics</h3>
 <p>Let us revisit an example from earlier (section <a href="#s%3Awhy_relaxed_memory">10.1</a>).</p><div class="caml-example verbatim">
 
 <div class="ocaml">
@@ -629,7 +627,7 @@ is at <span class="machine"><span class="font-tt">t1</span></span>. Hence, the r
 returns <span class="machine"><span class="font-tt">0</span></span>. The machine state is not updated by the non-atomic read.</p><p>Similarly, for the fourth action <span class="machine"><span class="font-tt">!a</span></span> by <span class="machine"><span class="font-tt">d2</span></span>, <span class="machine"><span class="font-tt">d2</span></span>’s frontier at <span class="machine"><span class="font-tt">a</span></span> is at
 <span class="machine"><span class="font-tt">t0</span></span>. Hence, this read may also return either <span class="machine"><span class="font-tt">0</span></span> or <span class="machine"><span class="font-tt">1</span></span>. Let us assume that it
 returns <span class="machine"><span class="font-tt">0</span></span>. Hence, the assertion in the original program, <span class="machine"><span class="font-tt">assert (not (r1 = 0 &amp;&amp; r2 = 0))</span></span>, will fail for this particular execution.</p>
-<h2 class="section" id="s:mm_tearing"><a class="section-anchor" href="#s:mm_tearing" aria-hidden="true">﻿</a>10.6 Non-compliant operations</h2>
+<h2 class="section" id="s:mm_tearing"><a class="section-anchor" href="#s:mm_tearing" aria-hidden="true">﻿</a><span class="number">6</span> Non-compliant operations</h2>
 <p>There are certain operations which are not memory model compliant.</p><ul class="itemize"><li class="li-itemize"><span class="machine"><span class="font-tt">Array.blit</span></span> function on float arrays may cause <em>tearing</em>. When an
 unsynchronized blit operation runs concurrently with some overlapping write
 to the fields of the same float array, the field may end up with bits from
@@ -637,13 +635,15 @@ either of the writes.
 </li><li class="li-itemize">With flat-float arrays or records with only float fields on 32-bit
 architectures, getting or setting a field involves two separate memory
 accesses. In the presence of data races, the user may observe tearing.
-</li><li class="li-itemize">The <span class="machine"><span class="font-tt">Bytes</span></span> module <a href="libref/Bytes.html"><span class="font-tt">Bytes</span></a> permits mixed-mode accesses
+</li><li class="li-itemize">The <span class="machine"><span class="font-tt">Bytes</span></span> module&nbsp;<a href="api/Bytes.html"><span class="font-tt">Bytes</span></a> permits mixed-mode accesses
 where reads and writes may be of different sizes. Unsynchronized mixed-mode
 accesses lead to tearing.
 </li></ul>
 <hr>
-<a href="parallelism.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="language.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="parallelism.html">« Parallel programming</a><a class="next" href="language.html">The OCaml language »</a></div>
+
+
+
+
+<div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

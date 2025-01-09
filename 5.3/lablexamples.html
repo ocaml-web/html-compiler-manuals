@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 4 Labeled arguments</title>
-</head>
-<body>
-<a href="objectexamples.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="polyvariant.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec44">Chapter 4 Labeled arguments</h1>
-<ul>
-<li><a href="lablexamples.html#s%3Aoptional-arguments">4.1 Optional arguments</a>
-</li><li><a href="lablexamples.html#s%3Alabel-inference">4.2 Labels and type inference</a>
-</li><li><a href="lablexamples.html#s%3Alabel-suggestions">4.3 Suggestions for labeling</a>
-</li></ul>
+<title>OCaml - Labeled arguments</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>An introduction to OCaml</nav><ul id="part-menu"><li><a href="coreexamples.html">The core language</a></li><li><a href="moduleexamples.html">The module system</a></li><li><a href="objectexamples.html">Objects in OCaml</a></li><li class="active"><a href="lablexamples.html">Labeled arguments</a></li><li><a href="polyvariant.html">Polymorphic variants</a></li><li><a href="polymorphism.html">Polymorphism and its limitations</a></li><li><a href="gadts-tutorial.html">Generalized algebraic datatypes</a></li><li><a href="advexamples.html">Advanced examples with classes and modules</a></li><li><a href="parallelism.html">Parallel programming</a></li><li><a href="memorymodel.html">Memory model: The hard bits</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec44"><span class="chapter-number">Chapter 4</span> Labeled arguments</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Labeled arguments</a></li>
+<li><a href="lablexamples.html#s%3Aoptional-arguments"><span class="number">1</span> Optional arguments</a>
+</li><li><a href="lablexamples.html#s%3Alabel-inference"><span class="number">2</span> Labels and type inference</a>
+</li><li><a href="lablexamples.html#s%3Alabel-suggestions"><span class="number">3</span> Suggestions for labeling</a>
+</li></ul></nav></header>
 <p> <a id="c:labl-examples"></a>
 </p><p>
-<span class="font-it">(Chapter written by Jacques Garrigue)</span></p><p>If you have a look at modules ending in <span class="machine"><span class="font-tt">Labels</span></span> in the standard
+</p><p>If you have a look at modules ending in <span class="machine"><span class="font-tt">Labels</span></span> in the standard
 library, you will see that function types have annotations you did not
 have in the functions you defined yourself.</p><div class="caml-example toplevel">
 
@@ -171,7 +169,7 @@ can still commute with other arguments.</p><div class="caml-example toplevel">
 <div class="pre caml-output ok">- : int * int * int = (3, 5, 2)</div></div>
 
 </div>
-<h2 class="section" id="s:optional-arguments"><a class="section-anchor" href="#s:optional-arguments" aria-hidden="true">﻿</a>4.1 Optional arguments</h2>
+<h2 class="section" id="s:optional-arguments"><a class="section-anchor" href="#s:optional-arguments" aria-hidden="true"></a><span class="number">1</span> Optional arguments</h2>
 <p>An interesting feature of labeled arguments is that they can be made
 optional. For optional parameters, the question mark <span class="machine"><span class="font-tt">?</span></span> replaces the
 tilde <span class="machine"><span class="font-tt">~</span></span> of non-optional ones, and the label is also prefixed by <span class="machine"><span class="font-tt">?</span></span>
@@ -327,7 +325,7 @@ argument in an option type.</p><div class="caml-example toplevel">
 <div class="pre caml-output ok">- : ?y:int -&gt; unit -&gt; int * int * int = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
 
 </div>
-<h2 class="section" id="s:label-inference"><a class="section-anchor" href="#s:label-inference" aria-hidden="true">﻿</a>4.2 Labels and type inference</h2>
+<h2 class="section" id="s:label-inference"><a class="section-anchor" href="#s:label-inference" aria-hidden="true">﻿</a><span class="number">2</span> Labels and type inference</h2>
 <p>While they provide an increased comfort for writing function
 applications, labels and optional arguments have the pitfall that they
 cannot be inferred as completely as the rest of the language.</p><p>You can see it in the following two examples.
@@ -454,7 +452,7 @@ parameters.</p><div class="caml-example toplevel">
 including side-effects. That is, if the application of optional
 parameters shall produce side-effects, these are delayed until the
 received function is really applied to an argument.</p>
-<h2 class="section" id="s:label-suggestions"><a class="section-anchor" href="#s:label-suggestions" aria-hidden="true">﻿</a>4.3 Suggestions for labeling</h2>
+<h2 class="section" id="s:label-suggestions"><a class="section-anchor" href="#s:label-suggestions" aria-hidden="true">﻿</a><span class="number">3</span> Suggestions for labeling</h2>
 <p>Like for names, choosing labels for functions is not an easy task. A
 good labeling is one which</p><ul class="itemize"><li class="li-itemize">makes programs more readable,
 </li><li class="li-itemize">is easy to remember,
@@ -471,20 +469,16 @@ role. When this is not possible the role is to be preferred, since the
 nature will
 often be given by the type itself. Obscure abbreviations should be
 avoided.
-</p><pre>
-<span class="machine"><span class="font-tt">ListLabels.map : f:('a -&gt; 'b) -&gt; 'a list -&gt; 'b list</span></span>
+</p><pre><span class="machine"><span class="font-tt">ListLabels.map : f:('a -&gt; 'b) -&gt; 'a list -&gt; 'b list</span></span>
 UnixLabels.write : file_descr -&gt; buf:bytes -&gt; pos:int -&gt; len:int -&gt; unit
 </pre><p>When there are several objects of same nature and role, they are all
 left unlabeled.
-</p><pre>
-<span class="machine"><span class="font-tt">ListLabels.iter2 : f:('a -&gt; 'b -&gt; unit) -&gt; 'a list -&gt; 'b list -&gt; unit</span></span>
+</p><pre><span class="machine"><span class="font-tt">ListLabels.iter2 : f:('a -&gt; 'b -&gt; unit) -&gt; 'a list -&gt; 'b list -&gt; unit</span></span>
 </pre><p>When there is no preferable object, all arguments are labeled.
-</p><pre>
-BytesLabels.blit :
+</p><pre>BytesLabels.blit :
   src:bytes -&gt; src_pos:int -&gt; dst:bytes -&gt; dst_pos:int -&gt; len:int -&gt; unit
 </pre><p>However, when there is only one argument, it is often left unlabeled.
-</p><pre>
-BytesLabels.create : int -&gt; bytes
+</p><pre>BytesLabels.create : int -&gt; bytes
 </pre><p>
 This principle also applies to functions of several arguments whose
 return type is a type variable, as long as the role of each argument
@@ -492,7 +486,7 @@ is not ambiguous. Labeling such functions may lead to awkward error
 messages when one attempts to omit labels in an application, as we
 have seen with <span class="machine"><span class="font-tt">ListLabels.fold_left</span></span>.</p><p>Here are some of the label names you will find throughout the
 libraries.</p><div class="tableau">
-<div class="center"><table class="c000 cellpadding1" border=1><tr><td class="c004"><span class="font-bold">Label</span></td><td class="c004"><span class="font-bold">Meaning</span> </td></tr>
+<div class="center"><table class="c000 cellpadding1" border="1"><tbody><tr><td class="c004"><span class="font-bold">Label</span></td><td class="c004"><span class="font-bold">Meaning</span> </td></tr>
 <tr><td class="c006">
 <span class="machine"><span class="font-tt">f:</span></span></td><td class="c006">a function to be applied </td></tr>
 <tr><td class="c006"><span class="machine"><span class="font-tt">pos:</span></span></td><td class="c006">a position in a string, array or byte sequence </td></tr>
@@ -503,15 +497,17 @@ libraries.</p><div class="tableau">
 <tr><td class="c006"><span class="machine"><span class="font-tt">init:</span></span></td><td class="c006">the initial value for an iterator </td></tr>
 <tr><td class="c006"><span class="machine"><span class="font-tt">cmp:</span></span></td><td class="c006">a comparison function, <span class="font-it">e.g.</span> <span class="machine"><span class="font-tt">Stdlib.compare</span></span> </td></tr>
 <tr><td class="c006"><span class="machine"><span class="font-tt">mode:</span></span></td><td class="c006">an operation mode or a flag list </td></tr>
-</table></div></div><p>All these are only suggestions, but keep in mind that the
+</tbody></table></div></div><p>All these are only suggestions, but keep in mind that the
 choice of labels is essential for readability. Bizarre choices will
 make the program harder to maintain.</p><p>In the ideal, the right function name with right labels should be
 enough to understand the function’s meaning. Since one can get this
 information with OCamlBrowser or the <span class="machine"><span class="font-tt">ocaml</span></span> toplevel, the documentation
 is only used when a more detailed specification is needed.</p>
 <hr>
-<a href="objectexamples.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="polyvariant.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="objectexamples.html">« Objects in OCaml</a><a class="next" href="polyvariant.html">Polymorphic variants »</a></div>
+
+
+
+
+<span class="authors font-it">(Chapter written by Jacques Garrigue)</span><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

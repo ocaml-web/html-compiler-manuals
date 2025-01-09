@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="Misc.Error_style.html">
 <link rel="next" href="Misc.Utf8_lexeme.html">
 <link rel="Up" href="Misc.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Compiler_libs" rel="Chapter" href="Compiler_libs.html">
 <link title="Ast_helper" rel="Chapter" href="Ast_helper.html">
 <link title="Ast_invariants" rel="Chapter" href="Ast_invariants.html">
@@ -67,8 +65,10 @@
 <link title="Information on magic numbers" rel="Section" href="#3_Informationonmagicnumbers">
 <link title="Raw representations" rel="Section" href="#3_Rawrepresentations">
 <title>OCaml compiler library : Misc.Magic_number</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Compiler API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml compiler library : Misc.Magic_number</a></div><ul></ul></nav></header>
 <h1>Module <a href="type_Misc.Magic_number.html">Misc.Magic_number</a></h1>
 
 <pre><span id="MODULEMagic_number"><span class="keyword">module</span> Magic_number</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Misc.Magic_number.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
@@ -120,13 +120,13 @@
       for use in error messages.</p>
 
 <pre><code><span id="TYPEnative_obj_config"><span class="keyword">type</span> <code class="type"></code>native_obj_config</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTnative_obj_config.flambda">flambda</span>&nbsp;: <code class="type">bool</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 
 <div class="info ">
@@ -149,93 +149,93 @@
 
 
 <pre><code><span id="TYPEkind"><span class="keyword">type</span> <code class="type"></code>kind</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Exec"><span class="constructor">Exec</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Cmi"><span class="constructor">Cmi</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Cmo"><span class="constructor">Cmo</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Cma"><span class="constructor">Cma</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Cmx"><span class="constructor">Cmx</span></span> <span class="keyword">of</span> <code class="type"><a href="Misc.Magic_number.html#TYPEnative_obj_config">native_obj_config</a></code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Cmxa"><span class="constructor">Cmxa</span></span> <span class="keyword">of</span> <code class="type"><a href="Misc.Magic_number.html#TYPEnative_obj_config">native_obj_config</a></code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Cmxs"><span class="constructor">Cmxs</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Cmt"><span class="constructor">Cmt</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Ast_impl"><span class="constructor">Ast_impl</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTkind.Ast_intf"><span class="constructor">Ast_intf</span></span></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
 <pre><code><span id="TYPEinfo"><span class="keyword">type</span> <code class="type"></code>info</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTinfo.kind">kind</span>&nbsp;: <code class="type"><a href="Misc.Magic_number.html#TYPEkind">kind</a></code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTinfo.version">version</span>&nbsp;: <code class="type"><a href="Misc.Magic_number.html#TYPEversion">version</a></code>;</code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Note: some versions of the compiler use the same <code class="code">version</code> suffix
         for all kinds, but others use different versions counters for different
@@ -243,8 +243,8 @@
         (not necessarily always by one) between compiler versions.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 <code>}</code>
 
 
@@ -259,20 +259,20 @@
 
 <h4 id="3_Parsingmagicnumbers">Parsing magic numbers</h4>
 <pre><code><span id="TYPEparse_error"><span class="keyword">type</span> <code class="type"></code>parse_error</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTparse_error.Truncated"><span class="constructor">Truncated</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTparse_error.Not_a_magic_number"><span class="constructor">Not_a_magic_number</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
@@ -314,39 +314,39 @@
 </div>
 <h4 id="3_Checkingthatmagicnumbersarecurrent">Checking that magic numbers are current</h4>
 <pre><code><span id="TYPEunexpected"><span class="keyword">type</span> <code class="type">'a</code> unexpected</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTunexpected.expected">expected</span>&nbsp;: <code class="type">'a</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTunexpected.actual">actual</span>&nbsp;: <code class="type">'a</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 
 
 
 <pre><code><span id="TYPEunexpected_error"><span class="keyword">type</span> <code class="type"></code>unexpected_error</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTunexpected_error.Kind"><span class="constructor">Kind</span></span> <span class="keyword">of</span> <code class="type"><a href="Misc.Magic_number.html#TYPEkind">kind</a> <a href="Misc.Magic_number.html#TYPEunexpected">unexpected</a></code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTunexpected_error.Version"><span class="constructor">Version</span></span> <span class="keyword">of</span> <code class="type"><a href="Misc.Magic_number.html#TYPEkind">kind</a><br>        * <a href="Misc.Magic_number.html#TYPEversion">version</a> <a href="Misc.Magic_number.html#TYPEunexpected">unexpected</a></code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
@@ -364,20 +364,20 @@
 </div>
 
 <pre><code><span id="TYPEerror"><span class="keyword">type</span> <code class="type"></code>error</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTerror.Parse_error"><span class="constructor">Parse_error</span></span> <span class="keyword">of</span> <code class="type"><a href="Misc.Magic_number.html#TYPEparse_error">parse_error</a></code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTerror.Unexpected_error"><span class="constructor">Unexpected_error</span></span> <span class="keyword">of</span> <code class="type"><a href="Misc.Magic_number.html#TYPEunexpected_error">unexpected_error</a></code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
@@ -456,4 +456,5 @@
 </div>
 </div>
 
-<pre><span id="VALall_kinds"><span class="keyword">val</span> all_kinds</span> : <code class="type"><a href="Misc.Magic_number.html#TYPEkind">kind</a> list</code></pre></body></html>
+<pre><span id="VALall_kinds"><span class="keyword">val</span> all_kinds</span> : <code class="type"><a href="Misc.Magic_number.html#TYPEkind">kind</a> list</code></pre>
+</div></body></html>

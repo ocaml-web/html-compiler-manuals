@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="Hashtbl.html">
 <link rel="next" href="Int.html">
 <link rel="Up" href="index.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -96,8 +94,10 @@
 <link title="Attributes" rel="Section" href="#attributes">
 <link title="Examples" rel="Section" href="#examples">
 <title>OCaml library : In_channel</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : In_channel</a></div><ul><li><a href="#channels">Channels</a></li><li><a href="#input">Input</a></li><li><a href="#advanced_input">Advanced input</a></li><li><a href="#seeking">Seeking</a></li><li><a href="#attributes">Attributes</a></li><li><a href="#examples">Examples</a></li></ul></nav></header>
 <h1>Module <a href="type_In_channel.html">In_channel</a></h1>
 
 <pre><span id="MODULEIn_channel"><span class="keyword">module</span> In_channel</span>: <code class="code"><span class="keyword">sig</span></code> <a href="In_channel.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -123,114 +123,114 @@
 
 
 <pre><span id="TYPEopen_flag"><span class="keyword">type</span> <code class="type"></code>open_flag</span> = <code class="type"><a href="Stdlib.html#TYPEopen_flag">open_flag</a></code> = </pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_rdonly"><span class="constructor">Open_rdonly</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>open for reading.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_wronly"><span class="constructor">Open_wronly</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>open for writing.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_append"><span class="constructor">Open_append</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>open for appending: always write at end of file.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_creat"><span class="constructor">Open_creat</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>create the file if it does not exist.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_trunc"><span class="constructor">Open_trunc</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>empty the file if it already exists.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_excl"><span class="constructor">Open_excl</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>fail if Open_creat and the file already exists.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_binary"><span class="constructor">Open_binary</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>open in binary mode (no conversion).</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_text"><span class="constructor">Open_text</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>open in text mode (may perform conversions).</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTopen_flag.Open_nonblock"><span class="constructor">Open_nonblock</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>open in non-blocking mode.</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -501,4 +501,5 @@
     </code></pre>
 <p>Reading a line from stdin:</p>
 <pre class="codepre"><code class="code">      <span class="keyword">let</span> user_input () = <span class="constructor">In_channel</span>.input_line <span class="constructor">In_channel</span>.stdin
-    </code></pre></body></html>
+    </code></pre>
+</div></body></html>

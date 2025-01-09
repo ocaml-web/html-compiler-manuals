@@ -1,36 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 31 The unix library: Unix system calls</title>
-</head>
-<body>
-<a href="parsing.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="libstr.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec654">Chapter 31 The unix library: Unix system calls</h1>
+<title>OCaml - The unix library: Unix system calls</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml library</nav><ul id="part-menu"><li><a href="core.html">The core library</a></li><li><a href="stdlib.html">The standard library</a></li><li><a href="parsing.html">The compiler front-end</a></li><li class="active"><a href="libunix.html">The unix library: Unix system calls</a></li><li><a href="libstr.html">The str library: regular expressions and string processing</a></li><li><a href="runtime_events.html">The runtime_events library</a></li><li><a href="libthreads.html">The threads library</a></li><li><a href="libdynlink.html">The dynlink library: dynamic loading and linking of object files</a></li><li><a href="old.html">Recently removed or moved libraries (Graphics, Bigarray, Num, LablTk)</a></li></ul><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div></nav></header>
+
+
+
+
+<h1 class="chapter" id="sec654"><span class="chapter-number">Chapter 31</span> The unix library: Unix system calls</h1>
 <p>
 <a id="c:unix"></a></p><p>The <span class="machine"><span class="font-tt">unix</span></span> library makes many Unix
 system calls and system-related library functions available to
 OCaml programs. This chapter describes briefly the functions
-provided. Refer to sections 2 and 3 of the Unix manual for more
-details on the behavior of these functions.</p><ul class="ftoc2"><li class="li-links"><a href="libref/Unix.html">Module <span class="font-tt">Unix</span></a>: Unix system calls
-</li><li class="li-links"><a href="libref/UnixLabels.html">Module <span class="font-tt">UnixLabels</span></a>: Labeled Unix system calls
+provided. Refer to sections 2&nbsp;and&nbsp;3 of the Unix manual for more
+details on the behavior of these functions.</p><ul class="ftoc2"><li class="li-links"><a href="api/Unix.html">Module <span class="font-tt">Unix</span></a>: Unix system calls
+</li><li class="li-links"><a href="api/UnixLabels.html">Module <span class="font-tt">UnixLabels</span></a>: Labeled Unix system calls
 </li></ul><p>Not all functions are provided by all Unix variants. If some functions
 are not available, they will raise <span class="machine"><span class="font-tt">Invalid_arg</span></span> when called.</p><p>Programs that use the <span class="machine"><span class="font-tt">unix</span></span> library must be linked as follows:
-</p><pre>
-        ocamlc <span class="font-it">other options</span> -I +unix unix.cma <span class="font-it">other files</span>
+</p><pre>        ocamlc <span class="font-it">other options</span> -I +unix unix.cma <span class="font-it">other files</span>
         ocamlopt <span class="font-it">other options</span>  -I +unix unix.cmxa <span class="font-it">other files</span>
 </pre><p>
 For interactive use of the <span class="machine"><span class="font-tt">unix</span></span> library, do:
-</p><pre>
-        ocamlmktop -o mytop -I +unix unix.cma
+</p><pre>        ocamlmktop -o mytop -I +unix unix.cma
         ./mytop
 </pre><p>
 or (if dynamic linking of C libraries is supported on your platform),
@@ -54,7 +50,7 @@ Below is a list of the functions that are not implemented, or only
 partially implemented, by the Win32 ports. Functions not mentioned are
 fully implemented and behave as described previously in this chapter.
 </blockquote><div class="tableau">
-<div class="center"><table class="c000 cellpadding1" border=1><tr><td class="c004"><span class="font-bold">Functions</span></td><td class="c004"><span class="font-bold">Comment</span> </td></tr>
+<div class="center"><table class="c000 cellpadding1" border="1"><tbody><tr><td class="c004"><span class="font-bold">Functions</span></td><td class="c004"><span class="font-bold">Comment</span> </td></tr>
 <tr><td class="c012">
 <span class="machine"><span class="font-tt">fork</span></span></td><td class="c011">not implemented, use <span class="machine"><span class="font-tt">create_process</span></span> or threads </td></tr>
 <tr><td class="c012"><span class="machine"><span class="font-tt">wait</span></span></td><td class="c011">not implemented, use <span class="machine"><span class="font-tt">waitpid</span></span> </td></tr>
@@ -90,10 +86,12 @@ processes </td></tr>
 <tr><td class="c012"><span class="machine"><span class="font-tt">establish_server</span></span></td><td class="c011">not implemented; use threads </td></tr>
 <tr><td class="c012">terminal functions (<span class="machine"><span class="font-tt">tc*</span></span>)</td><td class="c011">not implemented </td></tr>
 <tr><td class="c012"><span class="machine"><span class="font-tt">setsid</span></span></td><td class="c011">not implemented </td></tr>
-</table></div></div>
+</tbody></table></div></div>
 <hr>
-<a href="parsing.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="libstr.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="parsing.html">« The compiler front-end</a><a class="next" href="libstr.html">The str library: regular expressions and string processing »</a></div>
+
+
+
+
+<div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>
