@@ -1,31 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>11.9 Classes</title>
-</head>
-<body>
-<a href="typedecl.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="modtypes.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h2 class="section" id="s:classes"><a class="section-anchor" href="#s:classes" aria-hidden="true">﻿</a>11.9 Classes</h2>
+<title>OCaml - The OCaml language</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li class="active"><a href="language.html">The OCaml language</a></li><li><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec112"><span class="chapter-number">Chapter 11</span> The OCaml language</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">The OCaml language</a></li>
+<li><a href="lex.html#start-section"><span class="number">1</span> Lexical conventions</a>
+</li><li><a href="values.html#start-section"><span class="number">2</span> Values</a>
+</li><li><a href="names.html#start-section"><span class="number">3</span> Names</a>
+</li><li><a href="types.html#start-section"><span class="number">4</span> Type expressions</a>
+</li><li><a href="const.html#start-section"><span class="number">5</span> Constants</a>
+</li><li><a href="patterns.html#start-section"><span class="number">6</span> Patterns</a>
+</li><li><a href="expr.html#start-section"><span class="number">7</span> Expressions</a>
+</li><li><a href="typedecl.html#start-section"><span class="number">8</span> Type and exception definitions</a>
+</li><li><a href="classes.html#start-section"><span class="number">9</span> Classes</a>
+</li><li><a href="modtypes.html#start-section"><span class="number">10</span> Module types (module specifications)</a>
+</li><li><a href="modules.html#start-section"><span class="number">11</span> Module expressions (module implementations)</a>
+</li><li><a href="compunit.html#start-section"><span class="number">12</span> Compilation units</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:classes"><a class="section-anchor" href="#s:classes" aria-hidden="true"></a><span class="number">9</span> Classes</h2>
 <ul>
-<li><a href="classes.html#ss%3Aclasses%3Aclass-types">11.9.1 Class types</a>
-</li><li><a href="classes.html#ss%3Aclass-expr">11.9.2 Class expressions</a>
-</li><li><a href="classes.html#ss%3Aclass-def">11.9.3 Class definitions</a>
-</li><li><a href="classes.html#ss%3Aclass-spec">11.9.4 Class specifications</a>
-</li><li><a href="classes.html#ss%3Aclasstype">11.9.5 Class type definitions</a>
+<li><a href="classes.html#ss%3Aclasses%3Aclass-types"><span class="number">9.1</span> Class types</a>
+</li><li><a href="classes.html#ss%3Aclass-expr"><span class="number">9.2</span> Class expressions</a>
+</li><li><a href="classes.html#ss%3Aclass-def"><span class="number">9.3</span> Class definitions</a>
+</li><li><a href="classes.html#ss%3Aclass-spec"><span class="number">9.4</span> Class specifications</a>
+</li><li><a href="classes.html#ss%3Aclasstype"><span class="number">9.5</span> Class type definitions</a>
 </li></ul>
 <p>
 Classes are defined using a small language, similar to the module
 language.</p>
-<h3 class="subsection" id="ss:classes:class-types"><a class="section-anchor" href="#ss:classes:class-types" aria-hidden="true">﻿</a>11.9.1 Class types</h3>
+<h3 class="subsection" id="ss:classes:class-types"><a class="section-anchor" href="#ss:classes:class-types" aria-hidden="true">﻿</a><span class="number">9.1</span> Class types</h3>
 <p>Class types are the class-level equivalent of type expressions: they
 specify the general shape and type properties of classes.</p><p><a id="hevea_manual.kwd101"></a>
 <a id="hevea_manual.kwd102"></a>
@@ -35,7 +51,7 @@ specify the general shape and type properties of classes.</p><p><a id="hevea_man
 <a id="hevea_manual.kwd106"></a>
 <a id="hevea_manual.kwd107"></a>
 <a id="hevea_manual.kwd108"></a>
-<a id="hevea_manual.kwd109"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="class-type"><span class="nonterminal">class-type</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd109"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="class-type"><span class="nonterminal">class-type</span></a></td><td class="c005">::=</td><td class="c007">
 [[<span class="syntax-token">?</span>]<a class="syntax" href="lex.html#label-name"><span class="nonterminal">label-name</span></a><span class="syntax-token">:</span>] <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> <span class="syntax-token">-&gt;</span> <a class="syntax" href="#class-type"><span class="nonterminal">class-type</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">   <a class="syntax" href="#class-body-type"><span class="nonterminal">class-body-type</span></a>
@@ -64,8 +80,8 @@ specify the general shape and type properties of classes.</p><p><a id="hevea_man
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">  <span class="syntax-token">constraint</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> <span class="syntax-token">=</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>
+</tbody></table></td></tr>
+</tbody></table></div><p>
 See also the following language extensions:
 <a href="attributes.html#s%3Aattributes">attributes</a> and
 <a href="extensionnodes.html#s%3Aextension-nodes">extension nodes</a>.</p><h4 class="subsubsection" id="sss:clty:simple"><a class="section-anchor" href="#sss:clty:simple" aria-hidden="true">﻿</a>Simple class expressions</h4>
@@ -127,7 +143,7 @@ name of the method and <a class="syntax" href="types.html#poly-typexpr"><span cl
 type expressions to be equal. This is typically used to specify type
 parameters: in this way, they can be bound to specific type
 expressions.</p>
-<h3 class="subsection" id="ss:class-expr"><a class="section-anchor" href="#ss:class-expr" aria-hidden="true">﻿</a>11.9.2 Class expressions</h3>
+<h3 class="subsection" id="ss:class-expr"><a class="section-anchor" href="#ss:class-expr" aria-hidden="true">﻿</a><span class="number">9.2</span> Class expressions</h3>
 <p>Class expressions are the class-level equivalent of value expressions:
 they evaluate to classes, thus providing implementations for the
 specifications expressed in class types.</p><p><a id="hevea_manual.kwd118"></a>
@@ -142,7 +158,7 @@ specifications expressed in class types.</p><p><a id="hevea_manual.kwd118"></a>
 <a id="hevea_manual.kwd127"></a>
 <a id="hevea_manual.kwd128"></a>
 <a id="hevea_manual.kwd129"></a>
-<a id="hevea_manual.kwd130"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="class-expr"><span class="nonterminal">class-expr</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd130"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="class-expr"><span class="nonterminal">class-expr</span></a></td><td class="c005">::=</td><td class="c007">
 <a class="syntax" href="names.html#class-path"><span class="nonterminal">class-path</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">  <span class="syntax-token">[</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> { <span class="syntax-token">,</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> } <span class="syntax-token">]</span> <a class="syntax" href="names.html#class-path"><span class="nonterminal">class-path</span></a>
@@ -162,8 +178,8 @@ specifications expressed in class types.</p><p><a id="hevea_manual.kwd118"></a>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">  <span class="syntax-token">let</span> <span class="syntax-token">open</span> <a class="syntax" href="names.html#module-path"><span class="nonterminal">module-path</span></a> <span class="syntax-token">in</span> <a class="syntax" href="#class-expr"><span class="nonterminal">class-expr</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="class-field"><span class="nonterminal">class-field</span></a></td><td class="c005">::=</td><td class="c007">
+</tbody></table></td></tr>
+</tbody></table></div><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="class-field"><span class="nonterminal">class-field</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">inherit</span> <a class="syntax" href="#class-expr"><span class="nonterminal">class-expr</span></a> [<span class="syntax-token">as</span> <a class="syntax" href="lex.html#lowercase-ident"><span class="nonterminal">lowercase-ident</span></a>]
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">  <span class="syntax-token">inherit!</span> <a class="syntax" href="#class-expr"><span class="nonterminal">class-expr</span></a> [<span class="syntax-token">as</span> <a class="syntax" href="lex.html#lowercase-ident"><span class="nonterminal">lowercase-ident</span></a>]
@@ -192,8 +208,8 @@ specifications expressed in class types.</p><p><a id="hevea_manual.kwd118"></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">  <span class="syntax-token">initializer</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>
+</tbody></table></td></tr>
+</tbody></table></div><p>
 See also the following language extensions:
 <a href="locallyabstract.html#s%3Alocally-abstract">locally abstract types</a>,
 <a href="attributes.html#s%3Aattributes">attributes</a> and
@@ -237,10 +253,10 @@ definition, it will be evaluated when the class is created (just as if
 the definition was outside of the class).
 Otherwise, it will be evaluated when the object constructor is called.</p><h4 class="subsubsection" id="sss:class-opens"><a class="section-anchor" href="#sss:class-opens" aria-hidden="true">﻿</a>Local opens</h4>
 <p>Local opens are supported in class expressions since OCaml 4.06.</p><h4 class="subsubsection" id="sss:class-body"><a class="section-anchor" href="#sss:class-body" aria-hidden="true">﻿</a>Class body</h4>
-<div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="class-body"><span class="nonterminal">class-body</span></a></td><td class="c005">::=</td><td class="c007">  [<span class="syntax-token">(</span> <a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a> [<span class="syntax-token">:</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>] <span class="syntax-token">)</span>] { <a class="syntax" href="#class-field"><span class="nonterminal">class-field</span></a> }
+<div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="class-body"><span class="nonterminal">class-body</span></a></td><td class="c005">::=</td><td class="c007">  [<span class="syntax-token">(</span> <a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a> [<span class="syntax-token">:</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>] <span class="syntax-token">)</span>] { <a class="syntax" href="#class-field"><span class="nonterminal">class-field</span></a> }
 </td></tr>
-</table></td></tr>
-</table></div><p>
+</tbody></table></td></tr>
+</tbody></table></div><p>
 The expression
 <span class="syntax-token">object</span> <a class="syntax" href="#class-body"><span class="nonterminal">class-body</span></a> <span class="syntax-token">end</span> denotes
 a class body. This is the prototype for an object : it lists the
@@ -303,15 +319,15 @@ the method name, <em>i.e.</em>
 through a virtual method definition; (3) by importing such a
 declaration through inheritance and/or constraining the type of <em>self</em>.</p><p>Some special expressions are available in method bodies for
 manipulating instance variables and duplicating self:
-</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a></td><td class="c005">::=</td><td class="c007">
+</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a></td><td class="c005">::=</td><td class="c007">
 …
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="names.html#inst-var-name"><span class="nonterminal">inst-var-name</span></a> <span class="syntax-token">&lt;-</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">{&lt;</span> [ <a class="syntax" href="names.html#inst-var-name"><span class="nonterminal">inst-var-name</span></a> <span class="syntax-token">=</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> { <span class="syntax-token">;</span> <a class="syntax" href="names.html#inst-var-name"><span class="nonterminal">inst-var-name</span></a> <span class="syntax-token">=</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> } [<span class="syntax-token">;</span>] ] <span class="syntax-token">&gt;}</span>
 </td></tr>
-</table></td></tr>
-</table></div><p>The expression <a class="syntax" href="names.html#inst-var-name"><span class="nonterminal">inst-var-name</span></a> <span class="syntax-token">&lt;-</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> modifies in-place the current
+</tbody></table></td></tr>
+</tbody></table></div><p>The expression <a class="syntax" href="names.html#inst-var-name"><span class="nonterminal">inst-var-name</span></a> <span class="syntax-token">&lt;-</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> modifies in-place the current
 object by replacing the value associated to <a class="syntax" href="names.html#inst-var-name"><span class="nonterminal">inst-var-name</span></a> by the
 value of <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a>. Of course, this instance variable must have been
 declared mutable.</p><p>The expression
@@ -332,9 +348,9 @@ overriding. Namely, <span class="syntax-token">method!</span> requires <a class=
 defined in this class, <span class="syntax-token">val!</span> requires <a class="syntax" href="names.html#inst-var-name"><span class="nonterminal">inst-var-name</span></a> to be already
 defined in this class, and <span class="syntax-token">inherit!</span> requires <a class="syntax" href="#class-expr"><span class="nonterminal">class-expr</span></a> to
 override some definitions. If no such overriding occurs, an error is
-signaled.</p><p>As a side-effect, these 3 keywords avoid the warnings 7
-(method override) and 13 (instance variable override).
-Note that warning 7 is disabled by default.</p><h4 class="subsubsection" id="sss:class-type-constraints"><a class="section-anchor" href="#sss:class-type-constraints" aria-hidden="true">﻿</a>Constraints on type parameters</h4>
+signaled.</p><p>As a side-effect, these 3 keywords avoid the warnings&nbsp;7
+(method override) and&nbsp;13 (instance variable override).
+Note that warning&nbsp;7 is disabled by default.</p><h4 class="subsubsection" id="sss:class-type-constraints"><a class="section-anchor" href="#sss:class-type-constraints" aria-hidden="true">﻿</a>Constraints on type parameters</h4>
 <p><a id="hevea_manual.kwd141"></a>
 The construct <span class="syntax-token">constraint</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a><sub>1</sub> <span class="syntax-token">=</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a><sub>2</sub> forces the two
 type expressions to be equals. This is typically used to specify type
@@ -343,10 +359,10 @@ expressions.</p><h4 class="subsubsection" id="sss:class-initializers"><a class="
 <p><a id="hevea_manual.kwd142"></a></p><p>A class initializer <span class="syntax-token">initializer</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> specifies an expression that
 will be evaluated whenever an object is created from the class, once
 all its instance variables have been initialized.</p>
-<h3 class="subsection" id="ss:class-def"><a class="section-anchor" href="#ss:class-def" aria-hidden="true">﻿</a>11.9.3 Class definitions</h3>
+<h3 class="subsection" id="ss:class-def"><a class="section-anchor" href="#ss:class-def" aria-hidden="true">﻿</a><span class="number">9.3</span> Class definitions</h3>
 <p>
 <a id="s:classdef"></a></p><p><a id="hevea_manual.kwd143"></a>
-<a id="hevea_manual.kwd144"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="class-definition"><span class="nonterminal">class-definition</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd144"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="class-definition"><span class="nonterminal">class-definition</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">class</span> <a class="syntax" href="#class-binding"><span class="nonterminal">class-binding</span></a> { <span class="syntax-token">and</span> <a class="syntax" href="#class-binding"><span class="nonterminal">class-binding</span></a> }
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -360,8 +376,8 @@ all its instance variables have been initialized.</p>
 <a class="syntax" id="type-parameters"><span class="nonterminal">type-parameters</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">'</span> <a class="syntax" href="lex.html#ident"><span class="nonterminal">ident</span></a> { <span class="syntax-token">,</span> <span class="syntax-token">'</span> <a class="syntax" href="lex.html#ident"><span class="nonterminal">ident</span></a> }
 </td></tr>
-</table></td></tr>
-</table></div><p>A class definition <span class="syntax-token">class</span> <a class="syntax" href="#class-binding"><span class="nonterminal">class-binding</span></a> { <span class="syntax-token">and</span> <a class="syntax" href="#class-binding"><span class="nonterminal">class-binding</span></a> } is
+</tbody></table></td></tr>
+</tbody></table></div><p>A class definition <span class="syntax-token">class</span> <a class="syntax" href="#class-binding"><span class="nonterminal">class-binding</span></a> { <span class="syntax-token">and</span> <a class="syntax" href="#class-binding"><span class="nonterminal">class-binding</span></a> } is
 recursive. Each <a class="syntax" href="#class-binding"><span class="nonterminal">class-binding</span></a> defines a <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> that can be
 used in the whole expression except for inheritance. It can also be
 used for inheritance, but only in the definitions that follow its own.</p><p>A class binding binds the class name <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> to the value of
@@ -370,7 +386,7 @@ the type of the class, and defines two type abbreviations :
 <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> and <span class="syntax-token">#</span> <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a>. The first one is the type of
 objects of this class, while the second is more general as it unifies
 with the type of any object belonging to a subclass (see
-section <a href="types.html#sss%3Atypexpr-sharp-types">11.4</a>).</p><h4 class="subsubsection" id="sss:class-virtual"><a class="section-anchor" href="#sss:class-virtual" aria-hidden="true">﻿</a>Virtual class</h4>
+section&nbsp;<a href="types.html#sss%3Atypexpr-sharp-types">11.4</a>).</p><h4 class="subsubsection" id="sss:class-virtual"><a class="section-anchor" href="#sss:class-virtual" aria-hidden="true">﻿</a>Virtual class</h4>
 <p>A class must be flagged virtual if one of its methods is virtual (that
 is, appears in the class type, but is not actually defined).
 Objects cannot be created from a virtual class.</p><h4 class="subsubsection" id="sss:class-type-params"><a class="section-anchor" href="#sss:class-type-params" aria-hidden="true">﻿</a>Type parameters</h4>
@@ -380,9 +396,9 @@ be bound to actual types in the class definition using type
 constraints. So that the abbreviations are well-formed, type
 variables of the inferred type of the class must either be type
 parameters or be bound in the constraint clause.</p>
-<h3 class="subsection" id="ss:class-spec"><a class="section-anchor" href="#ss:class-spec" aria-hidden="true">﻿</a>11.9.4 Class specifications</h3>
+<h3 class="subsection" id="ss:class-spec"><a class="section-anchor" href="#ss:class-spec" aria-hidden="true">﻿</a><span class="number">9.4</span> Class specifications</h3>
 <p><a id="hevea_manual.kwd145"></a>
-<a id="hevea_manual.kwd146"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="class-specification"><span class="nonterminal">class-specification</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd146"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="class-specification"><span class="nonterminal">class-specification</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">class</span> <a class="syntax" href="#class-spec"><span class="nonterminal">class-spec</span></a> { <span class="syntax-token">and</span> <a class="syntax" href="#class-spec"><span class="nonterminal">class-spec</span></a> }
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -391,14 +407,14 @@ parameters or be bound in the constraint clause.</p>
 [<span class="syntax-token">virtual</span>] [<span class="syntax-token">[</span> <a class="syntax" href="#type-parameters"><span class="nonterminal">type-parameters</span></a> <span class="syntax-token">]</span>] <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> <span class="syntax-token">:</span>
 <a class="syntax" href="#class-type"><span class="nonterminal">class-type</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>This is the counterpart in signatures of class definitions.
+</tbody></table></td></tr>
+</tbody></table></div><p>This is the counterpart in signatures of class definitions.
 A class specification matches a class definition if they have the same
 type parameters and their types match.</p>
-<h3 class="subsection" id="ss:classtype"><a class="section-anchor" href="#ss:classtype" aria-hidden="true">﻿</a>11.9.5 Class type definitions</h3>
+<h3 class="subsection" id="ss:classtype"><a class="section-anchor" href="#ss:classtype" aria-hidden="true">﻿</a><span class="number">9.5</span> Class type definitions</h3>
 <p><a id="hevea_manual.kwd147"></a>
 <a id="hevea_manual.kwd148"></a>
-<a id="hevea_manual.kwd149"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="classtype-definition"><span class="nonterminal">classtype-definition</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd149"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="classtype-definition"><span class="nonterminal">classtype-definition</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">class</span> <span class="syntax-token">type</span> <a class="syntax" href="#classtype-def"><span class="nonterminal">classtype-def</span></a>
 { <span class="syntax-token">and</span> <a class="syntax" href="#classtype-def"><span class="nonterminal">classtype-def</span></a> }
 </td></tr>
@@ -407,8 +423,8 @@ type parameters and their types match.</p>
 <a class="syntax" id="classtype-def"><span class="nonterminal">classtype-def</span></a></td><td class="c005">::=</td><td class="c007">
 [<span class="syntax-token">virtual</span>] [<span class="syntax-token">[</span> <a class="syntax" href="#type-parameters"><span class="nonterminal">type-parameters</span></a> <span class="syntax-token">]</span>] <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> <span class="syntax-token">=</span> <a class="syntax" href="#class-body-type"><span class="nonterminal">class-body-type</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>A class type definition <span class="syntax-token">class</span> <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> <span class="syntax-token">=</span> <a class="syntax" href="#class-body-type"><span class="nonterminal">class-body-type</span></a>
+</tbody></table></td></tr>
+</tbody></table></div><p>A class type definition <span class="syntax-token">class</span> <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> <span class="syntax-token">=</span> <a class="syntax" href="#class-body-type"><span class="nonterminal">class-body-type</span></a>
 defines an abbreviation <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> for the class body type
 <a class="syntax" href="#class-body-type"><span class="nonterminal">class-body-type</span></a>. As for class definitions, two type abbreviations
 <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> and <span class="syntax-token">#</span> <a class="syntax" href="names.html#class-name"><span class="nonterminal">class-name</span></a> are also defined. The definition can
@@ -417,9 +433,11 @@ type body is virtual, the definition must be flagged <span class="syntax-token">
 and they expand to matching types.
 
 </p>
-<hr>
-<a href="typedecl.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="modtypes.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+
+<div class="bottom-navigation"><a class="previous" href="typedecl.html">« Type and exception definitions</a><a class="next" href="modtypes.html">Module types (module specifications) »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

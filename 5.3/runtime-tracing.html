@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 25 Runtime tracing with runtime events</title>
-</head>
-<body>
-<a href="afl-fuzz.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="tail_mod_cons.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec610">Chapter 25 Runtime tracing with runtime events</h1>
-<ul>
-<li><a href="runtime-tracing.html#s%3Aruntime-tracing-overview">25.1 Overview</a>
-</li><li><a href="runtime-tracing.html#s%3Aruntime-tracing-architecture">25.2 Architecture</a>
-</li><li><a href="runtime-tracing.html#s%3Aruntime-tracing-usage">25.3 Usage</a>
-</li><li><a href="runtime-tracing.html#s%3Aruntime-tracing-custom-events">25.4 Custom events</a>
-</li></ul>
+<title>OCaml - Runtime tracing with runtime events</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="profil.html">Profiling (ocamlprof)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li class="active"><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec610"><span class="chapter-number">Chapter 25</span> Runtime tracing with runtime events</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Runtime tracing with runtime events</a></li>
+<li><a href="runtime-tracing.html#s%3Aruntime-tracing-overview"><span class="number">1</span> Overview</a>
+</li><li><a href="runtime-tracing.html#s%3Aruntime-tracing-architecture"><span class="number">2</span> Architecture</a>
+</li><li><a href="runtime-tracing.html#s%3Aruntime-tracing-usage"><span class="number">3</span> Usage</a>
+</li><li><a href="runtime-tracing.html#s%3Aruntime-tracing-custom-events"><span class="number">4</span> Custom events</a>
+</li></ul></nav></header>
 <p>
 <a id="c:runtime-tracing"></a>
 </p><p>This chapter describes the runtime events tracing system which enables
@@ -33,7 +31,7 @@ to consume and visualise data of interest.</p><p>Data emitted includes:
 </li><li class="li-itemize">Allocation and promotion rates between heaps
 </li></ul><p>Additional events can be declared and consumed, providing higher-level
 monitoring capabilities to OCaml libraries. They are referred to as <em>custom events</em>.</p>
-<h2 class="section" id="s:runtime-tracing-overview"><a class="section-anchor" href="#s:runtime-tracing-overview" aria-hidden="true">﻿</a>25.1 Overview</h2>
+<h2 class="section" id="s:runtime-tracing-overview"><a class="section-anchor" href="#s:runtime-tracing-overview" aria-hidden="true"></a><span class="number">1</span> Overview</h2>
 <p>There are three main classes of events emitted by the runtime events system:</p><dl class="description"><dt class="dt-description"><span class="font-bold">Spans</span></dt><dd class="dd-description"> Events spanning over a duration in time. For example, the runtime
 events tracing system emits a span event that starts when a minor
 collection begins in the OCaml garbage collector and ends when
@@ -57,11 +55,11 @@ the corresponding environment variable.
 old events are being overwritten by new events. Consumers can either continuously
 consume events or choose to only do so in response to some circumstance, e.g if
 a particular query or operation takes longer than expected to complete.</p>
-<h2 class="section" id="s:runtime-tracing-architecture"><a class="section-anchor" href="#s:runtime-tracing-architecture" aria-hidden="true">﻿</a>25.2 Architecture</h2>
+<h2 class="section" id="s:runtime-tracing-architecture"><a class="section-anchor" href="#s:runtime-tracing-architecture" aria-hidden="true">﻿</a><span class="number">2</span> Architecture</h2>
 <p>The runtime tracing system conceptually consists of two parts: 1) the event
 sources which emit events and 2) the events transport that ingests and
 transports these events.</p>
-<h3 class="subsection" id="s:runtime-tracing-event-sources"><a class="section-anchor" href="#s:runtime-tracing-event-sources" aria-hidden="true">﻿</a>25.2.1 Event sources</h3>
+<h3 class="subsection" id="s:runtime-tracing-event-sources"><a class="section-anchor" href="#s:runtime-tracing-event-sources" aria-hidden="true">﻿</a><span class="number">2.1</span> Event sources</h3>
 <p>
 Event sources are event-emitting points. There are a number of such sources in
 the OCaml runtime system. These are further split into two sets: 1) event
@@ -70,9 +68,9 @@ in the instrumented runtime. Event sources in the instrumented runtime are
 primarily of interest to developers of the OCaml runtime and garbage collector
 and, at present, only consist of major heap allocation size counter events.</p><p>The full set of events emitted by event sources and their documentation can be
 found in
-<a href="libref/Runtime_events.html">Module <span class="font-tt">Runtime_events</span></a>.
+<a href="api/Runtime_events.html">Module <span class="font-tt">Runtime_events</span></a>.
 </p>
-<h3 class="subsection" id="s:runtime-tracing-ingestion"><a class="section-anchor" href="#s:runtime-tracing-ingestion" aria-hidden="true">﻿</a>25.2.2 Events transport</h3>
+<h3 class="subsection" id="s:runtime-tracing-ingestion"><a class="section-anchor" href="#s:runtime-tracing-ingestion" aria-hidden="true">﻿</a><span class="number">2.2</span> Events transport</h3>
 <p>The events transport part of the system ingests events emitted by the event
 sources and makes them available to consumers.</p>
 <h4 class="subsubsection" id="s:runtime-tracing-ringbuffers"><a class="section-anchor" href="#s:runtime-tracing-ringbuffers" aria-hidden="true">﻿</a>Ring buffers</h4>
@@ -89,12 +87,12 @@ spawned domains. Ring buffers are only allocated (including for the main
 domain) when runtime events are enabled. The ring buffers themselves are stored
 in a memory-mapped file with the processes identifier as the name and the
 extension <span class="machine"><span class="font-tt">.events</span></span>, this enables them to be read from outside the main OCaml
-process. See <a href="libref/Runtime_events.html"><span class="font-tt">Runtime_events</span></a> for
+process. See <a href="api/Runtime_events.html"><span class="font-tt">Runtime_events</span></a> for
 more information.</p>
 <h4 class="subsubsection" id="s:runtime-tracing-apis"><a class="section-anchor" href="#s:runtime-tracing-apis" aria-hidden="true">﻿</a>Consumption APIs</h4>
 <p>The runtime event tracing system provides both OCaml and C APIs which are
 cursor-based and polling-driven. The high-level process for consuming events
-is as follows:</p><ol class="enumerate" type=1><li class="li-enumerate">A cursor is created via <span class="font-tt">Runtime_events.create_cursor</span> for either the
+is as follows:</p><ol class="enumerate" type="1"><li class="li-enumerate">A cursor is created via <span class="font-tt">Runtime_events.create_cursor</span> for either the
 current process or an external process (specified by a path and PID).
 </li><li class="li-enumerate"><span class="font-tt">Runtime_events.Callbacks.create</span> is called to register a callback function to receive the events.
 </li><li class="li-enumerate">The cursor is polled via <span class="font-tt">Runtime_events.read_poll</span> using the callbacks
@@ -102,8 +100,8 @@ created in the previous step. For each matching event in the ring buffers, the
 provided callback functions are called. In addition to the emitted events,
 callbacks are given the emitter domain’s ID and the emission timestamp.
 </li></ol>
-<h2 class="section" id="s:runtime-tracing-usage"><a class="section-anchor" href="#s:runtime-tracing-usage" aria-hidden="true">﻿</a>25.3 Usage</h2>
-<h3 class="subsection" id="s:runtime-tracing-ocaml-apis"><a class="section-anchor" href="#s:runtime-tracing-ocaml-apis" aria-hidden="true">﻿</a>25.3.1 With OCaml APIs</h3>
+<h2 class="section" id="s:runtime-tracing-usage"><a class="section-anchor" href="#s:runtime-tracing-usage" aria-hidden="true">﻿</a><span class="number">3</span> Usage</h2>
+<h3 class="subsection" id="s:runtime-tracing-ocaml-apis"><a class="section-anchor" href="#s:runtime-tracing-ocaml-apis" aria-hidden="true">﻿</a><span class="number">3.1</span> With OCaml APIs</h3>
 <p>We start with a simple example that prints the name, begin and end times
 of events emitted by the runtime event tracing system:</p><pre>let runtime_begin _ ts phase =
     Printf.printf "Begin\t%s\t%Ld\n"
@@ -198,7 +196,7 @@ And for dune:</p><pre>(executable
  (flags "-runtime-variant=i")
  (libraries unix runtime_events))
 </pre>
-<h3 class="subsection" id="s:runtime-tracing-tooling"><a class="section-anchor" href="#s:runtime-tracing-tooling" aria-hidden="true">﻿</a>25.3.2 With tooling</h3>
+<h3 class="subsection" id="s:runtime-tracing-tooling"><a class="section-anchor" href="#s:runtime-tracing-tooling" aria-hidden="true">﻿</a><span class="number">3.2</span> With tooling</h3>
 <p>Programmatic access to events is intended primarily for writers of observability
 libraries and tooling for end-users. The flexible API enables use of the
 performance data from runtime events for logging and monitoring purposes.</p><p>In this section we cover several utilities in the <span class="font-tt">runtime_events_tools</span>
@@ -241,8 +239,8 @@ Percentile 	 Latency (ms)
 99.9999 	 9.17
 100.0000 	 9.17
 </pre>
-<h2 class="section" id="s:runtime-tracing-custom-events"><a class="section-anchor" href="#s:runtime-tracing-custom-events" aria-hidden="true">﻿</a>25.4 Custom events</h2>
-<h3 class="subsection" id="s:runtime-tracing-custom-events-overview"><a class="section-anchor" href="#s:runtime-tracing-custom-events-overview" aria-hidden="true">﻿</a>25.4.1 Overview</h3>
+<h2 class="section" id="s:runtime-tracing-custom-events"><a class="section-anchor" href="#s:runtime-tracing-custom-events" aria-hidden="true">﻿</a><span class="number">4</span> Custom events</h2>
+<h3 class="subsection" id="s:runtime-tracing-custom-events-overview"><a class="section-anchor" href="#s:runtime-tracing-custom-events-overview" aria-hidden="true">﻿</a><span class="number">4.1</span> Overview</h3>
 <p>The runtime events system supports defining custom events. Identified by a
 globally unique name, they are emitted with payloads of built-in (<span class="font-tt">unit</span>,
 <span class="font-tt">int</span>, <span class="font-tt">span</span>) and user-defined types. To understand the
@@ -258,7 +256,7 @@ between the custom event’s name, its type, and a <em>tag</em>. The tag is then
 used when emitting or consuming custom events; it acts as a shorthand for the
 event name.</p><p>Once an event is registered, values for that event are emitted using
 <span class="font-tt">Runtime_events.User.write</span>.</p><p>To summarize, for a user to emit and consume custom events using a custom type
-they need to:</p><ol class="enumerate" type=1><li class="li-enumerate">register the custom type
+they need to:</p><ol class="enumerate" type="1"><li class="li-enumerate">register the custom type
 </li><li class="li-enumerate">extend the <span class="font-tt">Runtime_events.User.tag</span> variant with a new constructor
 </li><li class="li-enumerate">register the new custom event, binding together the custom event name, the
 new tag, and the new custom type
@@ -266,7 +264,7 @@ new tag, and the new custom type
 </li><li class="li-enumerate">indicate a callback which should receive all events of the custom
 type using <span class="font-tt">Runtime_events.Callbacks.add_user_event</span> to register it
 inside a <span class="font-tt">Runtime_events.Callbacks.t</span> object to be used when polling
-(see section <a href="#s%3Aruntime-tracing-ocaml-apis">25.3.1</a> above).
+(see section&nbsp;<a href="#s%3Aruntime-tracing-ocaml-apis">25.3.1</a> above).
 </li><li class="li-enumerate"><em>(Optional, if there are distinct events registered with the same
 custom type:)</em> In that callback, pattern-match on the event tag in order to
 discriminate between different event tags of the same custom type.
@@ -286,7 +284,7 @@ registered. Because this only works for events of built-in types, it can be
 useful to emit events in pairs: an event of a custom type with an event of a
 built-in type, enabling the design of a specialized consumer while staying
 compatible with generic tracing tools.</p>
-<h3 class="subsection" id="s:runtime-tracing-custom-events-usage"><a class="section-anchor" href="#s:runtime-tracing-custom-events-usage" aria-hidden="true">﻿</a>25.4.2 Tracing custom events: an
+<h3 class="subsection" id="s:runtime-tracing-custom-events-usage"><a class="section-anchor" href="#s:runtime-tracing-custom-events-usage" aria-hidden="true">﻿</a><span class="number">4.2</span> Tracing custom events: an
 example</h3>
 <p>The following program uses the <span class="font-tt">Runtime_events.User</span> and
 <span class="font-tt">Runtime_events.Type</span> modules to declare two custom events providing
@@ -366,8 +364,10 @@ Giving the following output:
 [...]
 </pre>
 <hr>
-<a href="afl-fuzz.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="tail_mod_cons.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="afl-fuzz.html">« Fuzzing with afl-fuzz</a><a class="next" href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation »</a></div>
+
+
+
+
+<div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

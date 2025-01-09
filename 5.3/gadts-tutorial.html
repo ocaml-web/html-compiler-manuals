@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 7 Generalized algebraic datatypes</title>
-</head>
-<body>
-<a href="polymorphism.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="advexamples.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec63">Chapter 7 Generalized algebraic datatypes</h1>
-<ul>
-<li><a href="gadts-tutorial.html#s%3Agadts-recfun">7.1 Recursive functions</a>
-</li><li><a href="gadts-tutorial.html#s%3Agadts-type-inference">7.2 Type inference</a>
-</li><li><a href="gadts-tutorial.html#s%3Agadt-refutation-cases">7.3 Refutation cases</a>
-</li><li><a href="gadts-tutorial.html#s%3Agadts-advexamples">7.4 Advanced examples</a>
-</li><li><a href="gadts-tutorial.html#s%3Aexistential-names">7.5 Existential type names in error messages</a>
-</li><li><a href="gadts-tutorial.html#s%3Aexplicit-existential-name">7.6 Explicit naming of existentials</a>
-</li><li><a href="gadts-tutorial.html#s%3Agadt-equation-nonlocal-abstract">7.7 Equations on non-local abstract types</a>
-</li></ul>
+<title>OCaml - Generalized algebraic datatypes</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>An introduction to OCaml</nav><ul id="part-menu"><li><a href="coreexamples.html">The core language</a></li><li><a href="moduleexamples.html">The module system</a></li><li><a href="objectexamples.html">Objects in OCaml</a></li><li><a href="lablexamples.html">Labeled arguments</a></li><li><a href="polyvariant.html">Polymorphic variants</a></li><li><a href="polymorphism.html">Polymorphism and its limitations</a></li><li class="active"><a href="gadts-tutorial.html">Generalized algebraic datatypes</a></li><li><a href="advexamples.html">Advanced examples with classes and modules</a></li><li><a href="parallelism.html">Parallel programming</a></li><li><a href="memorymodel.html">Memory model: The hard bits</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec63"><span class="chapter-number">Chapter 7</span> Generalized algebraic datatypes</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Generalized algebraic datatypes</a></li>
+<li><a href="gadts-tutorial.html#s%3Agadts-recfun"><span class="number">1</span> Recursive functions</a>
+</li><li><a href="gadts-tutorial.html#s%3Agadts-type-inference"><span class="number">2</span> Type inference</a>
+</li><li><a href="gadts-tutorial.html#s%3Agadt-refutation-cases"><span class="number">3</span> Refutation cases</a>
+</li><li><a href="gadts-tutorial.html#s%3Agadts-advexamples"><span class="number">4</span> Advanced examples</a>
+</li><li><a href="gadts-tutorial.html#s%3Aexistential-names"><span class="number">5</span> Existential type names in error messages</a>
+</li><li><a href="gadts-tutorial.html#s%3Aexplicit-existential-name"><span class="number">6</span> Explicit naming of existentials</a>
+</li><li><a href="gadts-tutorial.html#s%3Agadt-equation-nonlocal-abstract"><span class="number">7</span> Equations on non-local abstract types</a>
+</li></ul></nav></header>
 <p> <a id="c:gadts-tutorial"></a>
 </p><p>Generalized algebraic datatypes, or GADTs, extend usual sum types in
 two ways: constraints on type parameters may change depending on the
@@ -57,7 +55,7 @@ of the pattern-matching.
 If a constructor has some existential variables, fresh locally
 abstract types are generated, and they must not escape the
 scope of this branch.</p>
-<h2 class="section" id="s:gadts-recfun"><a class="section-anchor" href="#s:gadts-recfun" aria-hidden="true">﻿</a>7.1 Recursive functions</h2>
+<h2 class="section" id="s:gadts-recfun"><a class="section-anchor" href="#s:gadts-recfun" aria-hidden="true"></a><span class="number">1</span> Recursive functions</h2>
 <p>We write an <span class="machine"><span class="font-tt">eval</span></span> function:</p><div class="caml-example verbatim">
 
 <div class="ocaml">
@@ -118,11 +116,11 @@ function, and thus escapes its scope. In the above example, this happens
 in the branch <span class="machine"><span class="font-tt">App(f,x)</span></span> when <span class="machine"><span class="font-tt">eval</span></span> is called with <span class="machine"><span class="font-tt">f</span></span> as an argument.
 In this branch, the type of <span class="machine"><span class="font-tt">f</span></span> is <span class="machine"><span class="font-tt">($App_'b -&gt; a) term</span></span>. The prefix <span class="machine"><span class="font-tt">$</span></span> in
 <span class="machine"><span class="font-tt">$App_'b</span></span> denotes an existential type named by the compiler
-(see <a href="#s%3Aexistential-names">7.5</a>). Since the type of <span class="machine"><span class="font-tt">eval</span></span> is
+(see&nbsp;<a href="#s%3Aexistential-names">7.5</a>). Since the type of <span class="machine"><span class="font-tt">eval</span></span> is
 <span class="machine"><span class="font-tt">'a term -&gt; 'a</span></span>, the call <span class="machine"><span class="font-tt">eval f</span></span> makes the existential type <span class="machine"><span class="font-tt">$App_'b</span></span>
 flow to the type variable <span class="machine"><span class="font-tt">'a</span></span> and escape its scope. This triggers the
 above error.</p>
-<h2 class="section" id="s:gadts-type-inference"><a class="section-anchor" href="#s:gadts-type-inference" aria-hidden="true">﻿</a>7.2 Type inference</h2>
+<h2 class="section" id="s:gadts-type-inference"><a class="section-anchor" href="#s:gadts-type-inference" aria-hidden="true">﻿</a><span class="number">2</span> Type inference</h2>
 <p>Type inference for GADTs is notoriously hard.
 This is due to the fact some types may become ambiguous when escaping
 from a branch.
@@ -187,7 +185,7 @@ exhaustive (the <span class="machine"><span class="font-tt">Add</span></span> ca
   | App(_,_) -&gt; 0</div></div>
 
 </div>
-<h2 class="section" id="s:gadt-refutation-cases"><a class="section-anchor" href="#s:gadt-refutation-cases" aria-hidden="true">﻿</a>7.3 Refutation cases</h2>
+<h2 class="section" id="s:gadt-refutation-cases"><a class="section-anchor" href="#s:gadt-refutation-cases" aria-hidden="true">﻿</a><span class="number">3</span> Refutation cases</h2>
 <p>Usually, the exhaustiveness check only tries to check whether the
 cases omitted from the pattern matching are typable or not.
 However, you can force it to try harder by adding <em>refutation cases</em>,
@@ -224,7 +222,7 @@ automatically added when there is only one case in the pattern
 matching.</p><p>Another addition is that the redundancy check is now aware of GADTs: a
 case will be detected as redundant if it could be replaced by a
 refutation case using the same pattern.</p>
-<h2 class="section" id="s:gadts-advexamples"><a class="section-anchor" href="#s:gadts-advexamples" aria-hidden="true">﻿</a>7.4 Advanced examples</h2>
+<h2 class="section" id="s:gadts-advexamples"><a class="section-anchor" href="#s:gadts-advexamples" aria-hidden="true">﻿</a><span class="number">4</span> Advanced examples</h2>
 <p>
 The <span class="machine"><span class="font-tt">term</span></span> type we have defined above is an <em>indexed</em> type, where
 a type parameter reflects a property of the value contents.
@@ -302,7 +300,7 @@ to implement dynamic types.
   | Some Eq -&gt; Some x</div></div>
 
 </div>
-<h2 class="section" id="s:existential-names"><a class="section-anchor" href="#s:existential-names" aria-hidden="true">﻿</a>7.5 Existential type names in error messages</h2>
+<h2 class="section" id="s:existential-names"><a class="section-anchor" href="#s:existential-names" aria-hidden="true">﻿</a><span class="number">5</span> Existential type names in error messages</h2>
 <p>The typing of pattern matching in the presence of GADTs can generate many
 existential types. When necessary, error messages refer to these
 existential types using compiler-generated names. Currently, the
@@ -357,7 +355,7 @@ variable <span class="machine"><span class="font-tt">'a</span></span> of a GADT 
 </li><li class="li-itemize"><span class="machine"><span class="font-tt">$n</span></span> (n a number) is an internally generated existential which could not be named using one of the previous schemes.
 </li></ul><p>As shown by the last item, the current behavior is imperfect
 and may be improved in future versions.</p>
-<h2 class="section" id="s:explicit-existential-name"><a class="section-anchor" href="#s:explicit-existential-name" aria-hidden="true">﻿</a>7.6 Explicit naming of existentials</h2>
+<h2 class="section" id="s:explicit-existential-name"><a class="section-anchor" href="#s:explicit-existential-name" aria-hidden="true">﻿</a><span class="number">6</span> Explicit naming of existentials</h2>
 <p>As explained above, pattern-matching on a GADT constructor may introduce
 existential types. Syntax has been introduced which allows them to be named
 explicitly. For instance, the following code names the type of the argument of
@@ -393,7 +391,7 @@ type of the arguments.
       (default b : b), (default c : c)</div></div>
 
 </div>
-<h2 class="section" id="s:gadt-equation-nonlocal-abstract"><a class="section-anchor" href="#s:gadt-equation-nonlocal-abstract" aria-hidden="true">﻿</a>7.7 Equations on non-local abstract types</h2>
+<h2 class="section" id="s:gadt-equation-nonlocal-abstract"><a class="section-anchor" href="#s:gadt-equation-nonlocal-abstract" aria-hidden="true">﻿</a><span class="number">7</span> Equations on non-local abstract types</h2>
 <p>GADT pattern-matching may also add type equations to non-local
 abstract types. The behaviour is the same as with local abstract
 types. Reusing the above <span class="machine"><span class="font-tt">eq</span></span> type, one can write:
@@ -420,8 +418,10 @@ as such cause a type error rather than introduce an equation.
 
 </p>
 <hr>
-<a href="polymorphism.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="advexamples.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="polymorphism.html">« Polymorphism and its limitations</a><a class="next" href="advexamples.html">Advanced examples with classes and modules »</a></div>
+
+
+
+
+<div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

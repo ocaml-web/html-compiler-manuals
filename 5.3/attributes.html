@@ -1,22 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>12.12 Attributes</title>
-</head>
-<body>
-<a href="bigarray.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="extensionnodes.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h2 class="section" id="s:attributes"><a class="section-anchor" href="#s:attributes" aria-hidden="true">﻿</a>12.12 Attributes</h2>
+<title>OCaml - Language extensions</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li><a href="language.html">The OCaml language</a></li><li class="active"><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec279"><span class="chapter-number">Chapter 12</span> Language extensions</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Language extensions</a></li>
+<li><a href="letrecvalues.html#start-section"><span class="number">1</span> Recursive definitions of values</a>
+</li><li><a href="recursivemodules.html#start-section"><span class="number">2</span> Recursive modules</a>
+</li><li><a href="privatetypes.html#start-section"><span class="number">3</span> Private types</a>
+</li><li><a href="locallyabstract.html#start-section"><span class="number">4</span> Locally abstract types</a>
+</li><li><a href="firstclassmodules.html#start-section"><span class="number">5</span> First-class modules</a>
+</li><li><a href="moduletypeof.html#start-section"><span class="number">6</span> Recovering the type of a module</a>
+</li><li><a href="signaturesubstitution.html#start-section"><span class="number">7</span> Substituting inside a signature</a>
+</li><li><a href="modulealias.html#start-section"><span class="number">8</span> Type-level module aliases</a>
+</li><li><a href="overridingopen.html#start-section"><span class="number">9</span> Overriding in open statements</a>
+</li><li><a href="gadts.html#start-section"><span class="number">10</span> Generalized algebraic datatypes</a>
+</li><li><a href="bigarray.html#start-section"><span class="number">11</span> Syntax for Bigarray access</a>
+</li><li><a href="attributes.html#start-section"><span class="number">12</span> Attributes</a>
+</li><li><a href="extensionnodes.html#start-section"><span class="number">13</span> Extension nodes</a>
+</li><li><a href="extensiblevariants.html#start-section"><span class="number">14</span> Extensible variant types</a>
+</li><li><a href="generativefunctors.html#start-section"><span class="number">15</span> Generative functors</a>
+</li><li><a href="extensionsyntax.html#start-section"><span class="number">16</span> Extension-only syntax</a>
+</li><li><a href="inlinerecords.html#start-section"><span class="number">17</span> Inline records</a>
+</li><li><a href="doccomments.html#start-section"><span class="number">18</span> Documentation comments</a>
+</li><li><a href="indexops.html#start-section"><span class="number">19</span> Extended indexing operators </a>
+</li><li><a href="emptyvariants.html#start-section"><span class="number">20</span> Empty variant types</a>
+</li><li><a href="alerts.html#start-section"><span class="number">21</span> Alerts</a>
+</li><li><a href="generalizedopens.html#start-section"><span class="number">22</span> Generalized open statements</a>
+</li><li><a href="bindingops.html#start-section"><span class="number">23</span> Binding operators</a>
+</li><li><a href="effects.html#start-section"><span class="number">24</span> Effect handlers</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:attributes"><a class="section-anchor" href="#s:attributes" aria-hidden="true"></a><span class="number">12</span> Attributes</h2>
 <ul>
-<li><a href="attributes.html#ss%3Abuiltin-attributes">12.12.1 Built-in attributes</a>
+<li><a href="attributes.html#ss%3Abuiltin-attributes"><span class="number">12.1</span> Built-in attributes</a>
 </li></ul>
 <p>
 <a id="hevea_manual.kwd227"></a>
@@ -26,7 +54,7 @@ ignored by the type-checker but can be used by external tools. An
 attribute is made of an identifier and a payload, which can be a
 structure, a type expression (prefixed with <span class="machine"><span class="font-tt">:</span></span>), a signature
 (prefixed with <span class="machine"><span class="font-tt">:</span></span>) or a pattern (prefixed with <span class="machine"><span class="font-tt">?</span></span>) optionally
-followed by a <span class="machine"><span class="font-tt">when</span></span> clause:</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="attr-id"><span class="nonterminal">attr-id</span></a></td><td class="c005">::=</td><td class="c007">
+followed by a <span class="machine"><span class="font-tt">when</span></span> clause:</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="attr-id"><span class="nonterminal">attr-id</span></a></td><td class="c005">::=</td><td class="c007">
 <a class="syntax" href="lex.html#lowercase-ident"><span class="nonterminal">lowercase-ident</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">  <a class="syntax" href="lex.html#capitalized-ident"><span class="nonterminal">capitalized-ident</span></a>
@@ -45,9 +73,9 @@ followed by a <span class="machine"><span class="font-tt">when</span></span> cla
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007">  <span class="syntax-token">?</span> <a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a> [<span class="syntax-token">when</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a>]
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><p>The first form of attributes is attached with a postfix notation on
-“algebraic” categories:</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="attribute"><span class="nonterminal">attribute</span></a></td><td class="c005">::=</td><td class="c007">
+</tbody></table></td></tr>
+</tbody></table></div><p>The first form of attributes is attached with a postfix notation on
+“algebraic” categories:</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="attribute"><span class="nonterminal">attribute</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">[@</span> <a class="syntax" href="#attr-id"><span class="nonterminal">attr-id</span></a> <a class="syntax" href="#attr-payload"><span class="nonterminal">attr-payload</span></a> <span class="syntax-token">]</span>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -93,11 +121,11 @@ followed by a <span class="machine"><span class="font-tt">when</span></span> cla
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="classes.html#class-type"><span class="nonterminal">class-type</span></a> <a class="syntax" href="#attribute"><span class="nonterminal">attribute</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><p>This form of attributes can also be inserted after the <span class="syntax-token">`</span><a class="syntax" href="names.html#tag-name"><span class="nonterminal">tag-name</span></a>
+</tbody></table></td></tr>
+</tbody></table></div><p>This form of attributes can also be inserted after the <span class="syntax-token">`</span><a class="syntax" href="names.html#tag-name"><span class="nonterminal">tag-name</span></a>
 in polymorphic variant type expressions (<a class="syntax" href="types.html#tag-spec-first"><span class="nonterminal">tag-spec-first</span></a>, <a class="syntax" href="types.html#tag-spec"><span class="nonterminal">tag-spec</span></a>,
 <a class="syntax" href="types.html#tag-spec-full"><span class="nonterminal">tag-spec-full</span></a>) or after the <a class="syntax" href="names.html#method-name"><span class="nonterminal">method-name</span></a> in <a class="syntax" href="types.html#method-type"><span class="nonterminal">method-type</span></a>.</p><p>The same syntactic form is also used to attach attributes to labels and
-constructors in type declarations:</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><span class="nonterminal">field-decl</span></td><td class="c005">::=</td><td class="c007">
+constructors in type declarations:</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><span class="nonterminal">field-decl</span></td><td class="c005">::=</td><td class="c007">
 [<span class="syntax-token">mutable</span>] <a class="syntax" href="names.html#field-name"><span class="nonterminal">field-name</span></a> <span class="syntax-token">:</span> <a class="syntax" href="types.html#poly-typexpr"><span class="nonterminal">poly-typexpr</span></a> { <a class="syntax" href="#attribute"><span class="nonterminal">attribute</span></a> }
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -106,11 +134,11 @@ constructors in type declarations:</p><div class="syntax"><table class="display 
 (<a class="syntax" href="names.html#constr-name"><span class="nonterminal">constr-name</span></a> ∣ <span class="syntax-token">()</span>) [ <span class="syntax-token">of</span> <a class="syntax" href="typedecl.html#constr-args"><span class="nonterminal">constr-args</span></a> ] { <a class="syntax" href="#attribute"><span class="nonterminal">attribute</span></a> }
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><p>Note: when a label declaration is followed by a semi-colon, attributes
+</tbody></table></td></tr>
+</tbody></table></div><p>Note: when a label declaration is followed by a semi-colon, attributes
 can also be put after the semi-colon (in which case they are merged to
 those specified before).</p><p>The second form of attributes are attached to “blocks” such as type
-declarations, class fields, etc:</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="item-attribute"><span class="nonterminal">item-attribute</span></a></td><td class="c005">::=</td><td class="c007">
+declarations, class fields, etc:</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="item-attribute"><span class="nonterminal">item-attribute</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">[@@</span> <a class="syntax" href="#attr-id"><span class="nonterminal">attr-id</span></a> <a class="syntax" href="#attr-payload"><span class="nonterminal">attr-payload</span></a> <span class="syntax-token">]</span>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -219,10 +247,10 @@ declarations, class fields, etc:</p><div class="syntax"><table class="display dc
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="classes.html#class-field"><span class="nonterminal">class-field</span></a> <a class="syntax" href="#item-attribute"><span class="nonterminal">item-attribute</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><p>A third form of attributes appears as stand-alone structure or
+</tbody></table></td></tr>
+</tbody></table></div><p>A third form of attributes appears as stand-alone structure or
 signature items in the module or class sub-languages. They are not
-attached to any specific node in the syntax tree:</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="floating-attribute"><span class="nonterminal">floating-attribute</span></a></td><td class="c005">::=</td><td class="c007">
+attached to any specific node in the syntax tree:</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="floating-attribute"><span class="nonterminal">floating-attribute</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">[@@@</span> <a class="syntax" href="#attr-id"><span class="nonterminal">attr-id</span></a> <a class="syntax" href="#attr-payload"><span class="nonterminal">attr-payload</span></a> <span class="syntax-token">]</span>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -250,8 +278,8 @@ attached to any specific node in the syntax tree:</p><div class="syntax"><table 
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="#floating-attribute"><span class="nonterminal">floating-attribute</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><p>(Note: contrary to what the grammar above describes, <span class="nonterminal">item-attributes</span>
+</tbody></table></td></tr>
+</tbody></table></div><p>(Note: contrary to what the grammar above describes, <span class="nonterminal">item-attributes</span>
 cannot be attached to these floating attributes in <a class="syntax" href="classes.html#class-field-spec"><span class="nonterminal">class-field-spec</span></a>
 and <a class="syntax" href="classes.html#class-field"><span class="nonterminal">class-field</span></a>.)</p><p>It is also possible to specify attributes using an infix syntax. For instance:</p><pre>let[@foo] x = 2 in x + 1          === (let x = 2 [@@foo] in x + 1)
 begin[@foo][@bar x] ... end       === (begin ... end)[@foo][@bar x]
@@ -263,7 +291,7 @@ For <span class="machine"><span class="font-tt">let</span></span>, the attribute
 let[@foo] x = 2
 and[@bar] y = 3 in x + y           === (let x = 2 [@@foo] and y = 3 [@@bar] in x + y)
 </pre>
-<h3 class="subsection" id="ss:builtin-attributes"><a class="section-anchor" href="#ss:builtin-attributes" aria-hidden="true">﻿</a>12.12.1 Built-in attributes</h3>
+<h3 class="subsection" id="ss:builtin-attributes"><a class="section-anchor" href="#ss:builtin-attributes" aria-hidden="true">﻿</a><span class="number">12.1</span> Built-in attributes</h3>
 <p>Some attributes are understood by the compiler:
 </p><ul class="itemize"><li class="li-itemize">“ocaml.warning” or “warning”, with a string literal payload.
 This can be used as floating attributes in a
@@ -278,8 +306,8 @@ Note that it is not well-defined which scope is used for a specific
 warning. This is implementation dependent and can change between versions.
 Some warnings are even completely outside the control of “ocaml.warning”
 (for instance, warnings 1, 2, 14, 29 and 50).</li><li class="li-itemize">“ocaml.warnerror” or “warnerror”, with a string literal payload.
-Same as “ocaml.warning”, for the <span class="machine"><span class="font-tt">-warn-error</span></span> command-line option.</li><li class="li-itemize">“ocaml.alert” or “alert”: see section <a href="alerts.html#s%3Aalerts">12.21</a>.</li><li class="li-itemize">“ocaml.deprecated” or “deprecated”: alias for the
-“deprecated” alert, see section <a href="alerts.html#s%3Aalerts">12.21</a>.
+Same as “ocaml.warning”, for the <span class="machine"><span class="font-tt">-warn-error</span></span> command-line option.</li><li class="li-itemize">“ocaml.alert” or “alert”: see section&nbsp;<a href="alerts.html#s%3Aalerts">12.21</a>.</li><li class="li-itemize">“ocaml.deprecated” or “deprecated”: alias for the
+“deprecated” alert, see section&nbsp;<a href="alerts.html#s%3Aalerts">12.21</a>.
 </li><li class="li-itemize">“ocaml.deprecated_mutable” or “deprecated_mutable”.
 Can be applied to a mutable record label. If the label is later
 used to modify the field (with “expr.l &lt;- expr”), the “deprecated” alert
@@ -506,9 +534,11 @@ val fragile_match_2 : fragile -&gt; unit = &lt;fun&gt;</div></div>
 <span class="ocamlkeyword">end</span></div></div>
 
 </div>
-<hr>
-<a href="bigarray.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="extensionnodes.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+
+<div class="bottom-navigation"><a class="previous" href="bigarray.html">« Syntax for Bigarray access</a><a class="next" href="extensionnodes.html">Extension nodes »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

@@ -1,20 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>12.5 First-class modules</title>
-</head>
-<body>
-<a href="locallyabstract.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="moduletypeof.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h2 class="section" id="s:first-class-modules"><a class="section-anchor" href="#s:first-class-modules" aria-hidden="true">﻿</a>12.5 First-class modules</h2>
+<title>OCaml - Language extensions</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li><a href="language.html">The OCaml language</a></li><li class="active"><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec279"><span class="chapter-number">Chapter 12</span> Language extensions</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Language extensions</a></li>
+<li><a href="letrecvalues.html#start-section"><span class="number">1</span> Recursive definitions of values</a>
+</li><li><a href="recursivemodules.html#start-section"><span class="number">2</span> Recursive modules</a>
+</li><li><a href="privatetypes.html#start-section"><span class="number">3</span> Private types</a>
+</li><li><a href="locallyabstract.html#start-section"><span class="number">4</span> Locally abstract types</a>
+</li><li><a href="firstclassmodules.html#start-section"><span class="number">5</span> First-class modules</a>
+</li><li><a href="moduletypeof.html#start-section"><span class="number">6</span> Recovering the type of a module</a>
+</li><li><a href="signaturesubstitution.html#start-section"><span class="number">7</span> Substituting inside a signature</a>
+</li><li><a href="modulealias.html#start-section"><span class="number">8</span> Type-level module aliases</a>
+</li><li><a href="overridingopen.html#start-section"><span class="number">9</span> Overriding in open statements</a>
+</li><li><a href="gadts.html#start-section"><span class="number">10</span> Generalized algebraic datatypes</a>
+</li><li><a href="bigarray.html#start-section"><span class="number">11</span> Syntax for Bigarray access</a>
+</li><li><a href="attributes.html#start-section"><span class="number">12</span> Attributes</a>
+</li><li><a href="extensionnodes.html#start-section"><span class="number">13</span> Extension nodes</a>
+</li><li><a href="extensiblevariants.html#start-section"><span class="number">14</span> Extensible variant types</a>
+</li><li><a href="generativefunctors.html#start-section"><span class="number">15</span> Generative functors</a>
+</li><li><a href="extensionsyntax.html#start-section"><span class="number">16</span> Extension-only syntax</a>
+</li><li><a href="inlinerecords.html#start-section"><span class="number">17</span> Inline records</a>
+</li><li><a href="doccomments.html#start-section"><span class="number">18</span> Documentation comments</a>
+</li><li><a href="indexops.html#start-section"><span class="number">19</span> Extended indexing operators </a>
+</li><li><a href="emptyvariants.html#start-section"><span class="number">20</span> Empty variant types</a>
+</li><li><a href="alerts.html#start-section"><span class="number">21</span> Alerts</a>
+</li><li><a href="generalizedopens.html#start-section"><span class="number">22</span> Generalized open statements</a>
+</li><li><a href="bindingops.html#start-section"><span class="number">23</span> Binding operators</a>
+</li><li><a href="effects.html#start-section"><span class="number">24</span> Effect handlers</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:first-class-modules"><a class="section-anchor" href="#s:first-class-modules" aria-hidden="true"></a><span class="number">5</span> First-class modules</h2>
 <p>
 <a id="hevea_manual.kwd212"></a>
 <a id="hevea_manual.kwd213"></a>
@@ -22,7 +50,7 @@
 <a id="hevea_manual.kwd215"></a>
 </p><p>(Introduced in OCaml 3.12; pattern syntax and package type inference
 introduced in 4.00; structural comparison of package types introduced in 4.02.;
-fewer parens required starting from 4.05)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a></td><td class="c005">::=</td><td class="c007">
+fewer parens required starting from 4.05)</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a></td><td class="c005">::=</td><td class="c007">
 ...
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">(module</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a><span class="syntax-token">)</span>
@@ -61,8 +89,8 @@ fewer parens required starting from 4.05)</p><div class="syntax"><table class="d
 <span class="syntax-token">type</span> <a class="syntax" href="names.html#typeconstr"><span class="nonterminal">typeconstr</span></a> <span class="syntax-token">=</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><p>Modules are typically thought of as static components. This extension
+</tbody></table></td></tr>
+</tbody></table></div><p>Modules are typically thought of as static components. This extension
 makes it possible to pack a module as a first-class value, which can
 later be dynamically unpacked into a module.</p><p>The expression <span class="syntax-token">(</span> <span class="syntax-token">module</span> <a class="syntax" href="modules.html#module-expr"><span class="nonterminal">module-expr</span></a> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span> converts the
 module (structure or functor) denoted by module expression <a class="syntax" href="modules.html#module-expr"><span class="nonterminal">module-expr</span></a>
@@ -91,7 +119,7 @@ Since OCaml 4.02, this is relaxed in two ways:
 if <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> does not contain nominal type declarations (<em>i.e.</em> types that are created with a proper identity), then this
 expression can be used anywhere, and even if it contains such types
 it can be used inside the body of a generative
-functor, described in section <a href="generativefunctors.html#s%3Agenerative-functors">12.15</a>.
+functor, described in section&nbsp;<a href="generativefunctors.html#s%3Agenerative-functors">12.15</a>.
 It can also be used anywhere in the context of a local module binding
 <span class="syntax-token">let</span> <span class="syntax-token">module</span> <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a> <span class="syntax-token">=</span> <span class="syntax-token">(</span> <span class="syntax-token">val</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a><sub>1</sub> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span>
 <span class="syntax-token">in</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a><sub>2</sub>.</p>
@@ -190,9 +218,11 @@ implementation of a module without using a functor.</p><div class="caml-example 
 <div class="pre caml-output ok"><span class="ocamlkeyword">val</span> make_set : ('s -&gt; 's -&gt; int) -&gt; (<span class="ocamlkeyword">module</span> Set.S <span class="ocamlkeyword">with</span> <span class="ocamlkeyword">type</span> elt = 's) = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
 
 </div>
-<hr>
-<a href="locallyabstract.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="moduletypeof.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+
+<div class="bottom-navigation"><a class="previous" href="locallyabstract.html">« Locally abstract types</a><a class="next" href="moduletypeof.html">Recovering the type of a module »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

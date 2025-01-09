@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="StringLabels.html">
 <link rel="next" href="Thread.html">
 <link rel="Up" href="index.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -93,8 +91,10 @@
 <link title="Optimization" rel="Section" href="#1_Optimization">
 <link title="Signal numbers for the standard POSIX signals." rel="Subsection" href="#2_SignalnumbersforthestandardPOSIXsignals">
 <title>OCaml library : Sys</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : Sys</a></div><ul><li><a href="#1_Signalhandling">Signal handling</a><ul><li><a href="#2_SignalnumbersforthestandardPOSIXsignals">Signal numbers for the standard POSIX signals.</a></li></ul></li><li><a href="#1_Optimization">Optimization</a></li></ul></nav></header>
 <h1>Module <a href="type_Sys.html">Sys</a></h1>
 
 <pre><span id="MODULESys"><span class="keyword">module</span> Sys</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Sys.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -290,27 +290,27 @@
 </div>
 
 <pre><code><span id="TYPEbackend_type"><span class="keyword">type</span> <code class="type"></code>backend_type</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbackend_type.Native"><span class="constructor">Native</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbackend_type.Bytecode"><span class="constructor">Bytecode</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbackend_type.Other"><span class="constructor">Other</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -443,27 +443,27 @@
 </div>
 <h2 id="1_Signalhandling">Signal handling</h2>
 <pre><code><span id="TYPEsignal_behavior"><span class="keyword">type</span> <code class="type"></code>signal_behavior</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTsignal_behavior.Signal_default"><span class="constructor">Signal_default</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTsignal_behavior.Signal_ignore"><span class="constructor">Signal_ignore</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTsignal_behavior.Signal_handle"><span class="constructor">Signal_handle</span></span> <span class="keyword">of</span> <code class="type">(int -&gt; unit)</code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -731,20 +731,20 @@
 </div>
 
 <pre><code><span id="TYPEextra_prefix"><span class="keyword">type</span> <code class="type"></code>extra_prefix</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTextra_prefix.Plus"><span class="constructor">Plus</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTextra_prefix.Tilde"><span class="constructor">Tilde</span></span></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
@@ -757,34 +757,34 @@
 
 
 <pre><code><span id="TYPEocaml_release_info"><span class="keyword">type</span> <code class="type"></code>ocaml_release_info</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTocaml_release_info.major">major</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTocaml_release_info.minor">minor</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTocaml_release_info.patchlevel">patchlevel</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTocaml_release_info.extra">extra</span>&nbsp;: <code class="type"><a href="Sys.html#TYPEextra_info">extra_info</a> option</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 
 <div class="info ">
@@ -846,4 +846,5 @@
 </ul>
 </div>
 
-<pre><span id="MODULEImmediate64"><span class="keyword">module</span> <a href="Sys.Immediate64.html">Immediate64</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Sys.Immediate64.html">..</a> <code class="code"><span class="keyword">end</span></code></pre></body></html>
+<pre><span id="MODULEImmediate64"><span class="keyword">module</span> <a href="Sys.Immediate64.html">Immediate64</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Sys.Immediate64.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+</div></body></html>

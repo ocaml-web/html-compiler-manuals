@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="List.html">
 <link rel="next" href="Map.html">
 <link rel="Up" href="index.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -100,8 +98,10 @@
 <link title="Sorting" rel="Section" href="#1_Sorting">
 <link title="Lists and Sequences" rel="Section" href="#1_ListsandSequences">
 <title>OCaml library : ListLabels</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : ListLabels</a></div><ul><li><a href="#1_Comparison">Comparison</a></li><li><a href="#1_Iterators">Iterators</a></li><li><a href="#1_Iteratorsontwolists">Iterators on two lists</a></li><li><a href="#1_Listscanning">List scanning</a></li><li><a href="#1_Listsearching">List searching</a></li><li><a href="#1_Listmanipulation">List manipulation</a></li><li><a href="#1_Associationlists">Association lists</a></li><li><a href="#1_Listsofpairs">Lists of pairs</a></li><li><a href="#1_Sorting">Sorting</a></li><li><a href="#1_ListsandSequences">Lists and Sequences</a></li></ul></nav></header>
 <h1>Module <a href="type_ListLabels.html">ListLabels</a></h1>
 
 <pre><span id="MODULEListLabels"><span class="keyword">module</span> ListLabels</span>: <code class="code"><span class="keyword">sig</span></code> <a href="ListLabels.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -125,20 +125,20 @@
 <hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> = <code class="type">'a list</code> = </pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTt.[]"><span class="constructor">[]</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTt.(::)"><span class="constructor">(::)</span></span> <span class="keyword">of</span> <code class="type">'a * 'a list</code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -839,4 +839,5 @@
 <li><b>Since</b> 4.07</li>
 </ul>
 </div>
-</body></html>
+
+</div></body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="Result.html">
 <link rel="next" href="Scanf.html">
 <link rel="Up" href="index.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -90,8 +88,10 @@
 <link title="CamlinternalLazy" rel="Chapter" href="CamlinternalLazy.html">
 <link title="CamlinternalMod" rel="Chapter" href="CamlinternalMod.html">
 <link title="CamlinternalOO" rel="Chapter" href="CamlinternalOO.html"><title>OCaml library : Runtime_events</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : Runtime_events</a></div><ul></ul></nav></header>
 <h1>Module <a href="type_Runtime_events.html">Runtime_events</a></h1>
 
 <pre><span id="MODULERuntime_events"><span class="keyword">module</span> Runtime_events</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Runtime_events.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -137,12 +137,12 @@
 <hr width="100%">
 
 <pre><code><span id="TYPEruntime_counter"><span class="keyword">type</span> <code class="type"></code>runtime_counter</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_FORCE_MINOR_ALLOC_SMALL"><span class="constructor">EV_C_FORCE_MINOR_ALLOC_SMALL</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Triggering of a minor collection due to a full minor heap.</p>
 </div>
@@ -150,14 +150,14 @@
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_FORCE_MINOR_MAKE_VECT"><span class="constructor">EV_C_FORCE_MINOR_MAKE_VECT</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Triggering of a minor collection due to Array.make.</p>
 </div>
@@ -165,14 +165,14 @@
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_FORCE_MINOR_SET_MINOR_HEAP_SIZE"><span class="constructor">EV_C_FORCE_MINOR_SET_MINOR_HEAP_SIZE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Triggering of a minor collection due to Gc.minor_heap_size.</p>
 </div>
@@ -180,14 +180,14 @@
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_FORCE_MINOR_MEMPROF"><span class="constructor">EV_C_FORCE_MINOR_MEMPROF</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Triggering of a minor collection during memprof young sampling.</p>
 </div>
@@ -195,14 +195,14 @@
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MINOR_PROMOTED"><span class="constructor">EV_C_MINOR_PROMOTED</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Total words promoted from the minor heap to the major in the last minor
 collection.</p>
@@ -211,14 +211,14 @@ collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MINOR_ALLOCATED"><span class="constructor">EV_C_MINOR_ALLOCATED</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Total <b>bytes</b> allocated in the minor heap in the last minor collection.</p>
 </div>
@@ -226,14 +226,14 @@ collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_REQUEST_MAJOR_ALLOC_SHR"><span class="constructor">EV_C_REQUEST_MAJOR_ALLOC_SHR</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Major slice requested due to allocation in major heap.</p>
 </div>
@@ -241,14 +241,14 @@ collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_REQUEST_MAJOR_ADJUST_GC_SPEED"><span class="constructor">EV_C_REQUEST_MAJOR_ADJUST_GC_SPEED</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Major slice requested by <code class="code">caml_adjust_gc_speed</code>.</p>
 </div>
@@ -256,14 +256,14 @@ collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_REQUEST_MINOR_REALLOC_REF_TABLE"><span class="constructor">EV_C_REQUEST_MINOR_REALLOC_REF_TABLE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Triggering of a minor collection due to ref table reallocation.</p>
 </div>
@@ -271,14 +271,14 @@ collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_REQUEST_MINOR_REALLOC_EPHE_REF_TABLE"><span class="constructor">EV_C_REQUEST_MINOR_REALLOC_EPHE_REF_TABLE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Triggering of a minor collection due to ephe_ref table reallocation.</p>
 </div>
@@ -286,14 +286,14 @@ collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_REQUEST_MINOR_REALLOC_CUSTOM_TABLE"><span class="constructor">EV_C_REQUEST_MINOR_REALLOC_CUSTOM_TABLE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Triggering of a minor collection due to custom table reallocation.</p>
 </div>
@@ -301,14 +301,14 @@ collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_HEAP_POOL_WORDS"><span class="constructor">EV_C_MAJOR_HEAP_POOL_WORDS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Total words in a Domain's major heap pools. This is the sum of unallocated and
 live words in each pool.</p>
@@ -317,14 +317,14 @@ live words in each pool.</p>
 <li><b>Since</b> 5.1</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_HEAP_POOL_LIVE_WORDS"><span class="constructor">EV_C_MAJOR_HEAP_POOL_LIVE_WORDS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Current live words in a Domain's major heap pools.</p>
 </div>
@@ -332,14 +332,14 @@ live words in each pool.</p>
 <li><b>Since</b> 5.1</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_HEAP_LARGE_WORDS"><span class="constructor">EV_C_MAJOR_HEAP_LARGE_WORDS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Total words of a Domain's major heap large allocations.
 A large allocation is an allocation larger than the largest sized pool.</p>
@@ -348,14 +348,14 @@ A large allocation is an allocation larger than the largest sized pool.</p>
 <li><b>Since</b> 5.1</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_HEAP_POOL_FRAG_WORDS"><span class="constructor">EV_C_MAJOR_HEAP_POOL_FRAG_WORDS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Words in a Domain's major heap pools lost to fragmentation. This is due to
 there not being a pool with the exact size of an allocation and a larger sized
@@ -365,14 +365,14 @@ pool needing to be used.</p>
 <li><b>Since</b> 5.1</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_HEAP_POOL_LIVE_BLOCKS"><span class="constructor">EV_C_MAJOR_HEAP_POOL_LIVE_BLOCKS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Live blocks of a Domain's major heap pools.</p>
 </div>
@@ -380,14 +380,14 @@ pool needing to be used.</p>
 <li><b>Since</b> 5.1</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_HEAP_LARGE_BLOCKS"><span class="constructor">EV_C_MAJOR_HEAP_LARGE_BLOCKS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Live blocks of a Domain's major heap large allocations.</p>
 </div>
@@ -395,14 +395,14 @@ pool needing to be used.</p>
 <li><b>Since</b> 5.1</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_HEAP_WORDS"><span class="constructor">EV_C_MAJOR_HEAP_WORDS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Major heap size in words of a Domain.</p>
 </div>
@@ -410,14 +410,14 @@ pool needing to be used.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_ALLOCATED_WORDS"><span class="constructor">EV_C_MAJOR_ALLOCATED_WORDS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Allocations to the major heap of this Domain in words, since the last major
 slice.</p>
@@ -426,14 +426,14 @@ slice.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_ALLOCATED_WORK"><span class="constructor">EV_C_MAJOR_ALLOCATED_WORK</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The amount of major GC 'work' needing to be done as a result of allocations to
 the major heap of this Domain in words, since the last major slice.</p>
@@ -442,14 +442,14 @@ the major heap of this Domain in words, since the last major slice.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_DEPENDENT_WORK"><span class="constructor">EV_C_MAJOR_DEPENDENT_WORK</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The amount of major GC 'work' needing to be done as a result of dependent
 allocations to the major heap of this Domain in words, since the last major
@@ -460,14 +460,14 @@ collected in order to be freed.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_EXTRA_WORK"><span class="constructor">EV_C_MAJOR_EXTRA_WORK</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The amount of major GC 'work' needing to be done as a result of extra
 non-memory resources that are dependent on heap memory being collected in order
@@ -477,14 +477,14 @@ to be freed.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_WORK_COUNTER"><span class="constructor">EV_C_MAJOR_WORK_COUNTER</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The global amount of major GC 'work' done by all domains since the program
 began.</p>
@@ -493,14 +493,14 @@ began.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_ALLOC_COUNTER"><span class="constructor">EV_C_MAJOR_ALLOC_COUNTER</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The global words of major GC allocations done by all domains since the program
 began.</p>
@@ -509,14 +509,14 @@ began.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_SLICE_TARGET"><span class="constructor">EV_C_MAJOR_SLICE_TARGET</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The target amount of global 'work' that should be done by all domains at the
 end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
@@ -525,14 +525,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_counter.EV_C_MAJOR_SLICE_BUDGET"><span class="constructor">EV_C_MAJOR_SLICE_BUDGET</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>The budget in 'work' that a domain has to do during the major slice.</p>
 </div>
@@ -540,8 +540,8 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -553,12 +553,12 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 
 
 <pre><code><span id="TYPEruntime_phase"><span class="keyword">type</span> <code class="type"></code>runtime_phase</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_EXPLICIT_GC_SET"><span class="constructor">EV_EXPLICIT_GC_SET</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning a call to Gc.set.</p>
 </div>
@@ -566,14 +566,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_EXPLICIT_GC_STAT"><span class="constructor">EV_EXPLICIT_GC_STAT</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning a call to Gc.stat.</p>
 </div>
@@ -581,14 +581,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_EXPLICIT_GC_MINOR"><span class="constructor">EV_EXPLICIT_GC_MINOR</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning a call to Gc.minor, which forces a minor collection.</p>
 </div>
@@ -596,14 +596,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_EXPLICIT_GC_MAJOR"><span class="constructor">EV_EXPLICIT_GC_MAJOR</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning a call to Gc.major, which forces a major collection.</p>
 </div>
@@ -611,14 +611,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_EXPLICIT_GC_FULL_MAJOR"><span class="constructor">EV_EXPLICIT_GC_FULL_MAJOR</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning a call to Gc.full_major, which forces a full major collection.</p>
 </div>
@@ -626,14 +626,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_EXPLICIT_GC_COMPACT"><span class="constructor">EV_EXPLICIT_GC_COMPACT</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning a call to Gc.compact, which triggers a compaction.</p>
 </div>
@@ -641,14 +641,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR"><span class="constructor">EV_MAJOR</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning any major GC work.</p>
 </div>
@@ -656,14 +656,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_SWEEP"><span class="constructor">EV_MAJOR_SWEEP</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the sweeping work of a major GC.</p>
 </div>
@@ -671,14 +671,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_MARK_ROOTS"><span class="constructor">EV_MAJOR_MARK_ROOTS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the marking of roots in a major GC.</p>
 </div>
@@ -686,14 +686,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_MEMPROF_ROOTS"><span class="constructor">EV_MAJOR_MEMPROF_ROOTS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the marking of memprof roots in a major GC.</p>
 </div>
@@ -701,14 +701,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_MARK"><span class="constructor">EV_MAJOR_MARK</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the marking of the heap in a major GC.</p>
 </div>
@@ -716,14 +716,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR"><span class="constructor">EV_MINOR</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning any minor GC work.</p>
 </div>
@@ -731,14 +731,14 @@ end of the major slice (see EV_C_MAJOR_SLICE_COUNTER).</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_LOCAL_ROOTS"><span class="constructor">EV_MINOR_LOCAL_ROOTS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the scanning and major allocation of local roots during a minor
 GC.</p>
@@ -747,14 +747,14 @@ GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_MEMPROF_ROOTS"><span class="constructor">EV_MINOR_MEMPROF_ROOTS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the scanning and promotion of memprof roots in a minor GC.</p>
 </div>
@@ -762,14 +762,14 @@ GC.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_MEMPROF_CLEAN"><span class="constructor">EV_MINOR_MEMPROF_CLEAN</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning cleaning and updating of memprof structures at the end of a
 minor GC.</p>
@@ -778,14 +778,14 @@ minor GC.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_FINALIZED"><span class="constructor">EV_MINOR_FINALIZED</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the running of finalisers for dead custom blocks at the end of a
 minor GC.</p>
@@ -794,14 +794,14 @@ minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_EXPLICIT_GC_MAJOR_SLICE"><span class="constructor">EV_EXPLICIT_GC_MAJOR_SLICE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning a call to Gc.major_slice.</p>
 </div>
@@ -809,14 +809,14 @@ minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_FINALISE_UPDATE_FIRST"><span class="constructor">EV_FINALISE_UPDATE_FIRST</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning time spent in the first phase of finalisation at the end of a
 major GC cycle.</p>
@@ -825,14 +825,14 @@ major GC cycle.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_FINALISE_UPDATE_LAST"><span class="constructor">EV_FINALISE_UPDATE_LAST</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning time spent in the last phase of finalisation at the end of a
 major GC cycle.</p>
@@ -841,14 +841,14 @@ major GC cycle.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_INTERRUPT_REMOTE"><span class="constructor">EV_INTERRUPT_REMOTE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning work triggered by an interrupt from another domain. This is
 usually a stop-the-world request.</p>
@@ -857,14 +857,14 @@ usually a stop-the-world request.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_EPHE_MARK"><span class="constructor">EV_MAJOR_EPHE_MARK</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the marking of ephemeron tables in a major GC.</p>
 </div>
@@ -872,14 +872,14 @@ usually a stop-the-world request.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_EPHE_SWEEP"><span class="constructor">EV_MAJOR_EPHE_SWEEP</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the sweeping of ephemeron tables in a major GC.</p>
 </div>
@@ -887,14 +887,14 @@ usually a stop-the-world request.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_FINISH_MARKING"><span class="constructor">EV_MAJOR_FINISH_MARKING</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning work done at the end of marking in a major GC.</p>
 </div>
@@ -902,14 +902,14 @@ usually a stop-the-world request.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_GC_CYCLE_DOMAINS"><span class="constructor">EV_MAJOR_GC_CYCLE_DOMAINS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning work done at the end of a major GC cycle. This includes a
 minor collection.</p>
@@ -918,14 +918,14 @@ minor collection.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_GC_PHASE_CHANGE"><span class="constructor">EV_MAJOR_GC_PHASE_CHANGE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the change of phase in the major GC which involves a global
 barrier.</p>
@@ -934,14 +934,14 @@ barrier.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_GC_STW"><span class="constructor">EV_MAJOR_GC_STW</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the stop-the-world phase done at the end of a major GC cycle.</p>
 </div>
@@ -949,14 +949,14 @@ barrier.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_MARK_OPPORTUNISTIC"><span class="constructor">EV_MAJOR_MARK_OPPORTUNISTIC</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the work done during opportunistic marking in a major GC.</p>
 </div>
@@ -964,14 +964,14 @@ barrier.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_SLICE"><span class="constructor">EV_MAJOR_SLICE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the work done during a major slice in a major GC.</p>
 </div>
@@ -979,14 +979,14 @@ barrier.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_FINISH_CYCLE"><span class="constructor">EV_MAJOR_FINISH_CYCLE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning attempts to drive all domains to the end of a major GC cycle.</p>
 </div>
@@ -994,14 +994,14 @@ barrier.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_CLEAR"><span class="constructor">EV_MINOR_CLEAR</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the cleaning of the minor heap and supporting structures at the
 end of a minor GC.</p>
@@ -1010,14 +1010,14 @@ end of a minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_FINALIZERS_OLDIFY"><span class="constructor">EV_MINOR_FINALIZERS_OLDIFY</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the promotion of finalisers during a minor GC.</p>
 </div>
@@ -1025,14 +1025,14 @@ end of a minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_GLOBAL_ROOTS"><span class="constructor">EV_MINOR_GLOBAL_ROOTS</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the scanning and major allocation of global roots during a minor
 GC.</p>
@@ -1041,14 +1041,14 @@ GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_LEAVE_BARRIER"><span class="constructor">EV_MINOR_LEAVE_BARRIER</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the time spent in the barrier at the end of a minor GC, waiting
 for all domains to finish their work.</p>
@@ -1057,14 +1057,14 @@ for all domains to finish their work.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_STW_API_BARRIER"><span class="constructor">EV_STW_API_BARRIER</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the time spent waiting for all other domains to reach the
 stop-the-world entry barrier.</p>
@@ -1073,14 +1073,14 @@ stop-the-world entry barrier.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_STW_HANDLER"><span class="constructor">EV_STW_HANDLER</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the time spent in the stop-the-world handler, including time
 spent in the stop-the-world callback itself.</p>
@@ -1089,14 +1089,14 @@ spent in the stop-the-world callback itself.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_STW_LEADER"><span class="constructor">EV_STW_LEADER</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the time spent as the leader of a stop-the-world.</p>
 </div>
@@ -1104,14 +1104,14 @@ spent in the stop-the-world callback itself.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_FINISH_SWEEPING"><span class="constructor">EV_MAJOR_FINISH_SWEEPING</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the time spent finishing sweeping when forced to as part of
 domain termination.</p>
@@ -1120,14 +1120,14 @@ domain termination.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MAJOR_MEMPROF_CLEAN"><span class="constructor">EV_MAJOR_MEMPROF_CLEAN</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the time spent cleaning memprof structures at the end of a major
 GC.</p>
@@ -1136,14 +1136,14 @@ GC.</p>
 <li><b>Since</b> 5.3</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_FINALIZERS_ADMIN"><span class="constructor">EV_MINOR_FINALIZERS_ADMIN</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning finalisers book-keeping at the end of a minor GC.</p>
 </div>
@@ -1151,14 +1151,14 @@ GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_REMEMBERED_SET"><span class="constructor">EV_MINOR_REMEMBERED_SET</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the scanning and major allocation of remembered sets during a
 minor GC.</p>
@@ -1167,14 +1167,14 @@ minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_REMEMBERED_SET_PROMOTE"><span class="constructor">EV_MINOR_REMEMBERED_SET_PROMOTE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the promotion of blocks in the remembered set and global roots
 during a minor GC.</p>
@@ -1183,14 +1183,14 @@ during a minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_MINOR_LOCAL_ROOTS_PROMOTE"><span class="constructor">EV_MINOR_LOCAL_ROOTS_PROMOTE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the promotion of local roots during a minor GC.</p>
 </div>
@@ -1198,14 +1198,14 @@ during a minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_DOMAIN_CONDITION_WAIT"><span class="constructor">EV_DOMAIN_CONDITION_WAIT</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning waiting in Condition.wait.</p>
 </div>
@@ -1213,14 +1213,14 @@ during a minor GC.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_DOMAIN_RESIZE_HEAP_RESERVATION"><span class="constructor">EV_DOMAIN_RESIZE_HEAP_RESERVATION</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning resizing the domain heap reservation, as a result of minor heap
 size changes.</p>
@@ -1229,14 +1229,14 @@ size changes.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_COMPACT"><span class="constructor">EV_COMPACT</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning compaction of the heap during a call to Gc.compact.</p>
 </div>
@@ -1244,14 +1244,14 @@ size changes.</p>
 <li><b>Since</b> 5.2</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_COMPACT_EVACUATE"><span class="constructor">EV_COMPACT_EVACUATE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning evacuating major GC pools during a compaction.</p>
 </div>
@@ -1259,14 +1259,14 @@ size changes.</p>
 <li><b>Since</b> 5.2</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_COMPACT_FORWARD"><span class="constructor">EV_COMPACT_FORWARD</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning the walking of the heap to update changed pointers after an
 evacuation during a compaction.</p>
@@ -1275,14 +1275,14 @@ evacuation during a compaction.</p>
 <li><b>Since</b> 5.2</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTruntime_phase.EV_COMPACT_RELEASE"><span class="constructor">EV_COMPACT_RELEASE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event spanning releasing the evacuated pools at the end of a compaction.</p>
 </div>
@@ -1290,8 +1290,8 @@ evacuation during a compaction.</p>
 <li><b>Since</b> 5.2</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -1301,12 +1301,12 @@ evacuation during a compaction.</p>
 
 
 <pre><code><span id="TYPElifecycle"><span class="keyword">type</span> <code class="type"></code>lifecycle</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_RING_START"><span class="constructor">EV_RING_START</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that the Runtime_events ring buffer has been started. Includes
 the PID of the process as an argument.</p>
@@ -1315,14 +1315,14 @@ the PID of the process as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_RING_STOP"><span class="constructor">EV_RING_STOP</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that the Runtime_events ring buffer has been stopped.</p>
 </div>
@@ -1330,14 +1330,14 @@ the PID of the process as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_RING_PAUSE"><span class="constructor">EV_RING_PAUSE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that the Runtime_events ring buffer has been paused.</p>
 </div>
@@ -1345,14 +1345,14 @@ the PID of the process as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_RING_RESUME"><span class="constructor">EV_RING_RESUME</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that the Runtime_events ring buffer has been resumed.</p>
 </div>
@@ -1360,14 +1360,14 @@ the PID of the process as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_FORK_PARENT"><span class="constructor">EV_FORK_PARENT</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that a fork has occurred and the current domain is the parent.
 Includes the PID of the child as an argument.</p>
@@ -1376,14 +1376,14 @@ Includes the PID of the child as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_FORK_CHILD"><span class="constructor">EV_FORK_CHILD</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that a fork has occurred and the current domain is the child.</p>
 </div>
@@ -1391,14 +1391,14 @@ Includes the PID of the child as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_DOMAIN_SPAWN"><span class="constructor">EV_DOMAIN_SPAWN</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that a new domain has been spawned. Includes the PID of the
 new domain as an argument.</p>
@@ -1407,14 +1407,14 @@ new domain as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlifecycle.EV_DOMAIN_TERMINATE"><span class="constructor">EV_DOMAIN_TERMINATE</span></span></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Event indicating that a domain has terminated. Includes the PID of the domain
 as an argument.</p>
@@ -1423,8 +1423,8 @@ as an argument.</p>
 <li><b>Since</b> 5.0</li>
 </ul>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -1523,4 +1523,5 @@ as an argument.</p>
     runtime_events and returns the number of events read.</p>
 </div>
 </div>
-</body></html>
+
+</div></body></html>

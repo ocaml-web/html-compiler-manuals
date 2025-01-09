@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>11.3 Names</title>
-</head>
-<body>
-<a href="values.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="types.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h2 class="section" id="s:names"><a class="section-anchor" href="#s:names" aria-hidden="true">﻿</a>11.3 Names</h2>
+<title>OCaml - The OCaml language</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li class="active"><a href="language.html">The OCaml language</a></li><li><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec112"><span class="chapter-number">Chapter 11</span> The OCaml language</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">The OCaml language</a></li>
+<li><a href="lex.html#start-section"><span class="number">1</span> Lexical conventions</a>
+</li><li><a href="values.html#start-section"><span class="number">2</span> Values</a>
+</li><li><a href="names.html#start-section"><span class="number">3</span> Names</a>
+</li><li><a href="types.html#start-section"><span class="number">4</span> Type expressions</a>
+</li><li><a href="const.html#start-section"><span class="number">5</span> Constants</a>
+</li><li><a href="patterns.html#start-section"><span class="number">6</span> Patterns</a>
+</li><li><a href="expr.html#start-section"><span class="number">7</span> Expressions</a>
+</li><li><a href="typedecl.html#start-section"><span class="number">8</span> Type and exception definitions</a>
+</li><li><a href="classes.html#start-section"><span class="number">9</span> Classes</a>
+</li><li><a href="modtypes.html#start-section"><span class="number">10</span> Module types (module specifications)</a>
+</li><li><a href="modules.html#start-section"><span class="number">11</span> Module expressions (module implementations)</a>
+</li><li><a href="compunit.html#start-section"><span class="number">12</span> Compilation units</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:names"><a class="section-anchor" href="#s:names" aria-hidden="true"></a><span class="number">3</span> Names</h2>
 <p>Identifiers are used to give names to several classes of language
 objects and refer to these objects by name later:
 </p><ul class="itemize"><li class="li-itemize">value names (syntactic class <a class="syntax" href="#value-name"><span class="nonterminal">value-name</span></a>),
 </li><li class="li-itemize">value constructors and exception constructors (class <a class="syntax" href="#constr-name"><span class="nonterminal">constr-name</span></a>),
-</li><li class="li-itemize">labels (<a class="syntax" href="lex.html#label-name"><span class="nonterminal">label-name</span></a>, defined in section <a href="lex.html#sss%3Alabelname">11.1</a>),
+</li><li class="li-itemize">labels (<a class="syntax" href="lex.html#label-name"><span class="nonterminal">label-name</span></a>, defined in section&nbsp;<a href="lex.html#sss%3Alabelname">11.1</a>),
 </li><li class="li-itemize">polymorphic variant tags (<a class="syntax" href="#tag-name"><span class="nonterminal">tag-name</span></a>),
 </li><li class="li-itemize">type constructors (<a class="syntax" href="#typeconstr-name"><span class="nonterminal">typeconstr-name</span></a>),
 </li><li class="li-itemize">record fields (<a class="syntax" href="#field-name"><span class="nonterminal">field-name</span></a>),
@@ -41,7 +57,7 @@ lowercase letter for this purpose.</p><h4 class="subsubsection" id="sss:naming-o
 <a id="hevea_manual.kwd3"></a>
 <a id="hevea_manual.kwd4"></a>
 <a id="hevea_manual.kwd5"></a>
-<a id="hevea_manual.kwd6"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="value-name"><span class="nonterminal">value-name</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd6"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="value-name"><span class="nonterminal">value-name</span></a></td><td class="c005">::=</td><td class="c007">
 <a class="syntax" href="lex.html#lowercase-ident"><span class="nonterminal">lowercase-ident</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">(</span> <a class="syntax" href="#operator-name"><span class="nonterminal">operator-name</span></a> <span class="syntax-token">)</span>
@@ -106,13 +122,13 @@ lowercase letter for this purpose.</p><h4 class="subsubsection" id="sss:naming-o
 <a class="syntax" id="method-name"><span class="nonterminal">method-name</span></a></td><td class="c005">::=</td><td class="c007">
 <a class="syntax" href="lex.html#lowercase-ident"><span class="nonterminal">lowercase-ident</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>
+</tbody></table></td></tr>
+</tbody></table></div><p>
 See also the following language extension:
 <a href="indexops.html#s%3Aindex-operators">extended indexing operators</a>.</p><p>As shown above, prefix and infix symbols as well as some keywords can
 be used as value names, provided they are written between parentheses.
 The capitalization rules are summarized in the table below.</p><div class="tableau">
-<div class="center"><table class="c000 cellpadding1" border=1><tr><td class="c004"><span class="font-bold">Name space</span></td><td class="c004"><span class="font-bold">Case of first letter</span> </td></tr>
+<div class="center"><table class="c000 cellpadding1" border="1"><tbody><tr><td class="c004"><span class="font-bold">Name space</span></td><td class="c004"><span class="font-bold">Case of first letter</span> </td></tr>
 <tr><td class="c006">
 Values</td><td class="c006">lowercase </td></tr>
 <tr><td class="c006">Constructors</td><td class="c006">uppercase </td></tr>
@@ -126,11 +142,11 @@ Values</td><td class="c006">lowercase </td></tr>
 <tr><td class="c006">Methods</td><td class="c006">lowercase </td></tr>
 <tr><td class="c006">Modules</td><td class="c006">uppercase </td></tr>
 <tr><td class="c006">Module types</td><td class="c006">any </td></tr>
-</table></div></div><p><span class="font-it">Note on polymorphic variant tags:</span> the current implementation accepts
+</tbody></table></div></div><p><span class="font-it">Note on polymorphic variant tags:</span> the current implementation accepts
 lowercase variant tags in addition to capitalized variant tags, but we
 suggest you avoid lowercase variant tags for portability and
 compatibility with future OCaml versions.</p><h4 class="subsubsection" id="sss:refer-named"><a class="section-anchor" href="#sss:refer-named" aria-hidden="true">﻿</a>Referring to named objects</h4>
-<div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="value-path"><span class="nonterminal">value-path</span></a></td><td class="c005">::=</td><td class="c007">
+<div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="value-path"><span class="nonterminal">value-path</span></a></td><td class="c005">::=</td><td class="c007">
 [ <a class="syntax" href="#module-path"><span class="nonterminal">module-path</span></a> <span class="syntax-token">.</span> ] <a class="syntax" href="#value-name"><span class="nonterminal">value-name</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -178,8 +194,8 @@ compatibility with future OCaml versions.</p><h4 class="subsubsection" id="sss:r
 <a class="syntax" id="extended-module-name"><span class="nonterminal">extended-module-name</span></a></td><td class="c005">::=</td><td class="c007">
 <a class="syntax" href="#module-name"><span class="nonterminal">module-name</span></a> { <span class="syntax-token">(</span> <a class="syntax" href="#extended-module-path"><span class="nonterminal">extended-module-path</span></a> <span class="syntax-token">)</span> }
 </td></tr>
-</table></td></tr>
-</table></div><p>A named object can be referred to either by its name (following the
+</tbody></table></td></tr>
+</tbody></table></div><p>A named object can be referred to either by its name (following the
 usual static scoping rules for names) or by an access path <span class="nonterminal">prefix</span> <span class="syntax-token">.</span> <span class="nonterminal">name</span>,
 where <span class="nonterminal">prefix</span> designates a module and <span class="nonterminal">name</span> is the name of an object
 defined in that module. The first component of the path, <span class="nonterminal">prefix</span>, is
@@ -194,9 +210,11 @@ not be qualified: the former three are global labels, while the latter
 are local to a class.
 
 </p>
-<hr>
-<a href="values.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="types.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+
+<div class="bottom-navigation"><a class="previous" href="values.html">« Values</a><a class="next" href="types.html">Type expressions »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

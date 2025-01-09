@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="CamlinternalMenhirLib.html">
 <link rel="next" href="Docstrings.html">
 <link rel="Up" href="index.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Compiler_libs" rel="Chapter" href="Compiler_libs.html">
 <link title="Ast_helper" rel="Chapter" href="Ast_helper.html">
 <link title="Ast_invariants" rel="Chapter" href="Ast_invariants.html">
@@ -63,8 +61,10 @@
 <link title="Terminfo" rel="Chapter" href="Terminfo.html">
 <link title="Warnings" rel="Chapter" href="Warnings.html">
 <link title="Pparse" rel="Chapter" href="Pparse.html"><title>OCaml compiler library : Depend</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Compiler API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml compiler library : Depend</a></div><ul></ul></nav></header>
 <h1>Module <a href="type_Depend.html">Depend</a></h1>
 
 <pre><span id="MODULEDepend"><span class="keyword">module</span> Depend</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Depend.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -79,13 +79,13 @@
 
 <pre><span id="MODULEString"><span class="keyword">module</span> <a href="Depend.String.html">String</a></span>: <code class="type"><a href="Misc.Stdlib.String.html">Misc.Stdlib.String</a></code></pre>
 <pre><code><span id="TYPEmap_tree"><span class="keyword">type</span> <code class="type"></code>map_tree</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTmap_tree.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code class="type">String.Set.t * <a href="Depend.html#TYPEbound_map">bound_map</a></code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
@@ -112,4 +112,5 @@
 <pre><span id="VALadd_signature"><span class="keyword">val</span> add_signature</span> : <code class="type"><a href="Depend.html#TYPEbound_map">bound_map</a> -&gt; <a href="Parsetree.html#TYPEsignature">Parsetree.signature</a> -&gt; unit</code></pre>
 <pre><span id="VALadd_implementation"><span class="keyword">val</span> add_implementation</span> : <code class="type"><a href="Depend.html#TYPEbound_map">bound_map</a> -&gt; <a href="Parsetree.html#TYPEstructure">Parsetree.structure</a> -&gt; unit</code></pre>
 <pre><span id="VALadd_implementation_binding"><span class="keyword">val</span> add_implementation_binding</span> : <code class="type"><a href="Depend.html#TYPEbound_map">bound_map</a> -&gt; <a href="Parsetree.html#TYPEstructure">Parsetree.structure</a> -&gt; <a href="Depend.html#TYPEbound_map">bound_map</a></code></pre>
-<pre><span id="VALadd_signature_binding"><span class="keyword">val</span> add_signature_binding</span> : <code class="type"><a href="Depend.html#TYPEbound_map">bound_map</a> -&gt; <a href="Parsetree.html#TYPEsignature">Parsetree.signature</a> -&gt; <a href="Depend.html#TYPEbound_map">bound_map</a></code></pre></body></html>
+<pre><span id="VALadd_signature_binding"><span class="keyword">val</span> add_signature_binding</span> : <code class="type"><a href="Depend.html#TYPEbound_map">bound_map</a> -&gt; <a href="Parsetree.html#TYPEsignature">Parsetree.signature</a> -&gt; <a href="Depend.html#TYPEbound_map">bound_map</a></code></pre>
+</div></body></html>
