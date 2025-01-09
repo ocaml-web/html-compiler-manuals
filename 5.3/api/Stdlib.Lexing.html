@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="Stdlib.Lazy.html">
 <link rel="next" href="Stdlib.List.html">
 <link rel="Up" href="Stdlib.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -94,41 +92,43 @@
 <link title="Functions for lexer semantic actions" rel="Section" href="#1_Functionsforlexersemanticactions">
 <link title="Miscellaneous functions" rel="Section" href="#1_Miscellaneousfunctions">
 <title>OCaml library : Stdlib.Lexing</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : Stdlib.Lexing</a></div><ul><li><a href="#1_Positions">Positions</a></li><li><a href="#1_Lexerbuffers">Lexer buffers</a></li><li><a href="#1_Functionsforlexersemanticactions">Functions for lexer semantic actions</a></li><li><a href="#1_Miscellaneousfunctions">Miscellaneous functions</a></li></ul></nav></header>
 <h1>Module <a href="type_Stdlib.Lexing.html">Stdlib.Lexing</a></h1>
 
 <pre><span id="MODULELexing"><span class="keyword">module</span> Lexing</span>: <code class="type"><a href="Lexing.html">Lexing</a></code></pre><hr width="100%">
 <h2 id="1_Positions">Positions</h2>
 <pre><code><span id="TYPEposition"><span class="keyword">type</span> <code class="type"></code>position</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTposition.pos_fname">pos_fname</span>&nbsp;: <code class="type">string</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTposition.pos_lnum">pos_lnum</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTposition.pos_bol">pos_bol</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTposition.pos_cnum">pos_cnum</span>&nbsp;: <code class="type">int</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 
 <div class="info ">
@@ -157,90 +157,90 @@
 </div>
 <h2 id="1_Lexerbuffers">Lexer buffers</h2>
 <pre><code><span id="TYPElexbuf"><span class="keyword">type</span> <code class="type"></code>lexbuf</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTlexbuf.refill_buff">refill_buff</span>&nbsp;: <code class="type"><a href="Lexing.html#TYPElexbuf">lexbuf</a> -&gt; unit</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_buffer">lex_buffer</span>&nbsp;: <code class="type">bytes</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_buffer_len">lex_buffer_len</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_abs_pos">lex_abs_pos</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_start_pos">lex_start_pos</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_curr_pos">lex_curr_pos</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_last_pos">lex_last_pos</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_last_action">lex_last_action</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_eof_reached">lex_eof_reached</span>&nbsp;: <code class="type">bool</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_mem">lex_mem</span>&nbsp;: <code class="type">int array</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_start_p">lex_start_p</span>&nbsp;: <code class="type"><a href="Lexing.html#TYPEposition">position</a></code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTlexbuf.lex_curr_p">lex_curr_p</span>&nbsp;: <code class="type"><a href="Lexing.html#TYPEposition">position</a></code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 
 <div class="info ">
@@ -410,4 +410,5 @@
     refill.</p>
 </div>
 </div>
-</body></html>
+
+</div></body></html>

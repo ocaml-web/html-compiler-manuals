@@ -1,36 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>12.24 Effect handlers</title>
-</head>
-<body>
-<a href="bindingops.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-<hr>
-<h2 class="section" id="s:effect-handlers"><a class="section-anchor" href="#s:effect-handlers" aria-hidden="true">﻿</a>12.24 Effect handlers</h2>
+<title>OCaml - Language extensions</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li><a href="language.html">The OCaml language</a></li><li class="active"><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec279"><span class="chapter-number">Chapter 12</span> Language extensions</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Language extensions</a></li>
+<li><a href="letrecvalues.html#start-section"><span class="number">1</span> Recursive definitions of values</a>
+</li><li><a href="recursivemodules.html#start-section"><span class="number">2</span> Recursive modules</a>
+</li><li><a href="privatetypes.html#start-section"><span class="number">3</span> Private types</a>
+</li><li><a href="locallyabstract.html#start-section"><span class="number">4</span> Locally abstract types</a>
+</li><li><a href="firstclassmodules.html#start-section"><span class="number">5</span> First-class modules</a>
+</li><li><a href="moduletypeof.html#start-section"><span class="number">6</span> Recovering the type of a module</a>
+</li><li><a href="signaturesubstitution.html#start-section"><span class="number">7</span> Substituting inside a signature</a>
+</li><li><a href="modulealias.html#start-section"><span class="number">8</span> Type-level module aliases</a>
+</li><li><a href="overridingopen.html#start-section"><span class="number">9</span> Overriding in open statements</a>
+</li><li><a href="gadts.html#start-section"><span class="number">10</span> Generalized algebraic datatypes</a>
+</li><li><a href="bigarray.html#start-section"><span class="number">11</span> Syntax for Bigarray access</a>
+</li><li><a href="attributes.html#start-section"><span class="number">12</span> Attributes</a>
+</li><li><a href="extensionnodes.html#start-section"><span class="number">13</span> Extension nodes</a>
+</li><li><a href="extensiblevariants.html#start-section"><span class="number">14</span> Extensible variant types</a>
+</li><li><a href="generativefunctors.html#start-section"><span class="number">15</span> Generative functors</a>
+</li><li><a href="extensionsyntax.html#start-section"><span class="number">16</span> Extension-only syntax</a>
+</li><li><a href="inlinerecords.html#start-section"><span class="number">17</span> Inline records</a>
+</li><li><a href="doccomments.html#start-section"><span class="number">18</span> Documentation comments</a>
+</li><li><a href="indexops.html#start-section"><span class="number">19</span> Extended indexing operators </a>
+</li><li><a href="emptyvariants.html#start-section"><span class="number">20</span> Empty variant types</a>
+</li><li><a href="alerts.html#start-section"><span class="number">21</span> Alerts</a>
+</li><li><a href="generalizedopens.html#start-section"><span class="number">22</span> Generalized open statements</a>
+</li><li><a href="bindingops.html#start-section"><span class="number">23</span> Binding operators</a>
+</li><li><a href="effects.html#start-section"><span class="number">24</span> Effect handlers</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+<h2 class="section" id="s:effect-handlers"><a class="section-anchor" href="#s:effect-handlers" aria-hidden="true"></a><span class="number">24</span> Effect handlers</h2>
 <ul>
-<li><a href="effects.html#s%3Aeffects-basics">12.24.1 Basics</a>
-</li><li><a href="effects.html#s%3Aeffects-concurrency">12.24.2 Concurrency</a>
-</li><li><a href="effects.html#s%3Aeffects-user-threads">12.24.3 User-level threads</a>
-</li><li><a href="effects.html#s%3Aeffects-sequence">12.24.4 Control inversion</a>
-</li><li><a href="effects.html#s%3Aeffects-semantics">12.24.5 Semantics</a>
-</li><li><a href="effects.html#s%3Aeffects-shallow">12.24.6 Shallow handlers</a>
+<li><a href="effects.html#s%3Aeffects-basics"><span class="number">24.1</span> Basics</a>
+</li><li><a href="effects.html#s%3Aeffects-concurrency"><span class="number">24.2</span> Concurrency</a>
+</li><li><a href="effects.html#s%3Aeffects-user-threads"><span class="number">24.3</span> User-level threads</a>
+</li><li><a href="effects.html#s%3Aeffects-sequence"><span class="number">24.4</span> Control inversion</a>
+</li><li><a href="effects.html#s%3Aeffects-semantics"><span class="number">24.5</span> Semantics</a>
+</li><li><a href="effects.html#s%3Aeffects-shallow"><span class="number">24.6</span> Shallow handlers</a>
 </li></ul>
 <p>(Introduced in 5.0. The syntax support for deep handlers was introduced in
-5.3.)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a></td><td class="c005">::=</td><td class="c007">
+5.3.)</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a></td><td class="c005">::=</td><td class="c007">
 ...
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">effect</span> <a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a>, <a class="syntax" href="names.html#value-name"><span class="nonterminal">value-name</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
-</table></td></tr>
-</table></div><p>Effect handlers are a mechanism for modular programming with user-defined
+</tbody></table></td></tr>
+</tbody></table></div><p>Effect handlers are a mechanism for modular programming with user-defined
 effects. Effect handlers allow the programmers to describe
 <span class="font-it">computations</span> that <span class="font-it">perform</span> effectful <span class="font-it">operations</span>,
 whose meaning is described by <span class="font-it">handlers</span> that enclose the computations.
@@ -39,7 +67,7 @@ control-flow mechanisms such as resumable exceptions, lightweight threads,
 coroutines, generators and asynchronous I/O to be composably expressed. In this
 tutorial, we shall see how some of these mechanisms can be built using effect
 handlers.</p>
-<h3 class="subsection" id="s:effects-basics"><a class="section-anchor" href="#s:effects-basics" aria-hidden="true">﻿</a>12.24.1 Basics</h3>
+<h3 class="subsection" id="s:effects-basics"><a class="section-anchor" href="#s:effects-basics" aria-hidden="true">﻿</a><span class="number">24.1</span> Basics</h3>
 <p>To understand the basics, let us define an effect (that is, an operation) that
 takes an integer argument and returns an integer result. We name this effect
 <span class="machine"><span class="font-tt">Xchg</span></span>.</p><div class="caml-example verbatim">
@@ -93,8 +121,8 @@ contrast, a shallow handler monitors a computation until either the computation
 terminates or the computation performs one effect, and it handles this single
 effect only. In situations where they are applicable, deep handlers are usually
 preferred. An example that utilises shallow handlers is discussed later
-in <a href="#s%3Aeffects-shallow">12.24.6</a>.</p>
-<h3 class="subsection" id="s:effects-concurrency"><a class="section-anchor" href="#s:effects-concurrency" aria-hidden="true">﻿</a>12.24.2 Concurrency</h3>
+in&nbsp;<a href="#s%3Aeffects-shallow">12.24.6</a>.</p>
+<h3 class="subsection" id="s:effects-concurrency"><a class="section-anchor" href="#s:effects-concurrency" aria-hidden="true">﻿</a><span class="number">24.2</span> Concurrency</h3>
 <p>The expressive power of effect handlers comes from the delimited continuation.
 While the previous example immediately resumed the computation, the computation
 may be resumed later, running some other computation in the interim. Let us
@@ -181,7 +209,7 @@ the values <span class="machine"><span class="font-tt">21</span></span> and <spa
 and <span class="machine"><span class="font-tt">1</span></span>, which it multiplies, producing <span class="machine"><span class="font-tt">0</span></span>. The communication between the two
 computations is programmed entirely inside <span class="machine"><span class="font-tt">run_both</span></span>. Indeed, the definitions
 of <span class="machine"><span class="font-tt">comp1</span></span> and <span class="machine"><span class="font-tt">comp2</span></span>, alone, do not assign any meaning to the <span class="machine"><span class="font-tt">Xchg</span></span> effect.</p>
-<h3 class="subsection" id="s:effects-user-threads"><a class="section-anchor" href="#s:effects-user-threads" aria-hidden="true">﻿</a>12.24.3 User-level threads</h3>
+<h3 class="subsection" id="s:effects-user-threads"><a class="section-anchor" href="#s:effects-user-threads" aria-hidden="true">﻿</a><span class="number">24.3</span> User-level threads</h3>
 <p>Let us extend the previous example for an arbitrary number of tasks. Many
 languages such as GHC Haskell and Go provide user-level threads as a primitive
 feature implemented in the runtime system. With effect handlers, user-level
@@ -362,12 +390,12 @@ dequeue function discontinues the blocked thread with an
 <span class="machine"><span class="font-tt">xchg</span></span> function call, which causes the <span class="machine"><span class="font-tt">finally</span></span> block to be run and closes the
 output channel <span class="machine"><span class="font-tt">oc</span></span>. From the point of view of the user, it seems as though the
 function call <span class="machine"><span class="font-tt">xchg 0</span></span> raises the exception <span class="machine"><span class="font-tt">Improper_synchronization</span></span>.</p>
-<h3 class="subsection" id="s:effects-sequence"><a class="section-anchor" href="#s:effects-sequence" aria-hidden="true">﻿</a>12.24.4 Control inversion</h3>
+<h3 class="subsection" id="s:effects-sequence"><a class="section-anchor" href="#s:effects-sequence" aria-hidden="true">﻿</a><span class="number">24.4</span> Control inversion</h3>
 <p>When it comes to performing traversals on a data structure, there are two
 fundamental ways depending on whether the producer or the consumer has the
 control over the traversal. For example, in <span class="machine"><span class="font-tt">List.iter f l</span></span>, the producer
 <span class="machine"><span class="font-tt">List.iter</span></span> has the control and pushes the element to the consumer <span class="machine"><span class="font-tt">f</span></span> who
-processes them. On the other hand, the <a href="libref/Seq.html"><span class="font-tt">Seq</span></a> module provides a
+processes them. On the other hand, the <a href="api/Seq.html"><span class="font-tt">Seq</span></a> module provides a
 mechanism similar to delayed lists where the consumer controls the traversal.
 For example, <span class="machine"><span class="font-tt">Seq.forever Random.bool</span></span> returns an infinite sequence of random
 bits where every bit is produced (on demand) when queried by the consumer.</p><p>Naturally, producers such as <span class="machine"><span class="font-tt">List.iter</span></span> are easier to write in the former
@@ -564,11 +592,11 @@ tail of sequence.</p><p>When the consumer demands the next element from the sequ
 <span class="machine"><span class="font-tt">()</span></span>), the continuation <span class="machine"><span class="font-tt">k</span></span> is resumed. This allows the computation <span class="machine"><span class="font-tt">iter yield</span></span> to make progress, until it either yields another element or terminates
 normally. In the latter case, the value <span class="machine"><span class="font-tt">Seq.Nil</span></span> is returned, indicating to
 the consumer that the iteration is over.</p><p>It is important to note that the sequence returned by the <span class="machine"><span class="font-tt">invert</span></span> function is
-<em>ephemeral</em> (as defined by the <a href="libref/Seq.html"><span class="font-tt">Seq</span></a> module) i.e., the
+<em>ephemeral</em> (as defined by the <a href="api/Seq.html"><span class="font-tt">Seq</span></a> module) i.e., the
 sequence must be used at most once. Additionally, the sequence must be fully
 consumed (i.e., used at least once) so as to ensure that the captured
 continuation is used linearly.</p>
-<h3 class="subsection" id="s:effects-semantics"><a class="section-anchor" href="#s:effects-semantics" aria-hidden="true">﻿</a>12.24.5 Semantics</h3>
+<h3 class="subsection" id="s:effects-semantics"><a class="section-anchor" href="#s:effects-semantics" aria-hidden="true">﻿</a><span class="number">24.5</span> Semantics</h3>
 <p>In this section, we shall see the semantics of effect handlers with the help of
 examples.</p>
 <h4 class="subsubsection" id="s:effects-nesting"><a class="section-anchor" href="#s:effects-nesting" aria-hidden="true">﻿</a>Nesting handlers</h4>
@@ -660,7 +688,7 @@ when we run <span class="machine"><span class="font-tt">bar</span></span>.</p><d
 
 </div>
 <h4 class="subsubsection" id="s:effects-linearity"><a class="section-anchor" href="#s:effects-linearity" aria-hidden="true">﻿</a>Linear continuations</h4>
-<p>As discussed earlier <a href="#s%3Aeffects-discontinue">12.24.3</a>, the delimited continuations
+<p>As discussed earlier&nbsp;<a href="#s%3Aeffects-discontinue">12.24.3</a>, the delimited continuations
 in OCaml must be used linearly – <em><span class="font-bold">every captured continuation
 must be resumed either with a <span class="machine"><span class="font-tt">continue</span></span> or <span class="machine"><span class="font-tt">discontinue</span></span> exactly once</span></em>.
 Attempting to use a continuation more than once raises a
@@ -710,12 +738,12 @@ an effect asynchronously from a signal handler, a finaliser, a memprof
 callback, or a GC alarm, and catch it from the main part of the code.
 Instead, this would result in an <span class="machine"><span class="font-tt">Effect.Unhandled</span></span>
 exception (<a href="#s%3Aeffects-unhandled">12.24.5</a>).</p><p>Similarly, effects are incompatible with the use of callbacks from C
-to OCaml (section <a href="intfc.html#s%3Ac-callback">22.7</a>). It is not possible for an
+to OCaml (section&nbsp;<a href="intfc.html#s%3Ac-callback">22.7</a>). It is not possible for an
 effect to cross a call to <span class="machine"><span class="font-tt">caml_callback</span></span>, this would instead result
 in an <span class="machine"><span class="font-tt">Effect.Unhandled</span></span> exception. In particular, care must be taken
 when mixing libraries that use callbacks from C to OCaml and libraries
 that use effects.</p>
-<h3 class="subsection" id="s:effects-shallow"><a class="section-anchor" href="#s:effects-shallow" aria-hidden="true">﻿</a>12.24.6 Shallow handlers</h3>
+<h3 class="subsection" id="s:effects-shallow"><a class="section-anchor" href="#s:effects-shallow" aria-hidden="true">﻿</a><span class="number">24.6</span> Shallow handlers</h3>
 <p>The examples that we have seen so far have used <span class="font-it">deep</span> handlers. A deep
 handler handles all the effects performed (in sequence) by the computation.
 Whenever a continuation is captured in a deep handler, the captured continuation
@@ -800,7 +828,7 @@ are necessary for the shallow handler. We must use a locally abstract type
 effect argument <span class="machine"><span class="font-tt">eff</span></span> and the continuation <span class="machine"><span class="font-tt">k</span></span> in each of the effect cases.
 Another point to note is that the catch-all effect case “| _ -&gt; None” is
 necessary. This case may be intuitively read as “forward the unhandled effects
-to the outer handler”. The standard library module <a href="libref/Effect.html"><span class="font-tt">Effect</span></a> also
+to the outer handler”. The standard library module <a href="api/Effect.html"><span class="font-tt">Effect</span></a> also
 provides a non-syntactic version of deep handlers, where similar annotations
 are necessary.</p><p>The computation is initially executed by the <span class="machine"><span class="font-tt">loop_send</span></span> function (see last
 line in the code above) which ensures that the first effect that the
@@ -850,8 +878,10 @@ Exception: Failure <span class="ocamlstring">"protocol violation"</span>.</div><
 </div><p>We may implement the same example using deep handlers using reference cells
 (easy, but unsatisfying) or without them (harder). We leave this as an exercise
 to the reader.
-</p><hr>
-<a href="bindingops.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-</body>
-</html>
+</p>
+<div class="bottom-navigation"><a class="previous" href="bindingops.html">« Binding operators</a><a class="next up" href="extn.html">Language extensions</a></div>
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

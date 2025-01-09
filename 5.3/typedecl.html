@@ -1,33 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>11.8 Type and exception definitions</title>
-</head>
-<body>
-<a href="expr.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="classes.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h2 class="section" id="s:tydef"><a class="section-anchor" href="#s:tydef" aria-hidden="true">﻿</a>11.8 Type and exception definitions</h2>
+<title>OCaml - The OCaml language</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li class="active"><a href="language.html">The OCaml language</a></li><li><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec112"><span class="chapter-number">Chapter 11</span> The OCaml language</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">The OCaml language</a></li>
+<li><a href="lex.html#start-section"><span class="number">1</span> Lexical conventions</a>
+</li><li><a href="values.html#start-section"><span class="number">2</span> Values</a>
+</li><li><a href="names.html#start-section"><span class="number">3</span> Names</a>
+</li><li><a href="types.html#start-section"><span class="number">4</span> Type expressions</a>
+</li><li><a href="const.html#start-section"><span class="number">5</span> Constants</a>
+</li><li><a href="patterns.html#start-section"><span class="number">6</span> Patterns</a>
+</li><li><a href="expr.html#start-section"><span class="number">7</span> Expressions</a>
+</li><li><a href="typedecl.html#start-section"><span class="number">8</span> Type and exception definitions</a>
+</li><li><a href="classes.html#start-section"><span class="number">9</span> Classes</a>
+</li><li><a href="modtypes.html#start-section"><span class="number">10</span> Module types (module specifications)</a>
+</li><li><a href="modules.html#start-section"><span class="number">11</span> Module expressions (module implementations)</a>
+</li><li><a href="compunit.html#start-section"><span class="number">12</span> Compilation units</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:tydef"><a class="section-anchor" href="#s:tydef" aria-hidden="true"></a><span class="number">8</span> Type and exception definitions</h2>
 <ul>
-<li><a href="typedecl.html#ss%3Atypedefs">11.8.1 Type definitions</a>
-</li><li><a href="typedecl.html#ss%3Aexndef">11.8.2 Exception definitions</a>
+<li><a href="typedecl.html#ss%3Atypedefs"><span class="number">8.1</span> Type definitions</a>
+</li><li><a href="typedecl.html#ss%3Aexndef"><span class="number">8.2</span> Exception definitions</a>
 </li></ul>
 
-<h3 class="subsection" id="ss:typedefs"><a class="section-anchor" href="#ss:typedefs" aria-hidden="true">﻿</a>11.8.1 Type definitions</h3>
+<h3 class="subsection" id="ss:typedefs"><a class="section-anchor" href="#ss:typedefs" aria-hidden="true">﻿</a><span class="number">8.1</span> Type definitions</h3>
 <p>Type definitions bind type constructors to data types: either
 variant types, record types, type abbreviations, or abstract data
 types. They also bind the value constructors and record fields
 associated with the definition.</p><p><a id="hevea_manual.kwd92"></a>
 <a id="hevea_manual.kwd93"></a>
 <a id="hevea_manual.kwd94"></a>
-<a id="hevea_manual.kwd95"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="type-definition"><span class="nonterminal">type-definition</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd95"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="type-definition"><span class="nonterminal">type-definition</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">type</span> [<span class="syntax-token">nonrec</span>] <a class="syntax" href="#typedef"><span class="nonterminal">typedef</span></a> { <span class="syntax-token">and</span> <a class="syntax" href="#typedef"><span class="nonterminal">typedef</span></a> }
 </td></tr>
 <tr><td class="c008">&nbsp;</td></tr>
@@ -109,8 +125,8 @@ associated with the definition.</p><p><a id="hevea_manual.kwd92"></a>
 <a class="syntax" id="type-constraint"><span class="nonterminal">type-constraint</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">constraint</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> <span class="syntax-token">=</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>
+</tbody></table></td></tr>
+</tbody></table></div><p>
 <a id="hevea_manual.kwd96"></a>
 <a id="hevea_manual.kwd97"></a>
 See also the following language extensions:
@@ -190,17 +206,17 @@ types. The polymorphism of the contents is statically checked whenever
 a record value is created or modified. Extracted values may have their
 types instantiated.</p><p>The two components of a type definition, the optional equation and the
 optional representation, can be combined independently, giving
-rise to four typical situations:</p><dl class="description"><dt class="dt-description"><span class="font-bold">Abstract type: no equation, no representation.</span></dt><dd class="dd-description">  <br>
+rise to four typical situations:</p><dl class="description"><dt class="dt-description"><span class="font-bold">Abstract type: no equation, no representation.</span></dt><dd class="dd-description"> &nbsp;<br>
 When appearing in a module signature, this definition specifies
 nothing on the type constructor, besides its number of parameters:
 its representation is hidden and it is assumed incompatible with any
-other type.</dd><dt class="dt-description"><span class="font-bold">Type abbreviation: an equation, no representation.</span></dt><dd class="dd-description">  <br>
+other type.</dd><dt class="dt-description"><span class="font-bold">Type abbreviation: an equation, no representation.</span></dt><dd class="dd-description"> &nbsp;<br>
 This defines the type constructor as an abbreviation for the type
-expression on the right of the <span class="syntax-token">=</span> sign.</dd><dt class="dt-description"><span class="font-bold">New variant type or record type: no equation, a representation.</span></dt><dd class="dd-description">  <br>
+expression on the right of the <span class="syntax-token">=</span> sign.</dd><dt class="dt-description"><span class="font-bold">New variant type or record type: no equation, a representation.</span></dt><dd class="dd-description"> &nbsp;<br>
 This generates a new type constructor and defines associated
 constructors or fields, through which values of that type can be
 directly built or inspected.</dd><dt class="dt-description"><span class="font-bold">Re-exported variant type or record type: an equation,
-a representation.</span></dt><dd class="dd-description">  <br>
+a representation.</span></dt><dd class="dd-description"> &nbsp;<br>
 In this case, the type constructor is defined as an abbreviation for
 the type expression given in the equation, but in addition the
 constructors or fields given in the representation remain attached to
@@ -247,15 +263,15 @@ type parameters. Any actual type argument corresponding to the type
 parameter <a class="syntax" href="lex.html#ident"><span class="nonterminal">ident</span></a> has to be an instance of <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> (more precisely,
 <a class="syntax" href="lex.html#ident"><span class="nonterminal">ident</span></a> and <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> are unified). Type variables of <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> can
 appear in the type equation and the type declaration.</p>
-<h3 class="subsection" id="ss:exndef"><a class="section-anchor" href="#ss:exndef" aria-hidden="true">﻿</a>11.8.2 Exception definitions</h3>
+<h3 class="subsection" id="ss:exndef"><a class="section-anchor" href="#ss:exndef" aria-hidden="true">﻿</a><span class="number">8.2</span> Exception definitions</h3>
 <p>
-<a id="hevea_manual.kwd100"></a></p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="exception-definition"><span class="nonterminal">exception-definition</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd100"></a></p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="exception-definition"><span class="nonterminal">exception-definition</span></a></td><td class="c005">::=</td><td class="c007">
 <span class="syntax-token">exception</span> <a class="syntax" href="#constr-decl"><span class="nonterminal">constr-decl</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">exception</span> <a class="syntax" href="names.html#constr-name"><span class="nonterminal">constr-name</span></a> <span class="syntax-token">=</span> <a class="syntax" href="names.html#constr"><span class="nonterminal">constr</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>Exception definitions add new constructors to the built-in variant
+</tbody></table></td></tr>
+</tbody></table></div><p>Exception definitions add new constructors to the built-in variant
 type <code class="verb">exn</code> of exception values. The constructors are declared as
 for a definition of a variant type.</p><div class="caml-example toplevel">
 
@@ -292,9 +308,11 @@ gives an alternate name to an existing exception.</p><div class="caml-example to
 <span class="ocamlkeyword">val</span> eq : bool = <span class="ocamlkeyword">true</span></div></div>
 
 </div>
-<hr>
-<a href="expr.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="classes.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+
+<div class="bottom-navigation"><a class="previous" href="expr.html">« Expressions</a><a class="next" href="classes.html">Classes »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

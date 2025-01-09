@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="Up" href="Format_doc.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Compiler_libs" rel="Chapter" href="Compiler_libs.html">
 <link title="Ast_helper" rel="Chapter" href="Ast_helper.html">
 <link title="Ast_invariants" rel="Chapter" href="Ast_invariants.html">
@@ -62,8 +60,10 @@
 <link title="Warnings" rel="Chapter" href="Warnings.html">
 <link title="Pparse" rel="Chapter" href="Pparse.html"><link title="Type definitions and core functions " rel="Section" href="#2_Typedefinitionsandcorefunctions">
 <title>OCaml compiler library : Format_doc.Doc</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Compiler API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml compiler library : Format_doc.Doc</a></div><ul><li><ul><li><a href="#2_Typedefinitionsandcorefunctions">Type definitions and core functions </a></li></ul></li></ul></nav></header>
 <h1>Module <a href="type_Format_doc.Doc.html">Format_doc.Doc</a></h1>
 
 <pre><span id="MODULEDoc"><span class="keyword">module</span> Doc</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Format_doc.Doc.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -74,41 +74,41 @@
 <hr width="100%">
 <h3 id="2_Typedefinitionsandcorefunctions">Type definitions and core functions </h3>
 <pre><code><span id="TYPEbox_type"><span class="keyword">type</span> <code class="type"></code>box_type</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbox_type.H"><span class="constructor">H</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbox_type.V"><span class="constructor">V</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbox_type.HV"><span class="constructor">HV</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbox_type.HoV"><span class="constructor">HoV</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTbox_type.B"><span class="constructor">B</span></span></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -121,198 +121,198 @@
 
 
 <pre><code><span id="TYPEelement"><span class="keyword">type</span> <code class="type"></code>element</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Text"><span class="constructor">Text</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.With_size"><span class="constructor">With_size</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Open_box"><span class="constructor">Open_box</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Open_box.kind">kind</span>&nbsp;: <code class="type"><a href="Format_doc.Doc.html#TYPEbox_type">box_type</a></code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Open_box.indent">indent</span>&nbsp;: <code class="type">int</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 </code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Close_box"><span class="constructor">Close_box</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Open_tag"><span class="constructor">Open_tag</span></span> <span class="keyword">of</span> <code class="type">Format.stag</code></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Close_tag"><span class="constructor">Close_tag</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Open_tbox"><span class="constructor">Open_tbox</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Tab_break"><span class="constructor">Tab_break</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Tab_break.width">width</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Tab_break.offset">offset</span>&nbsp;: <code class="type">int</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 </code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Set_tab"><span class="constructor">Set_tab</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Close_tbox"><span class="constructor">Close_tbox</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Simple_break"><span class="constructor">Simple_break</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Simple_break.spaces">spaces</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Simple_break.indent">indent</span>&nbsp;: <code class="type">int</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 </code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Break"><span class="constructor">Break</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Break.fits">fits</span>&nbsp;: <code class="type">string * int * string</code>;</code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Break.breaks">breaks</span>&nbsp;: <code class="type">string * int * string</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 </code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Flush"><span class="constructor">Flush</span></span> <span class="keyword">of</span> <code>{</code><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTFormat_doc.Doc.Flush.newline">newline</span>&nbsp;: <code class="type">bool</code>;</code></td>
 
-</tr></table>
+</tr></tbody></table>
 <code>}</code>
 </code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Newline"><span class="constructor">Newline</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.If_newline"><span class="constructor">If_newline</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTelement.Deprecated"><span class="constructor">Deprecated</span></span> <span class="keyword">of</span> <code class="type">(Format.formatter -&gt; unit)</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
 <div class="info-desc">
 <p>Escape hatch: a <code class="code"><span class="constructor">Format</span></code> printer used to provide backward-compatibility
         for user-defined printer (from the <code class="code"><span class="keywordsign">#</span>install_printer</code> toplevel directive
         for instance).</p>
 </div>
 </div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
 
 <div class="info ">
 <div class="info-desc">
@@ -410,4 +410,5 @@
 <pre><span id="VALseq"><span class="keyword">val</span> seq</span> : <code class="type">?sep:<a href="Format_doc.Doc.html#TYPEprinter0">printer0</a> -&gt;<br>       'a <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt; 'a Seq.t <a href="Format_doc.Doc.html#TYPEprinter">printer</a></code></pre>
 <pre><span id="VALoption"><span class="keyword">val</span> option</span> : <code class="type">?none:<a href="Format_doc.Doc.html#TYPEprinter0">printer0</a> -&gt;<br>       'a <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt; 'a option <a href="Format_doc.Doc.html#TYPEprinter">printer</a></code></pre>
 <pre><span id="VALresult"><span class="keyword">val</span> result</span> : <code class="type">ok:'a <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt;<br>       error:'e <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt;<br>       ('a, 'e) result <a href="Format_doc.Doc.html#TYPEprinter">printer</a></code></pre>
-<pre><span id="VALeither"><span class="keyword">val</span> either</span> : <code class="type">left:'a <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt;<br>       right:'b <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt;<br>       ('a, 'b) Either.t <a href="Format_doc.Doc.html#TYPEprinter">printer</a></code></pre></body></html>
+<pre><span id="VALeither"><span class="keyword">val</span> either</span> : <code class="type">left:'a <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt;<br>       right:'b <a href="Format_doc.Doc.html#TYPEprinter">printer</a> -&gt;<br>       ('a, 'b) Either.t <a href="Format_doc.Doc.html#TYPEprinter">printer</a></code></pre>
+</div></body></html>

@@ -1,24 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>12.3 Private types</title>
-</head>
-<body>
-<a href="recursivemodules.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="locallyabstract.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h2 class="section" id="s:private-types"><a class="section-anchor" href="#s:private-types" aria-hidden="true">﻿</a>12.3 Private types</h2>
+<title>OCaml - Language extensions</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li><a href="language.html">The OCaml language</a></li><li class="active"><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec279"><span class="chapter-number">Chapter 12</span> Language extensions</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Language extensions</a></li>
+<li><a href="letrecvalues.html#start-section"><span class="number">1</span> Recursive definitions of values</a>
+</li><li><a href="recursivemodules.html#start-section"><span class="number">2</span> Recursive modules</a>
+</li><li><a href="privatetypes.html#start-section"><span class="number">3</span> Private types</a>
+</li><li><a href="locallyabstract.html#start-section"><span class="number">4</span> Locally abstract types</a>
+</li><li><a href="firstclassmodules.html#start-section"><span class="number">5</span> First-class modules</a>
+</li><li><a href="moduletypeof.html#start-section"><span class="number">6</span> Recovering the type of a module</a>
+</li><li><a href="signaturesubstitution.html#start-section"><span class="number">7</span> Substituting inside a signature</a>
+</li><li><a href="modulealias.html#start-section"><span class="number">8</span> Type-level module aliases</a>
+</li><li><a href="overridingopen.html#start-section"><span class="number">9</span> Overriding in open statements</a>
+</li><li><a href="gadts.html#start-section"><span class="number">10</span> Generalized algebraic datatypes</a>
+</li><li><a href="bigarray.html#start-section"><span class="number">11</span> Syntax for Bigarray access</a>
+</li><li><a href="attributes.html#start-section"><span class="number">12</span> Attributes</a>
+</li><li><a href="extensionnodes.html#start-section"><span class="number">13</span> Extension nodes</a>
+</li><li><a href="extensiblevariants.html#start-section"><span class="number">14</span> Extensible variant types</a>
+</li><li><a href="generativefunctors.html#start-section"><span class="number">15</span> Generative functors</a>
+</li><li><a href="extensionsyntax.html#start-section"><span class="number">16</span> Extension-only syntax</a>
+</li><li><a href="inlinerecords.html#start-section"><span class="number">17</span> Inline records</a>
+</li><li><a href="doccomments.html#start-section"><span class="number">18</span> Documentation comments</a>
+</li><li><a href="indexops.html#start-section"><span class="number">19</span> Extended indexing operators </a>
+</li><li><a href="emptyvariants.html#start-section"><span class="number">20</span> Empty variant types</a>
+</li><li><a href="alerts.html#start-section"><span class="number">21</span> Alerts</a>
+</li><li><a href="generalizedopens.html#start-section"><span class="number">22</span> Generalized open statements</a>
+</li><li><a href="bindingops.html#start-section"><span class="number">23</span> Binding operators</a>
+</li><li><a href="effects.html#start-section"><span class="number">24</span> Effect handlers</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:private-types"><a class="section-anchor" href="#s:private-types" aria-hidden="true"></a><span class="number">3</span> Private types</h2>
 <ul>
-<li><a href="privatetypes.html#ss%3Aprivate-types-variant">12.3.1 Private variant and record types</a>
-</li><li><a href="privatetypes.html#ss%3Aprivate-types-abbrev">12.3.2 Private type abbreviations</a>
-</li><li><a href="privatetypes.html#ss%3Aprivate-rows">12.3.3 Private row types</a>
+<li><a href="privatetypes.html#ss%3Aprivate-types-variant"><span class="number">3.1</span> Private variant and record types</a>
+</li><li><a href="privatetypes.html#ss%3Aprivate-types-abbrev"><span class="number">3.2</span> Private type abbreviations</a>
+</li><li><a href="privatetypes.html#ss%3Aprivate-rows"><span class="number">3.3</span> Private row types</a>
 </li></ul>
 <p>
 <a id="hevea_manual.kwd208"></a>
@@ -30,19 +58,19 @@ between abstract type declarations, where no information is revealed
 on the type implementation, and data type definitions and type
 abbreviations, where all aspects of the type implementation are
 publicized. Private type declarations come in three flavors: for
-variant and record types (section <a href="#ss%3Aprivate-types-variant">12.3.1</a>),
-for type abbreviations (section <a href="#ss%3Aprivate-types-abbrev">12.3.2</a>),
-and for row types (section <a href="#ss%3Aprivate-rows">12.3.3</a>).</p>
-<h3 class="subsection" id="ss:private-types-variant"><a class="section-anchor" href="#ss:private-types-variant" aria-hidden="true">﻿</a>12.3.1 Private variant and record types</h3>
-<p>(Introduced in Objective Caml 3.07)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="typedecl.html#type-representation"><span class="nonterminal">type-representation</span></a></td><td class="c005">::=</td><td class="c007">
+variant and record types (section&nbsp;<a href="#ss%3Aprivate-types-variant">12.3.1</a>),
+for type abbreviations (section&nbsp;<a href="#ss%3Aprivate-types-abbrev">12.3.2</a>),
+and for row types (section&nbsp;<a href="#ss%3Aprivate-rows">12.3.3</a>).</p>
+<h3 class="subsection" id="ss:private-types-variant"><a class="section-anchor" href="#ss:private-types-variant" aria-hidden="true">﻿</a><span class="number">3.1</span> Private variant and record types</h3>
+<p>(Introduced in Objective Caml 3.07)</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" href="typedecl.html#type-representation"><span class="nonterminal">type-representation</span></a></td><td class="c005">::=</td><td class="c007">
 ...
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">=</span> <span class="syntax-token">private</span> [ <span class="syntax-token">|</span> ] <a class="syntax" href="typedecl.html#constr-decl"><span class="nonterminal">constr-decl</span></a> { <span class="syntax-token">|</span> <a class="syntax" href="typedecl.html#constr-decl"><span class="nonterminal">constr-decl</span></a> }
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">=</span> <span class="syntax-token">private</span> <a class="syntax" href="typedecl.html#record-decl"><span class="nonterminal">record-decl</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>Values of a variant or record type declared <span class="syntax-token">private</span>
+</tbody></table></td></tr>
+</tbody></table></div><p>Values of a variant or record type declared <span class="syntax-token">private</span>
 can be de-structured normally in pattern-matching or via
 the <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> <span class="syntax-token">.</span> <a class="syntax" href="names.html#field"><span class="nonterminal">field</span></a> notation for record accesses. However, values of
 these types cannot be constructed directly by constructor application
@@ -75,14 +103,14 @@ Here, the <span class="syntax-token">private</span> declaration ensures that in 
 handled like abstract types. That is, if a private type has
 parameters, their variance is the one explicitly given by prefixing
 the parameter by a ‘<span class="machine"><span class="font-tt">+</span></span>’ or a ‘<span class="machine"><span class="font-tt">-</span></span>’, it is invariant otherwise.</p>
-<h3 class="subsection" id="ss:private-types-abbrev"><a class="section-anchor" href="#ss:private-types-abbrev" aria-hidden="true">﻿</a>12.3.2 Private type abbreviations</h3>
-<p>(Introduced in Objective Caml 3.11)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="typedecl.html#type-equation"><span class="nonterminal">type-equation</span></a></td><td class="c005">::=</td><td class="c007">
+<h3 class="subsection" id="ss:private-types-abbrev"><a class="section-anchor" href="#ss:private-types-abbrev" aria-hidden="true">﻿</a><span class="number">3.2</span> Private type abbreviations</h3>
+<p>(Introduced in Objective Caml 3.11)</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" href="typedecl.html#type-equation"><span class="nonterminal">type-equation</span></a></td><td class="c005">::=</td><td class="c007">
 ...
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">=</span> <span class="syntax-token">private</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>Unlike a regular type abbreviation, a private type abbreviation
+</tbody></table></td></tr>
+</tbody></table></div><p>Unlike a regular type abbreviation, a private type abbreviation
 declares a type that is distinct from its implementation type <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>.
 However, coercions from the type to <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> are permitted.
 Moreover, the compiler “knows” the implementation type and can take
@@ -119,15 +147,15 @@ and will only work in presence of private abbreviations if neither the
 type of <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> nor <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> contain any type variables. If they do,
 you must use the full form <span class="syntax-token">(</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> <span class="syntax-token">:</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a><sub>1</sub> <span class="syntax-token">:&gt;</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a><sub>2</sub> <span class="syntax-token">)</span> where
 <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a><sub>1</sub> is the expected type of <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a>. Concretely, this would be <span class="machine"><span class="font-tt">(x : N.t :&gt; int)</span></span> and <span class="machine"><span class="font-tt">(l : N.t list :&gt; int list)</span></span> for the above examples.</p>
-<h3 class="subsection" id="ss:private-rows"><a class="section-anchor" href="#ss:private-rows" aria-hidden="true">﻿</a>12.3.3 Private row types</h3>
+<h3 class="subsection" id="ss:private-rows"><a class="section-anchor" href="#ss:private-rows" aria-hidden="true">﻿</a><span class="number">3.3</span> Private row types</h3>
 <p>
-<a id="hevea_manual.kwd209"></a></p><p>(Introduced in Objective Caml 3.09)</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" href="typedecl.html#type-equation"><span class="nonterminal">type-equation</span></a></td><td class="c005">::=</td><td class="c007">
+<a id="hevea_manual.kwd209"></a></p><p>(Introduced in Objective Caml 3.09)</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" href="typedecl.html#type-equation"><span class="nonterminal">type-equation</span></a></td><td class="c005">::=</td><td class="c007">
 ...
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">=</span> <span class="syntax-token">private</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
 </td></tr>
-</table></td></tr>
-</table></div><p>Private row types are type abbreviations where part of the
+</tbody></table></td></tr>
+</tbody></table></div><p>Private row types are type abbreviations where part of the
 structure of the type is left abstract. Concretely <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> in the
 above should denote either an object type or a polymorphic variant
 type, with some possibility of refinement left. If the private
@@ -219,9 +247,11 @@ pattern-matching on a [v], one should assume that any of the
 constructors of [t] could be present.</p><p>Similarly to abstract types, the variance of type parameters
 is not inferred, and must be given explicitly.
 </p>
-<hr>
-<a href="recursivemodules.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="extn.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="locallyabstract.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+
+<div class="bottom-navigation"><a class="previous" href="recursivemodules.html">« Recursive modules</a><a class="next" href="locallyabstract.html">Locally abstract types »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

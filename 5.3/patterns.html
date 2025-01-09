@@ -1,23 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>11.6 Patterns</title>
-</head>
-<body>
-<a href="const.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="expr.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h2 class="section" id="s:patterns"><a class="section-anchor" href="#s:patterns" aria-hidden="true">﻿</a>11.6 Patterns</h2>
+<title>OCaml - The OCaml language</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li class="active"><a href="language.html">The OCaml language</a></li><li><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec112"><span class="chapter-number">Chapter 11</span> The OCaml language</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">The OCaml language</a></li>
+<li><a href="lex.html#start-section"><span class="number">1</span> Lexical conventions</a>
+</li><li><a href="values.html#start-section"><span class="number">2</span> Values</a>
+</li><li><a href="names.html#start-section"><span class="number">3</span> Names</a>
+</li><li><a href="types.html#start-section"><span class="number">4</span> Type expressions</a>
+</li><li><a href="const.html#start-section"><span class="number">5</span> Constants</a>
+</li><li><a href="patterns.html#start-section"><span class="number">6</span> Patterns</a>
+</li><li><a href="expr.html#start-section"><span class="number">7</span> Expressions</a>
+</li><li><a href="typedecl.html#start-section"><span class="number">8</span> Type and exception definitions</a>
+</li><li><a href="classes.html#start-section"><span class="number">9</span> Classes</a>
+</li><li><a href="modtypes.html#start-section"><span class="number">10</span> Module types (module specifications)</a>
+</li><li><a href="modules.html#start-section"><span class="number">11</span> Module expressions (module implementations)</a>
+</li><li><a href="compunit.html#start-section"><span class="number">12</span> Compilation units</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:patterns"><a class="section-anchor" href="#s:patterns" aria-hidden="true"></a><span class="number">6</span> Patterns</h2>
 <p>
 <a id="hevea_manual.kwd15"></a>
-</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="pattern"><span class="nonterminal">pattern</span></a></td><td class="c005">::=</td><td class="c007">
+</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="pattern"><span class="nonterminal">pattern</span></a></td><td class="c005">::=</td><td class="c007">
 <a class="syntax" href="names.html#value-name"><span class="nonterminal">value-name</span></a>
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">_</span>
@@ -62,8 +78,8 @@
 </td></tr>
 <tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="names.html#module-path"><span class="nonterminal">module-path</span></a> <span class="syntax-token">.{</span> <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a> <span class="syntax-token">}</span>
 </td></tr>
-</table></td></tr>
-</table></div><p>
+</tbody></table></td></tr>
+</tbody></table></div><p>
 See also the following language extensions:
 <a href="firstclassmodules.html#s%3Afirst-class-modules">first-class modules</a>,
 <a href="attributes.html#s%3Aattributes">attributes</a>,
@@ -73,16 +89,16 @@ operators and non-closed pattern constructions. The constructions with
 higher precedences come first.
 <a id="hevea_manual.kwd16"></a>
 </p><div class="tableau">
-<div class="center"><table class="c000 cellpadding1" border=1><tr><td class="c004"><span class="font-bold">Operator</span></td><td class="c004"><span class="font-bold">Associativity</span> </td></tr>
+<div class="center"><table class="c000 cellpadding1" border="1"><tbody><tr><td class="c004"><span class="font-bold">Operator</span></td><td class="c004"><span class="font-bold">Associativity</span> </td></tr>
 <tr><td class="c006">
 <span class="machine"><span class="font-tt">..</span></span></td><td class="c006">– </td></tr>
-<tr><td class="c006"><span class="machine"><span class="font-tt">lazy</span></span> (see section <a href="#sss%3Apat-lazy">11.6</a>)</td><td class="c006">– </td></tr>
+<tr><td class="c006"><span class="machine"><span class="font-tt">lazy</span></span> (see section&nbsp;<a href="#sss%3Apat-lazy">11.6</a>)</td><td class="c006">– </td></tr>
 <tr><td class="c006">Constructor application, Tag application</td><td class="c006">right </td></tr>
 <tr><td class="c006"><span class="machine"><span class="font-tt">::</span></span></td><td class="c006">right </td></tr>
 <tr><td class="c006"><span class="machine"><span class="font-tt">,</span></span></td><td class="c006">– </td></tr>
 <tr><td class="c006"><span class="machine"><span class="font-tt">|</span></span></td><td class="c006">left </td></tr>
 <tr><td class="c006"><span class="machine"><span class="font-tt">as</span></span></td><td class="c006">– </td></tr>
-</table></div></div><p>Patterns are templates that allow selecting data structures of a
+</tbody></table></div></div><p>Patterns are templates that allow selecting data structures of a
 given shape, and binding identifiers to components of the data
 structure. This selection operation is called pattern matching; its
 outcome is either “this value does not match this pattern”, or
@@ -195,9 +211,9 @@ the two patterns <a class="syntax" href="#pattern"><span class="nonterminal">pat
 must bind exactly the same identifiers to values having the same types.
 Matching is performed from left to right.
 More precisely,
-in case some value <span class="font-it">v</span> matches <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>1</sub> <span class="syntax-token">|</span> <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>2</sub>, the bindings
+in case some value&nbsp;<span class="font-it">v</span> matches <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>1</sub> <span class="syntax-token">|</span> <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>2</sub>, the bindings
 performed are those of <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>1</sub> when <span class="font-it">v</span> matches <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>1</sub>.
-Otherwise, value <span class="font-it">v</span> matches <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>2</sub> whose bindings are performed.</p><div class="caml-example toplevel">
+Otherwise, value&nbsp;<span class="font-it">v</span> matches <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a><sub>2</sub> whose bindings are performed.</p><div class="caml-example toplevel">
 
 <div class="ocaml">
 
@@ -425,7 +441,7 @@ even when the pattern selected in the end has no <span class="syntax-token">lazy
 <div class="pre caml-output ok"><span class="ocamlkeyword">val</span> force_opt : int lazy_t option -&gt; int = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
 
 </div><p>For more information, see the description of module <span class="machine"><span class="font-tt">Lazy</span></span> in the
-standard library (module <a href="libref/Lazy.html"><span class="font-tt">Lazy</span></a>).
+standard library (module <a href="api/Lazy.html"><span class="font-tt">Lazy</span></a>).
 <a id="hevea_manual0"></a><a id="hevea_manual1"></a></p><h4 class="subsubsection" id="sss:exception-match"><a class="section-anchor" href="#sss:exception-match" aria-hidden="true">﻿</a>Exception patterns</h4>
 <p>
 (Introduced in OCaml 4.02)</p><p>A new form of exception pattern,  <span class="syntax-token">exception</span> <a class="syntax" href="#pattern"><span class="nonterminal">pattern</span></a> , is allowed
@@ -483,9 +499,11 @@ equivalent to <a class="syntax" href="names.html#module-path"><span class="nonte
 <div class="pre caml-output ok"><span class="ocamlkeyword">val</span> bytes_allocated : Gc.stat -&gt; int = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
 
 </div>
-<hr>
-<a href="const.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="language.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="expr.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+
+<div class="bottom-navigation"><a class="previous" href="const.html">« Constants</a><a class="next" href="expr.html">Expressions »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

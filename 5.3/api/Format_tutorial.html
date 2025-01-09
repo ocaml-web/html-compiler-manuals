@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="next" href="Ocaml_operators.html">
 <link rel="Up" href="index.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -89,8 +87,10 @@
 <link title="CamlinternalLazy" rel="Chapter" href="CamlinternalLazy.html">
 <link title="CamlinternalMod" rel="Chapter" href="CamlinternalMod.html">
 <link title="CamlinternalOO" rel="Chapter" href="CamlinternalOO.html"><title>OCaml library : Format_tutorial</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : Format_tutorial</a></div><ul><li><a href="#1_Principles">Principles</a></li><li><a href="#1_Boxes">Boxes</a></li><li><a href="#1_Printingspaces">Printing spaces</a></li><li><a href="#1_Indentationofnewlines">Indentation of new lines</a></li><li><a href="#1_Refinementonhovboxes">Refinement on "hov" boxes</a></li><li><a href="#1_Practicaladvice">Practical advice</a></li><li><a href="#1_Printingtostdoutusingprintf">Printing to stdout: using printf</a></li><li><a href="#1_Aconcreteexample"> A concrete example</a><ul><li><a href="#2_Mostgeneralprettyprintingusingfprintf">Most general pretty-printing: using fprintf</a></li></ul></li></ul></nav></header>
 <h1>Format_tutorial</h1>
 <div class="info-desc">
 <h1 id="0_UsingtheFormatmodule">Using the Format module</h1>
@@ -344,7 +344,7 @@ parenthesis.</p>
 <h2 id="1_Practicaladvice">Practical advice</h2>
 <p>When writing a pretty-printing routine, follow these simple rules:</p>
 
-<OL>
+<ol>
 <li>Boxes must be opened and closed consistently (<code class="code">open_*</code> and
 <a href="Format.html#VALclose_box"><code class="code"><span class="constructor">Format</span>.close_box</code></a> must be nested like parentheses).</li>
 <li>Never hesitate to open a box.</li>
@@ -380,7 +380,7 @@ vertical box!</li>
 <li>End your main program by a <code class="code">print_newline&nbsp;()</code> call, that flushes the
 pretty-printer tables (hence the output).  (Note that the top-level loop of the
 interactive system does it as well, just before a new input.)</li>
-</OL>
+</ol>
 <h2 id="1_Printingtostdoutusingprintf">Printing to stdout: using printf</h2>
 <p>The format module provides a general printing facility "a la" printf. In
 addition to the usual conversion facility provided by printf, you can write
@@ -499,4 +499,5 @@ val pr_lambda : Format.formatter -&gt; lambda -&gt; unit</pre>
 let eprint_lambda = pr_lambda err_formatter;;
 val print_lambda : lambda -&gt; unit
 val eprint_lambda : lambda -&gt; unit</pre></div>
-</body></html>
+
+</div></body></html>

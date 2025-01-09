@@ -1,35 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 21 Profiling (ocamlprof)</title>
-</head>
-<body>
-<a href="debugger.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="intfc.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec467">Chapter 21 Profiling (ocamlprof)</h1>
-<ul>
-<li><a href="profil.html#s%3Aocamlprof-compiling">21.1 Compiling for profiling</a>
-</li><li><a href="profil.html#s%3Aocamlprof-profiling">21.2 Profiling an execution</a>
-</li><li><a href="profil.html#s%3Aocamlprof-printing">21.3 Printing profiling information</a>
-</li><li><a href="profil.html#s%3Aocamlprof-time-profiling">21.4 Time profiling</a>
-</li></ul>
+<title>OCaml - Profiling (ocamlprof)</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li class="active"><a href="profil.html">Profiling (ocamlprof)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec467"><span class="chapter-number">Chapter 21</span> Profiling (ocamlprof)</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Profiling (ocamlprof)</a></li>
+<li><a href="profil.html#s%3Aocamlprof-compiling"><span class="number">1</span> Compiling for profiling</a>
+</li><li><a href="profil.html#s%3Aocamlprof-profiling"><span class="number">2</span> Profiling an execution</a>
+</li><li><a href="profil.html#s%3Aocamlprof-printing"><span class="number">3</span> Printing profiling information</a>
+</li><li><a href="profil.html#s%3Aocamlprof-time-profiling"><span class="number">4</span> Time profiling</a>
+</li></ul></nav></header>
 <p> <a id="c:profiler"></a>
 </p><p>This chapter describes how the execution of OCaml
 programs can be profiled, by recording how many times functions are
 called, branches of conditionals are taken, …</p>
-<h2 class="section" id="s:ocamlprof-compiling"><a class="section-anchor" href="#s:ocamlprof-compiling" aria-hidden="true">﻿</a>21.1 Compiling for profiling</h2>
+<h2 class="section" id="s:ocamlprof-compiling"><a class="section-anchor" href="#s:ocamlprof-compiling" aria-hidden="true"></a><span class="number">1</span> Compiling for profiling</h2>
 <p>Before profiling an execution, the program must be compiled in
 profiling mode, using the <span class="machine"><span class="font-tt">ocamlcp</span></span> front-end to the <span class="machine"><span class="font-tt">ocamlc</span></span> compiler
-(see chapter <a href="comp.html#c%3Acamlc">13</a>) or the <span class="machine"><span class="font-tt">ocamloptp</span></span> front-end to the
-<span class="machine"><span class="font-tt">ocamlopt</span></span> compiler (see chapter <a href="native.html#c%3Anativecomp">16</a>). When compiling
+(see chapter&nbsp;<a href="comp.html#c%3Acamlc">13</a>) or the <span class="machine"><span class="font-tt">ocamloptp</span></span> front-end to the
+<span class="machine"><span class="font-tt">ocamlopt</span></span> compiler (see chapter&nbsp;<a href="native.html#c%3Anativecomp">16</a>). When compiling
 modules separately, <span class="machine"><span class="font-tt">ocamlcp</span></span> or <span class="machine"><span class="font-tt">ocamloptp</span></span> must be used when
 compiling the modules (production of <span class="machine"><span class="font-tt">.cmo</span></span> or <span class="machine"><span class="font-tt">.cmx</span></span> files), and can
 also be used (though this is not strictly necessary) when linking them
@@ -69,7 +67,7 @@ also accepts the <span class="machine"><span class="font-tt">-p</span></span> op
 <span class="machine"><span class="font-tt">-P</span></span>.</p><p>The <span class="machine"><span class="font-tt">ocamlcp</span></span> and <span class="machine"><span class="font-tt">ocamloptp</span></span> commands also accept all the options of
 the corresponding <span class="machine"><span class="font-tt">ocamlc</span></span> or <span class="machine"><span class="font-tt">ocamlopt</span></span> compiler, except the <span class="machine"><span class="font-tt">-pp</span></span>
 (preprocessing) option.</p>
-<h2 class="section" id="s:ocamlprof-profiling"><a class="section-anchor" href="#s:ocamlprof-profiling" aria-hidden="true">﻿</a>21.2 Profiling an execution</h2>
+<h2 class="section" id="s:ocamlprof-profiling"><a class="section-anchor" href="#s:ocamlprof-profiling" aria-hidden="true">﻿</a><span class="number">2</span> Profiling an execution</h2>
 <p>Running an executable that has been compiled with <span class="machine"><span class="font-tt">ocamlcp</span></span> or
 <span class="machine"><span class="font-tt">ocamloptp</span></span> records the execution counts for the specified parts of
 the program and saves them in a file called <span class="machine"><span class="font-tt">ocamlprof.dump</span></span> in the
@@ -82,7 +80,7 @@ instance, the profiling of several executions of a program on
 different inputs. Note that dump files produced by byte-code
 executables (compiled with <span class="machine"><span class="font-tt">ocamlcp</span></span>) are compatible with the dump
 files produced by native executables (compiled with <span class="machine"><span class="font-tt">ocamloptp</span></span>).</p>
-<h2 class="section" id="s:ocamlprof-printing"><a class="section-anchor" href="#s:ocamlprof-printing" aria-hidden="true">﻿</a>21.3 Printing profiling information</h2>
+<h2 class="section" id="s:ocamlprof-printing"><a class="section-anchor" href="#s:ocamlprof-printing" aria-hidden="true">﻿</a><span class="number">3</span> Printing profiling information</h2>
 <p>The <span class="machine"><span class="font-tt">ocamlprof</span></span> command produces a source listing of the program modules
 where execution counts have been inserted as comments. For instance,
 </p><pre>        ocamlprof foo.ml
@@ -106,7 +104,7 @@ Print version string and exit.</dd><dt class="dt-description"><span class="font-
 Print short version number and exit.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-help</span></span> or <span class="machine"><span class="font-tt">--help</span></span></span></dt><dd class="dd-description">
 Display a short usage summary and exit.
 </dd></dl>
-<h2 class="section" id="s:ocamlprof-time-profiling"><a class="section-anchor" href="#s:ocamlprof-time-profiling" aria-hidden="true">﻿</a>21.4 Time profiling</h2>
+<h2 class="section" id="s:ocamlprof-time-profiling"><a class="section-anchor" href="#s:ocamlprof-time-profiling" aria-hidden="true">﻿</a><span class="number">4</span> Time profiling</h2>
 <p>Profiling with <span class="machine"><span class="font-tt">ocamlprof</span></span> only records execution counts, not the actual
 time spent within each function. There is currently no way to perform
 time profiling on bytecode programs generated by <span class="machine"><span class="font-tt">ocamlc</span></span>. For time
@@ -116,8 +114,10 @@ with <span class="machine"><span class="font-tt">gprof</span></span> is no longe
 
 </p>
 <hr>
-<a href="debugger.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="intfc.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="debugger.html">« The debugger (ocamldebug)</a><a class="next" href="intfc.html">Interfacing C with OCaml »</a></div>
+
+
+
+
+<div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

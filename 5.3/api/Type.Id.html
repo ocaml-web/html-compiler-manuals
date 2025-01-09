@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="Up" href="Type.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Format_tutorial" rel="Chapter" href="Format_tutorial.html">
 <link title="Ocaml_operators" rel="Chapter" href="Ocaml_operators.html">
 <link title="Arg" rel="Chapter" href="Arg.html">
@@ -90,8 +88,10 @@
 <link title="CamlinternalOO" rel="Chapter" href="CamlinternalOO.html"><link title="Type identifiers" rel="Section" href="#ids">
 <link title="Example" rel="Section" href="#example">
 <title>OCaml library : Type.Id</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml library : Type.Id</a></div><ul><li><a href="#ids">Type identifiers</a></li><li><a href="#example">Example</a></li></ul></nav></header>
 <h1>Module <a href="type_Type.Id.html">Type.Id</a></h1>
 
 <pre><span id="MODULEId"><span class="keyword">module</span> Id</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Type.Id.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -145,28 +145,28 @@
       <a href="Stdlib.Map.html"><code class="code"><span class="constructor">Map</span></code></a> values whose keys map to a single, homogeneous type of
       values, this dictionary can associate a different type of value
       to each key.</p>
-<pre class="codepre"><code class="code"></code><table><tr><td></td><td><span class="comment">(** Heterogeneous dictionaries. *)</span></td></tr></table><code class="code">
+<pre class="codepre"><code class="code"></code><table><tbody><tr><td></td><td><span class="comment">(** Heterogeneous dictionaries. *)</span></td></tr></tbody></table><code class="code">
 <span class="keyword">module</span> <span class="constructor">Dict</span> : <span class="keyword">sig</span>
   <span class="keyword">type</span> t
-  </code><table><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** The type for dictionaries. *)</span></td></tr></table><code class="code">
+  </code><table><tbody><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** The type for dictionaries. *)</span></td></tr></tbody></table><code class="code">
 
   <span class="keyword">type</span> <span class="keywordsign">'</span>a key
-  </code><table><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** The type for keys binding values of type <code class="code"><span class="keywordsign">'</span>a</code>. *)</span></td></tr></table><code class="code">
+  </code><table><tbody><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** The type for keys binding values of type <code class="code"><span class="keywordsign">'</span>a</code>. *)</span></td></tr></tbody></table><code class="code">
 
   <span class="keyword">val</span> key : unit <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>a key
-  </code><table><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">key&nbsp;()</code> is a new dictionary key. *)</span></td></tr></table><code class="code">
+  </code><table><tbody><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">key&nbsp;()</code> is a new dictionary key. *)</span></td></tr></tbody></table><code class="code">
 
   <span class="keyword">val</span> empty : t
-  </code><table><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">empty</code> is the empty dictionary. *)</span></td></tr></table><code class="code">
+  </code><table><tbody><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">empty</code> is the empty dictionary. *)</span></td></tr></tbody></table><code class="code">
 
   <span class="keyword">val</span> add : <span class="keywordsign">'</span>a key <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>a <span class="keywordsign">-&gt;</span> t <span class="keywordsign">-&gt;</span> t
-  </code><table><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">add&nbsp;k&nbsp;v&nbsp;d</code> is <code class="code">d</code> with <code class="code">k</code> bound to <code class="code">v</code>. *)</span></td></tr></table><code class="code">
+  </code><table><tbody><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">add&nbsp;k&nbsp;v&nbsp;d</code> is <code class="code">d</code> with <code class="code">k</code> bound to <code class="code">v</code>. *)</span></td></tr></tbody></table><code class="code">
 
   <span class="keyword">val</span> remove : <span class="keywordsign">'</span>a key <span class="keywordsign">-&gt;</span> t <span class="keywordsign">-&gt;</span> t
-  </code><table><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">remove&nbsp;k&nbsp;d</code> is <code class="code">d</code> with the last binding of <code class="code">k</code> removed. *)</span></td></tr></table><code class="code">
+  </code><table><tbody><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">remove&nbsp;k&nbsp;d</code> is <code class="code">d</code> with the last binding of <code class="code">k</code> removed. *)</span></td></tr></tbody></table><code class="code">
 
   <span class="keyword">val</span> find : <span class="keywordsign">'</span>a key <span class="keywordsign">-&gt;</span> t <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>a option
-  </code><table><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">find&nbsp;k&nbsp;d</code> is the binding of <code class="code">k</code> in <code class="code">d</code>, if any. *)</span></td></tr></table><code class="code">
+  </code><table><tbody><tr><td>&nbsp;&nbsp;</td><td><span class="comment">(** <code class="code">find&nbsp;k&nbsp;d</code> is the binding of <code class="code">k</code> in <code class="code">d</code>, if any. *)</span></td></tr></tbody></table><code class="code">
 <span class="keyword">end</span> = <span class="keyword">struct</span>
   <span class="keyword">type</span> <span class="keywordsign">'</span>a key = <span class="keywordsign">'</span>a <span class="constructor">Type</span>.<span class="constructor">Id</span>.t
   <span class="keyword">type</span> binding = <span class="constructor">B</span> : <span class="keywordsign">'</span>a key * <span class="keywordsign">'</span>a <span class="keywordsign">-&gt;</span> binding
@@ -184,4 +184,5 @@
         <span class="keywordsign">|</span> <span class="constructor">Some</span> <span class="constructor">Type</span>.<span class="constructor">Equal</span> <span class="keywordsign">-&gt;</span> <span class="constructor">Some</span> v
         <span class="keywordsign">|</span> <span class="constructor">None</span> <span class="keywordsign">-&gt;</span> <span class="keyword">assert</span> <span class="keyword">false</span>
 <span class="keyword">end</span>
-</code></pre></body></html>
+</code></pre>
+</div></body></html>

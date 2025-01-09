@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 17 Lexer and parser generators (ocamllex, ocamlyacc)</title>
-</head>
-<body>
-<a href="native.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="depend.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec375">Chapter 17 Lexer and parser generators (ocamllex, ocamlyacc)</h1>
-<ul>
-<li><a href="lexyacc.html#s%3Aocamllex-overview">17.1 Overview of <span class="font-tt">ocamllex</span></a>
-</li><li><a href="lexyacc.html#s%3Aocamllex-syntax">17.2 Syntax of lexer definitions</a>
-</li><li><a href="lexyacc.html#s%3Aocamlyacc-overview">17.3 Overview of <span class="font-tt">ocamlyacc</span></a>
-</li><li><a href="lexyacc.html#s%3Aocamlyacc-syntax">17.4 Syntax of grammar definitions</a>
-</li><li><a href="lexyacc.html#s%3Aocamlyacc-options">17.5 Options</a>
-</li><li><a href="lexyacc.html#s%3Alexyacc-example">17.6 A complete example</a>
-</li><li><a href="lexyacc.html#s%3Alexyacc-common-errors">17.7 Common errors</a>
-</li></ul>
+<title>OCaml - Lexer and parser generators (ocamllex, ocamlyacc)</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li class="active"><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="profil.html">Profiling (ocamlprof)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec375"><span class="chapter-number">Chapter 17</span> Lexer and parser generators (ocamllex, ocamlyacc)</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Lexer and parser generators (ocamllex, ocamlyacc)</a></li>
+<li><a href="lexyacc.html#s%3Aocamllex-overview"><span class="number">1</span> Overview of <span class="font-tt">ocamllex</span></a>
+</li><li><a href="lexyacc.html#s%3Aocamllex-syntax"><span class="number">2</span> Syntax of lexer definitions</a>
+</li><li><a href="lexyacc.html#s%3Aocamlyacc-overview"><span class="number">3</span> Overview of <span class="font-tt">ocamlyacc</span></a>
+</li><li><a href="lexyacc.html#s%3Aocamlyacc-syntax"><span class="number">4</span> Syntax of grammar definitions</a>
+</li><li><a href="lexyacc.html#s%3Aocamlyacc-options"><span class="number">5</span> Options</a>
+</li><li><a href="lexyacc.html#s%3Alexyacc-example"><span class="number">6</span> A complete example</a>
+</li><li><a href="lexyacc.html#s%3Alexyacc-common-errors"><span class="number">7</span> Common errors</a>
+</li></ul></nav></header>
 <p>
 <a id="c:ocamlyacc"></a>
 </p><p>This chapter describes two program generators: <span class="machine"><span class="font-tt">ocamllex</span></span>, that
@@ -39,12 +37,11 @@ unfamiliar with <span class="machine"><span class="font-tt">lex</span></span> an
 principles, techniques, and tools” by Aho, Lam, Sethi and Ullman
 (Pearson, 2006), or “Lex &amp; Yacc”, by Levine, Mason and
 Brown (O’Reilly, 1992).</p>
-<h2 class="section" id="s:ocamllex-overview"><a class="section-anchor" href="#s:ocamllex-overview" aria-hidden="true">﻿</a>17.1 Overview of <span class="font-tt">ocamllex</span></h2>
+<h2 class="section" id="s:ocamllex-overview"><a class="section-anchor" href="#s:ocamllex-overview" aria-hidden="true"></a><span class="number">1</span> Overview of <span class="font-tt">ocamllex</span></h2>
 <p>The <span class="machine"><span class="font-tt">ocamllex</span></span> command produces a lexical analyzer from a set of regular
 expressions with attached semantic actions, in the style of
 <span class="machine"><span class="font-tt">lex</span></span>. Assuming the input file is <span class="font-it">lexer</span><span class="machine"><span class="font-tt">.mll</span></span>, executing
-</p><pre>
-        ocamllex <span class="font-it">lexer</span>.mll
+</p><pre>        ocamllex <span class="font-it">lexer</span>.mll
 </pre><p>
 produces OCaml code for a lexical analyzer in file <span class="font-it">lexer</span><span class="machine"><span class="font-tt">.ml</span></span>.
 This file defines one lexing function per entry point in the lexer
@@ -55,11 +52,11 @@ library module <span class="machine"><span class="font-tt">Lexing</span></span>.
 <span class="machine"><span class="font-tt">Lexing.from_string</span></span> and <span class="machine"><span class="font-tt">Lexing.from_function</span></span> create
 lexer buffers that read from an input channel, a character string, or
 any reading function, respectively. (See the description of module
-<span class="machine"><span class="font-tt">Lexing</span></span> in chapter <a href="stdlib.html#c%3Astdlib">29</a>.)</p><p>When used in conjunction with a parser generated by <span class="machine"><span class="font-tt">ocamlyacc</span></span>, the
+<span class="machine"><span class="font-tt">Lexing</span></span> in chapter&nbsp;<a href="stdlib.html#c%3Astdlib">29</a>.)</p><p>When used in conjunction with a parser generated by <span class="machine"><span class="font-tt">ocamlyacc</span></span>, the
 semantic actions compute a value belonging to the type <span class="machine"><span class="font-tt">token</span></span> defined
 by the generated parsing module. (See the description of <span class="machine"><span class="font-tt">ocamlyacc</span></span>
 below.)</p>
-<h3 class="subsection" id="ss:ocamllex-options"><a class="section-anchor" href="#ss:ocamllex-options" aria-hidden="true">﻿</a>17.1.1 Options</h3>
+<h3 class="subsection" id="ss:ocamllex-options"><a class="section-anchor" href="#ss:ocamllex-options" aria-hidden="true">﻿</a><span class="number">1.1</span> Options</h3>
 <p>
 The following command-line options are recognized by <span class="machine"><span class="font-tt">ocamllex</span></span>.</p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-ml</span></span></span></dt><dd class="dd-description">
 Output code that does not use OCaml’s built-in automata
@@ -74,10 +71,9 @@ Print version string and exit.</dd><dt class="dt-description"><span class="font-
 Print short version number and exit.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-help</span></span> or <span class="machine"><span class="font-tt">--help</span></span></span></dt><dd class="dd-description">
 Display a short usage summary and exit.
 </dd></dl>
-<h2 class="section" id="s:ocamllex-syntax"><a class="section-anchor" href="#s:ocamllex-syntax" aria-hidden="true">﻿</a>17.2 Syntax of lexer definitions</h2>
+<h2 class="section" id="s:ocamllex-syntax"><a class="section-anchor" href="#s:ocamllex-syntax" aria-hidden="true">﻿</a><span class="number">2</span> Syntax of lexer definitions</h2>
 <p>The format of lexer definitions is as follows:
-</p><pre>
-{ <span class="font-it">header</span> }
+</p><pre>{ <span class="font-it">header</span> }
 let <span class="font-it">ident</span> = <span class="font-it">regexp</span> …
 [refill { <span class="font-it">refill-handler</span> }]
 rule <span class="font-it">entrypoint</span> [<span class="font-it">arg</span><sub>1</sub>… <span class="font-it">arg</span><sub><span class="font-it">n</span></sub>] =
@@ -92,8 +88,8 @@ and …
 Comments are delimited by <span class="machine"><span class="font-tt">(*</span></span> and <span class="machine"><span class="font-tt">*)</span></span>, as in OCaml.
 The <span class="machine"><span class="font-tt">parse</span></span> keyword, can be replaced by the <span class="machine"><span class="font-tt">shortest</span></span> keyword, with
 the semantic consequences explained below.</p><p>Refill handlers are a recent (optional) feature introduced in 4.02,
-documented below in subsection <a href="#ss%3Arefill-handlers">17.2.7</a>.</p>
-<h3 class="subsection" id="ss:ocamllex-header-trailer"><a class="section-anchor" href="#ss:ocamllex-header-trailer" aria-hidden="true">﻿</a>17.2.1 Header and trailer</h3>
+documented below in subsection&nbsp;<a href="#ss%3Arefill-handlers">17.2.7</a>.</p>
+<h3 class="subsection" id="ss:ocamllex-header-trailer"><a class="section-anchor" href="#ss:ocamllex-header-trailer" aria-hidden="true">﻿</a><span class="number">2.1</span> Header and trailer</h3>
 <p>
 The <span class="font-it">header</span> and <span class="font-it">trailer</span> sections are arbitrary OCaml
 text enclosed in curly braces. Either or both can be omitted. If
@@ -102,13 +98,13 @@ output file and the trailer text at the end. Typically, the
 header section contains the <span class="machine"><span class="font-tt">open</span></span> directives required
 by the actions, and possibly some auxiliary functions used in the
 actions.</p>
-<h3 class="subsection" id="ss:ocamllex-named-regexp"><a class="section-anchor" href="#ss:ocamllex-named-regexp" aria-hidden="true">﻿</a>17.2.2 Naming regular expressions</h3>
+<h3 class="subsection" id="ss:ocamllex-named-regexp"><a class="section-anchor" href="#ss:ocamllex-named-regexp" aria-hidden="true">﻿</a><span class="number">2.2</span> Naming regular expressions</h3>
 <p>Between the header and the entry points, one can give names to
 frequently-occurring regular expressions. This is written
 <span class="syntax-token">let</span> <a class="syntax" href="lex.html#ident"><span class="nonterminal">ident</span></a> <span class="syntax-token">=</span> <a class="syntax" href="#regexp"><span class="nonterminal">regexp</span></a>.
 In regular expressions that follow this declaration, the identifier
 <span class="font-it">ident</span> can be used as shorthand for <span class="font-it">regexp</span>.</p>
-<h3 class="subsection" id="ss:ocamllex-entry-points"><a class="section-anchor" href="#ss:ocamllex-entry-points" aria-hidden="true">﻿</a>17.2.3 Entry points</h3>
+<h3 class="subsection" id="ss:ocamllex-entry-points"><a class="section-anchor" href="#ss:ocamllex-entry-points" aria-hidden="true">﻿</a><span class="number">2.3</span> Entry points</h3>
 <p>The names of the entry points must be valid identifiers for OCaml
 values (starting with a lowercase letter).
 Similarly, the arguments <span class="font-tt"><span class="font-it">arg</span></span><sub>1</sub><span class="font-tt">…
@@ -128,14 +124,14 @@ the shortest prefix of the input is selected. In case of tie, the
 regular expression that occurs earlier in the rule is still selected.
 This feature is not intended for use in ordinary lexical analyzers, it
 may facilitate the use of <span class="machine"><span class="font-tt">ocamllex</span></span> as a simple text processing tool.</p>
-<h3 class="subsection" id="ss:ocamllex-regexp"><a class="section-anchor" href="#ss:ocamllex-regexp" aria-hidden="true">﻿</a>17.2.4 Regular expressions</h3>
+<h3 class="subsection" id="ss:ocamllex-regexp"><a class="section-anchor" href="#ss:ocamllex-regexp" aria-hidden="true">﻿</a><span class="number">2.4</span> Regular expressions</h3>
 <p>The regular expressions are in the style of <span class="machine"><span class="font-tt">lex</span></span>, with a more
 OCaml-like syntax.
-</p><div class="syntax"><table class="display dcenter"><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c008"><a class="syntax" id="regexp"><span class="nonterminal">regexp</span></a></td><td class="c005">::=</td><td class="c007">
+</p><div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" id="regexp"><span class="nonterminal">regexp</span></a></td><td class="c005">::=</td><td class="c007">
 …
 </td></tr>
-</table></td></tr>
-</table></div><dl class="description"><dt class="dt-description"><span class="syntax-token">'</span> <span class="nonterminal">regular-char</span> ∣ <a class="syntax" href="lex.html#escape-sequence"><span class="nonterminal">escape-sequence</span></a> <span class="syntax-token">'</span></dt><dd class="dd-description">
+</tbody></table></td></tr>
+</tbody></table></div><dl class="description"><dt class="dt-description"><span class="syntax-token">'</span> <span class="nonterminal">regular-char</span> ∣ <a class="syntax" href="lex.html#escape-sequence"><span class="nonterminal">escape-sequence</span></a> <span class="syntax-token">'</span></dt><dd class="dd-description">
 A character constant, with the same syntax as OCaml character
 constants. Match the denoted character.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">_</span></span></span></dt><dd class="dd-description">
 (underscore) Match any character.</dd><dt class="dt-description"><span class="syntax-token">eof</span></dt><dd class="dd-description">
@@ -176,7 +172,7 @@ Bind the substring matched by <a class="syntax" href="#regexp"><span class="nont
 </dd></dl><p>Concerning the precedences of operators, <span class="machine"><span class="font-tt">#</span></span> has the highest precedence,
 followed by <span class="machine"><span class="font-tt">*</span></span>, <span class="machine"><span class="font-tt">+</span></span> and <span class="machine"><span class="font-tt">?</span></span>,
 then concatenation, then <span class="machine"><span class="font-tt">|</span></span> (alternation), then <span class="machine"><span class="font-tt">as</span></span>.</p>
-<h3 class="subsection" id="ss:ocamllex-actions"><a class="section-anchor" href="#ss:ocamllex-actions" aria-hidden="true">﻿</a>17.2.5 Actions</h3>
+<h3 class="subsection" id="ss:ocamllex-actions"><a class="section-anchor" href="#ss:ocamllex-actions" aria-hidden="true">﻿</a><span class="number">2.5</span> Actions</h3>
 <p>The actions are arbitrary OCaml expressions. They are evaluated in
 a context where the identifiers defined by using the <span class="machine"><span class="font-tt">as</span></span> construct
 are bound to subparts of the matched string.
@@ -198,7 +194,7 @@ offset 0.</dd><dt class="dt-description"><span class="font-bold"><span class="fo
 lexer definition.) Recursively call the lexer on the given entry point.
 Notice that <span class="machine"><span class="font-tt">lexbuf</span></span> is the last argument.
 Useful for lexing nested comments, for example.</dd></dl>
-<h3 class="subsection" id="ss:ocamllex-variables"><a class="section-anchor" href="#ss:ocamllex-variables" aria-hidden="true">﻿</a>17.2.6 Variables in regular expressions</h3>
+<h3 class="subsection" id="ss:ocamllex-variables"><a class="section-anchor" href="#ss:ocamllex-variables" aria-hidden="true">﻿</a><span class="number">2.6</span> Variables in regular expressions</h3>
 <p>
 The <span class="machine"><span class="font-tt">as</span></span> construct is similar to “<em>groups</em>” as provided by
 numerous regular expression packages.
@@ -235,7 +231,7 @@ The automata produced <span class="machine"><span class="font-tt">ocamllex</span
 expressions will select one of the possible resulting sets of
 bindings.
 The selected set of bindings is purposely left unspecified.</p>
-<h3 class="subsection" id="ss:refill-handlers"><a class="section-anchor" href="#ss:refill-handlers" aria-hidden="true">﻿</a>17.2.7 Refill handlers</h3>
+<h3 class="subsection" id="ss:refill-handlers"><a class="section-anchor" href="#ss:refill-handlers" aria-hidden="true">﻿</a><span class="number">2.7</span> Refill handlers</h3>
 <p>By default, when ocamllex reaches the end of its lexing buffer, it
 will silently call the <span class="machine"><span class="font-tt">refill_buff</span></span> function of <span class="machine"><span class="font-tt">lexbuf</span></span> structure
 and continue lexing. It is sometimes useful to be able to take control
@@ -289,15 +285,14 @@ rule token = parse
 end
 }
 </pre>
-<h3 class="subsection" id="ss:ocamllex-reserved-ident"><a class="section-anchor" href="#ss:ocamllex-reserved-ident" aria-hidden="true">﻿</a>17.2.8 Reserved identifiers</h3>
+<h3 class="subsection" id="ss:ocamllex-reserved-ident"><a class="section-anchor" href="#ss:ocamllex-reserved-ident" aria-hidden="true">﻿</a><span class="number">2.8</span> Reserved identifiers</h3>
 <p>All identifiers starting with <span class="machine"><span class="font-tt">__ocaml_lex</span></span> are reserved for use by
 <span class="machine"><span class="font-tt">ocamllex</span></span>; do not use any such identifier in your programs.</p>
-<h2 class="section" id="s:ocamlyacc-overview"><a class="section-anchor" href="#s:ocamlyacc-overview" aria-hidden="true">﻿</a>17.3 Overview of <span class="font-tt">ocamlyacc</span></h2>
+<h2 class="section" id="s:ocamlyacc-overview"><a class="section-anchor" href="#s:ocamlyacc-overview" aria-hidden="true">﻿</a><span class="number">3</span> Overview of <span class="font-tt">ocamlyacc</span></h2>
 <p>The <span class="machine"><span class="font-tt">ocamlyacc</span></span> command produces a parser from a context-free grammar
 specification with attached semantic actions, in the style of <span class="machine"><span class="font-tt">yacc</span></span>.
 Assuming the input file is <span class="font-it">grammar</span><span class="machine"><span class="font-tt">.mly</span></span>, executing
-</p><pre>
-        ocamlyacc <span class="font-it">options</span> <span class="font-it">grammar</span>.mly
+</p><pre>        ocamlyacc <span class="font-it">options</span> <span class="font-it">grammar</span>.mly
 </pre><p>
 produces OCaml code for a parser in the file <span class="font-it">grammar</span><span class="machine"><span class="font-tt">.ml</span></span>,
 and its interface in file <span class="font-it">grammar</span><span class="machine"><span class="font-tt">.mli</span></span>.</p><p>The generated module defines one parsing function per entry point in
@@ -310,10 +305,9 @@ functions are usually generated from a lexer specification by the
 implemented in the standard library module <span class="machine"><span class="font-tt">Lexing</span></span>. Tokens are values from
 the concrete type <span class="machine"><span class="font-tt">token</span></span>, defined in the interface file
 <span class="font-it">grammar</span><span class="machine"><span class="font-tt">.mli</span></span> produced by <span class="machine"><span class="font-tt">ocamlyacc</span></span>.</p>
-<h2 class="section" id="s:ocamlyacc-syntax"><a class="section-anchor" href="#s:ocamlyacc-syntax" aria-hidden="true">﻿</a>17.4 Syntax of grammar definitions</h2>
+<h2 class="section" id="s:ocamlyacc-syntax"><a class="section-anchor" href="#s:ocamlyacc-syntax" aria-hidden="true">﻿</a><span class="number">4</span> Syntax of grammar definitions</h2>
 <p>Grammar definitions have the following format:
-</p><pre>
-%{
+</p><pre>%{
   <span class="font-it">header</span>
 %}
   <span class="font-it">declarations</span>
@@ -325,13 +319,13 @@ the concrete type <span class="machine"><span class="font-tt">token</span></span
 Additionally, comments can be delimited by <code class="verb">/*</code> and <code class="verb">*/</code>,
 as in C, in the “declarations” and “rules” sections. C-style
 comments do not nest, but OCaml-style comments do.</p>
-<h3 class="subsection" id="ss:ocamlyacc-header-trailer"><a class="section-anchor" href="#ss:ocamlyacc-header-trailer" aria-hidden="true">﻿</a>17.4.1 Header and trailer</h3>
+<h3 class="subsection" id="ss:ocamlyacc-header-trailer"><a class="section-anchor" href="#ss:ocamlyacc-header-trailer" aria-hidden="true">﻿</a><span class="number">4.1</span> Header and trailer</h3>
 <p>The header and the trailer sections are OCaml code that is copied
 as is into file <span class="font-it">grammar</span><span class="machine"><span class="font-tt">.ml</span></span>. Both sections are optional. The header
 goes at the beginning of the output file; it usually contains
 <span class="machine"><span class="font-tt">open</span></span> directives and auxiliary functions required by the semantic
 actions of the rules. The trailer goes at the end of the output file.</p>
-<h3 class="subsection" id="ss:ocamlyacc-declarations"><a class="section-anchor" href="#ss:ocamlyacc-declarations" aria-hidden="true">﻿</a>17.4.2 Declarations</h3>
+<h3 class="subsection" id="ss:ocamlyacc-declarations"><a class="section-anchor" href="#ss:ocamlyacc-declarations" aria-hidden="true">﻿</a><span class="number">4.2</span> Declarations</h3>
 <p>Declarations are given one per line. They all start with a <code class="verb">%</code> sign.</p><dl class="description"><dt class="dt-description"><span class="syntax-token">%token</span> <a class="syntax" href="names.html#constr"><span class="nonterminal">constr</span></a> … <a class="syntax" href="names.html#constr"><span class="nonterminal">constr</span></a></dt><dd class="dd-description">
 Declare the given symbols <a class="syntax" href="names.html#constr"><span class="nonterminal">constr</span></a> … <a class="syntax" href="names.html#constr"><span class="nonterminal">constr</span></a>
 as tokens (terminal symbols). These symbols
@@ -393,10 +387,9 @@ error.
 method, then <span class="machine"><span class="font-tt">ocamlyacc</span></span> will output a warning and the parser will
 always shift.
 </li></ul></dd></dl>
-<h3 class="subsection" id="ss:ocamlyacc-rules"><a class="section-anchor" href="#ss:ocamlyacc-rules" aria-hidden="true">﻿</a>17.4.3 Rules</h3>
+<h3 class="subsection" id="ss:ocamlyacc-rules"><a class="section-anchor" href="#ss:ocamlyacc-rules" aria-hidden="true">﻿</a><span class="number">4.3</span> Rules</h3>
 <p>The syntax for rules is as usual:
-</p><pre>
-<span class="font-it">nonterminal</span> :
+</p><pre><span class="font-it">nonterminal</span> :
     <span class="font-it">symbol</span> … <span class="font-it">symbol</span> { <span class="font-it">semantic-action</span> }
   | …
   | <span class="font-it">symbol</span> … <span class="font-it">symbol</span> { <span class="font-it">semantic-action</span> }
@@ -414,7 +407,7 @@ first (leftmost) symbol, <code class="verb">$2</code> is the attribute for the s
 symbol, etc.</p><p>The rules may contain the special symbol <span class="machine"><span class="font-tt">error</span></span> to indicate
 resynchronization points, as in <span class="machine"><span class="font-tt">yacc</span></span>.</p><p>Actions occurring in the middle of rules are not supported.</p><p>Nonterminal symbols are like regular OCaml symbols, except that they
 cannot end with <span class="machine"><span class="font-tt">'</span></span> (single quote).</p>
-<h3 class="subsection" id="ss:ocamlyacc-error-handling"><a class="section-anchor" href="#ss:ocamlyacc-error-handling" aria-hidden="true">﻿</a>17.4.4 Error handling</h3>
+<h3 class="subsection" id="ss:ocamlyacc-error-handling"><a class="section-anchor" href="#ss:ocamlyacc-error-handling" aria-hidden="true">﻿</a><span class="number">4.4</span> Error handling</h3>
 <p>Error recovery is supported as follows: when the parser reaches an
 error state (no grammar rules can apply), it calls a function named
 <span class="machine"><span class="font-tt">parse_error</span></span> with the string <span class="machine"><span class="font-tt">"syntax error"</span></span> as argument. The default
@@ -429,7 +422,7 @@ these. If no state can be uncovered where the error token can be
 shifted, then the parser aborts by raising the <span class="machine"><span class="font-tt">Parsing.Parse_error</span></span>
 exception.</p><p>Refer to documentation on <span class="machine"><span class="font-tt">yacc</span></span> for more details and guidance in how
 to use error recovery.</p>
-<h2 class="section" id="s:ocamlyacc-options"><a class="section-anchor" href="#s:ocamlyacc-options" aria-hidden="true">﻿</a>17.5 Options</h2>
+<h2 class="section" id="s:ocamlyacc-options"><a class="section-anchor" href="#s:ocamlyacc-options" aria-hidden="true">﻿</a><span class="number">5</span> Options</h2>
 <p>The <span class="machine"><span class="font-tt">ocamlyacc</span></span> command recognizes the following options:</p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-b</span></span><span class="font-it">prefix</span></span></dt><dd class="dd-description">
 Name the output files <span class="font-it">prefix</span><span class="machine"><span class="font-tt">.ml</span></span>, <span class="font-it">prefix</span><span class="machine"><span class="font-tt">.mli</span></span>,
 <span class="font-it">prefix</span><span class="machine"><span class="font-tt">.output</span></span>, instead of the default naming convention.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-q</span></span></span></dt><dd class="dd-description">
@@ -445,12 +438,12 @@ Process <span class="font-it">file</span> as the grammar specification, even if 
 starts with a dash (-) character. This option must be the last on the
 command line.</dd></dl><p>At run-time, the <span class="machine"><span class="font-tt">ocamlyacc</span></span>-generated parser can be debugged by
 setting the <span class="machine"><span class="font-tt">p</span></span> option in the <span class="machine"><span class="font-tt">OCAMLRUNPARAM</span></span> environment variable
-(see section <a href="runtime.html#s%3Aocamlrun-options">15.2</a>). This causes the pushdown
+(see section&nbsp;<a href="runtime.html#s%3Aocamlrun-options">15.2</a>). This causes the pushdown
 automaton executing the parser to print a trace of its action (tokens
 shifted, rules reduced, etc). The trace mentions rule numbers and
 state numbers that can be interpreted by looking at the file
 <span class="font-it">grammar</span><span class="machine"><span class="font-tt">.output</span></span> generated by <span class="machine"><span class="font-tt">ocamlyacc -v</span></span>.</p>
-<h2 class="section" id="s:lexyacc-example"><a class="section-anchor" href="#s:lexyacc-example" aria-hidden="true">﻿</a>17.6 A complete example</h2>
+<h2 class="section" id="s:lexyacc-example"><a class="section-anchor" href="#s:lexyacc-example" aria-hidden="true">﻿</a><span class="number">6</span> A complete example</h2>
 <p>The all-time favorite: a desk calculator. This program reads
 arithmetic expressions on standard input, one per line, and prints
 their values. Here is the grammar definition:
@@ -514,7 +507,7 @@ their values. Here is the grammar definition:
         ocamlc -c calc.ml
         ocamlc -o calc lexer.cmo parser.cmo calc.cmo
 </pre>
-<h2 class="section" id="s:lexyacc-common-errors"><a class="section-anchor" href="#s:lexyacc-common-errors" aria-hidden="true">﻿</a>17.7 Common errors</h2>
+<h2 class="section" id="s:lexyacc-common-errors"><a class="section-anchor" href="#s:lexyacc-common-errors" aria-hidden="true">﻿</a><span class="number">7</span> Common errors</h2>
 <dl class="description"><dt class="dt-description"><span class="font-bold">ocamllex: transition table overflow, automaton is too big</span></dt><dd class="dd-description"><p>The deterministic automata generated by <span class="machine"><span class="font-tt">ocamllex</span></span> are limited to at
 most 32767 transitions. The message above indicates that your lexer
 definition is too complex and overflows this limit. This is commonly
@@ -553,8 +546,10 @@ ocamlyacc generated parsers.
 The <a href="https://cambium.inria.fr/~fpottier/menhir/">menhir</a> parser generator
 is a better option if you want thread-safe parsers.</p></dd></dl>
 <hr>
-<a href="native.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="depend.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="native.html">« Native-code compilation (ocamlopt)</a><a class="next" href="depend.html">Dependency generator (ocamldep) »</a></div>
+
+
+
+
+<div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

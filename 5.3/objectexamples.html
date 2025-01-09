@@ -1,43 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="hevea 2.36">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="manual.css">
-<title>Chapter 3 Objects in OCaml</title>
-</head>
-<body>
-<a href="moduleexamples.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="lablexamples.html"><img src="next_motif.svg" alt="Next"></a>
-<hr>
-<h1 class="chapter" id="sec26">Chapter 3 Objects in OCaml</h1>
-<ul>
-<li><a href="objectexamples.html#s%3Aclasses-and-objects">3.1 Classes and objects</a>
-</li><li><a href="objectexamples.html#s%3Aimmediate-objects">3.2 Immediate objects</a>
-</li><li><a href="objectexamples.html#s%3Areference-to-self">3.3 Reference to self</a>
-</li><li><a href="objectexamples.html#s%3Ainitializers">3.4 Initializers</a>
-</li><li><a href="objectexamples.html#s%3Avirtual-methods">3.5 Virtual methods</a>
-</li><li><a href="objectexamples.html#s%3Aprivate-methods">3.6 Private methods</a>
-</li><li><a href="objectexamples.html#s%3Aclass-interfaces">3.7 Class interfaces</a>
-</li><li><a href="objectexamples.html#s%3Ainheritance">3.8 Inheritance</a>
-</li><li><a href="objectexamples.html#s%3Amultiple-inheritance">3.9 Multiple inheritance</a>
-</li><li><a href="objectexamples.html#s%3Aparameterized-classes">3.10 Parameterized classes</a>
-</li><li><a href="objectexamples.html#s%3Apolymorphic-methods">3.11 Polymorphic methods</a>
-</li><li><a href="objectexamples.html#s%3Ausing-coercions">3.12 Using coercions</a>
-</li><li><a href="objectexamples.html#s%3Afunctional-objects">3.13 Functional objects</a>
-</li><li><a href="objectexamples.html#s%3Acloning-objects">3.14 Cloning objects</a>
-</li><li><a href="objectexamples.html#s%3Arecursive-classes">3.15 Recursive classes</a>
-</li><li><a href="objectexamples.html#s%3Abinary-methods">3.16 Binary methods</a>
-</li><li><a href="objectexamples.html#s%3Afriends">3.17 Friends</a>
-</li></ul>
+<title>OCaml - Objects in OCaml</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>An introduction to OCaml</nav><ul id="part-menu"><li><a href="coreexamples.html">The core language</a></li><li><a href="moduleexamples.html">The module system</a></li><li class="active"><a href="objectexamples.html">Objects in OCaml</a></li><li><a href="lablexamples.html">Labeled arguments</a></li><li><a href="polyvariant.html">Polymorphic variants</a></li><li><a href="polymorphism.html">Polymorphism and its limitations</a></li><li><a href="gadts-tutorial.html">Generalized algebraic datatypes</a></li><li><a href="advexamples.html">Advanced examples with classes and modules</a></li><li><a href="parallelism.html">Parallel programming</a></li><li><a href="memorymodel.html">Memory model: The hard bits</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec26"><span class="chapter-number">Chapter 3</span> Objects in OCaml</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.3</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Objects in OCaml</a></li>
+<li><a href="objectexamples.html#s%3Aclasses-and-objects"><span class="number">1</span> Classes and objects</a>
+</li><li><a href="objectexamples.html#s%3Aimmediate-objects"><span class="number">2</span> Immediate objects</a>
+</li><li><a href="objectexamples.html#s%3Areference-to-self"><span class="number">3</span> Reference to self</a>
+</li><li><a href="objectexamples.html#s%3Ainitializers"><span class="number">4</span> Initializers</a>
+</li><li><a href="objectexamples.html#s%3Avirtual-methods"><span class="number">5</span> Virtual methods</a>
+</li><li><a href="objectexamples.html#s%3Aprivate-methods"><span class="number">6</span> Private methods</a>
+</li><li><a href="objectexamples.html#s%3Aclass-interfaces"><span class="number">7</span> Class interfaces</a>
+</li><li><a href="objectexamples.html#s%3Ainheritance"><span class="number">8</span> Inheritance</a>
+</li><li><a href="objectexamples.html#s%3Amultiple-inheritance"><span class="number">9</span> Multiple inheritance</a>
+</li><li><a href="objectexamples.html#s%3Aparameterized-classes"><span class="number">10</span> Parameterized classes</a>
+</li><li><a href="objectexamples.html#s%3Apolymorphic-methods"><span class="number">11</span> Polymorphic methods</a>
+</li><li><a href="objectexamples.html#s%3Ausing-coercions"><span class="number">12</span> Using coercions</a>
+</li><li><a href="objectexamples.html#s%3Afunctional-objects"><span class="number">13</span> Functional objects</a>
+</li><li><a href="objectexamples.html#s%3Acloning-objects"><span class="number">14</span> Cloning objects</a>
+</li><li><a href="objectexamples.html#s%3Arecursive-classes"><span class="number">15</span> Recursive classes</a>
+</li><li><a href="objectexamples.html#s%3Abinary-methods"><span class="number">16</span> Binary methods</a>
+</li><li><a href="objectexamples.html#s%3Afriends"><span class="number">17</span> Friends</a>
+</li></ul></nav></header>
 <p>
 <a id="c:objectexamples"></a>
 </p><p>
-<span class="font-it">(Chapter written by Jérôme Vouillon, Didier Rémy and Jacques Garrigue)</span></p><p><br>
+</p><p><br>
 <br>
 </p><p>This chapter gives an overview of the object-oriented features of
 OCaml.</p><p>Note that the relationship between object, class and type in OCaml is
@@ -47,7 +45,7 @@ Object-oriented features are used much less frequently in OCaml than
 in those languages. OCaml has alternatives that are often more appropriate,
 such as modules and functors. Indeed, many OCaml programs do not use objects
 at all.</p>
-<h2 class="section" id="s:classes-and-objects"><a class="section-anchor" href="#s:classes-and-objects" aria-hidden="true">﻿</a>3.1 Classes and objects</h2>
+<h2 class="section" id="s:classes-and-objects"><a class="section-anchor" href="#s:classes-and-objects" aria-hidden="true"></a><span class="number">1</span> Classes and objects</h2>
 <p>The class <span class="machine"><span class="font-tt">point</span></span> below defines one instance variable <span class="machine"><span class="font-tt">x</span></span> and two methods
 <span class="machine"><span class="font-tt">get_x</span></span> and <span class="machine"><span class="font-tt">move</span></span>. The initial value of the instance variable is <span class="machine"><span class="font-tt">0</span></span>.
 The variable <span class="machine"><span class="font-tt">x</span></span> is declared mutable, so the method <span class="machine"><span class="font-tt">move</span></span> can change
@@ -353,8 +351,8 @@ inherited.</p><p>This ability provides class constructors as can be found in oth
 languages. Several constructors can be defined this way to build objects of
 the same class but with different initialization patterns; an
 alternative is to use initializers, as described below in
-section <a href="#s%3Ainitializers">3.4</a>.</p>
-<h2 class="section" id="s:immediate-objects"><a class="section-anchor" href="#s:immediate-objects" aria-hidden="true">﻿</a>3.2 Immediate objects</h2>
+section&nbsp;<a href="#s%3Ainitializers">3.4</a>.</p>
+<h2 class="section" id="s:immediate-objects"><a class="section-anchor" href="#s:immediate-objects" aria-hidden="true">﻿</a><span class="number">2</span> Immediate objects</h2>
 <p>There is another, more direct way to create an object: create it
 without going through a class.</p><p>The syntax is exactly the same as for class expressions, but the
 result is a single object rather than a class. All the constructs
@@ -425,8 +423,8 @@ environment.
 </div><p>Immediate objects have two weaknesses compared to classes: their types
 are not abbreviated, and you cannot inherit from them. But these two
 weaknesses can be advantages in some situations, as we will see
-in sections <a href="#s%3Areference-to-self">3.3</a> and <a href="#s%3Aparameterized-classes">3.10</a>.</p>
-<h2 class="section" id="s:reference-to-self"><a class="section-anchor" href="#s:reference-to-self" aria-hidden="true">﻿</a>3.3 Reference to self</h2>
+in sections&nbsp;<a href="#s%3Areference-to-self">3.3</a> and&nbsp;<a href="#s%3Aparameterized-classes">3.10</a>.</p>
+<h2 class="section" id="s:reference-to-self"><a class="section-anchor" href="#s:reference-to-self" aria-hidden="true">﻿</a><span class="number">3</span> Reference to self</h2>
 <p>A method or an initializer can invoke methods on self (that is,
 the current object). For that, self must be explicitly bound, here to
 the variable <span class="machine"><span class="font-tt">s</span></span> (<span class="machine"><span class="font-tt">s</span></span> could be any identifier, even though we will
@@ -514,7 +512,7 @@ subclasses, you cannot fix it in advance. Here is a simple example.
 You can ignore the first two lines of the error message. What matters
 is the last one: putting self into an external reference would make it
 impossible to extend it through inheritance.
-We will see in section <a href="#s%3Ausing-coercions">3.12</a> a workaround to this
+We will see in section&nbsp;<a href="#s%3Ausing-coercions">3.12</a> a workaround to this
 problem.
 Note however that, since immediate objects are not extensible, the
 problem does not occur with them.
@@ -536,7 +534,7 @@ problem does not occur with them.
 <div class="pre caml-output ok"><span class="ocamlkeyword">val</span> my_int : &lt; n : int; register : unit &gt; = &lt;obj&gt;</div></div>
 
 </div>
-<h2 class="section" id="s:initializers"><a class="section-anchor" href="#s:initializers" aria-hidden="true">﻿</a>3.4 Initializers</h2>
+<h2 class="section" id="s:initializers"><a class="section-anchor" href="#s:initializers" aria-hidden="true">﻿</a><span class="number">4</span> Initializers</h2>
 <p>Let-bindings within class definitions are evaluated before the object
 is constructed. It is also possible to evaluate an expression
 immediately after the object has been built. Such code is written as
@@ -585,8 +583,8 @@ access self and the instance variables.
 Initializers cannot be overridden. On the contrary, all initializers are
 evaluated sequentially.
 Initializers are particularly useful to enforce invariants.
-Another example can be seen in section <a href="advexamples.html#s%3Aextended-bank-accounts">8.1</a>.</p>
-<h2 class="section" id="s:virtual-methods"><a class="section-anchor" href="#s:virtual-methods" aria-hidden="true">﻿</a>3.5 Virtual methods</h2>
+Another example can be seen in section&nbsp;<a href="advexamples.html#s%3Aextended-bank-accounts">8.1</a>.</p>
+<h2 class="section" id="s:virtual-methods"><a class="section-anchor" href="#s:virtual-methods" aria-hidden="true">﻿</a><span class="number">5</span> Virtual methods</h2>
 <p>It is possible to declare a method without actually defining it, using
 the keyword <span class="machine"><span class="font-tt">virtual</span></span>. This method will be provided later in
 subclasses. A class containing virtual methods must be flagged
@@ -680,7 +678,7 @@ as with methods.
   <span class="ocamlkeyword">end</span></div></div>
 
 </div>
-<h2 class="section" id="s:private-methods"><a class="section-anchor" href="#s:private-methods" aria-hidden="true">﻿</a>3.6 Private methods</h2>
+<h2 class="section" id="s:private-methods"><a class="section-anchor" href="#s:private-methods" aria-hidden="true">﻿</a><span class="number">6</span> Private methods</h2>
 <p>Private methods are methods that do not appear in object interfaces.
 They can only be invoked from other methods of the same object.
 
@@ -745,7 +743,7 @@ class. This is a direct consequence of the independence between types
 and classes in OCaml: two unrelated classes may produce
 objects of the same type, and there is no way at the type level to
 ensure that an object comes from a specific class. However a possible
-encoding of friend methods is given in section <a href="#s%3Afriends">3.17</a>.</p><p>Private methods are inherited (they are by default visible in subclasses),
+encoding of friend methods is given in section&nbsp;<a href="#s%3Afriends">3.17</a>.</p><p>Private methods are inherited (they are by default visible in subclasses),
 unless they are hidden by signature matching, as described below.</p><p>Private methods can be made public in a subclass.
 
 </p><div class="caml-example toplevel">
@@ -833,7 +831,7 @@ code, so yet another (heavier) solution would be:
 
 </div><p>Of course, private methods can also be virtual. Then, the keywords must
 appear in this order: <span class="machine"><span class="font-tt">method private virtual</span></span>.</p>
-<h2 class="section" id="s:class-interfaces"><a class="section-anchor" href="#s:class-interfaces" aria-hidden="true">﻿</a>3.7 Class interfaces</h2>
+<h2 class="section" id="s:class-interfaces"><a class="section-anchor" href="#s:class-interfaces" aria-hidden="true">﻿</a><span class="number">7</span> Class interfaces</h2>
 <p>Class interfaces are inferred from class definitions. They may also
 be defined directly and used to restrict the type of a class. Like class
 declarations, they also define a new type abbreviation.
@@ -938,7 +936,7 @@ signature, and used to restrict the inferred signature of a module.
 <div class="pre caml-output ok"><span class="ocamlkeyword">module</span> Point : POINT</div></div>
 
 </div>
-<h2 class="section" id="s:inheritance"><a class="section-anchor" href="#s:inheritance" aria-hidden="true">﻿</a>3.8 Inheritance</h2>
+<h2 class="section" id="s:inheritance"><a class="section-anchor" href="#s:inheritance" aria-hidden="true">﻿</a><span class="number">8</span> Inheritance</h2>
 <p>We illustrate inheritance by defining a class of colored points that
 inherits from the class of points. This class has all instance
 variables and all methods of class <span class="machine"><span class="font-tt">point</span></span>, plus a new instance
@@ -1044,7 +1042,7 @@ Methods need not be declared previously, as shown by the example:
 <div class="pre caml-output ok"><span class="ocamlkeyword">val</span> incr : &lt; get_x : int; set_x : int -&gt; 'a; .. &gt; -&gt; 'a = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
 
 </div>
-<h2 class="section" id="s:multiple-inheritance"><a class="section-anchor" href="#s:multiple-inheritance" aria-hidden="true">﻿</a>3.9 Multiple inheritance</h2>
+<h2 class="section" id="s:multiple-inheritance"><a class="section-anchor" href="#s:multiple-inheritance" aria-hidden="true">﻿</a><span class="number">9</span> Multiple inheritance</h2>
 <p>Multiple inheritance is allowed. Only the last definition of a method
 is kept: the redefinition in a subclass of a method that was visible in
 the parent class overrides the definition in the parent class.
@@ -1161,7 +1159,7 @@ for <span class="machine"><span class="font-tt">val</span></span> and <span clas
   <span class="ocamlkeyword">end</span></div></div>
 
 </div>
-<h2 class="section" id="s:parameterized-classes"><a class="section-anchor" href="#s:parameterized-classes" aria-hidden="true">﻿</a>3.10 Parameterized classes</h2>
+<h2 class="section" id="s:parameterized-classes"><a class="section-anchor" href="#s:parameterized-classes" aria-hidden="true">﻿</a><span class="number">10</span> Parameterized classes</h2>
 <p>Reference cells can be implemented as objects.
 The naive definition fails to typecheck:
 
@@ -1410,7 +1408,7 @@ explicitly given. It is again written between <span class="machine"><span class=
   <span class="ocamlkeyword">end</span></div></div>
 
 </div>
-<h2 class="section" id="s:polymorphic-methods"><a class="section-anchor" href="#s:polymorphic-methods" aria-hidden="true">﻿</a>3.11 Polymorphic methods</h2>
+<h2 class="section" id="s:polymorphic-methods"><a class="section-anchor" href="#s:polymorphic-methods" aria-hidden="true">﻿</a><span class="number">11</span> Polymorphic methods</h2>
 <p>While parameterized classes may be polymorphic in their contents, they
 are not enough to allow polymorphism of method use.</p><p>A classical example is defining an iterator.
 
@@ -1661,7 +1659,7 @@ Only occurrences of quantified variables are required.
 
 </div><p>Another use of polymorphic methods is to allow some form of implicit
 subtyping in method arguments. We have already seen in
-section <a href="#s%3Ainheritance">3.8</a> how some functions may be polymorphic in the
+section&nbsp;<a href="#s%3Ainheritance">3.8</a> how some functions may be polymorphic in the
 class of their argument. This can be extended to methods.
 
 </p><div class="caml-example toplevel">
@@ -1742,7 +1740,7 @@ inside object field it must be quantified independently.
 In method <span class="machine"><span class="font-tt">m1</span></span>, <span class="machine"><span class="font-tt">o</span></span> must be an object with at least a method <span class="machine"><span class="font-tt">n1</span></span>,
 itself polymorphic. In method <span class="machine"><span class="font-tt">m2</span></span>, the argument of <span class="machine"><span class="font-tt">n2</span></span> and <span class="machine"><span class="font-tt">x</span></span> must
 have the same type, which is quantified at the same level as <span class="machine"><span class="font-tt">'a</span></span>.</p>
-<h2 class="section" id="s:using-coercions"><a class="section-anchor" href="#s:using-coercions" aria-hidden="true">﻿</a>3.12 Using coercions</h2>
+<h2 class="section" id="s:using-coercions"><a class="section-anchor" href="#s:using-coercions" aria-hidden="true">﻿</a><span class="number">12</span> Using coercions</h2>
 <p>Subtyping is never implicit. There are, however, two ways to perform
 subtyping. The most general construction is fully explicit: both the
 domain and the codomain of the type coercion must be given.</p><p>We have seen that points and colored points have incompatible types.
@@ -1955,7 +1953,7 @@ unrolled twice to obtain <span class="machine"><span class="font-tt">&lt; m : &l
 You may also note that the type of <span class="machine"><span class="font-tt">to_c2</span></span> is <span class="machine"><span class="font-tt">#c2 -&gt; c2</span></span> while
 the type of <span class="machine"><span class="font-tt">to_c1</span></span> is more general than <span class="machine"><span class="font-tt">#c1 -&gt; c1</span></span>. This is not always true,
 since there are class types for which some instances of <span class="machine"><span class="font-tt">#c</span></span> are not subtypes
-of <span class="machine"><span class="font-tt">c</span></span>, as explained in section <a href="#s%3Abinary-methods">3.16</a>. Yet, for
+of <span class="machine"><span class="font-tt">c</span></span>, as explained in section&nbsp;<a href="#s%3Abinary-methods">3.16</a>. Yet, for
 parameterless classes the coercion <span class="machine"><span class="font-tt">(_ :&gt; c)</span></span> is always more general than
 <span class="machine"><span class="font-tt">(_ : #c :&gt; c)</span></span>.
 </p><p>A common problem may occur when one tries to define a coercion to a
@@ -2176,7 +2174,7 @@ The closer you get to it is:
 </div><p>
 
 with an extra type variable capturing the open object type.</p>
-<h2 class="section" id="s:functional-objects"><a class="section-anchor" href="#s:functional-objects" aria-hidden="true">﻿</a>3.13 Functional objects</h2>
+<h2 class="section" id="s:functional-objects"><a class="section-anchor" href="#s:functional-objects" aria-hidden="true">﻿</a><span class="number">13</span> Functional objects</h2>
 <p>It is possible to write a version of class <span class="machine"><span class="font-tt">point</span></span> without assignments
 on the instance variables. The override construct <span class="machine"><span class="font-tt">{&lt; ... &gt;}</span></span> returns a copy of
 “self” (that is, the current object), possibly changing the value of
@@ -2294,8 +2292,8 @@ the method <span class="machine"><span class="font-tt">move</span></span> will
 keep returning an object of the parent class. On the contrary, in a
 subclass of <span class="machine"><span class="font-tt">functional_point</span></span>, the method <span class="machine"><span class="font-tt">move</span></span> will return an
 object of the subclass.</p><p>Functional update is often used in conjunction with binary methods
-as illustrated in section <a href="advexamples.html#ss%3Astring-as-class">8.2.1</a>.</p>
-<h2 class="section" id="s:cloning-objects"><a class="section-anchor" href="#s:cloning-objects" aria-hidden="true">﻿</a>3.14 Cloning objects</h2>
+as illustrated in section&nbsp;<a href="advexamples.html#ss%3Astring-as-class">8.2.1</a>.</p>
+<h2 class="section" id="s:cloning-objects"><a class="section-anchor" href="#s:cloning-objects" aria-hidden="true">﻿</a><span class="number">14</span> Cloning objects</h2>
 <p>Objects can also be cloned, whether they are functional or imperative.
 The library function <span class="machine"><span class="font-tt">Oo.copy</span></span> makes a shallow copy of an object. That is,
 it returns a new object that has the same methods and instance
@@ -2558,7 +2556,7 @@ add a method <span class="machine"><span class="font-tt">clear</span></span> to 
 <div class="pre caml-output ok">- : int list = [2; 1; 0; 0; 0]</div></div>
 
 </div>
-<h2 class="section" id="s:recursive-classes"><a class="section-anchor" href="#s:recursive-classes" aria-hidden="true">﻿</a>3.15 Recursive classes</h2>
+<h2 class="section" id="s:recursive-classes"><a class="section-anchor" href="#s:recursive-classes" aria-hidden="true">﻿</a><span class="number">15</span> Recursive classes</h2>
 <p>Recursive classes can be used to define objects whose types are
 mutually recursive.
 
@@ -2592,7 +2590,7 @@ mutually recursive.
 
 Although their types are mutually recursive, the classes <span class="machine"><span class="font-tt">widget</span></span> and
 <span class="machine"><span class="font-tt">window</span></span> are themselves independent.</p>
-<h2 class="section" id="s:binary-methods"><a class="section-anchor" href="#s:binary-methods" aria-hidden="true">﻿</a>3.16 Binary methods</h2>
+<h2 class="section" id="s:binary-methods"><a class="section-anchor" href="#s:binary-methods" aria-hidden="true">﻿</a><span class="number">16</span> Binary methods</h2>
 <p>A binary method is a method which takes an argument of the same type
 as self. The class <span class="machine"><span class="font-tt">comparable</span></span> below is a template for classes with a
 binary method <span class="machine"><span class="font-tt">leq</span></span> of type <span class="machine"><span class="font-tt">'a -&gt; bool</span></span> where the type variable <span class="machine"><span class="font-tt">'a</span></span>
@@ -2730,7 +2728,7 @@ or <span class="machine"><span class="font-tt">money2</span></span>.
 <div class="pre caml-output ok">- : float = 3.14</div></div>
 
 </div><p>More examples of binary methods can be found in
-sections <a href="advexamples.html#ss%3Astring-as-class">8.2.1</a> and <a href="advexamples.html#ss%3Aset-as-class">8.2.3</a>.</p><p>Note the use of override for method <span class="machine"><span class="font-tt">times</span></span>.
+sections&nbsp;<a href="advexamples.html#ss%3Astring-as-class">8.2.1</a> and&nbsp;<a href="advexamples.html#ss%3Aset-as-class">8.2.3</a>.</p><p>Note the use of override for method <span class="machine"><span class="font-tt">times</span></span>.
 Writing <span class="machine"><span class="font-tt">new money2 (k *. repr)</span></span> instead of <span class="machine"><span class="font-tt">{&lt; repr = k *. repr &gt;}</span></span>
 would not behave well with inheritance: in a subclass <span class="machine"><span class="font-tt">money3</span></span> of <span class="machine"><span class="font-tt">money2</span></span>
 the <span class="machine"><span class="font-tt">times</span></span> method would return an object of class <span class="machine"><span class="font-tt">money2</span></span> but not of class
@@ -2767,7 +2765,7 @@ direct definition:
   <span class="ocamlkeyword">end</span></div></div>
 
 </div>
-<h2 class="section" id="s:friends"><a class="section-anchor" href="#s:friends" aria-hidden="true">﻿</a>3.17 Friends</h2>
+<h2 class="section" id="s:friends"><a class="section-anchor" href="#s:friends" aria-hidden="true">﻿</a><span class="number">17</span> Friends</h2>
 <p>The above class <span class="machine"><span class="font-tt">money</span></span> reveals a problem that often occurs with binary
 methods. In order to interact with other objects of the same class, the
 representation of <span class="machine"><span class="font-tt">money</span></span> objects must be revealed, using a method such as
@@ -2846,7 +2844,7 @@ visibility of the representation using the module system.
 
 </div><p>
 
-Another example of friend functions may be found in section <a href="advexamples.html#ss%3Aset-as-class">8.2.3</a>.
+Another example of friend functions may be found in section&nbsp;<a href="advexamples.html#ss%3Aset-as-class">8.2.3</a>.
 These examples occur when a group of objects (here
 objects of the same class) and functions should see each others internal
 representation, while their representation should be hidden from the
@@ -2857,8 +2855,10 @@ representation abstract outside the module.</p>
 approximation of decimal numbers, they are unsuitable for use in most
 monetary calculations as they may introduce errors.</div></dd></dl>
 <hr>
-<a href="moduleexamples.html"><img src="previous_motif.svg" alt="Previous"></a>
-<a href="index.html"><img src="contents_motif.svg" alt="Up"></a>
-<a href="lablexamples.html"><img src="next_motif.svg" alt="Next"></a>
-</body>
-</html>
+<div class="bottom-navigation"><a class="previous" href="moduleexamples.html">« The module system</a><a class="next" href="lablexamples.html">Labeled arguments »</a></div>
+
+
+
+
+<span class="authors font-it">(Chapter written by Jérôme Vouillon, Didier Rémy and Jacques Garrigue)</span><div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

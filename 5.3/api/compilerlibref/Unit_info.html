@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,12 +6,12 @@
 <link rel="previous" href="Syntaxerr.html">
 <link rel="next" href="Arg_helper.html">
 <link rel="Up" href="index.html">
-<link title="Index of types" rel=Appendix href="index_types.html">
-<link title="Index of extensions" rel=Appendix href="index_extensions.html">
-<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
-<link title="Index of values" rel=Appendix href="index_values.html">
-<link title="Index of modules" rel=Appendix href="index_modules.html">
-<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
 <link title="Compiler_libs" rel="Chapter" href="Compiler_libs.html">
 <link title="Ast_helper" rel="Chapter" href="Ast_helper.html">
 <link title="Ast_invariants" rel="Chapter" href="Ast_invariants.html">
@@ -68,8 +66,10 @@
 <link title="Mli and cmi derived from implementation files " rel="Section" href="#ml_mli_cmi_interaction">
 <link title="Module name validation function" rel="Subsection" href="#module_name_validation">
 <title>OCaml compiler library : Unit_info</title>
-</head>
-<body>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Compiler API Version 5.3</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml compiler library : Unit_info</a></div><ul><li><a href="#modname_from_strings">Module name convention and computation</a><ul><li><a href="#module_name_validation">Module name validation function</a></li></ul></li><li><a href="#unit_info">Metadata for compilation unit</a></li><li><a href="#info_build_artifacts">Derived build artifact metadata</a></li><li><a href="#ml_mli_cmi_interaction">Mli and cmi derived from implementation files </a></li></ul></nav></header>
 <h1>Module <a href="type_Unit_info.html">Unit_info</a></h1>
 
 <pre><span id="MODULEUnit_info"><span class="keyword">module</span> Unit_info</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Unit_info.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -83,20 +83,20 @@
 <hr width="100%">
 <h2 id="modname_from_strings">Module name convention and computation</h2>
 <pre><code><span id="TYPEintf_or_impl"><span class="keyword">type</span> <code class="type"></code>intf_or_impl</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTintf_or_impl.Intf"><span class="constructor">Intf</span></span></code></td>
 
 </tr>
 <tr>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTintf_or_impl.Impl"><span class="constructor">Impl</span></span></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
@@ -110,13 +110,13 @@
 
 
 <pre><code><span id="TYPEerror"><span class="keyword">type</span> <code class="type"></code>error</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
+<tbody><tr>
+<td align="left" valign="top">
 <code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
+<td align="left" valign="top">
 <code><span id="TYPEELTerror.Invalid_encoding"><span class="constructor">Invalid_encoding</span></span> <span class="keyword">of</span> <code class="type"><a href="Unit_info.html#TYPEfilename">filename</a></code></code></td>
 
-</tr></table>
+</tr></tbody></table>
 
 
 
@@ -288,4 +288,5 @@
 <li><b>Raises</b> <code>Not_found</code> if no such cmi exists</li>
 </ul>
 </div>
-</body></html>
+
+</div></body></html>
