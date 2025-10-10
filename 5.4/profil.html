@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="en"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.36">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>OCaml - Profiling (ocamlprof, perf)</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li class="active"><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec478"><span class="chapter-number">Chapter 21</span> Profiling (ocamlprof, perf)</h1>
+<header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.4</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Profiling (ocamlprof, perf)</a></li>
+<li><a href="profil.html#s%3Aocamlprog-overview"><span class="number">1</span> Profiling execution counts with ocamlprof</a>
+</li><li><a href="profil.html#s%3Aocamlprof-time-profiling"><span class="number">2</span> Time profiling with Linux perf</a>
+</li><li><a href="profil.html#s%3Aocamlprof-instruments"><span class="number">3</span> Time profiling with macOS Instruments</a>
+</li><li><a href="profil.html#s%3Aocamlprof-glossary"><span class="number">4</span> Glossary</a>
+</li></ul></nav></header>
+<p> <a id="c:profiler"></a>
+</p><p>This chapter describes different ways to profile the execution of OCaml
+programs.</p>
+<h2 class="section" id="s:ocamlprog-overview"><a class="section-anchor" href="#s:ocamlprog-overview" aria-hidden="true"></a><span class="number">1</span> Profiling execution counts with ocamlprof</h2>
+<p>This section describes how the execution of OCaml programs can be profiled,
+by recording how many times functions are called, and branches of conditionals
+are taken. This approach applies to OCaml programs compiled with the bytecode
+and native backends.</p>
+<h3 class="subsection" id="s:ocamlprof-compiling"><a class="section-anchor" href="#s:ocamlprof-compiling" aria-hidden="true">﻿</a><span class="number">1.1</span> Compiling for profiling</h3>
+<p>Before profiling an execution, the program must be compiled in
+profiling mode, using the <span class="machine"><span class="font-tt">ocamlcp</span></span> front-end to the <span class="machine"><span class="font-tt">ocamlc</span></span> compiler
+(see chapter&nbsp;<a href="comp.html#c%3Acamlc">13</a>) or the <span class="machine"><span class="font-tt">ocamloptp</span></span> front-end to the
+<span class="machine"><span class="font-tt">ocamlopt</span></span> compiler (see chapter&nbsp;<a href="native.html#c%3Anativecomp">16</a>). When compiling
+modules separately, <span class="machine"><span class="font-tt">ocamlcp</span></span> or <span class="machine"><span class="font-tt">ocamloptp</span></span> must be used when
+compiling the modules (production of <span class="machine"><span class="font-tt">.cmo</span></span> or <span class="machine"><span class="font-tt">.cmx</span></span> files), and can
+also be used (though this is not strictly necessary) when linking them
+together.</p>
+<h5 class="paragraph" id="p:ocamlprof-warning"><a class="section-anchor" href="#p:ocamlprof-warning" aria-hidden="true">﻿</a>Note</h5>
+<p> If a module (<span class="machine"><span class="font-tt">.ml</span></span> file) doesn’t have a corresponding
+interface (<span class="machine"><span class="font-tt">.mli</span></span> file), then compiling it with <span class="machine"><span class="font-tt">ocamlcp</span></span> will produce
+object files (<span class="machine"><span class="font-tt">.cmi</span></span> and <span class="machine"><span class="font-tt">.cmo</span></span>) that are not compatible with the ones
+produced by <span class="machine"><span class="font-tt">ocamlc</span></span>, which may lead to problems (if the <span class="machine"><span class="font-tt">.cmi</span></span> or
+<span class="machine"><span class="font-tt">.cmo</span></span> is still around) when switching between profiling and
+non-profiling compilations. To avoid this problem, you should always
+have a <span class="machine"><span class="font-tt">.mli</span></span> file for each <span class="machine"><span class="font-tt">.ml</span></span> file. The same problem exists with
+<span class="machine"><span class="font-tt">ocamloptp</span></span>.</p>
+<h5 class="paragraph" id="p:ocamlprof-reserved"><a class="section-anchor" href="#p:ocamlprof-reserved" aria-hidden="true">﻿</a>Note</h5>
+<p> To make sure your programs can be compiled in
+profiling mode, avoid using any identifier that begins with
+<span class="machine"><span class="font-tt">__ocaml_prof</span></span>.</p><p>The amount of profiling information can be controlled through the <span class="machine"><span class="font-tt">-P</span></span>
+option to <span class="machine"><span class="font-tt">ocamlcp</span></span> or <span class="machine"><span class="font-tt">ocamloptp</span></span>, followed by one or several letters
+indicating which parts of the program should be profiled:</p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">a</span></span></span></dt><dd class="dd-description"> all options
+</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">f</span></span></span></dt><dd class="dd-description"> function calls : a count point is set at the beginning of
+each function body
+</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">i</span></span></span></dt><dd class="dd-description"> <span class="font-bold">if …then …else …</span> : count points are set in
+both <span class="font-bold">then</span> branch and <span class="font-bold">else</span> branch
+</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">l</span></span></span></dt><dd class="dd-description"> <span class="font-bold">while, for</span> loops: a count point is set at the beginning of
+the loop body
+</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">m</span></span></span></dt><dd class="dd-description"> <span class="font-bold">match</span> branches: a count point is set at the beginning of the
+body of each branch
+</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">t</span></span></span></dt><dd class="dd-description"> <span class="font-bold">try …with …</span> branches: a count point is set at the
+beginning of the body of each branch
+</dd></dl><p>For instance, compiling with <span class="machine"><span class="font-tt">ocamlcp -P film</span></span> profiles function calls,
+if…then…else…, loops and pattern matching.</p><p>Calling <span class="machine"><span class="font-tt">ocamlcp</span></span> or <span class="machine"><span class="font-tt">ocamloptp</span></span> without the <span class="machine"><span class="font-tt">-P</span></span> option defaults to
+<span class="machine"><span class="font-tt">-P fm</span></span>, meaning that only function calls and pattern matching are
+profiled.</p>
+<h5 class="paragraph" id="sec483"><a class="section-anchor" href="#sec483" aria-hidden="true">﻿</a>Note</h5>
+<p> For compatibility with previous releases, <span class="machine"><span class="font-tt">ocamlcp</span></span>
+also accepts the <span class="machine"><span class="font-tt">-p</span></span> option, with the same arguments and behaviour as
+<span class="machine"><span class="font-tt">-P</span></span>.</p><p>The <span class="machine"><span class="font-tt">ocamlcp</span></span> and <span class="machine"><span class="font-tt">ocamloptp</span></span> commands also accept all the options of
+the corresponding <span class="machine"><span class="font-tt">ocamlc</span></span> or <span class="machine"><span class="font-tt">ocamlopt</span></span> compiler, except the <span class="machine"><span class="font-tt">-pp</span></span>
+(preprocessing) option.</p>
+<h3 class="subsection" id="s:ocamlprof-profiling"><a class="section-anchor" href="#s:ocamlprof-profiling" aria-hidden="true">﻿</a><span class="number">1.2</span> Profiling an execution</h3>
+<p>Running an executable that has been compiled with <span class="machine"><span class="font-tt">ocamlcp</span></span> or
+<span class="machine"><span class="font-tt">ocamloptp</span></span> records the execution counts for the specified parts of
+the program and saves them in a file called <span class="machine"><span class="font-tt">ocamlprof.dump</span></span> in the
+current directory.</p><p>If the environment variable <span class="machine"><span class="font-tt">OCAMLPROF_DUMP</span></span> is set when the program
+exits, its value is used as the file name instead of <span class="machine"><span class="font-tt">ocamlprof.dump</span></span>.</p><p>The dump file is written only if the program terminates
+normally (by calling <span class="machine"><span class="font-tt">exit</span></span> or by falling through). It is not written
+if the program terminates with an uncaught exception.</p><p>If a compatible dump file already exists in the current directory, then the
+profiling information is accumulated in this dump file. This allows, for
+instance, the profiling of several executions of a program on
+different inputs. Note that dump files produced by byte-code
+executables (compiled with <span class="machine"><span class="font-tt">ocamlcp</span></span>) are compatible with the dump
+files produced by native executables (compiled with <span class="machine"><span class="font-tt">ocamloptp</span></span>).</p>
+<h3 class="subsection" id="s:ocamlprof-printing"><a class="section-anchor" href="#s:ocamlprof-printing" aria-hidden="true">﻿</a><span class="number">1.3</span> Printing profiling information</h3>
+<p>The <span class="machine"><span class="font-tt">ocamlprof</span></span> command produces a source listing of the program modules
+where execution counts have been inserted as comments. For instance,
+</p><pre>        ocamlprof foo.ml
+</pre><p>prints the source code for the <span class="machine"><span class="font-tt">foo</span></span> module, with comments indicating
+how many times the functions in this module have been called. Naturally,
+this information is accurate only if the source file has not been modified
+after it was compiled.</p><p>The following options are recognized by <span class="machine"><span class="font-tt">ocamlprof</span></span>:</p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-args</span></span> <span class="font-it">filename</span></span></dt><dd class="dd-description">
+Read additional newline-terminated command line arguments from <span class="font-it">filename</span>.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-args0</span></span> <span class="font-it">filename</span></span></dt><dd class="dd-description">
+Read additional null character terminated command line arguments from <span class="font-it">filename</span>.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-f</span></span> <span class="font-it">dumpfile</span></span></dt><dd class="dd-description">
+Specifies an alternate dump file of profiling information to be read.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-F</span></span> <span class="font-it">string</span></span></dt><dd class="dd-description">
+Specifies an additional string to be output with profiling information.
+By default, <span class="machine"><span class="font-tt">ocamlprof</span></span> will annotate programs with comments of the form
+<span class="font-tt">(* <span class="font-it">n</span> *)</span> where <span class="font-it">n</span> is the counter value for a profiling
+point. With option <span class="font-tt">-F <span class="font-it">s</span></span>, the annotation will be
+<span class="font-tt">(* <span class="font-it">sn</span> *)</span>.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-impl</span></span> <span class="font-it">filename</span></span></dt><dd class="dd-description">
+Process the file <span class="font-it">filename</span> as an implementation file, even if its
+extension is not <span class="machine"><span class="font-tt">.ml</span></span>.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-intf</span></span> <span class="font-it">filename</span></span></dt><dd class="dd-description">
+Process the file <span class="font-it">filename</span> as an interface file, even if its
+extension is not <span class="machine"><span class="font-tt">.mli</span></span>.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-keywords</span></span> <span class="font-it">version+list</span></span></dt><dd class="dd-description">
+Set keywords according to the <span class="font-it">version+list</span>
+specification.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-version</span></span></span></dt><dd class="dd-description">
+Print version string and exit.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-vnum</span></span></span></dt><dd class="dd-description">
+Print short version number and exit.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-help</span></span> or <span class="machine"><span class="font-tt">--help</span></span></span></dt><dd class="dd-description">
+Display a short usage summary and exit.
+</dd></dl><p>Profiling with <span class="machine"><span class="font-tt">ocamlprof</span></span> only records execution counts, not the actual
+time spent within each function. There is currently no way to perform
+time profiling on bytecode programs generated by <span class="machine"><span class="font-tt">ocamlc</span></span>.</p>
+<h2 class="section" id="s:ocamlprof-time-profiling"><a class="section-anchor" href="#s:ocamlprof-time-profiling" aria-hidden="true">﻿</a><span class="number">2</span> Time profiling with Linux perf</h2>
+<p>This section describes how to use <span class="font-tt">perf</span> to profile OCaml programs. Linux Performance Events (aka <span class="font-tt">perf</span>) is a suite of tools for performance observability included with the Linux kernel. The main features covered here are recording events using <span class="font-tt">perf-record(1)</span>, and visualising recorded events using <span class="font-tt">perf-report(1)</span>. <span class="font-tt">perf</span> has many additional profiling and visualising features, for more comprehensive documentation, see (man <span class="font-tt">perf(1)</span>, <a href="https://perfwiki.github.io/main/"><span class="font-tt">perf</span> wiki</a> or <a href="https://www.brendangregg.com/perf.html">Brendan Gregg’s Blog</a>).</p>
+<h3 class="subsection" id="s:ocamlprof-time-profiling-background"><a class="section-anchor" href="#s:ocamlprof-time-profiling-background" aria-hidden="true">﻿</a><span class="number">2.1</span> Background</h3>
+<p>Time profiling is typically performed by sampling the CPU call graph at frequent intervals to gather statistics on the code paths that are consuming CPU resources. To profile OCaml code, <span class="font-tt">perf</span> needs to understand the call graph of an OCaml program. <span class="font-tt">perf</span> supports multiple options for recording call graphs:
+</p><ul class="itemize"><li class="li-itemize">Frame Pointers, which is the default.
+</li><li class="li-itemize">DWARF’s Call Frame Information (CFI).
+</li><li class="li-itemize">Hardware Last Branch Record (LBR).
+</li></ul><p>Frame pointer based call graphs use a convention where a register called the frame pointer holds the address for the beginning of the stack frame, and the previous values for the frame pointer are stored at a known offset from the current frame pointer. Using this information the call graph for the current function can be calculated purely based on the current stack, a process called unwinding. On x86_64 the register used for storing the frame pointer is $rbp, while ARM64 uses the register x29. OCaml 5 introduced non-contiguous stacks as part of the implementation of effects, see <a href="https://dl.acm.org/doi/10.1145/3453483.3454039">Retrofitting effect handlers onto OCaml</a> (Section 5.5). Due to this implementation detail, frame pointers work better with the copying nature of perf.</p><p>DWARF based call graphs use the DWARF CFI information to perform unwinding. However this interacts poorly with the copying nature of perf, often leading to truncated call graphs where not enough of the stack has been copied by <span class="font-tt">perf</span>. It also produces larger trace files that are more costly to capture and process. Finally it requires including CFI debugging information in your program resulting in slightly larger binaries.</p><p>Hardware Last Branch Record (LBR) uses a processor provided method to record call graphs. This has the limitations of restricted availability (only on certain Intel CPUs) and a limited stack depth (16 on Haswell and 32 since Skylake).</p><p>Of these options, frame pointers are recommended for profiling OCaml code. It has the following advantages:
+</p><ul class="itemize"><li class="li-itemize">Unwinding is faster to calculate.
+</li><li class="li-itemize">Tracing data produced is smaller.
+</li><li class="li-itemize">Frame pointers provide more complete call graphs, particularly when used with a Linux distribution that supports them.
+</li><li class="li-itemize">Frame pointers work better with perf’s copying nature and OCaml 5’s non-contiguous stacks.
+</li></ul>
+<h3 class="subsection" id="s:ocamlprof-compiling-perf"><a class="section-anchor" href="#s:ocamlprof-compiling-perf" aria-hidden="true">﻿</a><span class="number">2.2</span> Compiling for Profiling</h3>
+<p>The process for compiling an executable for time profiling depends on the OCaml version. For OCaml versions 4.14 and earlier, either frame pointers or DWARF can be used, while for OCaml 5.0 and later, enabling frame pointers is recommended.</p><p>To enable frame pointers, configure the compiler with <span class="font-tt">--enable-frame-pointers</span>. Alternatively, you can install an opam switch with frame pointers enabled, as follows:</p><pre>        opam switch create &lt;YOUR-SWITCH-NAME-HERE&gt; ocaml-option-fp
+</pre><p>
+Frame pointer support for OCaml is available on x86_64 architecture for Linux starting with OCaml 4.12 and on macOS from OCaml 5.3. ARM64 architecture is supported on Linux and macOS from OCaml 5.4, while other Tier-1 architectures (POWER, RISC-V, and s390x) are currently unsupported.</p>
+<h3 class="subsection" id="s:ocamlprof-profiling-perf"><a class="section-anchor" href="#s:ocamlprof-profiling-perf" aria-hidden="true">﻿</a><span class="number">2.3</span> Profiling an Execution</h3>
+<p>The basic <span class="font-tt">perf</span> command for profiling is:
+</p><pre>        perf record -F 99 --call-graph fp PROGRAM
+</pre><p>
+The <span class="font-tt">-F 99</span> option sets <span class="font-tt">perf</span> to sample at 99Hz, reducing excessive data generation during longer runs and minimising overlap with other periodic activities. The <span class="font-tt">--call-graph fp</span> instructs <span class="font-tt">perf</span> to use frame pointers to get the call graph, followed by the OCaml executable you want to profile. This command creates a <span class="font-tt">perf.data</span> file in the current directory. Alternatively use <span class="font-tt">--output</span> to choose a more descriptive filename.</p><p>The <span class="font-tt">perf record</span> command works by copying a segment of the call stack at each sample and recording this data into a <span class="font-tt">perf.data</span> file. These samples can then be processed after recording using <span class="font-tt">perf report</span> to reconstruct the profiled program’s call stack at every sample.</p><p><span class="font-tt">perf</span> uses the symbols present in an OCaml executable, so it helps to understand OCaml’s name mangling scheme to map names to OCaml source locations. OCaml 5.4 onwards uses a name mangling scheme of <span class="font-tt">caml&lt;MODULE_NAME&gt;$&lt;FUNCTION_NAME&gt;_&lt;NNN&gt;</span>, where <span class="font-tt">NNN</span> is a randomly generated number. In OCaml 5.3 the separator is a dot <span class="font-tt">caml&lt;MODULE_NAME&gt;.&lt;FUNCTION_NAME&gt;_&lt;NNN&gt;</span>, and before OCaml 5.1 the separator is double underscores. All formats are supported by <span class="font-tt">perf</span>.</p><p>Consider the following program:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlcomment">(* fib.ml *)</span>
+<span class="ocamlkeyword">module</span> Compute = <span class="ocamlkeyword">struct</span>
+  <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">rec</span> fib n =
+    <span class="ocamlkeyword">if</span> n = 0 <span class="ocamlkeyword">then</span> 0
+    <span class="ocamlkeyword">else</span> <span class="ocamlkeyword">if</span> n = 1 <span class="ocamlkeyword">then</span> 1
+    <span class="ocamlkeyword">else</span> fib (n-1) + fib (n-2)
+<span class="ocamlkeyword">end</span>
+
+<span class="ocamlkeyword">let</span> main () =
+  <span class="ocamlkeyword">let</span> r = Compute.fib 20 <span class="ocamlkeyword">in</span>
+  Printf.printf <span class="ocamlstring">"fib(20) = %d"</span> r
+
+<span class="ocamlkeyword">let</span> _ = main ()</div></div>
+
+</div><p>This program produces the names <span class="font-tt">camlFib$main_274</span> for the <span class="font-tt">main</span> function and <span class="font-tt">camlFib$fib_271</span> for the <span class="font-tt">fib</span> function in the <span class="font-tt">Compute</span> module.</p>
+<h3 class="subsection" id="sec490"><a class="section-anchor" href="#sec490" aria-hidden="true">﻿</a><span class="number">2.4</span> Displaying profiling information</h3>
+<p>The <span class="font-tt">perf report</span> command summarises data in the <span class="font-tt">perf.data</span> file.
+The basic <span class="font-tt">perf report</span> command is:</p><pre>        perf report -f --no-children -i perf.data
+</pre><p>
+This command provides an interactive interface where you can navigate through the accumulated call graphs and select functions and threads for detailed information. Alternatively <span class="font-tt">--stdio</span> will output similar data using a text based report written to stdout. Note that if stack traces appear broken, it may be due to software not having frame pointer support enabled.</p><p>Consider the following program which calculates the Tak function.
+
+</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> (x,y,z) =
+  <span class="ocamlkeyword">try</span>
+    <span class="ocamlkeyword">let</span> x = int_of_string Sys.argv.(1) <span class="ocamlkeyword">in</span>
+    <span class="ocamlkeyword">let</span> y = int_of_string Sys.argv.(2) <span class="ocamlkeyword">in</span>
+    <span class="ocamlkeyword">let</span> z = int_of_string Sys.argv.(3) <span class="ocamlkeyword">in</span>
+    (x,y,z)
+  <span class="ocamlkeyword">with</span> _ -&gt; (18,12,6)
+
+<span class="ocamlkeyword">let</span> <span class="ocamlkeyword">rec</span> tak x y z =
+  <span class="ocamlkeyword">if</span> x &gt; y <span class="ocamlkeyword">then</span>
+    tak (tak (x-1) y z) (tak (y-1) z x) (tak (z-1) x y)
+  <span class="ocamlkeyword">else</span> z
+
+<span class="ocamlkeyword">let</span> main () =
+  <span class="ocamlkeyword">let</span> r = tak x y z <span class="ocamlkeyword">in</span>
+  Printf.printf <span class="ocamlstring">"tak %d %d %d = %d\n"</span> x y z r
+
+<span class="ocamlkeyword">let</span> _ = main ()</div></div>
+
+</div><p>The <span class="font-tt">perf</span> report for this might resemble the following.
+</p><pre>Samples: 809  of event 'cycles', Event count (approx.): 24701952617
+  Overhead  Command     Shared Object      Symbol
+-  100.00%  tak-fp.exe  tak-fp.exe         [.] Tak\$tak_402
+     Tak\$tak_402
+     Tak\$tak_402
+   + Tak\$tak_402
+     0.00%  tak-fp.exe  [kernel.kallsyms]  [k] 0xffffb9a5ff79d854
+     0.00%  perf-exec   [kernel.kallsyms]  [k] 0xffffb9a5ff719c34
+</pre><p>
+For a more interesting program implementing a Sudoku solver using Norvig’s Backtracking algorithm, the output might resemble.</p><pre>Samples: 7K of event 'cycles:P', Event count (approx.): 141874642467
+  Overhead  Command          Shared Object      Symbol
+-   35.90%  sudoku_norvig.e  sudoku_norvig.exe  [.] Sudoku_norvig._pow_747
+   - 35.29% Sudoku_norvig$_pow_747
+      + 17.70% Sudoku_norvig$eliminate_value_760
+      + 15.74% Sudoku_norvig$_pow_747
+      + 1.03% Sudoku_norvig$fun_1435
+     0.61% Sudoku_norvig$eliminate_value_760
+-   12.99%  sudoku_norvig.e  sudoku_norvig.exe  [.] BatList$findnext_1543
+   - 12.00% BatList$findnext_1543
+      - 11.71% BatList$find_all_1539
+         + 8.07% Sudoku_norvig$fun_1421
+         + 2.73% Sudoku_norvig$eliminate_948
+         + 0.90% Sudoku_norvig$assign_949
+-   10.63%  sudoku_norvig.e  sudoku_norvig.exe  [.] Sudoku_norvig$eliminate_value_760
+   + 8.29% Sudoku_norvig$eliminate_value_760
+   + 1.93% Sudoku_norvig$_pow_747
++    9.50%  sudoku_norvig.e  [kernel.kallsyms]  [k] asm_exc_nmi
++    7.24%  sudoku_norvig.e  sudoku_norvig.exe  [.] Sudoku_norvig$fun_1435
++    5.06%  sudoku_norvig.e  sudoku_norvig.exe  [.] caml_modify
++    3.10%  sudoku_norvig.e  sudoku_norvig.exe  [.] Sudoku_norvig$fun_1360
++    2.11%  sudoku_norvig.e  sudoku_norvig.exe  [.] Sudoku_norvig$eliminate_948
++    2.00%  sudoku_norvig.e  sudoku_norvig.exe  [.] Stdlib.List$iter_366
++    1.54%  sudoku_norvig.e  sudoku_norvig.exe  [.] Sudoku_norvig$fun_1421
++    1.47%  sudoku_norvig.e  sudoku_norvig.exe  [.] caml_apply2
++    1.42%  sudoku_norvig.e  sudoku_norvig.exe  [.] BatList$find_all_1539
++    1.20%  sudoku_norvig.e  sudoku_norvig.exe  [.] Sudoku_norvig$fun_1366
++    1.09%  sudoku_norvig.e  sudoku_norvig.exe  [.] Stdlib.List$fold_left_380
+</pre><p>Note this implementation clearly has some optimsation possible in ‘_pow_747‘ a recursive Power of 2 function, and parts of the OCaml runtime ‘caml_modify‘ are present.</p><p>Profiling data can also be visualised as Flame Graphs, which highlight the most frequent code paths in stack traces. The original scripts scripts <span class="font-tt">stackcollapse-perf.pl</span> and <span class="font-tt">flamegraph.pl</span> can be found at Brendan Gregg’s <a href="https://www.brendangregg.com/flamegraphs.html">Flame Graphs</a> web page and work as follows:</p><pre>git clone https://github.com/brendangregg/FlameGraph
+cd FlameGraph
+
+# Collect the results into perf.data
+perf record -F 99 --call-graph fp PROGRAM
+perf script -i perf.data | ./stackcollapse-perf.pl out.folded
+flamegraph.pl out.folded &gt; flamegraph.svg ## Create the FlameGraph svg
+</pre><p>
+Alternatively <a href="https://github.com/jonhoo/inferno">inferno</a> is a Rust port of the Flame Graphs tools which works in a similar way and is faster to process large perf files.</p><pre>cargo install inferno
+
+# Collect the results into perf.data
+perf script -i perf.data | inferno-collapse-perf &gt; stacks.folded
+cat stacks.folded | inferno-flamegraph &gt; flamegraph.svg
+</pre><p>
+Some <span class="font-tt">perf</span> tools (e.g., <span class="font-tt">perf-report(1)</span> and <span class="font-tt">perf-annotate(1)</span>) use DWARF debugging information to associate symbols with source code locations, if you need these features, the program and it’s dependencies need to be compiled with <span class="font-tt">-g</span> to include debugging information in the executable.</p><p>Captured profile data can also be processed using <span class="font-tt">perf script</span> in various ways or with online tools like <a href="https://www.speedscope.app">speedscope.app</a> and <a href="https://profiler.firefox.com/">profiler.firefox.com</a>, or any other tool that supports <span class="font-tt">perf</span>-formatted data.</p>
+<h3 class="subsection" id="s:ocamlperf-conclusion"><a class="section-anchor" href="#s:ocamlperf-conclusion" aria-hidden="true">﻿</a><span class="number">2.5</span> Conclusion</h3>
+<p>For Time profiling of native code, standard tools such as <span class="font-tt">perf</span>, eBPF, DTrace, or Instruments (on macOS) are recommended. Compiling with frame pointers enabled is often necessary for these tools to work effectively. Profiling with <span class="font-tt">gprof</span> is no longer supported.</p><p>Enabling frame pointers can impact performance on certain architectures (up to 10% performance cost on x86_64 has been measured). Users of this feature are encouraged to benchmark their own applications to assess this impact.</p>
+<h2 class="section" id="s:ocamlprof-instruments"><a class="section-anchor" href="#s:ocamlprof-instruments" aria-hidden="true">﻿</a><span class="number">3</span> Time profiling with macOS Instruments</h2>
+<p>Instruments is an application performance analyzer and visualizer provided in XCode on macOS. It includes a CLI tool <span class="machine"><span class="font-tt">xctrace</span></span> that can capture Time Profiling information about OCaml programs, there is also a GUI application for running and visualising profiles. Here we only cover capturing time profiles with <span class="machine"><span class="font-tt">xctrace</span></span>, for more information on Instruments consult Apple’s documentation.</p><p>The same prerequisites hold for Time profiling with macOS Instruments as for Linux perf, consult <span class="machine"><span class="font-tt">Background</span></span> (&nbsp;<a href="#s%3Aocamlprof-time-profiling-background">21.2.1</a>) from the previous section for an explanation of call graphs and follow the setup from <span class="machine"><span class="font-tt">Compiling for Profiling</span></span> (&nbsp;<a href="#s%3Aocamlprof-compiling-perf">21.2.2</a>).</p><p>The basic <span class="font-tt">xctrace</span> command for time profiling is:</p><pre>$ xcrun xctrace record --output . --template "Time Profiler" \
+  --target-stdout - --launch -- PROGRAM
+</pre><p>
+The <span class="font-tt">--template <span class="machine"><span class="font-tt">Time Profiler</span></span></span> selects pre-defined template for time profiling which will create a trace file with extension ‘.trace‘ that can be opened with Instruments. Use the <span class="font-tt">--output</span> to select a name for the trace file, by default xctrace will create a new file each run rather than overwriting the existing file.</p><p>The resulting file can be opened with Instruments to view the profile, and it maybe be possible to generate Flame Graphs using <a href="https://github.com/jonhoo/inferno">inferno</a> or the scripts from <a href="https://github.com/brendangregg/FlameGraph">https://github.com/brendangregg/FlameGraph</a>.</p>
+<h5 class="paragraph" id="p:ocamlprof-instruments"><a class="section-anchor" href="#p:ocamlprof-instruments" aria-hidden="true">﻿</a>Note</h5>
+<p>
+Sometimes Instruments requires adding entitlements to an OCaml binary before it is able to profile it. This typically shows as a failure to launch the process or as a permission error. To work around this issue run the following command, replacing ’PROGRAM’ with the program to trace.</p><pre>$ codesign -s - -v -f --entitlements =(echo -n
+'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+ &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+   "https://www.apple.com/DTDs/PropertyList-1.0.dtd"\&gt;
+ &lt;plist version="1.0"&gt;
+    &lt;dict&gt;
+        &lt;key&gt;com.apple.security.get-task-allow&lt;/key&gt;
+        &lt;true/&gt;
+    &lt;/dict&gt;
+ &lt;/plist&gt;') PROGRAM
+</pre><p>
+For more details on entitlements and codesigning consult Apple’s documentation.</p>
+<h2 class="section" id="s:ocamlprof-glossary"><a class="section-anchor" href="#s:ocamlprof-glossary" aria-hidden="true">﻿</a><span class="number">4</span> Glossary</h2>
+<p>The following terminology is used in this chapter of the manual.</p><ul class="itemize"><li class="li-itemize"><span class="font-bold">Call graph</span> The chain of function calls that have lead to the current function (also referred to as a call stack).
+</li><li class="li-itemize"><span class="font-bold">Unwinding</span> The process of walking up the call stack (also called stack unwinding).
+</li><li class="li-itemize"><span class="font-bold">Stack frame</span> Refers to the portion of the stack allocated to a single function call. (also called an activation frame, activation record or simply frame).
+</li></ul>
+<hr>
+<div class="bottom-navigation"><a class="previous" href="debugger.html">« The debugger (ocamldebug)</a><a class="next" href="intfc.html">Interfacing C with OCaml »</a></div>
+
+
+
+
+<div class="copyright">Copyright © 2025 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>
