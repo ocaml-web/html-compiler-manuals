@@ -7,12 +7,12 @@
 <link rel="stylesheet" type="text/css" href="manual.css">
 <title>OCaml - Runtime detection of data races with ThreadSanitizer</title>
 <script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
-<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li class="active"><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="native-debugger.html">Native debugging (gdb, lldb)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li class="active"><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
 
 
 
 
-<h1 class="chapter" id="sec659"><span class="chapter-number">Chapter 27</span> Runtime detection of data races with ThreadSanitizer</h1>
+<h1 class="chapter" id="sec669"><span class="chapter-number">Chapter 28</span> Runtime detection of data races with ThreadSanitizer</h1>
 <header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.4</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Runtime detection of data races with ThreadSanitizer</a></li>
 <li><a href="tsan.html#s%3Atsan-overview"><span class="number">1</span> Overview and usage</a>
 </li><li><a href="tsan.html#s%3Atsan-performance"><span class="number">2</span> Performance implications</a>
@@ -146,7 +146,7 @@ writes in C will race with non-atomic reads and writes in OCaml, and C atomics
 will not race with OCaml atomics. There is one theoretical possibility of false
 positive: if a <span class="font-tt">value</span> is initialized from C without using
 <span class="font-tt">caml_initialize</span> (which is allowed under the condition that the GC does
-not run between the allocation and the write, see Chapter&nbsp;<a href="intfc.html#c%3Aintf-c">22</a>) and a
+not run between the allocation and the write, see Chapter&nbsp;<a href="intfc.html#c%3Aintf-c">23</a>) and a
 conflicting access is made later by another thread. This does not constitute a
 data race, but TSan may report it as such.</p>
 <h2 class="section" id="s:tsan-runtime-flags"><a class="section-anchor" href="#s:tsan-runtime-flags" aria-hidden="true">﻿</a><span class="number">4</span> Runtime options</h2>

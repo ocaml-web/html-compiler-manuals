@@ -7,12 +7,12 @@
 <link rel="stylesheet" type="text/css" href="manual.css">
 <title>OCaml - Optimisation with Flambda</title>
 <script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
-<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li class="active"><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="native-debugger.html">Native debugging (gdb, lldb)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li class="active"><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
 
 
 
 
-<h1 class="chapter" id="sec574"><span class="chapter-number">Chapter 23</span> Optimisation with Flambda</h1>
+<h1 class="chapter" id="sec584"><span class="chapter-number">Chapter 24</span> Optimisation with Flambda</h1>
 <header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.4</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Optimisation with Flambda</a></li>
 <li><a href="flambda.html#s%3Aflambda-overview"><span class="number">1</span> Overview</a>
 </li><li><a href="flambda.html#s%3Aflambda-cli"><span class="number">2</span> Command-line flags</a>
@@ -51,8 +51,8 @@ a whole-program compiler: for example, elimination of dead code across
 a complete set of compilation units is not supported.</p><p>Optimisation with Flambda is not currently supported when generating
 bytecode.</p><p>Flambda should not in general affect the semantics of existing programs.
 Two exceptions to this rule are: possible elimination of pure code
-that is being benchmarked (see section <a href="#s%3Aflambda-inhibition">23.14</a>) and changes in
-behaviour of code using unsafe operations (see section <a href="#s%3Aflambda-unsafe">23.15</a>).</p><p>Flambda does not yet optimise array or string bounds checks. Neither
+that is being benchmarked (see section <a href="#s%3Aflambda-inhibition">24.14</a>) and changes in
+behaviour of code using unsafe operations (see section <a href="#s%3Aflambda-unsafe">24.15</a>).</p><p>Flambda does not yet optimise array or string bounds checks. Neither
 does it take hints for optimisation from any assertions written by the
 user in the code.</p><p>Consult the <em>Glossary</em> at the end of this chapter for definitions of
 technical terms used below.</p>
@@ -63,7 +63,7 @@ are given in the referenced sections. Those sections also describe any
 arguments which the particular flags take.</p><p>Commonly-used options:
 </p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-O2</span></span></span></dt><dd class="dd-description"> Perform more optimisation than usual. Compilation
 times may be lengthened. (This flag is an abbreviation for a certain
-set of parameters described in section <a href="#s%3Aflambda-defaults">23.5</a>.)
+set of parameters described in section <a href="#s%3Aflambda-defaults">24.5</a>.)
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-O3</span></span></span></dt><dd class="dd-description"> Perform even more optimisation than usual, possibly
 including unrolling of recursive functions. Compilation times may be
 significantly lengthened.
@@ -84,55 +84,55 @@ round of optimisation) showing all of the inliner’s decisions.
 </p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-remove-unused-arguments</span></span></span></dt><dd class="dd-description"> Remove unused function arguments
 even when the argument is not specialised. This may have a small
 performance penalty.
-See section <a href="#ss%3Aflambda-remove-unused-args">23.10.3</a>.
+See section <a href="#ss%3Aflambda-remove-unused-args">24.10.3</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-unbox-closures</span></span></span></dt><dd class="dd-description"> Pass free variables via specialised arguments
 rather than closures (an optimisation for reducing allocation). See
-section <a href="#ss%3Aflambda-unbox-closures">23.9.3</a>. This may have a small performance penalty.
+section <a href="#ss%3Aflambda-unbox-closures">24.9.3</a>. This may have a small performance penalty.
 </dd></dl><p>Advanced options, only needed for detailed tuning:
 </p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline</span></span></span></dt><dd class="dd-description"> The behaviour depends on whether <span class="font-tt">-Oclassic</span>
 is used.
 <ul class="itemize"><li class="li-itemize">When not in <span class="font-tt">-Oclassic</span> mode, <span class="font-tt">-inline</span> limits the total
 size of functions considered for inlining during any speculative inlining
-search. (See section <a href="#ss%3Aflambda-speculation">23.3.6</a>.) Note that
+search. (See section <a href="#ss%3Aflambda-speculation">24.3.6</a>.) Note that
 this parameter does
 <span class="font-bold">not</span> control the assessment as to whether any particular function may
 be inlined. Raising it to excessive amounts will not necessarily cause
 more functions to be inlined.
 </li><li class="li-itemize">When in <span class="font-tt">-Oclassic</span> mode, <span class="font-tt">-inline</span> behaves as in
 previous versions of the compiler: it is the maximum size of function to
-be considered for inlining. See section <a href="#ss%3Aflambda-classic">23.3.1</a>.
+be considered for inlining. See section <a href="#ss%3Aflambda-classic">24.3.1</a>.
 </li></ul>
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-toplevel</span></span></span></dt><dd class="dd-description"> The equivalent of <span class="font-tt">-inline</span> but used
 when speculative inlining starts at toplevel. See
-section <a href="#ss%3Aflambda-speculation">23.3.6</a>.
+section <a href="#ss%3Aflambda-speculation">24.3.6</a>.
 Not used in <span class="font-tt">-Oclassic</span> mode.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-branch-factor</span></span></span></dt><dd class="dd-description"> Controls how the inliner assesses
 whether a code path is likely to be hot or cold. See
-section <a href="#ss%3Aflambda-assessment-inlining">23.3.5</a>.
+section <a href="#ss%3Aflambda-assessment-inlining">24.3.5</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-alloc-cost,
 <span class="machine"><span class="font-tt">-inline-branch-cost,
 <span class="machine"><span class="font-tt">-inline-call-cost</span></span></span></span></span></span></span></dt><dd class="dd-description"> Controls how the inliner assesses the runtime
 performance penalties associated with various operations. See
-section <a href="#ss%3Aflambda-assessment-inlining">23.3.5</a>.
+section <a href="#ss%3Aflambda-assessment-inlining">24.3.5</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-indirect-cost,
 <span class="machine"><span class="font-tt">-inline-prim-cost</span></span></span></span></span></dt><dd class="dd-description"> Likewise.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-lifting-benefit</span></span></span></dt><dd class="dd-description"> Controls inlining of functors
-at toplevel. See section <a href="#ss%3Aflambda-assessment-inlining">23.3.5</a>.
+at toplevel. See section <a href="#ss%3Aflambda-assessment-inlining">24.3.5</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-max-depth</span></span></span></dt><dd class="dd-description"> The maximum depth of any
-speculative inlining search. See section <a href="#ss%3Aflambda-speculation">23.3.6</a>.
+speculative inlining search. See section <a href="#ss%3Aflambda-speculation">24.3.6</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-max-unroll</span></span></span></dt><dd class="dd-description"> The maximum depth of any unrolling of
 recursive functions during any speculative inlining search.
-See section <a href="#ss%3Aflambda-speculation">23.3.6</a>.
-</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-no-unbox-free-vars-of-closures</span></span></span></dt><dd class="dd-description"> Do not unbox closure variables. See section <a href="#ss%3Aflambda-unbox-fvs">23.9.1</a>.
+See section <a href="#ss%3Aflambda-speculation">24.3.6</a>.
+</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-no-unbox-free-vars-of-closures</span></span></span></dt><dd class="dd-description"> Do not unbox closure variables. See section <a href="#ss%3Aflambda-unbox-fvs">24.9.1</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-no-unbox-specialised-args</span></span></span></dt><dd class="dd-description"> Do not unbox arguments to which functions have been specialised. See
-section <a href="#ss%3Aflambda-unbox-spec-args">23.9.2</a>.
+section <a href="#ss%3Aflambda-unbox-spec-args">24.9.2</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-rounds</span></span></span></dt><dd class="dd-description"> How many rounds of optimisation to perform.
-See section <a href="#ss%3Aflambda-rounds">23.2.1</a>.
+See section <a href="#ss%3Aflambda-rounds">24.2.1</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-unbox-closures-factor</span></span></span></dt><dd class="dd-description"> Scaling factor for benefit
 calculation when using <span class="font-tt">-unbox-closures</span>. See
-section <a href="#ss%3Aflambda-unbox-closures">23.9.3</a>.
+section <a href="#ss%3Aflambda-unbox-closures">24.9.3</a>.
 </dd></dl>
-<h5 class="paragraph" id="sec577"><a class="section-anchor" href="#sec577" aria-hidden="true">﻿</a>Notes</h5>
+<h5 class="paragraph" id="sec587"><a class="section-anchor" href="#sec587" aria-hidden="true">﻿</a>Notes</h5>
 <ul class="itemize"><li class="li-itemize">The set of command line flags relating to optimisation should typically
 be specified to be the same across an entire project. Flambda does not
 currently record the requested flags in the <span class="font-tt">.cmx</span> files. As such,
@@ -229,7 +229,7 @@ mimics previous versions
 of the compiler. (Code may still be subject to further optimisations not
 performed by previous versions of the compiler: functors may be inlined,
 constants are lifted and unused code is eliminated all as described elsewhere
-in this chapter. See sections <a href="#sss%3Aflambda-functors">23.3.3</a>, <a href="#ss%3Aflambda-lift-const">23.8.1</a> and <a href="#s%3Aflambda-remove-unused">23.10</a>.
+in this chapter. See sections <a href="#sss%3Aflambda-functors">24.3.3</a>, <a href="#ss%3Aflambda-lift-const">24.8.1</a> and <a href="#s%3Aflambda-remove-unused">24.10</a>.
 At the definition site of a function, the body of the
 function is measured. It will then be marked as eligible for inlining
 (and hence inlined at every direct call site) if:
@@ -355,7 +355,7 @@ The individual costs for the various kinds of operations may be adjusted
 using the various <span class="font-tt">-inline-...-cost</span> flags as follows. Costs are
 specified as integers. All of these flags accept a single argument
 describing such integers using the conventions
-detailed in section <a href="#ss%3Aflambda-rounds">23.2.1</a>.
+detailed in section <a href="#ss%3Aflambda-rounds">24.2.1</a>.
 </p><dl class="description"><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-alloc-cost</span></span></span></dt><dd class="dd-description"> The cost of an allocation.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-branch-cost</span></span></span></dt><dd class="dd-description"> The cost of a branch.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-call-cost</span></span></span></dt><dd class="dd-description"> The cost of a direct function call.
@@ -363,7 +363,7 @@ detailed in section <a href="#ss%3Aflambda-rounds">23.2.1</a>.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-inline-prim-cost</span></span></span></dt><dd class="dd-description"> The cost of a <em>primitive</em>. Primitives
 encompass operations including arithmetic and memory access.
 </dd></dl><p>
-(Default values are described in section <a href="#s%3Aflambda-defaults">23.5</a> below.)</p><p>The initial benefit value is then scaled by a factor that attempts to
+(Default values are described in section <a href="#s%3Aflambda-defaults">24.5</a> below.)</p><p>The initial benefit value is then scaled by a factor that attempts to
 compensate for the fact that the current point in the code, if under some
 number of conditional branches, may be cold. (Flambda does not currently
 compute hot and cold paths.) The factor—the estimated probability that
@@ -435,7 +435,7 @@ functions within a recursive group (although this has some limitations,
 as shown by the example below).</p><p>It should be noted that the <em>unboxing of closures</em> pass (see below)
 can introduce specialised arguments on non-recursive functions. (No other
 place in the compiler currently does this.)</p>
-<h5 class="paragraph" id="sec591"><a class="section-anchor" href="#sec591" aria-hidden="true">﻿</a>Example: the well-known <span class="font-tt">List.iter</span> function</h5>
+<h5 class="paragraph" id="sec601"><a class="section-anchor" href="#sec601" aria-hidden="true">﻿</a>Example: the well-known <span class="font-tt">List.iter</span> function</h5>
 <p>
 This function might be written like so:
 </p><pre>let rec iter f l =
@@ -497,7 +497,7 @@ means that the body of <span class="font-tt">iter’</span> may be simplified:
   in
   iter' (List.rev xs)
 </pre>
-<h5 class="paragraph" id="sec592"><a class="section-anchor" href="#sec592" aria-hidden="true">﻿</a>Aside on invariant parameters.</h5>
+<h5 class="paragraph" id="sec602"><a class="section-anchor" href="#sec602" aria-hidden="true">﻿</a>Aside on invariant parameters.</h5>
 <p> The compiler cannot currently
 detect invariance in cases such as the following.
 </p><pre>let rec iter_swap f g l =
@@ -630,7 +630,7 @@ attribute <span class="font-tt">unrolled(</span><span class="font-it">n</span> �
 As such, <span class="font-it">n</span> behaves as the “maximum depth of unrolling”.
 </dd></dl><p>A compiler warning will be emitted if it was found impossible to obey an
 annotation from an <span class="font-tt">@inlined</span> or <span class="font-tt">@specialised</span> attribute.</p>
-<h5 class="paragraph" id="sec598"><a class="section-anchor" href="#sec598" aria-hidden="true">﻿</a>Example showing correct placement of attributes</h5>
+<h5 class="paragraph" id="sec608"><a class="section-anchor" href="#sec608" aria-hidden="true">﻿</a>Example showing correct placement of attributes</h5>
 <pre>module F (M : sig type t end) = struct
   let[@inline never] bar x =
     x * 3
@@ -671,7 +671,7 @@ constants, such as the floating-point number <span class="font-tt">42.0</span>, 
 values such as constant closures.</p><p>Lifting of constants to toplevel reduces allocation at runtime.</p><p>The compiler aims to share constants lifted to toplevel such that there
 are no duplicate definitions. However if <span class="font-tt">.cmx</span> files are hidden
 from the compiler then maximal sharing may not be possible.</p>
-<h5 class="paragraph" id="sec602"><a class="section-anchor" href="#sec602" aria-hidden="true">﻿</a>Notes about float arrays</h5>
+<h5 class="paragraph" id="sec612"><a class="section-anchor" href="#sec612" aria-hidden="true">﻿</a>Notes about float arrays</h5>
 <p> The following language semantics apply specifically to constant float arrays.
 (By “constant float array” is meant an array consisting entirely of floating
 point numbers that are known at compile time. A common case is a literal
@@ -730,7 +730,7 @@ there is
 reasonable certainty that there are no uses of the boxed free variable itself
 within the corresponding function bodies.
 </p>
-<h5 class="paragraph" id="sec606"><a class="section-anchor" href="#sec606" aria-hidden="true">﻿</a>Example:</h5>
+<h5 class="paragraph" id="sec616"><a class="section-anchor" href="#sec616" aria-hidden="true">﻿</a>Example:</h5>
 <p> In the following code, the compiler observes that
 the closure returned from the function <span class="font-tt">f</span> contains a variable <span class="font-tt">pair</span>
 (free in the body of <span class="font-tt">f</span>) that may be split into two separate variables.
@@ -765,7 +765,7 @@ reasonable certainty that the boxed argument itself is unused within the
 function.</p><p>If the function in question is involved in a recursive group then unboxing
 of specialised arguments may be immediately replicated across the group
 based on the dataflow between invariant arguments.</p>
-<h5 class="paragraph" id="sec608"><a class="section-anchor" href="#sec608" aria-hidden="true">﻿</a>Example:</h5>
+<h5 class="paragraph" id="sec618"><a class="section-anchor" href="#sec618" aria-hidden="true">﻿</a>Example:</h5>
 <p> Having been given the following code, the compiler
 will inline <span class="font-tt">loop</span> into <span class="font-tt">f</span>, and then observe <span class="font-tt">inv</span>
 being invariant and always the pair formed by adding <span class="font-tt">42</span> and <span class="font-tt">43</span>
@@ -828,7 +828,7 @@ performance may be obtained due to reduced allocation. It is recommended
 that developers experiment to determine whether the option is beneficial
 for their code. (It is expected that in the future it will be possible
 for the performance degradation to be removed.)</p>
-<h5 class="paragraph" id="sec610"><a class="section-anchor" href="#sec610" aria-hidden="true">﻿</a>Simple example:</h5>
+<h5 class="paragraph" id="sec620"><a class="section-anchor" href="#sec620" aria-hidden="true">﻿</a>Simple example:</h5>
 <p> In the following code (which might typically
 occur when <span class="font-tt">g</span> is too large to inline) the value of <span class="font-tt">x</span> would usually
 be communicated to the application of the <span class="font-tt">+</span> function via the closure
@@ -863,7 +863,7 @@ integer, may be used to adjust the point at which a function is deemed
 large enough to be ineligible for duplication. The benefit of
 duplication is scaled by the integer before being evaluated against the
 size.</p>
-<h5 class="paragraph" id="sec611"><a class="section-anchor" href="#sec611" aria-hidden="true">﻿</a>Harder example:</h5>
+<h5 class="paragraph" id="sec621"><a class="section-anchor" href="#sec621" aria-hidden="true">﻿</a>Harder example:</h5>
 <p> In the following code, there are two closure
 variables that would typically cause closure allocations. One is called
 <span class="font-tt">fv</span> and occurs inside the function <span class="font-tt">baz</span>; the other is called
@@ -1060,7 +1060,7 @@ definition of a single compilation unit (i.e. <span class="font-tt">.cmx</span> 
 </dd><dt class="dt-description"><span class="font-bold">Specialised argument</span></dt><dd class="dd-description"> An argument to a function that is known
 to always hold a particular value at runtime. These are introduced by the
 inliner when specialising recursive functions; and the <span class="font-tt">unbox-closures</span>
-pass. (See section <a href="#s%3Aflambda-specialisation">23.4</a>.)
+pass. (See section <a href="#s%3Aflambda-specialisation">24.4</a>.)
 </dd><dt class="dt-description"><span class="font-bold">Symbol</span></dt><dd class="dd-description"> A name referencing a particular place in an object file
 or executable image. At that particular place will be some constant value.
 Symbols may be examined using operating system-specific tools (for
