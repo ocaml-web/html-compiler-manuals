@@ -1,0 +1,514 @@
+<!DOCTYPE html><html lang="en"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.38">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>OCaml - Language extensions</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li><a href="language.html">The OCaml language</a></li><li class="active"><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec286"><span class="chapter-number">Chapter 12</span> Language extensions</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.5</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Language extensions</a></li>
+<li><a href="letrecvalues.html#start-section"><span class="number">1</span> Recursive definitions of values</a>
+</li><li><a href="recursivemodules.html#start-section"><span class="number">2</span> Recursive modules</a>
+</li><li><a href="privatetypes.html#start-section"><span class="number">3</span> Private types</a>
+</li><li><a href="locallyabstract.html#start-section"><span class="number">4</span> Locally abstract types</a>
+</li><li><a href="firstclassmodules.html#start-section"><span class="number">5</span> Module-dependent functions and first-class modules</a>
+</li><li><a href="moduletypeof.html#start-section"><span class="number">6</span> Recovering the type of a module</a>
+</li><li><a href="signaturesubstitution.html#start-section"><span class="number">7</span> Substituting inside a signature</a>
+</li><li><a href="modulealias.html#start-section"><span class="number">8</span> Type-level module aliases</a>
+</li><li><a href="overridingopen.html#start-section"><span class="number">9</span> Overriding in open statements</a>
+</li><li><a href="gadts.html#start-section"><span class="number">10</span> Generalized algebraic datatypes</a>
+</li><li><a href="bigarray.html#start-section"><span class="number">11</span> Syntax for Bigarray access</a>
+</li><li><a href="attributes.html#start-section"><span class="number">12</span> Attributes</a>
+</li><li><a href="extensionnodes.html#start-section"><span class="number">13</span> Extension nodes</a>
+</li><li><a href="extensiblevariants.html#start-section"><span class="number">14</span> Extensible variant types</a>
+</li><li><a href="generativefunctors.html#start-section"><span class="number">15</span> Generative functors</a>
+</li><li><a href="extensionsyntax.html#start-section"><span class="number">16</span> Extension-only syntax</a>
+</li><li><a href="inlinerecords.html#start-section"><span class="number">17</span> Inline records</a>
+</li><li><a href="doccomments.html#start-section"><span class="number">18</span> Documentation comments</a>
+</li><li><a href="indexops.html#start-section"><span class="number">19</span> Extended indexing operators </a>
+</li><li><a href="emptyvariants.html#start-section"><span class="number">20</span> Empty variant types</a>
+</li><li><a href="alerts.html#start-section"><span class="number">21</span> Alerts</a>
+</li><li><a href="generalizedopens.html#start-section"><span class="number">22</span> Generalized open statements</a>
+</li><li><a href="bindingops.html#start-section"><span class="number">23</span> Binding operators</a>
+</li><li><a href="effects.html#start-section"><span class="number">24</span> Effect handlers</a>
+</li><li><a href="arrayliterals.html#start-section"><span class="number">25</span> Type-directed disambiguation of array literals</a>
+</li><li><a href="labeledtuples.html#start-section"><span class="number">26</span> Labeled tuples</a>
+</li><li><a href="externaltypes.html#start-section"><span class="number">27</span> External types</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:first-class-modules"><a class="section-anchor" href="#s:first-class-modules" aria-hidden="true"></a><span class="number">5</span> Module-dependent functions and first-class modules</h2>
+<ul>
+<li><a href="firstclassmodules.html#ss%3Afst-mod-intro"><span class="number">5.1</span> Introduction</a>
+</li><li><a href="firstclassmodules.html#ss%3Afst-mod-reference"><span class="number">5.2</span> Reference</a>
+</li></ul>
+<p>
+<a id="hevea_manual.kwd213"></a>
+<a id="hevea_manual.kwd214"></a>
+<a id="hevea_manual.kwd215"></a>
+<a id="hevea_manual.kwd216"></a></p><p>(First-class modules were introduced in OCaml 3.12; pattern syntax and
+package type inference in 4.00; structural comparison of package types
+in 4.02; fewer parentheses required starting from
+4.05.<br>
+Module-dependent functions were introduced in 5.5.)</p><p>Module-dependent functions and first-class modules make it possible to
+manipulate modules as values, in particular to accept modules as
+function parameters.</p>
+<h3 class="subsection" id="ss:fst-mod-intro"><a class="section-anchor" href="#ss:fst-mod-intro" aria-hidden="true">﻿</a><span class="number">5.1</span> Introduction</h3>
+<h5 class="paragraph" id="p:fst-mod-intro-mod-fun"><a class="section-anchor" href="#p:fst-mod-intro-mod-fun" aria-hidden="true">﻿</a>Module-dependent functions: functions parameterized over a module</h5>
+<p>One can write a function <span class="machine"><span class="font-tt">sort0</span></span> that sorts elements by adding them into
+a sorted set, and then reads them back in order:
+
+</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> sort0 (<span class="ocamlkeyword">type</span> a) cmp li =
+  <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">module</span> M = <span class="ocamlkeyword">struct</span> <span class="ocamlkeyword">type</span> t = a <span class="ocamlkeyword">let</span> compare = cmp <span class="ocamlkeyword">end</span> <span class="ocamlkeyword">in</span>
+  <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">module</span> MSet = Stdlib.Set.Make(M) <span class="ocamlkeyword">in</span>
+  MSet.elements (List.fold_right MSet.add li MSet.empty)
+
+<span class="ocamlkeyword">let</span> example = sort0 Int.compare [3; 1; 2]</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> sort0 : ('a -&gt; 'a -&gt; int) -&gt; 'a list -&gt; 'a list = &lt;<span class="ocamlkeyword">fun</span>&gt;
+<span class="ocamlkeyword">val</span> example : int list = [1; 2; 3]</div></div>
+
+</div><p>Using module-dependent functions, it is also possible to express
+<span class="machine"><span class="font-tt">sort</span></span> as a function parameterized over an ordered-set module. This
+lets callers choose their ordered-set implementation, which may be
+specialized for their type; for example sets of integers can be
+represented with bitsets, or with compact representations of dense
+intervals.</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> sort (<span class="ocamlkeyword">module</span> MSet : Set.S) li =
+  MSet.elements (List.fold_right MSet.add li MSet.empty)</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> sort : (<span class="ocamlkeyword">module</span> MSet : Set.S) -&gt; MSet.elt list -&gt; MSet.elt list = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
+
+</div><p>The declaration of <span class="machine"><span class="font-tt">sort</span></span> uses the pattern syntax <span class="machine"><span class="font-tt">(module M : S)</span></span>,
+which allows function parameters to be modules instead of ordinary
+values. We call <span class="machine"><span class="font-tt">sort</span></span> a <em>module-dependent</em> function because in
+its type, <span class="machine"><span class="font-tt">(module MSet : Set.S) -&gt; MSet.elt list -&gt; MSet.elt list</span></span>, the
+module parameter appears in the right-hand-side (return type) of the
+arrow <span class="machine"><span class="font-tt">(module MSet : Set.S) -&gt; ...</span></span>, via occurrences of the type
+<span class="machine"><span class="font-tt">MSet.elt</span></span>.</p><p>To apply the <span class="machine"><span class="font-tt">sort</span></span> function, we use the construction <span class="machine"><span class="font-tt">(module M)</span></span> to
+provide the argument, or <span class="machine"><span class="font-tt">(module M : S)</span></span> to be explicit about the
+intended signature.</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">module</span> ISetIncr = Set.Make(Int)
+<span class="ocamlkeyword">module</span> ISetDecr =
+  Set.Make(<span class="ocamlkeyword">struct</span>
+    <span class="ocamlkeyword">type</span> t = int
+    <span class="ocamlkeyword">let</span> compare i1 i2 = Int.compare i2 i1
+  <span class="ocamlkeyword">end</span>)</div></div>
+
+</div><div class="caml-example toplevel">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlprompt">#</span> <span class="ocamlkeyword">let</span> example = sort (<span class="ocamlkeyword">module</span> ISetIncr) [3; 1; 2];;</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> example : ISetIncr.elt list = [1; 2; 3]</div></div>
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlprompt">#</span> <span class="ocamlkeyword">let</span> example = sort (<span class="ocamlkeyword">module</span> ISetDecr) [3; 1; 2];;</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> example : ISetDecr.elt list = [3; 2; 1]</div></div>
+
+</div><p>This provides a lightweight alternative to functors. Indeed, the
+<span class="machine"><span class="font-tt">sort</span></span> function could also be expressed using a <span class="machine"><span class="font-tt">Sort</span></span> functor:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">module</span> Sort (MSet : Set.S) = <span class="ocamlkeyword">struct</span>
+  <span class="ocamlkeyword">let</span> f li =
+    MSet.elements (List.fold_right MSet.add li MSet.empty)
+<span class="ocamlkeyword">end</span></div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">module</span> Sort :
+  (MSet : Set.S) -&gt; <span class="ocamlkeyword">sig</span> <span class="ocamlkeyword">val</span> f : MSet.elt list -&gt; MSet.elt list <span class="ocamlkeyword">end</span></div></div>
+
+</div><div class="caml-example toplevel">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlprompt">#</span> <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">module</span> S = Sort(ISetDecr) <span class="ocamlkeyword">in</span> S.f [3; 1; 2];;</div>
+
+
+
+<div class="pre caml-output ok">- : ISetDecr.elt list = [3; 2; 1]</div></div>
+
+</div>
+<h5 class="paragraph" id="p:fst-mod-intro-algebraic-structures"><a class="section-anchor" href="#p:fst-mod-intro-algebraic-structures" aria-hidden="true">﻿</a>Use-case: abstracting over algebraic structures</h5>
+<p>Module-dependent functions offer a nice way to implement code that is parametric over families of type structures, for example over any monad.</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">module</span> <span class="ocamlkeyword">type</span> Monad = <span class="ocamlkeyword">sig</span>
+  <span class="ocamlkeyword">type</span> 'a t
+  <span class="ocamlkeyword">val</span> return : 'a -&gt; 'a t
+  <span class="ocamlkeyword">val</span> bind : 'a t -&gt; ('a -&gt; 'b t) -&gt; 'b t
+<span class="ocamlkeyword">end</span>
+
+<span class="ocamlkeyword">let</span> mapM (<span class="ocamlkeyword">module</span> M : Monad) (f : 'a -&gt; 'b M.t) (li : 'a list) : 'b list M.t =
+  <span class="ocamlkeyword">let</span> ( <span class="ocamlkeyword">let</span>* ) = M.bind <span class="ocamlkeyword">in</span>
+  <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">rec</span> loop = <span class="ocamlkeyword">function</span>
+  | [] -&gt; M.return []
+  | x::xs -&gt;
+    <span class="ocamlkeyword">let</span>* y = f x <span class="ocamlkeyword">in</span>
+    <span class="ocamlkeyword">let</span>* ys = loop xs <span class="ocamlkeyword">in</span>
+    M.return (y :: ys)
+  <span class="ocamlkeyword">in</span> loop li
+
+<span class="ocamlcomment">(* Example use-case: a map on the Result monad *)</span>
+<span class="ocamlkeyword">let</span> map_result (<span class="ocamlkeyword">type</span> e)
+: ('a -&gt; ('b, e) result) -&gt; 'a list -&gt; ('b list, e) result
+= <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">module</span> R = <span class="ocamlkeyword">struct</span>
+    <span class="ocamlkeyword">type</span> 'a t = ('a, e) result
+    <span class="ocamlkeyword">let</span> return = Result.ok
+    <span class="ocamlkeyword">let</span> bind = Result.bind
+  <span class="ocamlkeyword">end</span> <span class="ocamlkeyword">in</span> mapM (<span class="ocamlkeyword">module</span> R)</div></div>
+
+</div>
+<h5 class="paragraph" id="p:fst-mod-intro-dynamic"><a class="section-anchor" href="#p:fst-mod-intro-dynamic" aria-hidden="true">﻿</a>First-class modules</h5>
+<p>In the function application <span class="machine"><span class="font-tt">sort (module ISetIncr)</span></span> from our example
+above, we say that the module argument is <em>static</em>: it is known
+at compile-time.</p><p>First-class modules let you build <em>dynamic</em> values that represent
+modules, where the choice of module depends on runtime
+computations. If <span class="machine"><span class="font-tt">M</span></span> is a module of signature <span class="machine"><span class="font-tt">S</span></span>, then
+<span class="machine"><span class="font-tt">(module M : S)</span></span> is an expression of type <span class="machine"><span class="font-tt">(module S)</span></span>, we say that it
+“packs” the module <span class="machine"><span class="font-tt">M</span></span> as a value.</p><p>A typical use of first-class modules is to select at run-time among
+several implementations of a signature. Each implementation is
+a structure that we can pack into a first-class module, then
+store in a data structure such as a hash table:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">type</span> picture = …
+<span class="ocamlkeyword">module</span> <span class="ocamlkeyword">type</span> DEVICE = <span class="ocamlkeyword">sig</span>
+  <span class="ocamlkeyword">val</span> draw : picture -&gt; unit
+  …
+<span class="ocamlkeyword">end</span>
+<span class="ocamlkeyword">let</span> devices : (string, (<span class="ocamlkeyword">module</span> DEVICE)) Hashtbl.t = Hashtbl.create 17
+
+<span class="ocamlkeyword">module</span> SVG = <span class="ocamlkeyword">struct</span> … <span class="ocamlkeyword">end</span>
+<span class="ocamlkeyword">let</span> _ = Hashtbl.add devices <span class="ocamlstring">"SVG"</span> (<span class="ocamlkeyword">module</span> SVG : DEVICE)
+
+<span class="ocamlkeyword">module</span> PDF = <span class="ocamlkeyword">struct</span> … <span class="ocamlkeyword">end</span>
+<span class="ocamlkeyword">let</span> _ = Hashtbl.add devices <span class="ocamlstring">"PDF"</span> (<span class="ocamlkeyword">module</span> PDF : DEVICE)</div></div>
+
+</div><p>The module expression <span class="machine"><span class="font-tt">(val e : S)</span></span> can then <em>unpack</em>
+a packed-module value <span class="machine"><span class="font-tt">(e : (module S))</span></span> back into a module. In our
+example, one implementation can be selected based on command-line
+arguments:
+
+</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> parse_cmdline () = …
+<span class="ocamlkeyword">module</span> Device =
+  (<span class="ocamlkeyword">val</span> (<span class="ocamlkeyword">let</span> device_name = parse_cmdline () <span class="ocamlkeyword">in</span>
+        <span class="ocamlkeyword">try</span> Hashtbl.find devices device_name
+        <span class="ocamlkeyword">with</span> Not_found -&gt;
+          Printf.eprintf <span class="ocamlstring">"Unknown device %s\n"</span> device_name;
+          exit 2)
+   : DEVICE)</div></div>
+
+</div><p>
+
+Alternatively, the selection can be performed within a function:
+
+</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> draw_using_device device_name picture =
+  <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">module</span> Device =
+    (<span class="ocamlkeyword">val</span> (Hashtbl.find devices device_name) : DEVICE)
+  <span class="ocamlkeyword">in</span>
+  Device.draw picture
+
+<span class="ocamlcomment">(* or, equivalently *)</span>
+<span class="ocamlkeyword">let</span> draw_using_device device_name picture =
+  <span class="ocamlkeyword">let</span> (<span class="ocamlkeyword">module</span> Device : DEVICE) = Hashtbl.find devices device_name <span class="ocamlkeyword">in</span>
+  Device.draw picture</div></div>
+
+</div>
+<h5 class="paragraph" id="p:fst-mod-intro-limitation-dynamic-arg"><a class="section-anchor" href="#p:fst-mod-intro-limitation-dynamic-arg" aria-hidden="true">﻿</a>Limitation: selecting a module at runtime</h5>
+<p>There is a restriction on module-dependent functions <span class="machine"><span class="font-tt">fun (module A : S) -&gt; ...</span></span>: if the type of the body of the function
+(the <span class="machine"><span class="font-tt">...</span></span>) <em>depends</em> on the module argument <span class="machine"><span class="font-tt">A</span></span>, then this
+function is only allowed to take static module arguments of the form
+<span class="machine"><span class="font-tt">(module M : S)</span></span>, rather than arbitrary expressions of type
+<span class="machine"><span class="font-tt">(module S)</span></span>. There is no such restriction if the type of the body
+does not mention <span class="machine"><span class="font-tt">A</span></span>, or if the type-checker can remove the
+occurrences of <span class="machine"><span class="font-tt">A</span></span> by inlining type equalities (for example when
+<span class="machine"><span class="font-tt">A.t</span></span> equals <span class="machine"><span class="font-tt">int</span></span>).</p><p>Our <span class="machine"><span class="font-tt">sort</span></span> function of Paragraph&nbsp;<a href="#p%3Afst-mod-intro-mod-fun">12.5.1</a> is such
+a module-dependent function: its type is <span class="machine"><span class="font-tt">(module MSet : Set.S) -&gt; MSet.elt list -&gt; MSet.elt list</span></span>, where the module <span class="machine"><span class="font-tt">MSet</span></span> is used on
+the right of the arrow <span class="machine"><span class="font-tt">(module MSet : Set.S) -&gt; ...</span></span>. The following
+example is rejected:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> sort_order = `Decr</div></div>
+
+</div><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> wrong =
+  <span class="ocamlhighlight">sort</span>
+    (<span class="ocamlkeyword">match</span> sort_order <span class="ocamlkeyword">with</span>
+     | `Incr -&gt; (<span class="ocamlkeyword">module</span> ISetIncr)
+     | `Decr -&gt; (<span class="ocamlkeyword">module</span> ISetDecr))
+    [2; 4]</div>
+
+
+
+<div class="pre caml-output error"><span class="ocamlerror">Error</span>: This expression has type
+         (module MSet : Set.S) -&gt; MSet.elt list -&gt; MSet.elt list
+       but an expression was expected of type (module Set.S) -&gt; 'a
+       The module MSet would escape its scope
+This function is module-dependent. The dependency is preserved
+when the function is passed a static module argument (module M : S)
+or (module M). Its argument here is not static, so the type-checker
+tried instead to change the function type to be non-dependent.</div></div>
+
+</div><p>In some cases, including this example, it is possible to rewrite the
+code to use a static module argument again:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> okay =
+  <span class="ocamlkeyword">let</span> m : (<span class="ocamlkeyword">module</span> Set.S <span class="ocamlkeyword">with</span> <span class="ocamlkeyword">type</span> elt = int) =
+    <span class="ocamlkeyword">match</span> sort_order <span class="ocamlkeyword">with</span>
+    | `Incr -&gt; (<span class="ocamlkeyword">module</span> ISetIncr)
+    | `Decr -&gt; (<span class="ocamlkeyword">module</span> ISetDecr)
+  <span class="ocamlkeyword">in</span>
+  <span class="ocamlkeyword">let</span> <span class="ocamlkeyword">module</span> MSet = (<span class="ocamlkeyword">val</span> m) <span class="ocamlkeyword">in</span>
+  sort (<span class="ocamlkeyword">module</span> MSet) [2; 4]</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> okay : int list = [4; 2]</div></div>
+
+</div><p>Notice that <span class="machine"><span class="font-tt">MSet.elt</span></span> cannot occur in the type of <span class="machine"><span class="font-tt">okay</span></span>, as the
+module <span class="machine"><span class="font-tt">MSet</span></span> is only defined locally. In this example the return type
+of <span class="machine"><span class="font-tt">sort</span></span> does mention <span class="machine"><span class="font-tt">MSet.elt</span></span>, but this type is equal to <span class="machine"><span class="font-tt">int</span></span> so
+it can be simplified away.</p><p>Finally, it is also possible to remove the dependency from the
+definition of <span class="machine"><span class="font-tt">sort</span></span>, by replacing the argument signature <span class="machine"><span class="font-tt">Set.S</span></span> with
+the signature <span class="machine"><span class="font-tt">Set.S with type elt = a</span></span>, which uses a locally abstract
+type <span class="machine"><span class="font-tt">(type a)</span></span> (See <a href="locallyabstract.html#s%3Alocally-abstract">12.4</a>). This was the only
+approach available before module-dependent functions were introduced
+in the language, but it is less flexible as it requires changing the
+function definition and not just the call-site.</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> sort_nondep (<span class="ocamlkeyword">type</span> a) (<span class="ocamlkeyword">module</span> MSet : Set.S <span class="ocamlkeyword">with</span> <span class="ocamlkeyword">type</span> elt = a) (li : a list) =
+  MSet.elements (List.fold_right MSet.add li MSet.empty)
+
+<span class="ocamlkeyword">let</span> also_okay =
+  sort_nondep
+    (<span class="ocamlkeyword">match</span> sort_order <span class="ocamlkeyword">with</span>
+     | `Incr -&gt; (<span class="ocamlkeyword">module</span> ISetIncr)
+     | `Decr -&gt; (<span class="ocamlkeyword">module</span> ISetDecr))
+    [2; 4]</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> sort_nondep :
+  (<span class="ocamlkeyword">module</span> MSet : Set.S <span class="ocamlkeyword">with</span> <span class="ocamlkeyword">type</span> elt = 'a) -&gt; 'a list -&gt; MSet.elt list =
+  &lt;<span class="ocamlkeyword">fun</span>&gt;
+<span class="ocamlkeyword">val</span> also_okay : ISetIncr.elt list = [4; 2]</div></div>
+
+</div><p>Note that removing dependencies using <span class="machine"><span class="font-tt">(type a)</span></span> like this can only be
+done for non-parameterized types like <span class="machine"><span class="font-tt">elt</span></span>, not with parameterized
+types like <span class="machine"><span class="font-tt">'a t</span></span>; there is no corresponding <span class="machine"><span class="font-tt">(type 'a t)</span></span>
+abstraction. It would not be possible for the <span class="machine"><span class="font-tt">mapM</span></span> example above,
+which has a dependency on a module containing a parameterized type <span class="machine"><span class="font-tt">'a M.t</span></span>, and thus cannot be passed dynamically-selected module arguments.</p>
+<h5 class="paragraph" id="p:fst-mod-intro-limitation-nary-app"><a class="section-anchor" href="#p:fst-mod-intro-limitation-nary-app" aria-hidden="true">﻿</a>Limitation: n-ary applications</h5>
+<p>The following example fails, where <span class="machine"><span class="font-tt">sort</span></span> is our module-dependent function from before:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> sort (<span class="ocamlkeyword">module</span> MSet : Set.S) li =
+  MSet.elements (List.fold_right MSet.add li MSet.empty)
+
+<span class="ocamlkeyword">let</span> wrong = Fun.id <span class="ocamlhighlight">sort</span> (<span class="ocamlkeyword">module</span> ISetIncr) [2; 3]</div>
+
+
+
+<div class="pre caml-output error"><span class="ocamlerror">Error</span>: The value sort has type
+         (module MSet : Set.S) -&gt; MSet.elt list -&gt; MSet.elt list
+       but an expression was expected of type (module Set.S) -&gt; 'a -&gt; 'b
+       The module MSet would escape its scope</div></div>
+
+</div><p>The problem comes from subtle details in the type-checking of n-ary
+function applications. This is checked as <span class="machine"><span class="font-tt">Fun.id</span></span> to which three
+parameters are passed, and only the type of <span class="machine"><span class="font-tt">Fun.id</span></span> (not
+its arguments) is used to resolve the module application, so no
+module-dependent function type is known at that point.</p><p>The example can be fixed by first applying <span class="machine"><span class="font-tt">Fun.id sort</span></span>, and then
+passing the module argument in a separate application. Then the
+module-dependent type of <span class="machine"><span class="font-tt">Fun.id sort</span></span> will be used to check the
+module application. This can be done by simply adding extra
+parentheses:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> fixed = (Fun.id sort) (<span class="ocamlkeyword">module</span> ISetIncr) [2; 3]</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> fixed : ISetIncr.elt list = [2; 3]</div></div>
+
+</div><p>(Explicitly annotating the type of ‘Fun.id‘ with a module-dependent
+function type would also work.)</p>
+<h5 class="paragraph" id="p:fst-mod-compatibility"><a class="section-anchor" href="#p:fst-mod-compatibility" aria-hidden="true">﻿</a>Compatibility</h5>
+<p>Before OCaml 5.5, module-dependent functions were not supported. One
+could use first-class modules, but functions taking a first-class module
+had to be non-dependent, so this <span class="machine"><span class="font-tt">(type a)</span></span> workaround was often used.</p>
+<h3 class="subsection" id="ss:fst-mod-reference"><a class="section-anchor" href="#ss:fst-mod-reference" aria-hidden="true">﻿</a><span class="number">5.2</span> Reference</h3>
+<div class="syntax"><table class="display dcenter"><tbody><tr class="c009"><td class="dcell"><table class="c001 cellpading0"><tbody><tr><td class="c008"><a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">(module</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a><span class="syntax-token">)</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">(module</span> <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a><span class="syntax-token">)</span> <span class="syntax-token">-&gt;</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<a class="syntax" href="modules.html#module-expr"><span class="nonterminal">module-expr</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">(val</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> [<span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a>]<span class="syntax-token">)</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">(module</span> <a class="syntax" href="modules.html#module-expr"><span class="nonterminal">module-expr</span></a> [<span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a>]<span class="syntax-token">)</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<a class="syntax" href="patterns.html#pattern"><span class="nonterminal">pattern</span></a></td><td class="c005">::=</td><td class="c007">
+...
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <span class="syntax-token">(module</span> <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a> [<span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a>]<span class="syntax-token">)</span>
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<a class="syntax" id="package-type"><span class="nonterminal">package-type</span></a></td><td class="c005">::=</td><td class="c007">
+<a class="syntax" href="names.html#modtype-path"><span class="nonterminal">modtype-path</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td><td class="c005">∣</td><td class="c007"> <a class="syntax" href="names.html#modtype-path"><span class="nonterminal">modtype-path</span></a> <span class="syntax-token">with</span> <a class="syntax" href="#package-constraint"><span class="nonterminal">package-constraint</span></a> { <span class="syntax-token">and</span> <a class="syntax" href="#package-constraint"><span class="nonterminal">package-constraint</span></a> }
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+<tr><td class="c008">
+<a class="syntax" id="package-constraint"><span class="nonterminal">package-constraint</span></a></td><td class="c005">::=</td><td class="c007">
+<span class="syntax-token">type</span> <a class="syntax" href="names.html#typeconstr"><span class="nonterminal">typeconstr</span></a> <span class="syntax-token">=</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>
+</td></tr>
+<tr><td class="c008">&nbsp;</td></tr>
+</tbody></table></td></tr>
+</tbody></table></div><p>The expression <span class="syntax-token">(</span> <span class="syntax-token">module</span> <a class="syntax" href="modules.html#module-expr"><span class="nonterminal">module-expr</span></a> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span> converts the
+module (structure or functor) denoted by module expression <a class="syntax" href="modules.html#module-expr"><span class="nonterminal">module-expr</span></a>
+to a value of the core language that packs this module. The
+type of this core language value is <span class="syntax-token">(</span> <span class="syntax-token">module</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span>.
+The <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> annotation can be omitted if it can be inferred
+from the context.</p><p>Conversely, the module expression <span class="syntax-token">(</span> <span class="syntax-token">val</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span>
+evaluates the core language expression <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> to a value, which must
+have type <span class="syntax-token">module</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a>, and extracts the module that was
+encapsulated in this value. Again <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> can be omitted if the
+type of <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> is known.
+If the module expression is already parenthesized, like the arguments
+of functors are, no additional parens are needed: <span class="machine"><span class="font-tt">Map.Make(val key)</span></span>.</p><p>The pattern <span class="syntax-token">(</span> <span class="syntax-token">module</span> <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span> matches a
+package with type <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> and binds it to <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a>.
+It is not allowed in toplevel let bindings. A function whose parameter
+has this exact pattern can be module-dependent.
+Again <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> can be omitted if it can be inferred from the
+enclosing pattern.</p><p>The <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> syntactic class appearing in the <span class="syntax-token">(</span> <span class="syntax-token">module</span>
+<a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span> type expression, in <span class="syntax-token">(</span> <span class="syntax-token">module</span> <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a> <span class="syntax-token">:</span>
+<a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span> <span class="syntax-token">-&gt;</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>  type expression and in the annotated forms
+represents a subset of module types.
+This subset consists of named module types with optional constraints
+of a limited form: only non-parameterized types can be specified.</p><p>For type-checking purposes (and starting from OCaml 4.02), package types
+are compared using the structural comparison of module types.</p><p>When typechecking we also consider
+<span class="syntax-token">(</span> <span class="syntax-token">module</span> <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span> <span class="syntax-token">-&gt;</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> and
+<span class="syntax-token">(</span> <span class="syntax-token">module</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span> <span class="syntax-token">-&gt;</span> <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a> to be identical when <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a>
+can be erased from <a class="syntax" href="types.html#typexpr"><span class="nonterminal">typexpr</span></a>.</p><p>In general, the module expression <span class="syntax-token">(</span> <span class="syntax-token">val</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a>
+<span class="syntax-token">)</span> cannot be used in the body of a functor, because this could cause
+unsoundness in conjunction with applicative functors.
+Since OCaml 4.02, this is relaxed in two ways:
+if <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> does not contain nominal type declarations (<em>i.e.</em> types that are created with a proper identity), then this
+expression can be used anywhere, and even if it contains such types
+it can be used inside the body of a generative
+functor, described in section&nbsp;<a href="generativefunctors.html#s%3Agenerative-functors">12.15</a>.
+It can also be used anywhere in the context of a local module binding
+<span class="syntax-token">let</span> <span class="syntax-token">module</span> <a class="syntax" href="names.html#module-name"><span class="nonterminal">module-name</span></a> <span class="syntax-token">=</span> <span class="syntax-token">(</span> <span class="syntax-token">val</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a><sub>1</sub> <span class="syntax-token">:</span> <a class="syntax" href="#package-type"><span class="nonterminal">package-type</span></a> <span class="syntax-token">)</span>
+<span class="syntax-token">in</span> <a class="syntax" href="expr.html#expr"><span class="nonterminal">expr</span></a><sub>2</sub>.
+
+</p>
+
+<div class="bottom-navigation"><a class="previous" href="locallyabstract.html">« Locally abstract types</a><a class="next" href="moduletypeof.html">Recovering the type of a module »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2026 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>

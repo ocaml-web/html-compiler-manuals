@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.38">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>OCaml - Language extensions</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li><a href="language.html">The OCaml language</a></li><li class="active"><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec286"><span class="chapter-number">Chapter 12</span> Language extensions</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.5</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Language extensions</a></li>
+<li><a href="letrecvalues.html#start-section"><span class="number">1</span> Recursive definitions of values</a>
+</li><li><a href="recursivemodules.html#start-section"><span class="number">2</span> Recursive modules</a>
+</li><li><a href="privatetypes.html#start-section"><span class="number">3</span> Private types</a>
+</li><li><a href="locallyabstract.html#start-section"><span class="number">4</span> Locally abstract types</a>
+</li><li><a href="firstclassmodules.html#start-section"><span class="number">5</span> Module-dependent functions and first-class modules</a>
+</li><li><a href="moduletypeof.html#start-section"><span class="number">6</span> Recovering the type of a module</a>
+</li><li><a href="signaturesubstitution.html#start-section"><span class="number">7</span> Substituting inside a signature</a>
+</li><li><a href="modulealias.html#start-section"><span class="number">8</span> Type-level module aliases</a>
+</li><li><a href="overridingopen.html#start-section"><span class="number">9</span> Overriding in open statements</a>
+</li><li><a href="gadts.html#start-section"><span class="number">10</span> Generalized algebraic datatypes</a>
+</li><li><a href="bigarray.html#start-section"><span class="number">11</span> Syntax for Bigarray access</a>
+</li><li><a href="attributes.html#start-section"><span class="number">12</span> Attributes</a>
+</li><li><a href="extensionnodes.html#start-section"><span class="number">13</span> Extension nodes</a>
+</li><li><a href="extensiblevariants.html#start-section"><span class="number">14</span> Extensible variant types</a>
+</li><li><a href="generativefunctors.html#start-section"><span class="number">15</span> Generative functors</a>
+</li><li><a href="extensionsyntax.html#start-section"><span class="number">16</span> Extension-only syntax</a>
+</li><li><a href="inlinerecords.html#start-section"><span class="number">17</span> Inline records</a>
+</li><li><a href="doccomments.html#start-section"><span class="number">18</span> Documentation comments</a>
+</li><li><a href="indexops.html#start-section"><span class="number">19</span> Extended indexing operators </a>
+</li><li><a href="emptyvariants.html#start-section"><span class="number">20</span> Empty variant types</a>
+</li><li><a href="alerts.html#start-section"><span class="number">21</span> Alerts</a>
+</li><li><a href="generalizedopens.html#start-section"><span class="number">22</span> Generalized open statements</a>
+</li><li><a href="bindingops.html#start-section"><span class="number">23</span> Binding operators</a>
+</li><li><a href="effects.html#start-section"><span class="number">24</span> Effect handlers</a>
+</li><li><a href="arrayliterals.html#start-section"><span class="number">25</span> Type-directed disambiguation of array literals</a>
+</li><li><a href="labeledtuples.html#start-section"><span class="number">26</span> Labeled tuples</a>
+</li><li><a href="externaltypes.html#start-section"><span class="number">27</span> External types</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+
+<h2 class="section" id="s:array-literals"><a class="section-anchor" href="#s:array-literals" aria-hidden="true"></a><span class="number">25</span> Type-directed disambiguation of array literals</h2>
+<p>(Introduced in OCaml 5.4)</p><p>Since OCaml 5.4, array literal syntax <span class="syntax-token">[|</span> <span class="nonterminal">e1</span> <span class="syntax-token">;</span> <span class="nonterminal">e2</span> <span class="syntax-token">;</span> ... <span class="syntax-token">;</span> <span class="nonterminal">eN</span> <span class="syntax-token">|]</span> can
+be used to denote values of type <span class="machine"><span class="font-tt">floatarray</span></span> or <span class="machine"><span class="font-tt">'a Iarray.t</span></span> as well as <span class="machine"><span class="font-tt">'a array</span></span>, both in expression and pattern positions. This syntax is also used to
+display <span class="machine"><span class="font-tt">floatarray</span></span> and <span class="machine"><span class="font-tt">'a Iarray.t</span></span> values in the toplevel.</p><p>The compiler matches the expected type of the expression or pattern with the
+type of the literal, in a manner analogous to the disambiguation of constructors
+and record fields (see <a href="coreexamples.html#ss%3Arecord-and-variant-disambiguation">1.4.1</a>).</p><p>In the absence of an expected type, array literals are assumed to be of type <span class="machine"><span class="font-tt">'a array</span></span>.</p><p>In the following examples, the array literals are assigned type <span class="machine"><span class="font-tt">floatarray</span></span>:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> _ : floatarray = [|42.|];;</div>
+
+
+
+<div class="pre caml-output ok">- : floatarray = [|42.|]</div></div>
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> _ = ([|42.|] : floatarray);;</div>
+
+
+
+<div class="pre caml-output ok">- : floatarray = [|42.|]</div></div>
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> _ = Float.Array.length [|42.|];;</div>
+
+
+
+<div class="pre caml-output ok">- : int = 1</div></div>
+
+</div><p>Immutable arrays (here <span class="machine"><span class="font-tt">int Iarray.t</span></span>) can be constructed in exactly the same
+way:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> _ : _ Iarray.t = [|42|];;</div>
+
+
+
+<div class="pre caml-output ok">- : int Iarray.t = [|42|]</div></div>
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> _ = ([|42|] : _ Iarray.t );;</div>
+
+
+
+<div class="pre caml-output ok">- : int Iarray.t = [|42|]</div></div>
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> _ = Iarray.length [|42|];;</div>
+
+
+
+<div class="pre caml-output ok">- : int = 1</div></div>
+
+</div><p>The same disambiguation mechanism is used for array literals appearing in
+patterns:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> f : floatarray -&gt; _ = <span class="ocamlkeyword">function</span>
+  | [| 42. |] -&gt; <span class="ocamlstring">"It's a floatarray containing one element"</span>
+  | _ -&gt; <span class="ocamlstring">"Also a floatarray"</span>
+;;</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> f : floatarray -&gt; string = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
+
+</div><p>In the example below, <span class="machine"><span class="font-tt">x</span></span> is assigned type <span class="machine"><span class="font-tt">float array</span></span>:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> x = [|42.|];;</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> x : float array = [|42.|]</div></div>
+
+</div><p>However, the following does not work:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> f a =
+  <span class="ocamlkeyword">match</span> a <span class="ocamlkeyword">with</span>
+  | [| _ |] -&gt; Float.Array.length <span class="ocamlhighlight">a</span>
+  | _ -&gt; 42
+;;</div>
+
+
+
+<div class="pre caml-output error"><span class="ocamlerror">Error</span>: The value a has type 'a array but an expression was expected of type
+         Float.Array.t = floatarray</div></div>
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> f b (a : floatarray) = <span class="ocamlkeyword">if</span> b <span class="ocamlkeyword">then</span> [|42.|] <span class="ocamlkeyword">else</span> <span class="ocamlhighlight">a</span>
+;;</div>
+
+
+
+<div class="pre caml-output error"><span class="ocamlerror">Error</span>: The value a has type floatarray but an expression was expected of type
+         float array</div></div>
+
+</div><p>Here the information learned from the use of <span class="machine"><span class="font-tt">a</span></span> as a <span class="machine"><span class="font-tt">floatarray</span></span> cannot be
+propagated back to the array literal. In general, expected type information
+cannot be propagated “backwards”.</p><p>In the following example, type disambiguation works because the type information
+learned in the <span class="machine"><span class="font-tt">then</span></span> branch of the conditional is propagated to the <span class="machine"><span class="font-tt">else</span></span>
+branch, which occurs “later”.</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">let</span> f b (a : floatarray) = <span class="ocamlkeyword">if</span> b <span class="ocamlkeyword">then</span> a <span class="ocamlkeyword">else</span> [|42.|];;</div>
+
+
+
+<div class="pre caml-output ok"><span class="ocamlkeyword">val</span> f : bool -&gt; floatarray -&gt; floatarray = &lt;<span class="ocamlkeyword">fun</span>&gt;</div></div>
+
+</div><p>Such cases trigger warning 18 <span class="machine"><span class="font-tt">not-principal</span></span>, if enabled.
+
+</p>
+
+<div class="bottom-navigation"><a class="previous" href="effects.html">« Effect handlers</a><a class="next" href="labeledtuples.html">Labeled tuples »</a></div>
+
+
+
+
+</section><div class="copyright">Copyright © 2026 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>
