@@ -1,0 +1,294 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Misc.Utf8_lexeme.html">
+<link rel="Up" href="Misc.html">
+<link title="Index of types" rel="Appendix" href="index_types.html">
+<link title="Index of extensions" rel="Appendix" href="index_extensions.html">
+<link title="Index of exceptions" rel="Appendix" href="index_exceptions.html">
+<link title="Index of values" rel="Appendix" href="index_values.html">
+<link title="Index of modules" rel="Appendix" href="index_modules.html">
+<link title="Index of module types" rel="Appendix" href="index_module_types.html">
+<link title="Compiler_libs" rel="Chapter" href="Compiler_libs.html">
+<link title="Ast_helper" rel="Chapter" href="Ast_helper.html">
+<link title="Ast_invariants" rel="Chapter" href="Ast_invariants.html">
+<link title="Ast_iterator" rel="Chapter" href="Ast_iterator.html">
+<link title="Ast_mapper" rel="Chapter" href="Ast_mapper.html">
+<link title="Asttypes" rel="Chapter" href="Asttypes.html">
+<link title="Attr_helper" rel="Chapter" href="Attr_helper.html">
+<link title="Builtin_attributes" rel="Chapter" href="Builtin_attributes.html">
+<link title="CamlinternalMenhirLib" rel="Chapter" href="CamlinternalMenhirLib.html">
+<link title="Depend" rel="Chapter" href="Depend.html">
+<link title="Docstrings" rel="Chapter" href="Docstrings.html">
+<link title="Lexer" rel="Chapter" href="Lexer.html">
+<link title="Location" rel="Chapter" href="Location.html">
+<link title="Longident" rel="Chapter" href="Longident.html">
+<link title="Parse" rel="Chapter" href="Parse.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Parsetree" rel="Chapter" href="Parsetree.html">
+<link title="Pprintast" rel="Chapter" href="Pprintast.html">
+<link title="Printast" rel="Chapter" href="Printast.html">
+<link title="Syntaxerr" rel="Chapter" href="Syntaxerr.html">
+<link title="Unit_info" rel="Chapter" href="Unit_info.html">
+<link title="Arg_helper" rel="Chapter" href="Arg_helper.html">
+<link title="Binutils" rel="Chapter" href="Binutils.html">
+<link title="Build_path_prefix_map" rel="Chapter" href="Build_path_prefix_map.html">
+<link title="Ccomp" rel="Chapter" href="Ccomp.html">
+<link title="Clflags" rel="Chapter" href="Clflags.html">
+<link title="Compression" rel="Chapter" href="Compression.html">
+<link title="Config_boot" rel="Chapter" href="Config_boot.html">
+<link title="Config_main" rel="Chapter" href="Config_main.html">
+<link title="Config" rel="Chapter" href="Config.html">
+<link title="Consistbl" rel="Chapter" href="Consistbl.html">
+<link title="Diffing" rel="Chapter" href="Diffing.html">
+<link title="Diffing_with_keys" rel="Chapter" href="Diffing_with_keys.html">
+<link title="Domainstate" rel="Chapter" href="Domainstate.html">
+<link title="Format_doc" rel="Chapter" href="Format_doc.html">
+<link title="Identifiable" rel="Chapter" href="Identifiable.html">
+<link title="Int_replace_polymorphic_compare" rel="Chapter" href="Int_replace_polymorphic_compare.html">
+<link title="Lazy_backtrack" rel="Chapter" href="Lazy_backtrack.html">
+<link title="Linkdeps" rel="Chapter" href="Linkdeps.html">
+<link title="Load_path" rel="Chapter" href="Load_path.html">
+<link title="Local_store" rel="Chapter" href="Local_store.html">
+<link title="Misc" rel="Chapter" href="Misc.html">
+<link title="Numbers" rel="Chapter" href="Numbers.html">
+<link title="Profile" rel="Chapter" href="Profile.html">
+<link title="Stable_matching" rel="Chapter" href="Stable_matching.html">
+<link title="Strongly_connected_components" rel="Chapter" href="Strongly_connected_components.html">
+<link title="Targetint" rel="Chapter" href="Targetint.html">
+<link title="Terminfo" rel="Chapter" href="Terminfo.html">
+<link title="Warnings" rel="Chapter" href="Warnings.html">
+<link title="Pparse" rel="Chapter" href="Pparse.html"><title>OCaml compiler library : Misc.RuntimeID</title>
+<script src="search.js"></script><script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="api"><div id="sidebar-button"><span>☰</span></div><header id="sidebar"><nav class="toc brand"><a class="brand" href="../../index.html"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Compiler API Version 5.5</a></div><a href="index.html">&lt; General Index</a><div class="api_search"><input type="search" name="apisearch" id="api_search" class="api_search" oninput="mySearch(false);" onkeypress="this.oninput();" onclick="this.oninput();" onpaste="this.oninput();">
+<button onclick="mySearch(false)" style="cursor:pointer">Search <span aria-hidden="true">🔎</span></button> </div>
+<div id="search_results"></div><div class="toc_title"><a href="#top">OCaml compiler library : Misc.RuntimeID</a></div><ul></ul></nav></header>
+<h1>Module <a href="type_Misc.RuntimeID.html">Misc.RuntimeID</a></h1>
+
+<pre class="anchored"><a class="anchor" href="#MODULERuntimeID"></a><span id="MODULERuntimeID"><span class="keyword">module</span> RuntimeID</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Misc.RuntimeID.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+<p>Manipulation of the Runtime ID values used to mangle the filenames of
+      shared libraries and the bytecode interpreters.</p>
+
+<pre class="anchored"><a class="anchor" href="#TYPEt"></a><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = private {</code></pre><table class="typetable">
+<tbody><tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.dev">dev</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if this not an unaltered official release of OCaml</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.release">release</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p>Release number (OCaml 5.5 is release 21)</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.reserved">reserved</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p>The number of reserved bits (0-31) in the</p>
+<pre class="verbatim">value</pre><p>header</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.no_flat_float_array">no_flat_float_array</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if float arrays must be boxed (i.e. configured with</p>
+<pre class="verbatim">--disable-flat-float-array</pre><p>)</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.fp">fp</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if frame pointers are required (i.e. configured with</p>
+<pre class="verbatim">--enable-frame-pointers</pre></div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.tsan">tsan</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if ThreadSanitizer (TSAN) is required (i.e. configured with</p>
+<pre class="verbatim">--enable-tsan</pre><p>)</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.int31">int31</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if the platform has 31-bit <code class="code">int</code>s (i.e. 32-bit systems)</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.static">static</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if dynamic loading of libraries is not supported</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.no_compression">no_compression</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if compressed marshalling is not supported</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top">
+<code><span id="TYPEELTt.ansi">ansi</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top"><code>(*</code></td><td class="typefieldcomment" align="left" valign="top"><div class="info ">
+<div class="info-desc">
+<p><code class="code"><span class="keyword">true</span></code> if Unicode support on Windows is disabled</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom"><code>*)</code></td>
+</tr></tbody></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Runtime IDs</p>
+</div>
+</div>
+
+
+<pre class="anchored"><a class="anchor" href="#VALmake_zinc"></a><span id="VALmake_zinc"><span class="keyword">val</span> make_zinc</span> : <code class="type">?dev:bool -&gt;<br>       ?release:int -&gt;<br>       ?no_flat_float_array:bool -&gt;<br>       ?int31:bool -&gt;<br>       ?static:bool -&gt; ?no_compression:bool -&gt; unit -&gt; <a href="Misc.RuntimeID.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Returns the Zinc Runtime ID for the given parameters (using default values
+      from <a href="Config.html"><code class="code"><span class="constructor">Config</span></code></a> and <code class="code"><span class="constructor">Sys</span></code> as necessary)</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALmake_bytecode"></a><span id="VALmake_bytecode"><span class="keyword">val</span> make_bytecode</span> : <code class="type">?dev:bool -&gt;<br>       ?release:int -&gt;<br>       ?reserved:int -&gt;<br>       ?no_flat_float_array:bool -&gt;<br>       ?int31:bool -&gt;<br>       ?static:bool -&gt;<br>       ?no_compression:bool -&gt; ?ansi:bool -&gt; unit -&gt; <a href="Misc.RuntimeID.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Returns the Bytecode Runtime ID for the given parameters (using default
+      values from <a href="Config.html"><code class="code"><span class="constructor">Config</span></code></a> and <code class="code"><span class="constructor">Sys</span></code> as necessary)</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALmake_native"></a><span id="VALmake_native"><span class="keyword">val</span> make_native</span> : <code class="type">?dev:bool -&gt;<br>       ?release:int -&gt;<br>       ?reserved:int -&gt;<br>       ?no_flat_float_array:bool -&gt;<br>       ?fp:bool -&gt;<br>       ?tsan:bool -&gt;<br>       ?int31:bool -&gt;<br>       ?static:bool -&gt;<br>       ?no_compression:bool -&gt; ?ansi:bool -&gt; unit -&gt; <a href="Misc.RuntimeID.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Returns the Native Runtime ID for the given parameters (using default
+      values from <a href="Config.html"><code class="code"><span class="constructor">Config</span></code></a> and <code class="code"><span class="constructor">Sys</span></code> as necessary)</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALis_zinc"></a><span id="VALis_zinc"><span class="keyword">val</span> is_zinc</span> : <code class="type"><a href="Misc.RuntimeID.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">is_zinc&nbsp;t</code> is true if <code class="code">t</code> can be used as a Zinc Runtime ID</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALis_bytecode"></a><span id="VALis_bytecode"><span class="keyword">val</span> is_bytecode</span> : <code class="type"><a href="Misc.RuntimeID.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">is_bytecode&nbsp;t</code> is true if <code class="code">t</code> can be used as a Bytecode Runtime ID</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALis_native"></a><span id="VALis_native"><span class="keyword">val</span> is_native</span> : <code class="type"><a href="Misc.RuntimeID.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">is_native&nbsp;t</code> is true if <code class="code">t</code> can be used as a Native Runtime ID</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALto_string"></a><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="Misc.RuntimeID.html#TYPEt">t</a> -&gt; string</code></pre><div class="info ">
+<div class="info-desc">
+<p>Returns the 4-character representation of a <a href="Misc.RuntimeID.html#TYPEt"><code class="code"><span class="constructor">Misc</span>.<span class="constructor">RuntimeID</span>.t</code></a></p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALof_string"></a><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -&gt; <a href="Misc.RuntimeID.html#TYPEt">t</a> option</code></pre><div class="info ">
+<div class="info-desc">
+<p>Converts the 4-character representation back to a <a href="Misc.RuntimeID.html#TYPEt"><code class="code"><span class="constructor">Misc</span>.<span class="constructor">RuntimeID</span>.t</code></a></p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALocamlrun"></a><span id="VALocamlrun"><span class="keyword">val</span> ocamlrun</span> : <code class="type">string -&gt; <a href="Misc.RuntimeID.html#TYPEt">t</a> -&gt; string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">ocamlrun&nbsp;variant&nbsp;runtime_id</code> returns the name for the runtime for the
+      given Zinc Runtime ID.</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALshared_runtime"></a><span id="VALshared_runtime"><span class="keyword">val</span> shared_runtime</span> : <code class="type">?runtime_id:<a href="Misc.RuntimeID.html#TYPEt">t</a> -&gt;<br>       ?host:string -&gt; ?prefix:string -&gt; Sys.backend_type -&gt; string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">shared_runtime&nbsp;?runtime_id&nbsp;?host&nbsp;?prefix&nbsp;backend</code> returns the name of the
+      shared runtime for the given <code class="code">backend</code>. <code class="code">runtime_id</code> defaults to
+      <a href="Misc.RuntimeID.html#VALmake_bytecode"><code class="code"><span class="constructor">Misc</span>.<span class="constructor">RuntimeID</span>.make_bytecode</code></a> if <code class="code">backend&nbsp;=&nbsp;<span class="constructor">Sys</span>.<span class="constructor">Bytecode</span></code> and <a href="Misc.RuntimeID.html#VALmake_native"><code class="code"><span class="constructor">Misc</span>.<span class="constructor">RuntimeID</span>.make_native</code></a> if
+      <code class="code">backend&nbsp;=&nbsp;<span class="constructor">Sys</span>.<span class="constructor">Native</span></code> and <code class="code">host</code> to <a href="Config.html#VALtarget"><code class="code"><span class="constructor">Config</span>.target</code></a>. <code class="code">prefix</code> defaults
+      to <code class="code"><span class="string">"-l"</span></code> and the function does not append <a href="Config.html#VALext_dll"><code class="code"><span class="constructor">Config</span>.ext_dll</code></a>.</p>
+
+<p>e.g. <code class="code">shared_runtime&nbsp;~host:<span class="string">"x86_64-pc-linux-gnu"</span>&nbsp;<span class="constructor">Native</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"-lasmrun-x86_64-pc-linux-gnu-b100"</span></code> for a default OCaml 5.5
+           build on a 64-bit system with shared library support and compressed
+           marshalling.</p>
+</div>
+</div>
+
+<pre class="anchored"><a class="anchor" href="#VALstubslib"></a><span id="VALstubslib"><span class="keyword">val</span> stubslib</span> : <code class="type">?runtime_id:<a href="Misc.RuntimeID.html#TYPEt">t</a> -&gt; ?host:string -&gt; string -&gt; string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">stublibs&nbsp;?runtime_id&nbsp;?host&nbsp;dllname</code> returns the name for the given DLL
+      basename. <code class="code">dllname</code> should not include <a href="Config.html#VALext_dll"><code class="code"><span class="constructor">Config</span>.ext_dll</code></a> (and the result
+      does not include it either). <code class="code">host</code> and <code class="code">runtime_id</code> default to
+      <a href="Config.html#VALtarget"><code class="code"><span class="constructor">Config</span>.target</code></a> and <a href="Misc.RuntimeID.html#VALmake_bytecode"><code class="code"><span class="constructor">Misc</span>.<span class="constructor">RuntimeID</span>.make_bytecode</code></a> respectively.</p>
+
+<p>e.g. <code class="code">stubslib&nbsp;~host:<span class="string">"x86_64-pc-linux-gnu"</span>&nbsp;<span class="string">"dllunixbyt"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"dllunixbyt-x86_64-pc-linux-gnu-001b"</span></code> for a default OCaml 5.5
+           build on a 64-bit system with shared library support and compressed
+           marshalling.</p>
+</div>
+</div>
+
+</div></body></html>

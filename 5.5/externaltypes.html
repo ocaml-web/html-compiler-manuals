@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.38">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="manual.css">
+<title>OCaml - Language extensions</title>
+<script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml language</nav><ul id="part-menu"><li><a href="language.html">The OCaml language</a></li><li class="active"><a href="extn.html">Language extensions</a></li></ul>
+
+
+
+
+<h1 class="chapter" id="sec286"><span class="chapter-number">Chapter 12</span> Language extensions</h1><header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.5</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Language extensions</a></li>
+<li><a href="letrecvalues.html#start-section"><span class="number">1</span> Recursive definitions of values</a>
+</li><li><a href="recursivemodules.html#start-section"><span class="number">2</span> Recursive modules</a>
+</li><li><a href="privatetypes.html#start-section"><span class="number">3</span> Private types</a>
+</li><li><a href="locallyabstract.html#start-section"><span class="number">4</span> Locally abstract types</a>
+</li><li><a href="firstclassmodules.html#start-section"><span class="number">5</span> Module-dependent functions and first-class modules</a>
+</li><li><a href="moduletypeof.html#start-section"><span class="number">6</span> Recovering the type of a module</a>
+</li><li><a href="signaturesubstitution.html#start-section"><span class="number">7</span> Substituting inside a signature</a>
+</li><li><a href="modulealias.html#start-section"><span class="number">8</span> Type-level module aliases</a>
+</li><li><a href="overridingopen.html#start-section"><span class="number">9</span> Overriding in open statements</a>
+</li><li><a href="gadts.html#start-section"><span class="number">10</span> Generalized algebraic datatypes</a>
+</li><li><a href="bigarray.html#start-section"><span class="number">11</span> Syntax for Bigarray access</a>
+</li><li><a href="attributes.html#start-section"><span class="number">12</span> Attributes</a>
+</li><li><a href="extensionnodes.html#start-section"><span class="number">13</span> Extension nodes</a>
+</li><li><a href="extensiblevariants.html#start-section"><span class="number">14</span> Extensible variant types</a>
+</li><li><a href="generativefunctors.html#start-section"><span class="number">15</span> Generative functors</a>
+</li><li><a href="extensionsyntax.html#start-section"><span class="number">16</span> Extension-only syntax</a>
+</li><li><a href="inlinerecords.html#start-section"><span class="number">17</span> Inline records</a>
+</li><li><a href="doccomments.html#start-section"><span class="number">18</span> Documentation comments</a>
+</li><li><a href="indexops.html#start-section"><span class="number">19</span> Extended indexing operators </a>
+</li><li><a href="emptyvariants.html#start-section"><span class="number">20</span> Empty variant types</a>
+</li><li><a href="alerts.html#start-section"><span class="number">21</span> Alerts</a>
+</li><li><a href="generalizedopens.html#start-section"><span class="number">22</span> Generalized open statements</a>
+</li><li><a href="bindingops.html#start-section"><span class="number">23</span> Binding operators</a>
+</li><li><a href="effects.html#start-section"><span class="number">24</span> Effect handlers</a>
+</li><li><a href="arrayliterals.html#start-section"><span class="number">25</span> Type-directed disambiguation of array literals</a>
+</li><li><a href="labeledtuples.html#start-section"><span class="number">26</span> Labeled tuples</a>
+</li><li><a href="externaltypes.html#start-section"><span class="number">27</span> External types</a>
+</li></ul></nav></header><a id="start-section"></a><section id="section">
+
+
+
+<h2 class="section" id="s:external-types"><a class="section-anchor" href="#s:external-types" aria-hidden="true"></a><span class="number">27</span> External types</h2>
+<p>(Introduced in OCaml 5.5)</p><p>External types introduce types of values that are defined outside the
+OCaml language (they cannot be defined as standard datatype or formed
+by combining existing type constructors) because they are populated
+from the foreign function interface. For example, a type <span class="machine"><span class="font-tt">gmp</span></span> of
+arbitrary-length integers implementing by binding the <span class="machine"><span class="font-tt">Gmp</span></span> library
+from C could be defined as follows:</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">module</span> Gmp : <span class="ocamlkeyword">sig</span>
+  <span class="ocamlkeyword">type</span> t = <span class="ocamlkeyword">external</span> <span class="ocamlstring">"gmp"</span>
+
+  <span class="ocamlkeyword">val</span> of_int : int -&gt; t
+  <span class="ocamlkeyword">val</span> add : t -&gt; t -&gt; t
+  <span class="ocamlcomment">(* ... *)</span>
+<span class="ocamlkeyword">end</span> = …</div></div>
+
+</div><p>We say that <span class="machine"><span class="font-tt">Gmp.t</span></span> is an external type of name <span class="machine"><span class="font-tt">gmp</span></span>. External names
+are not unique, it is possible to define two (distinct) external types
+with the same name. On the other hand, the type-system enforces that
+two external types with distinct names are different.</p><p>Before external types were available, users could use an abstract type
+for this purpose, just with <span class="machine"><span class="font-tt">type gmp</span></span>. But this is less informative,
+as the OCaml compiler must assume that abstract types could be defined
+in an arbitrary way, and in particular an abstract type from another
+module could be equal to any type.</p>
+<h5 class="paragraph" id="sec362"><a class="section-anchor" href="#sec362" aria-hidden="true">﻿</a>Predefined types</h5>
+<p>External types can be used in particular to define the built-in types
+such as <span class="machine"><span class="font-tt">float</span></span>, <span class="machine"><span class="font-tt">string</span></span>, etc.</p><div class="caml-example verbatim">
+
+<div class="ocaml">
+
+
+
+<div class="pre caml-input"><span class="ocamlkeyword">type</span> float = <span class="ocamlkeyword">external</span> <span class="ocamlstring">"float"</span>
+<span class="ocamlkeyword">type</span> string = <span class="ocamlkeyword">external</span> <span class="ocamlstring">"string"</span>
+<span class="ocamlkeyword">type</span> 'a array = <span class="ocamlkeyword">external</span> <span class="ocamlstring">"array"</span>
+<span class="ocamlkeyword">type</span> +'a iarray = <span class="ocamlkeyword">external</span> <span class="ocamlstring">"iarray"</span>
+<span class="ocamlcomment">(* ... *)</span></div></div>
+
+</div><p>
+
+We know for example that <span class="machine"><span class="font-tt">float</span></span> and <span class="machine"><span class="font-tt">string</span></span> are distinct types, as
+they have different names.</p><p>Remark: This is useful in particular when using predefined types as
+GADT indices, incompatible constructors can be ruled out. See
+<a href="gadts-tutorial.html#s%3Atypes-used-as-gadt-indices">7.8</a> for a discussion of GADT indices.</p>
+<h5 class="paragraph" id="sec363"><a class="section-anchor" href="#sec363" aria-hidden="true">﻿</a>Variance and injectivity</h5>
+<p> Like abstract types, the variance
+of the parameters of external types must be specified by users, with
+invariance assumed by default. Unlike abstract types, external types
+are always injective.
+</p>
+<div class="bottom-navigation"><a class="previous" href="labeledtuples.html">« Labeled tuples</a><a class="next up" href="extn.html">Language extensions</a></div>
+
+
+
+</section><div class="copyright">Copyright © 2026 Institut National de
+Recherche en Informatique et en Automatique</div></div></body></html>
