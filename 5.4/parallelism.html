@@ -38,7 +38,7 @@ by yielding control to each other. While concurrency is a program structuring
 mechanism, parallelism is a mechanism to make your programs run faster. If you
 are interested in the concurrent programming mechanisms in OCaml, please refer
 to section <a href="effects.html#s%3Aeffect-handlers">12.24</a> on effect handlers and chapter
-<a href="libthreads.html#c%3Athreads">34</a> on the threads library.</p>
+<a href="libthreads.html#c%3Athreads">35</a> on the threads library.</p>
 <h2 class="section" id="s:par_domains"><a class="section-anchor" href="#s:par_domains" aria-hidden="true"></a><span class="number">1</span> Domains</h2>
 <p>Domains are the units of parallelism in OCaml. The module <a href="api/Domain.html"><span class="font-tt">Domain</span></a>
 provides the primitives to create and manage domains. New domains can be
@@ -433,7 +433,7 @@ please have a look at the chapter on the hard bits of the memory model
 <p>Domains may perform blocking synchronisation with the help of
 <a href="api/Mutex.html"><span class="font-tt">Mutex</span></a>, <a href="api/Condition.html"><span class="font-tt">Condition</span></a> and <a href="api/Semaphore.html"><span class="font-tt">Semaphore</span></a>
 modules. These modules are the same as those used to synchronise threads
-created by the threads library (chapter <a href="libthreads.html#c%3Athreads">34</a>). For clarity, in the
+created by the threads library (chapter <a href="libthreads.html#c%3Athreads">35</a>). For clarity, in the
 rest of this chapter, we refer to the threads created by the threads library
 as <em>systhreads</em>. The following program implements a concurrent stack using
 mutex and condition variables.</p><div class="caml-example verbatim">

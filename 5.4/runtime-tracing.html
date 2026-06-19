@@ -7,12 +7,12 @@
 <link rel="stylesheet" type="text/css" href="manual.css">
 <title>OCaml - Runtime tracing with runtime events</title>
 <script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
-<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li class="active"><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="native-debugger.html">Native debugging (gdb, lldb)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li class="active"><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
 
 
 
 
-<h1 class="chapter" id="sec630"><span class="chapter-number">Chapter 25</span> Runtime tracing with runtime events</h1>
+<h1 class="chapter" id="sec640"><span class="chapter-number">Chapter 26</span> Runtime tracing with runtime events</h1>
 <header id="sidebar"><nav class="toc brand"><a class="brand" href="https://ocaml.org/"><img src="colour-logo.svg" class="svg" alt="OCaml"></a></nav><nav class="toc"><div class="toc_version"><a id="version-select" href="https://ocaml.org/releases/">Version 5.4</a></div><div class="toc_title"><a href="index.html">&lt; The OCaml Manual</a></div><ul><li class="top"><a href="#">Runtime tracing with runtime events</a></li>
 <li><a href="runtime-tracing.html#s%3Aruntime-tracing-overview"><span class="number">1</span> Overview</a>
 </li><li><a href="runtime-tracing.html#s%3Aruntime-tracing-architecture"><span class="number">2</span> Architecture</a>
@@ -264,7 +264,7 @@ new tag, and the new custom type
 </li><li class="li-enumerate">indicate a callback which should receive all events of the custom
 type using <span class="font-tt">Runtime_events.Callbacks.add_user_event</span> to register it
 inside a <span class="font-tt">Runtime_events.Callbacks.t</span> object to be used when polling
-(see section&nbsp;<a href="#s%3Aruntime-tracing-ocaml-apis">25.3.1</a> above).
+(see section&nbsp;<a href="#s%3Aruntime-tracing-ocaml-apis">26.3.1</a> above).
 </li><li class="li-enumerate"><em>(Optional, if there are distinct events registered with the same
 custom type:)</em> In that callback, pattern-match on the event tag in order to
 discriminate between different event tags of the same custom type.

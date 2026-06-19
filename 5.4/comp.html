@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="manual.css">
 <title>OCaml - Batch compilation (ocamlc)</title>
 <script src="scroll.js"></script><script src="navigation.js"></script><script defer data-domain="ocaml.org" src="https://plausible.ci.dev/js/script.js"></script><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></head>
-<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li class="active"><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
+<body><div class="content manual"><div id="sidebar-button"><span>☰</span></div><nav id="part-title"><span>☰</span>The OCaml tools</nav><ul id="part-menu"><li class="active"><a href="comp.html">Batch compilation (ocamlc)</a></li><li><a href="toplevel.html">The toplevel system or REPL (ocaml)</a></li><li><a href="runtime.html">The runtime system (ocamlrun)</a></li><li><a href="native.html">Native-code compilation (ocamlopt)</a></li><li><a href="lexyacc.html">Lexer and parser generators (ocamllex, ocamlyacc)</a></li><li><a href="depend.html">Dependency generator (ocamldep)</a></li><li><a href="ocamldoc.html">The documentation generator (ocamldoc)</a></li><li><a href="debugger.html">The debugger (ocamldebug)</a></li><li><a href="native-debugger.html">Native debugging (gdb, lldb)</a></li><li><a href="profil.html">Profiling (ocamlprof, perf)</a></li><li><a href="intfc.html">Interfacing C with OCaml</a></li><li><a href="flambda.html">Optimisation with Flambda</a></li><li><a href="afl-fuzz.html">Fuzzing with afl-fuzz</a></li><li><a href="runtime-tracing.html">Runtime tracing with runtime events</a></li><li><a href="tail_mod_cons.html">The “Tail Modulo Constructor” program transformation</a></li><li><a href="tsan.html">Runtime detection of data races with ThreadSanitizer</a></li></ul>
 
 
 
@@ -191,7 +191,7 @@ and the bytecode for the program. The resulting file is larger, but it
 can be executed directly, even if the <span class="machine"><span class="font-tt">ocamlrun</span></span> command is not
 installed. Moreover, the “custom runtime” mode enables static
 linking of OCaml code with user-defined C functions, as described in
-chapter&nbsp;<a href="intfc.html#c%3Aintf-c">22</a>.
+chapter&nbsp;<a href="intfc.html#c%3Aintf-c">23</a>.
 <blockquote class="quote"><span class="osvariant">Unix:</span> 
 Never use the <span class="machine"><span class="font-tt">strip</span></span> command on executables produced by <span class="machine"><span class="font-tt">ocamlc -custom</span></span>,
 this would remove the bytecode part of the executable.
@@ -293,7 +293,7 @@ incorporating the C object files and libraries given on the command
 line. This custom runtime system can be used later to execute
 bytecode executables produced with the
 <span class="machine"><span class="font-tt">ocamlc -use-runtime</span></span> <span class="font-it">runtime-name</span> option.
-See section&nbsp;<a href="intfc.html#ss%3Acustom-runtime">22.1.6</a> for more information.
+See section&nbsp;<a href="intfc.html#ss%3Acustom-runtime">23.1.6</a> for more information.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-match-context-rows</span></span></span></dt><dd class="dd-description">
 Set the number of rows of context used for optimization during
 pattern matching compilation. The default value is 32. Lower values
@@ -368,8 +368,8 @@ were added at the top of each file.
 Cause the linker to produce a C object file instead of
 a bytecode executable file.
 This is useful to wrap OCaml code as a C library,
-callable from any C program. See chapter&nbsp;<a href="intfc.html#c%3Aintf-c">22</a>,
-section&nbsp;<a href="intfc.html#ss%3Ac-embedded-code">22.7.6</a>. The name of the output object file
+callable from any C program. See chapter&nbsp;<a href="intfc.html#c%3Aintf-c">23</a>,
+section&nbsp;<a href="intfc.html#ss%3Ac-embedded-code">23.7.6</a>. The name of the output object file
 must be set with the <span class="machine"><span class="font-tt">-o</span></span> option.
 This option can also be used to produce a C source file (<span class="machine"><span class="font-tt">.c</span></span> extension)
 or a compiled shared/dynamic library (<span class="machine"><span class="font-tt">.so</span></span> extension, <span class="machine"><span class="font-tt">.dll</span></span> under Windows).
@@ -402,7 +402,7 @@ errors, the intermediate file is deleted afterwards.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-ppx</span></span> <span class="font-it">command</span></span></dt><dd class="dd-description">
 After parsing, pipe the abstract syntax tree through the preprocessor
 <span class="font-it">command</span>. The module <span class="machine"><span class="font-tt">Ast_mapper</span></span>, described in
-chapter&nbsp;<a href="parsing.html#c%3Aparsinglib">30</a>:
+chapter&nbsp;<a href="parsing.html#c%3Aparsinglib">31</a>:
 <a href="api/compilerlibref/Ast_mapper.html"> <span class="font-tt">Ast_mapper</span> </a>
 ,
 implements the external interface of a preprocessor.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-principal</span></span></span></dt><dd class="dd-description">
@@ -469,7 +469,7 @@ since OCaml 5.0.</dd><dt class="dt-description"><span class="font-bold"><span cl
 Generate a bytecode executable file that can be executed on the custom
 runtime system <span class="font-it">runtime-name</span>, built earlier with
 <span class="machine"><span class="font-tt">ocamlc -make-runtime</span></span> <span class="font-it">runtime-name</span>.
-See section&nbsp;<a href="intfc.html#ss%3Acustom-runtime">22.1.6</a> for more information.
+See section&nbsp;<a href="intfc.html#ss%3Acustom-runtime">23.1.6</a> for more information.
 </dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-v</span></span></span></dt><dd class="dd-description">
 Print the version number of the compiler and the location of the
 standard library directory, then exit.</dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-verbose</span></span></span></dt><dd class="dd-description">
@@ -649,7 +649,7 @@ must be explicitly passed to a runtime (i.e. <span class="font-tt">./foo</span> 
 <span class="font-tt">-without-runtime</span> control whether the compiler passes flags for linking
 with the installed runtime (<span class="font-tt">-with-runtime</span>) or whether the user is
 required to pass them (<span class="font-tt">-without-runtime</span>).</p><p>For more information about the options <span class="font-tt">-custom</span> and <span class="font-tt">-output-*</span>,
-see their documentation and section&nbsp;<a href="intfc.html#ss%3Ac-embedded-code">22.7.6</a> of the manual.
+see their documentation and section&nbsp;<a href="intfc.html#ss%3Ac-embedded-code">23.7.6</a> of the manual.
 </p></dd><dt class="dt-description"><span class="font-bold"><span class="machine"><span class="font-tt">-without-runtime</span></span></span></dt><dd class="dd-description">
 The compiler does not include the runtime system (nor a reference to it) in the
 generated program, executable or object file; it must be supplied separately.
@@ -820,7 +820,7 @@ mod2.ml:    let g y = ... Mod1.f ...
 </pre></li></ul></dd><dt class="dt-description"><span class="font-bold">The external function <span class="font-it">f</span> is not available</span></dt><dd class="dd-description">
 This error appears when trying to link code that calls external
 functions written in C. As explained in
-chapter&nbsp;<a href="intfc.html#c%3Aintf-c">22</a>, such code must be linked with C libraries that
+chapter&nbsp;<a href="intfc.html#c%3Aintf-c">23</a>, such code must be linked with C libraries that
 implement the required <span class="font-it">f</span> C function. If the C libraries in
 question are not shared libraries (DLLs), the code must be linked in
 “custom runtime” mode. Fix: add the required C libraries to the

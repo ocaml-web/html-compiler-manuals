@@ -741,7 +741,7 @@ an effect asynchronously from a signal handler, a finaliser, a memprof
 callback, or a GC alarm, and catch it from the main part of the code.
 Instead, this would result in an <span class="machine"><span class="font-tt">Effect.Unhandled</span></span>
 exception (<a href="#s%3Aeffects-unhandled">12.24.5</a>).</p><p>Similarly, effects are incompatible with the use of callbacks from C
-to OCaml (section&nbsp;<a href="intfc.html#s%3Ac-callback">22.7</a>). It is not possible for an
+to OCaml (section&nbsp;<a href="intfc.html#s%3Ac-callback">23.7</a>). It is not possible for an
 effect to cross a call to <span class="machine"><span class="font-tt">caml_callback</span></span>, this would instead result
 in an <span class="machine"><span class="font-tt">Effect.Unhandled</span></span> exception. In particular, care must be taken
 when mixing libraries that use callbacks from C to OCaml and libraries
