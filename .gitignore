@@ -1,0 +1,7 @@
+# Artifacts produced by scripts/build-odoc-sherlodoc.sh (see .github/workflows)
+/_switch/
+/_out/
+/ocaml-*-odoc-sherlodoc-html.tar.gz
+
+# dune build output of the .html.json parser-fidelity checker
+ci/doccheck/_build/

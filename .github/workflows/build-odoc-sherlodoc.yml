@@ -1,0 +1,124 @@
+name: Build odoc + sherlodoc artifacts
+
+# Per supported OCaml release, build native odoc HTML with client-side sherlodoc
+# search plus the .html.json fragment tree ocaml.org consumes, and publish the
+# tree as a per-version GitHub release asset. See issue #14; consumer RFC
+# ocaml/ocaml.org#3909. The build recipe lives in scripts/build-odoc-sherlodoc.sh.
+
+on:
+  workflow_dispatch:
+    inputs:
+      versions:
+        description: "Space-separated OCaml minor versions to build (floor 5.3)"
+        default: "5.3 5.4 5.5"
+  push:
+    branches: [main]
+    # Only version directories can change the matrix; the detect job intersects
+    # the actual diff with the 5.3 odoc floor, so legacy 4.x edits build nothing.
+    paths:
+      - "[0-9]*.[0-9]*/**"
+
+# Needed by `gh release` to create/update per-version releases.
+permissions:
+  contents: write
+
+concurrency:
+  group: odoc-sherlodoc-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # Compute the version matrix: the dispatch input, or (on push) the top-level
+  # N.M/ directories that were added or modified, each filtered to >= 5.3.
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.set.outputs.versions }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # need history to diff before..after on push
+      - id: set
+        shell: bash
+        run: |
+          set -euo pipefail
+          # keep $1 iff it is >= 5.3 (the odoc-supported floor)
+          floor_ok() { [ "$(printf '%s\n%s\n' "$1" 5.3 | sort -V | head -1)" = "5.3" ]; }
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # whitespace-separated input -> one candidate per line
+            raw="$(printf '%s' "${{ github.event.inputs.versions }}" | tr ' \t' '\n')"
+          else
+            before="${{ github.event.before }}"
+            # github.event.before is zeros / unreachable on first push or force-push.
+            if ! git cat-file -e "${before}^{commit}" 2>/dev/null; then
+              before="$(git rev-parse HEAD~1 2>/dev/null || true)"
+            fi
+            if [ -n "$before" ]; then
+              changed="$(git diff --name-only "$before" "${{ github.sha }}")"
+            else
+              changed="$(git show --name-only --pretty=format: "${{ github.sha }}")"
+            fi
+            raw="$(printf '%s\n' "$changed" \
+              | grep -E '^[0-9]+\.[0-9]+/' | cut -d/ -f1 | sort -u || true)"
+          fi
+
+          selected=()
+          while IFS= read -r m; do
+            [ -n "$m" ] || continue
+            if floor_ok "$m"; then selected+=("$m")
+            else echo "skip $m: below odoc floor 5.3"; fi
+          done <<< "$raw"
+
+          if [ "${#selected[@]}" -eq 0 ]; then
+            versions='[]'
+          else
+            versions="$(printf '%s\n' "${selected[@]}" | sort -uV | jq -Rnc '[inputs]')"
+          fi
+          echo "versions=$versions" >> "$GITHUB_OUTPUT"
+          echo "matrix: $versions"
+
+  build:
+    needs: detect
+    if: needs.detect.outputs.versions != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # one version failing must not cancel the others
+      matrix:
+        version: ${{ fromJSON(needs.detect.outputs.versions) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache opam download cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.opam/download-cache
+          key: opam-dl-${{ runner.os }}-${{ matrix.version }}
+
+      - name: Install opam
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y opam
+          opam init --bare --disable-sandboxing -y
+
+      - name: Build odoc + sherlodoc tree for ${{ matrix.version }}
+        run: scripts/build-odoc-sherlodoc.sh "${{ matrix.version }}" _out
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ocaml-${{ matrix.version }}-odoc-sherlodoc-html
+          path: ocaml-${{ matrix.version }}-odoc-sherlodoc-html.tar.gz
+          retention-days: 14
+
+      - name: Publish to per-version release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="odoc-sherlodoc-${{ matrix.version }}"
+          asset="ocaml-${{ matrix.version }}-odoc-sherlodoc-html.tar.gz"
+          gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" \
+            --title "odoc + sherlodoc docs for OCaml ${{ matrix.version }}" \
+            --notes "Auto-generated odoc HTML + client-side sherlodoc search + .html.json fragments for the OCaml ${{ matrix.version }} compiler distribution (stdlib + compiler-libs). Built by .github/workflows/build-odoc-sherlodoc.yml; see issue #14."
+          gh release upload "$tag" "$asset" --clobber
