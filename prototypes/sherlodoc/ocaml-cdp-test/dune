@@ -1,0 +1,4 @@
+(executable
+ (name parity_test)
+ (libraries cdp websocket-lwt-unix cohttp-lwt-unix conduit-lwt-unix ipaddr
+   lwt.unix yojson uri))

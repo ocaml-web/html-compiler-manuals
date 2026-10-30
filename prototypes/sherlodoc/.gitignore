@@ -5,3 +5,5 @@ _html/
 *.odocl
 __pycache__/
 *.pyc
+_build/
+*.exe
