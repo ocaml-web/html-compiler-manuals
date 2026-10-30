@@ -1,6 +1,7 @@
-# Regenerable prototype artifacts (see reproduce.sh)
+# Regenerable prototype artifacts (see reproduce.sh / reproduce_v2.sh)
 _switch/
 _html/
+_html_v2/
 *.marshal
 *.odocl
 __pycache__/

@@ -1,0 +1,4 @@
+(executable
+ (name check)
+ (flags (:standard -w -69-37))
+ (libraries yojson))
